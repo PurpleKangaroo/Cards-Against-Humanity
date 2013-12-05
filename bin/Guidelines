@@ -1,0 +1,32 @@
+Guidelines:
+	Use interfaces to stay organized.
+	Use whitespace where appropriate.
+	Use good documentation
+		add "@deprecated"(CAH#.#(.#)) to deprecated things. This makes it easy to go back later to find how the program used to work
+								 if we run into problems
+		(notes can be left in documentation)
+		Documentation for variables (only for instance variables): /**Brief Explanation*/ (preferably one line)
+		
+		Interface Documentation: similar e class documentation (See class documentation), (Start with: "A collection of methods that ...")
+		
+		Constructor Documentation: like method documentation. (See method documentation), but in general starts with "Creates an object that..."
+		
+		Class documentation:Explanation (in general, Start with "A class of object that represents ...")
+							@author(replace s-______ w/ your name; there can be multiple authors, just do @author on a new line.)
+							@version (CAH#.#(.#)) update version with new versiosn, @since(CAH#.#(.#)) (dont change since after it has been finished)
+							 (both of these should be incomnplete if its incomplete)
+							(only if necessary) @see {@linkplain (the thing that the link is too)}, {@linkplain (another thing for this link)}
+		
+		Method documentation:Explanation 
+							@since(CAH#.#(.#))(dont change since after it has been finished)
+							(only if necessary) @param paramater - Explanation
+							(only if necessary) @throws Throwable Explanation (NO DASH - java doc puts it in for you in @throws)
+							(only if necessary) @see {@linkplain (the thing that the link is too)}, {@linkplain (another thing for this link)}	
+		
+		Enum documentation:	Explanation (usually starts with "a list of ..."
+							@since (CAH#.#(.#))(dont change since after it has been finished)
+							(only if necessary) @see {@linkplain (the thing that the link is too)}, {@linkplain (another thing for this link)}
+	
+	Enumcontents documentation:Explanation
+							@since (CAH#.#(.#))(dont change since after it has been finished)
+							(only if necessary) @see {@linkplain (the thing that the link is too)}, {@linkplain (another thing for this link)}

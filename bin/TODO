@@ -1,0 +1,61 @@
+Look into using mock objects (Big Java page 483-484) to test parts of the program.
+
+
+Basics:
+
+X	Step 1: Cards (Package) - ?This applys to players/users and game as well? 
+							  The cards a player plays must have something that tells the commputer who played the card 
+							  so that it can award awesome points to whoever played the card.
+							  Cards: work on tagging.
+							  Tagging IDEA: make it so that in a game a certain combonation of cards can be tagged.
+							  				Tags like PERSONAL_CZAR, PERSONAL_SELF, or INSIDE
+							  				could be used so that the computer could understand that the joke
+							  				doesnt apply to everyone, just the Card Czar, the person who plays the card,
+							  				or the group of people playing the game.
+							  ??S - taging for just aCards or also for qCards? should those tags be consolodated or seperate?
+							  	  - Enum and/or class???
+X	Step 2: users (Package) - More work still needed(See step 5)...
+	Step 3: game (Package): PRIORITIES: CAH_Game, playerManager; Figure out how to mangage the players.
+	Step 4: ai (Package)
+	Step 5:	user package - add the other stuff once the other classes are done.
+			REPLACE ALL PROTECTED VARIABLES WITH PRIVATE ONES, AND MAKE THE PROGRAM SO THAT IT CAN WORK WITH THE PRIVATE VARIABLES.
+			CONCEAL CODE SO THAT IT CANNOT BE ALTERED!!!!!!!!!!
+	Step 6: userInterface (Package)
+	Step 7a: Encryption/obviscation (package) 
+	Step 7b: saving(package). ADD saveable interface to saveable objects.
+	Step 8: Fix any Text File problems
+	Step 9a: have people who are interested in CAH listen to the playlist Songs against humanity and provide feedback.
+	Step 9b: Sounds: Songs against Humanity playlist.
+	Step 10: Netplay. (Package)
+	Step 11: Teach computer ai
+	Step 12: Make updates possible with emails?(See ideas below) 
+	Step 13: Make bug reports possible in the middle of playing (See Ideas below)
+	Step 14: distrubute.
+	
+CARDS & Players/users: ADD EXTRA DRAW OPTION so that draw 2 works.
+CARDS: Make the cards read as pick 2 in the deck builder. Add draw & pick variables to questionCard class
+
+IDEAS:
+	*Make an option in the game to have everyone's awesome points visable, just a players own awesome points visable,
+	 or nobody's awesome points visable. Make this work so that the computer players cant "see" everyones points either.
+	 
+	*?Make an email adress that can be accesed by users to send bug reports that can be made in the middle of playing. 
+	
+	*?Have the email that the users can all access recieve emails that contain updates. Send out the updates with another email.
+	
+	*At the start have a screen that says something like warning, dont be offended, or something like that. maybe make it funny.
+	
+	*UI: make a method that combines the answer and question onto one card with each being a different color. Make the question and answer work for both q&a and fill in the 
+	blank
+
+Then go back and update and perfect things.
+
+Updates:
+	ExpansionDecks (Make it so that anyone can add their own expansion deck) also make it so that multiple decks can be used in
+	a game and so that people can choose which decks to use.
+	Make it so that eventually 
+	Maybe have the program send an email to someone that will update their stats for their impersonator.
+	
+	Make the impersonator able to understand how perceptive of others the players. Make a thing that dertermines flexability to 
+	knowing players. Do this by looking at results with different players as well as how well cards played match the other players
+	behavior.
