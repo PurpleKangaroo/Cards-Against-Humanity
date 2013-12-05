@@ -8,6 +8,6 @@ package cards;
  * @version incomplete
  *
  */
-public class tag {
+public class Tag {
 
 }

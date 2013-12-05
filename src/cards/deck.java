@@ -5,7 +5,7 @@ import java.util.Random;
 
 /**
  * A type of object that represents a set of two decks.
- * The decks are made of the cards in the ArrayLists aDeck, which contains answerCards, and qDeck, which contains questionCards. 
+ * The decks are made of the cards in the ArrayLists aDeck, which contains AnswerCards, and qDeck, which contains QuestionCards. 
  * @author Holt Maki
  * @version CAH1.0
  * @since CAH1.0
@@ -13,18 +13,18 @@ import java.util.Random;
  *
  */
 
-public class deck {
-	private ArrayList<questionCard> qDeck;
-	private ArrayList<answerCard> aDeck;
+public class Deck {
+	private ArrayList<QuestionCard> qDeck;
+	private ArrayList<AnswerCard> aDeck;
 	
 	/**
 	 * Creates a set of two decks in the form of arrayLists
-	 * There is an arrayList of answerCards and an arrayList of questionCards.
+	 * There is an arrayList of AnswerCards and an arrayList of QuestionCards.
 	 * @param a - the contents of the answer card deck
 	 * @param q - the contents of the question card deck
 	 * @since CAH1.0
 	 */
-	public deck(ArrayList<answerCard> a, ArrayList<questionCard> q)
+	public Deck(ArrayList<AnswerCard> a, ArrayList<QuestionCard> q)
 	{
 		aDeck = a;
 		qDeck = q;
@@ -38,11 +38,11 @@ public class deck {
 	 * @see {@link #drawQuestionCard()}
 	 */
 	
-	public answerCard drawAnswerCard()
+	public AnswerCard drawAnswerCard()
 	{
 		Random randomNumbers = new Random();
 		int index = randomNumbers.nextInt(aDeck.size());
-		answerCard card = aDeck.get(index);
+		AnswerCard card = aDeck.get(index);
 		aDeck.remove(index);
 		return card;
 	}
@@ -55,11 +55,11 @@ public class deck {
 	 * @see {@link #drawAnswerCard()}
 	 */
 
-	public questionCard drawQuestionCard()
+	public QuestionCard drawQuestionCard()
 	{
 		Random randomNumbers = new Random();
 		int index = randomNumbers.nextInt(qDeck.size());
-		questionCard card = qDeck.get(index);
+		QuestionCard card = qDeck.get(index);
 		qDeck.remove(index);
 		return card;
 	}

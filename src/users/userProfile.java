@@ -9,7 +9,7 @@ package users;
  *
  */
 
-public class userProfile {
+public class UserProfile {
 	public String FirstName;
 	public String LastName;
 	public String userName;
@@ -24,7 +24,7 @@ public class userProfile {
 	 * @since 1.0
 	 */
 	
-	public userProfile(String first, String last, String Username, char genderChar)
+	public UserProfile(String first, String last, String Username, char genderChar)
 	{
 		FirstName = first;
 		LastName = last;

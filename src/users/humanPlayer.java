@@ -7,8 +7,8 @@ package users;
  * @version CAH1.0
  *
  */
-public class humanPlayer extends nonRandoPlayer{
-	private user person;
+public class HumanPlayer extends NonRandoPlayer{
+	private User person;
 	
 	/**
 	 * Constructs a human player.
@@ -16,7 +16,7 @@ public class humanPlayer extends nonRandoPlayer{
 	 * @param userName - the userName of the user that is controlling the player.
 	 * @since CAH1.0
 	 */
-	public humanPlayer(int numberOfCards, String userName) {
+	public HumanPlayer(int numberOfCards, String userName) {
 		super(numberOfCards);
 		realPerson = true;
 		/*

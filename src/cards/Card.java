@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class Card {
 	protected String cardString;
-	private ArrayList<tag> tags;
+	private ArrayList<Tag> tags;
 	
 	/**
 	 * Creates a card.
@@ -39,7 +39,7 @@ public class Card {
 	 * @see {@linkplain tag}
 	 */
 	
-	public void addTag(tag aTag)
+	public void addTag(Tag aTag)
 	{
 		tags.add(aTag);
 	}

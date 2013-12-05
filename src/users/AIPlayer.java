@@ -6,7 +6,7 @@ package users;
  * @version incomplete
  * @since incomplete
  */
-public class AIPlayer extends nonRandoPlayer{
+public class AIPlayer extends NonRandoPlayer{
 
 	public AIPlayer(int numberOfCards) {
 		super(numberOfCards);

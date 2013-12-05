@@ -8,7 +8,7 @@ import game.HouseRules;
  * @since CAH1.0
  *
  */
-public enum playerTypes {
+public enum PlayerTypes {
 	/**
 	 * A computer player
 	 * @since CAH1.0

@@ -1,29 +1,15 @@
 package userInterface;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
+import import_export.PathFinder;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URISyntaxException;
-import java.net.URL;
 
-import graphics.PictureComponent;
-import import_export.pathFinder;
-
-import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JComponent;
 
 /**
  * A class of object that makes the frame that a Cards Against Humanity game is run in.
@@ -34,6 +20,8 @@ import javax.swing.JComponent;
  */
 public class CAH_Frame extends JFrame{
 	
+	private static final long serialVersionUID = -3033860031108235857L;
+
 	/**
 	 * Creates a new frame in which a cards against of humanity game is shown in.
 	 * @throws URISyntaxException
@@ -42,7 +30,7 @@ public class CAH_Frame extends JFrame{
 	public CAH_Frame() throws IOException, URISyntaxException
 	{
 		super("Cards Against Humanity");
-		pathFinder a = new pathFinder();
+		PathFinder a = new PathFinder();
 		setDefaultLookAndFeelDecorated(true);
 		setIconImage(new ImageIcon(a.getCAH_Path("/Cards Against Humanity/src/CAH_GraphicsFiles/CAHIcon.png")).getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,7 +52,7 @@ public class CAH_Frame extends JFrame{
 	
 	public static void main(String [] args) throws URISyntaxException, IOException
 	{
-		pathFinder a = new pathFinder();
+		PathFinder a = new PathFinder();
 		CAH_Frame b = new CAH_Frame();
 	}
 

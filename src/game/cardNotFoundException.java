@@ -6,7 +6,7 @@ package game;
  * @since CAH1.0
  * @version CAH1.0
  */
-public class cardNotFoundException extends Exception {
+public class CardNotFoundException extends Exception {
 
 	/**
 	 * cardNotFoundException
@@ -17,7 +17,7 @@ public class cardNotFoundException extends Exception {
 	 * Creates a throwable object that represents a cardNotFoundException
 	 * @since CAH1.0
 	 */
-	public cardNotFoundException()
+	public CardNotFoundException()
 	{
 		
 	}

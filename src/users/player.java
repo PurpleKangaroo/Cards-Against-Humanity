@@ -1,8 +1,8 @@
 package users;
 
-import cards.answerCard;
-import cards.deck;
-import cards.hand;
+import cards.AnswerCard;
+import cards.Deck;
+import cards.Hand;
 
 /**
  * A class of object that contains all players including Rando Cardrissian.
@@ -13,12 +13,12 @@ import cards.hand;
  *
  */
 
-public class player {
+public class Player {
 	protected boolean Card_Czar;
 	protected int AwesomePoints = 0;
 	private boolean RandoCard;
 	protected boolean realPerson;
-	protected hand cardsInHand;
+	protected Hand cardsInHand;
 	protected String name;
 	protected String userName;
 
@@ -27,7 +27,7 @@ public class player {
 	 * This player could be Rando Cardrissian.
 	 * @since CAH1.0
 	 */
-	public player()
+	public Player()
 	{
 		
 	}
@@ -78,9 +78,9 @@ public class player {
 	 * @return a - The card that is played.
 	 * @since CAH1.0
 	 */
-	public answerCard playCard(int cardNumber)
+	public AnswerCard playCard(int cardNumber)
 	{
-		answerCard a = cardsInHand.playCard(cardsInHand.get(cardNumber));
+		AnswerCard a = cardsInHand.playCard(cardsInHand.get(cardNumber));
 		return a;
 	}
 	
@@ -90,7 +90,7 @@ public class player {
 	 * @return a - the deck after the user has drawn cards from it.
 	 * @since CAH1.0
 	 */
-	public deck deal_draw(deck a)
+	public Deck deal_draw(Deck a)
 	{
 		a = cardsInHand.deal_draw(a);
 		return a;
@@ -103,7 +103,7 @@ public class player {
 	 * @return a - the deck after the user has drawn cards from it.
 	 * @since CAH1.0
 	 */
-	public deck draw_Extra(deck a, int noOfCardsOverLimit)
+	public Deck draw_Extra(Deck a, int noOfCardsOverLimit)
 	{
 		a = cardsInHand.exceedLimitDraw(a, noOfCardsOverLimit);
 		return a;

@@ -7,10 +7,10 @@ package game;
  * @version CAH1.0
  *
  */
-public class playerNotFoundException extends Exception{
+public class PlayerNotFoundException extends Exception{
 
 	/**
-	 * playerNotFoundException
+	 * PlayerNotFoundException
 	 */
 	private static final long serialVersionUID = 6066825630895285200L;
 	
@@ -18,7 +18,7 @@ public class playerNotFoundException extends Exception{
 	 * Creates an object that represents an exception that is thrown when a player is not found.
 	 * @since CAH1.0
 	 */
-	public playerNotFoundException()
+	public PlayerNotFoundException()
 	{
 		
 	}

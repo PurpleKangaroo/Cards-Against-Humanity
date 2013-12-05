@@ -1,7 +1,7 @@
 package users;
 
-import cards.deck;
-import cards.hand;
+import cards.Deck;
+import cards.Hand;
 
 /**
  * A class of object that represents all players except for Rando Cardrissian- both humans and computers. Each of these will have their own subclass of player.
@@ -11,7 +11,7 @@ import cards.hand;
  * @see {@linkplain user}
  *
  */
-public class nonRandoPlayer extends player
+public class NonRandoPlayer extends Player
 {
 	
 	/**
@@ -19,9 +19,9 @@ public class nonRandoPlayer extends player
 	 * @param numberOfCards - the number of cards that the player has.
 	 * @since CAH1.0
 	 */
-	public nonRandoPlayer(int numberOfCards)
+	public NonRandoPlayer(int numberOfCards)
 	{
-		cardsInHand = new hand(numberOfCards);
+		cardsInHand = new Hand(numberOfCards);
 		Card_Czar = false;
 		setRandoCard(false);
 	}

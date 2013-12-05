@@ -5,7 +5,7 @@ package saving;
  * @author Holt Maki
  *
  */
-public interface saveable {
+public interface Saveable {
 	
 
 }

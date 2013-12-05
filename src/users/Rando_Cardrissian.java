@@ -1,7 +1,7 @@
 package users;
 
-import cards.deck;
-import cards.hand;
+import cards.Deck;
+import cards.Hand;
 
 /**
  * An object that represents Rando Cardrissian, a fake person who plays a random card every turn when the rules are set to "Rando Cardrissian".
@@ -13,7 +13,7 @@ import cards.hand;
  *
  */
 
-public class Rando_Cardrissian extends player{
+public class Rando_Cardrissian extends Player{
 	
 	/**
 	 * Creates an object that represents Rando Cardrissian, a fake person who plays a random card every turn when the rules are set to "Rando Cardrissian".
@@ -24,7 +24,7 @@ public class Rando_Cardrissian extends player{
 	public Rando_Cardrissian() 
 	{
 		super();
-		cardsInHand = new hand(1);
+		cardsInHand = new Hand(1);
 		Card_Czar = false;
 		realPerson = false;
 		setRandoCard(true);

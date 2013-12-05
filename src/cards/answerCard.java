@@ -11,7 +11,7 @@ package cards;
  * @version CAH1.0
  */
 
-public class answerCard extends Card{
+public class AnswerCard extends Card{
 
 	/**
 	 * Creates an answer card
@@ -19,7 +19,7 @@ public class answerCard extends Card{
 	 * @param {@link #card} - the writing that will be on the card
 	 * @see {@link #Card(String card)}
 	 */
-	public answerCard(String card) {
+	public AnswerCard(String card) {
 		super(card);
 		// TODO Auto-generated constructor stub
 	}

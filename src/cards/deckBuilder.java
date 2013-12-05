@@ -1,6 +1,6 @@
 package cards;
 
-import import_export.pathFinder;
+import import_export.PathFinder;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,12 +17,12 @@ import java.util.Scanner;
  *
  */
 
-public class deckBuilder {
+public class DeckBuilder {
 	private File answers;
 	private File questions;
-	private deck originalDeck;
-	private ArrayList<answerCard> answerList;
-	private ArrayList<questionCard> questionList;
+	private Deck originalDeck;
+	private ArrayList<AnswerCard> answerList;
+	private ArrayList<QuestionCard> questionList;
 	
 	/**
 	 * Creates an object that will import a file and convert it into a deck of cards
@@ -32,24 +32,24 @@ public class deckBuilder {
 	 */
 	
 	@SuppressWarnings("resource")
-	public deckBuilder() throws FileNotFoundException, URISyntaxException
+	public DeckBuilder() throws FileNotFoundException, URISyntaxException
 	{
-		pathFinder a = new pathFinder();
-		answerList = new ArrayList<answerCard>();
-		questionList = new ArrayList<questionCard>();
-		answers = new File(a.getCAH_Path("E:/Programs/Program Files/Eclipse Workspaces/Eclipse Files/Cards Against Humanity/src/cards/Answers"));
-		questions = new File(a.getCAH_Path("E:/Programs/Program Files/Eclipse Workspaces/Eclipse Files/Cards Against Humanity/src/cards/Answers"));
+		PathFinder a = new PathFinder();
+		answerList = new ArrayList<AnswerCard>();
+		questionList = new ArrayList<QuestionCard>();
+		answers = new File(a.getCAH_Path("/Cards Against Humanity/src/cards/Answers"));
+		questions = new File(a.getCAH_Path("/Cards Against Humanity/src/cards/Answers"));
 		Scanner answerScanner = new Scanner(answers);
 		while(answerScanner.hasNextLine())
 		{
-			answerList.add(new answerCard(answerScanner.nextLine()));
+			answerList.add(new AnswerCard(answerScanner.nextLine()));
 		}
 		Scanner questionScanner = new Scanner(questions);
 		while(questionScanner.hasNextLine())
 		{
-			questionList.add(new questionCard(questionScanner.nextLine()));
+			questionList.add(new QuestionCard(questionScanner.nextLine()));
 		}
-		originalDeck = new deck(answerList, questionList);
+		originalDeck = new Deck(answerList, questionList);
 	}
 	
 	/**
@@ -58,7 +58,7 @@ public class deckBuilder {
 	 * @since CAH1.0
 	 */
 	
-	public deck getOriginalDeck()
+	public Deck getOriginalDeck()
 	{
 		return originalDeck;
 	}

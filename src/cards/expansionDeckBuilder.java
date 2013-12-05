@@ -11,9 +11,9 @@ import java.net.URISyntaxException;
  *
  */
 
-public class expansionDeckBuilder extends deckBuilder{
+public class ExpansionDeckBuilder extends DeckBuilder{
 
-	public expansionDeckBuilder() throws FileNotFoundException, URISyntaxException {
+	public ExpansionDeckBuilder() throws FileNotFoundException, URISyntaxException {
 		super();
 		
 		// TODO Auto-generated constructor stub

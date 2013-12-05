@@ -1,5 +1,5 @@
 package users;
 
-public class userGameHistory {
+public class UserGameHistory {
 
 }

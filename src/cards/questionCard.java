@@ -8,7 +8,7 @@ package cards;
  * @since CAH1.0
  * @version CAH1.0
  */
-public class questionCard extends Card{
+public class QuestionCard extends Card{
 	private int draw;
 	private int pick;
 	/**
@@ -17,7 +17,7 @@ public class questionCard extends Card{
 	 * @param {@link #card} - the writing that will be on the card
 	 * @see {@link #Card(String card)}
 	 */
-	public questionCard(String card) 
+	public QuestionCard(String card) 
 	{
 		super(card);
 		draw = 0;

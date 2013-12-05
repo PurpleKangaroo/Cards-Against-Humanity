@@ -3,13 +3,13 @@ package game;
 import java.util.ArrayList;
 import java.util.Random;
 
-import cards.deck;
-import cards.deckBuilder;
-import cards.questionCard;
+import cards.Deck;
+import cards.DeckBuilder;
+import cards.QuestionCard;
 import users.Card_Czar_Exception;
+import users.Player;
 import users.Rando_Cardrissian;
-import users.player;
-import cards.answerCard;
+import cards.AnswerCard;
 
 /**
  * A class of object that represents a Cards Against Humanity game.
@@ -22,12 +22,12 @@ public class CAH_Game {
 	/**The set of rules that the game will use */
 	private Rules ruleSet;
 	/**The list of players playing the game */
-	private ArrayList<player> players;
+	private ArrayList<Player> players;
 	/** This is the deck that the game is played with */
-	private deck gameDeck;
+	private Deck gameDeck;
 	/**The Array of array lists of Cards played by each player that keeps track of who played what card 
 	 * The 2D aspect of it is to make it work for pick 2's and pick 3's*/
-	private answerCard[][] answers;
+	private AnswerCard[][] answers;
 	/**Serves as a counter for which player is card czar */
 	private int CzarCount;
 	/**Serves as a counter for the number of rounds of CAH that have been played */
@@ -52,7 +52,7 @@ public class CAH_Game {
 	 *  depending on what expansion decks are used.
 	 * @since CAH1.0
 	 */
-	public CAH_Game(Rules rules, deckBuilder a)
+	public CAH_Game(Rules rules, DeckBuilder a)
 	{
 		ruleSet = rules;
 		gameDeck = a.getOriginalDeck();
@@ -85,7 +85,7 @@ public class CAH_Game {
 	 * @param newPlayer - the player that will be added
 	 * @since CAH1.0;
 	 */
-	public void addPlayer(player newPlayer)
+	public void addPlayer(Player newPlayer)
 	{
 		players.add(newPlayer);
 	}
@@ -98,7 +98,7 @@ public class CAH_Game {
 	 * @since CAH1.0(Incomplete method) - see coments
 	 * @param leavingPlayer - The player that is leaving the game.
 	 */
-	public void removePlayer(player leavingPlayer)
+	public void removePlayer(Player leavingPlayer)
 	{
 		players.remove(leavingPlayer);
 		//add playerSaving stuff.
@@ -109,7 +109,7 @@ public class CAH_Game {
 	Add public void replacePlayerWithImpersonator(player leavingPlayer) that allows the player to be replaced by a computer impersonator*/
 	
 	/**
-	 * Deals answerCards to all the players.
+	 * Deals AnswerCards to all the players.
 	 * @since CAH1.0
 	 */
 	public void Deal_Draw()
@@ -121,12 +121,12 @@ public class CAH_Game {
 	}
 	
 	/**
-	 * Deals answerCards to all the players. In this method the players are allowed to temporararily to have more cards in their hand than the limit.
+	 * Deals AnswerCards to all the players. In this method the players are allowed to temporararily to have more cards in their hand than the limit.
 	 * This method may be used in every round as it checks for draw to see if the number of cards to be drawn over the limit.
 	 * @since CAH1.0
-	 * @param qCard - The {@linkplain questionCard} that is being checked for the variable draw. This should be the current question card.
+	 * @param qCard - The {@linkplain QuestionCard} that is being checked for the variable draw. This should be the current question card.
 	 */
-	public void draw_Extra(questionCard qCard)
+	public void draw_Extra(QuestionCard qCard)
 	{
 		int draw = qCard.getDraw();
 		if (ruleSet.PackingHeat() && qCard.getDraw()>0)
@@ -156,10 +156,10 @@ public class CAH_Game {
 	 * @since CAH1.0
 	 * @return currentQuestionCard - The question card that players will be answering.
 	 */
-	public questionCard getQCard()
+	public QuestionCard getQCard()
 	{
 		roundCount++;
-		questionCard currentQuestionCard = gameDeck.drawQuestionCard();
+		QuestionCard currentQuestionCard = gameDeck.drawQuestionCard();
 		return currentQuestionCard;
 	}
 	
@@ -172,11 +172,11 @@ public class CAH_Game {
 	 * @return scrPlayerCards - the answer cards that are played by each player.
 	 * @since CAH1.0
 	 */
-	public answerCard[][] getAnswerCards(int[][] playerCards)
+	public AnswerCard[][] getAnswerCards(int[][] playerCards)
 	{
-		answerCard[][] scrPlayerCards = new answerCard[players.size()][];
-		answerCard[][] unscrPlayerCards = new answerCard[players.size()][];
-		ArrayList<answerCard[]> Scramble = new ArrayList<answerCard[]>();
+		AnswerCard[][] scrPlayerCards = new AnswerCard[players.size()][];
+		AnswerCard[][] unscrPlayerCards = new AnswerCard[players.size()][];
+		ArrayList<AnswerCard[]> Scramble = new ArrayList<AnswerCard[]>();
 		for(int i = 0; i<players.size(); i++)
 		{
 			for (int n = 0; n<playerCards[i].length; n++)
@@ -199,10 +199,10 @@ public class CAH_Game {
 	/**
 	 * Gives points to the player that played the winning answer card.
 	 * @since CAH1.0
-	 * @param winner - the winning answerCard.
-	 * @throws cardNotFoundException thrown if the answerCard[] that is a paramater is not found in answers.
+	 * @param winner - the winning AnswerCard.
+	 * @throws CardNotFoundException thrown if the AnswerCard[] that is a paramater is not found in answers.
 	 */
-	public void scorePoints(answerCard[] winner) throws cardNotFoundException
+	public void scorePoints(AnswerCard[] winner) throws CardNotFoundException
 	{
 		boolean found = false;
 		int number = -1;
@@ -216,7 +216,7 @@ public class CAH_Game {
 		}
 		if (!found)
 		{
-			cardNotFoundException cardNotFound = new cardNotFoundException();
+			CardNotFoundException cardNotFound = new CardNotFoundException();
 			throw cardNotFound;
 		}
 		if (found == true && number>= 0)
@@ -231,9 +231,9 @@ public class CAH_Game {
 	 * @since CAH1.0
 	 * @param second
 	 * @param third
-	 * @throws cardNotFoundException
+	 * @throws CardNotFoundException
 	 */
-	public void seriousBuisnessPoints(answerCard[] first, answerCard[] second, answerCard[]third) throws cardNotFoundException
+	public void seriousBuisnessPoints(AnswerCard[] first, AnswerCard[] second, AnswerCard[]third) throws CardNotFoundException
 	{
 		//First Player
 		boolean found = false;
@@ -248,7 +248,7 @@ public class CAH_Game {
 		}
 		if (!found)
 		{
-			cardNotFoundException cardNotFound = new cardNotFoundException();
+			CardNotFoundException cardNotFound = new CardNotFoundException();
 			throw cardNotFound;
 		}
 		if (found == true && number>= 0)
@@ -269,7 +269,7 @@ public class CAH_Game {
 		}
 		if (!found)
 		{
-			cardNotFoundException cardNotFound = new cardNotFoundException();
+			CardNotFoundException cardNotFound = new CardNotFoundException();
 			throw cardNotFound;
 		}
 		if (found == true && number>= 0)
@@ -290,7 +290,7 @@ public class CAH_Game {
 		}
 		if (!found)
 		{
-			cardNotFoundException cardNotFound = new cardNotFoundException();
+			CardNotFoundException cardNotFound = new CardNotFoundException();
 			throw cardNotFound;
 		}
 		if (found == true && number>= 0)
@@ -344,9 +344,9 @@ public class CAH_Game {
 	/**
 	 * Gets the current cardCzar
 	 * @return
-	 * @throws playerNotFoundException
+	 * @throws PlayerNotFoundException
 	 */
-	public player getCurrentCardCzar() throws playerNotFoundException
+	public Player getCurrentCardCzar() throws PlayerNotFoundException
 	{
 		int cardCzarIndex = -1;
 		boolean found = false;
@@ -360,8 +360,8 @@ public class CAH_Game {
 		}
 		if (!found)
 		{
-			playerNotFoundException playerNotFound = new playerNotFoundException();
-			throw playerNotFound;
+			PlayerNotFoundException PlayerNotFound = new PlayerNotFoundException();
+			throw PlayerNotFound;
 		}
 		else
 		{

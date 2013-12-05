@@ -10,7 +10,7 @@ import java.net.URL;
  * @since CAH1.0
  * @version CAH1.0
  */
-public class pathFinder {
+public class PathFinder {
 	private String CAH_Path;
 	
 	/**
@@ -18,7 +18,7 @@ public class pathFinder {
 	 * @since CAH1.0
 	 * @throws URISyntaxException
 	 */
-	public pathFinder() throws URISyntaxException
+	public PathFinder() throws URISyntaxException
 	{
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 		URL url = classLoader.getResource(".");
