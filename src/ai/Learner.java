@@ -1,6 +1,7 @@
 package ai;
 
-import saving.Saveable;
+import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
 
 /**
  * A class of object that learns what people find humerous and saves the data to a text file.
@@ -9,7 +10,7 @@ import saving.Saveable;
  * @author Holt Maki
  *
  */
-public class Learner implements Saveable
+public class Learner
 {
 	/**
 	 * Creates a class of object that can learn.
@@ -18,8 +19,6 @@ public class Learner implements Saveable
 	public Learner()
 	{
 		
-	}
-	
-	
+	}	
 
 }
