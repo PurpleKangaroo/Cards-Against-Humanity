@@ -68,5 +68,14 @@ public class Saver {
 		String a = in.nextLine();
 		return a;
 	}
+	/**
+	 * Saves a String to a text document
+	 * @param printString - the line String that will be saved to the text document.
+	 */
+	public void save(String printString)
+	{
+		out.print(printString);
+	}
+	
 	
 }
