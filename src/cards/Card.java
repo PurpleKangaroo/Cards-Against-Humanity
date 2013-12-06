@@ -20,8 +20,12 @@ public class Card {
 	protected String cardString;
 	private ArrayList<Tag> tags;
 	private static int cardNumberCounter = 0;
+	private static ArrayList<String> prefixes;
+	//TODO Make it so that each prefix & folder will have their own numbering so that multiple decks can be combined without problems.
+	
+	
 	private Saver save;
-	private CardHistory history;//Make this when the card is created to help the AI understand the cards better
+	private CardHistory history;//TODO Make this when the card is created to help the AI understand the cards better
 	
 	/**
 	 * Creates a card.
