@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class Card {
 	protected String cardString;
 	private ArrayList<Tag> tags;
+	private CardHistory history;//Make this when the card is created to help the AI understand the cards better
 	
 	/**
 	 * Creates a card.
