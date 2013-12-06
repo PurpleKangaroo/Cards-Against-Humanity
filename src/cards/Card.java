@@ -1,6 +1,10 @@
 package cards;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
+
+import saving.Saver;
 
 /**
  * A type object that represents a card.
@@ -15,6 +19,8 @@ import java.util.ArrayList;
 public class Card {
 	protected String cardString;
 	private ArrayList<Tag> tags;
+	private static int cardNumberCounter = 0;
+	private Saver save;
 	private CardHistory history;//Make this when the card is created to help the AI understand the cards better
 	
 	/**
@@ -26,8 +32,15 @@ public class Card {
 	 * @since CAH1.0
 	 * @see {@linkplain answerCard}, {@linkplain questionCard}
 	 */
-	public Card(String card)
+	public Card(String card, String folder, String filePrefix) throws URISyntaxException, IOException
 	{
+		cardNumberCounter++;
+		String fileName = filePrefix + cardNumberCounter + "";
+		save = new Saver(fileName, folder);
+		//Make tags and history with save
+		
+		
+		
 		cardString = card;
 	}
 	

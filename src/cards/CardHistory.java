@@ -1,5 +1,6 @@
 package cards;
 
-public class CardHistory {
-
+public class CardHistory 
+{
+	
 }
