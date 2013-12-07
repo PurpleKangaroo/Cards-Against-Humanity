@@ -15,7 +15,7 @@ X	Step 1: Cards (Package) - ?This applys to players/users and game as well?
 							  ??S - taging for just aCards or also for qCards? should those tags be consolodated or seperate?
 							  	  - Enum and/or class???
 X	Step 2: users (Package) - More work still needed(See step 5)...
-	Step 3: game (Package): PRIORITIES: CAH_Game, playerManager; Figure out how to mangage the players.
+X	Step 3: game (Package): PRIORITIES: CAH_Game, playerManager; Figure out how to mangage the players.
 	Step 4: ai (Package)
 	Step 5:	user package - add the other stuff once the other classes are done.
 			REPLACE ALL PROTECTED VARIABLES WITH PRIVATE ONES, AND MAKE THE PROGRAM SO THAT IT CAN WORK WITH THE PRIVATE VARIABLES.
@@ -47,6 +47,8 @@ IDEAS:
 	
 	*UI: make a method that combines the answer and question onto one card with each being a different color. Make the question and answer work for both q&a and fill in the 
 	blank
+	
+	*Make a part of the program that allows users to make their own decks.
 
 Then go back and update and perfect things.
 
