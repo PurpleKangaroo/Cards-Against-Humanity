@@ -42,7 +42,7 @@ public class Card {
 		String fileName = filePrefix + cardNumberCounter + "";
 		save = new Saver(fileName, folder);
 		//Make tags and history with save
-		
+		//Maybe make a class of object that tags and gets the history
 		
 		
 		cardString = card;

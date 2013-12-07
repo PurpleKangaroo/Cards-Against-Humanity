@@ -1,4 +1,8 @@
 package cards;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
+
 /**
  * A type object that represents a question card (The black cards in Cards Against Humanity).
  * <dl>
@@ -15,11 +19,13 @@ public class QuestionCard extends Card{
 	 * Creates a question card.
 	 * @since CAH1.0
 	 * @param {@link #card} - the writing that will be on the card
+	 * @throws IOException 
+	 * @throws URISyntaxException 
 	 * @see {@link #Card(String card)}
 	 */
-	public QuestionCard(String card) 
+	public QuestionCard(String card, String folder, String filePrefix) throws URISyntaxException, IOException 
 	{
-		super(card);
+		super(card, folder, filePrefix);
 		draw = 0;
 		pick = 1;
 		String card1 = card + "";
