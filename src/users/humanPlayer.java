@@ -16,7 +16,8 @@ public class HumanPlayer extends NonRandoPlayer{
 	 * @param userName - the userName of the user that is controlling the player.
 	 * @since CAH1.0
 	 */
-	public HumanPlayer(int numberOfCards, String userName) {
+	public HumanPlayer(int numberOfCards, String userName) 
+	{
 		super(numberOfCards);
 		realPerson = true;
 		/*
@@ -30,6 +31,14 @@ public class HumanPlayer extends NonRandoPlayer{
 		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * Gets the User that controls the Player.
+	 * @return person - the User that controls the Player.
+	 */
+	public User getUser()
+	{
+		return person;
+	}
 	
 
 }
