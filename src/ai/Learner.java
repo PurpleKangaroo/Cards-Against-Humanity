@@ -68,6 +68,14 @@ public class Learner
 	 */
 	public void cardEliminated(HumanPlayer eliminator, AnswerCard aCard, ArrayList<AnswerCard> options, QuestionCard qCard)
 	{
+		User elimUser = eliminator.getUser();
 		
+	}
+	
+	//TODO add a cardLost method.
+	
+	public void cardVotedOn(ArrayList<HumanPlayer> voter, AnswerCard aCard, ArrayList<AnswerCard> options, QuestionCard qCard)
+	{
+		//Find a way to collectively get the voters profiles.
 	}
 }
