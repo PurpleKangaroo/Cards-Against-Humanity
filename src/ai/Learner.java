@@ -60,7 +60,7 @@ public class Learner
 	//TODO make other card won methods and other methods that colect data on games that do not use the normal rules.
 	
 	/**
-	 * Saves stats when a card is eliminated in a game with the rules "God Is Dead"
+	 * Saves stats when a card is eliminated in a game with the rules "Survival of the Fittest"
 	 * @param eliminator - The player who eliminated the card.
 	 * @param aCard - The AnswerCard that was eliminated.
 	 * @param options - The cards that could have been eliminated.
@@ -72,10 +72,16 @@ public class Learner
 		
 	}
 	
-	//TODO add a cardLost method.
-	
-	public void cardVotedOn(ArrayList<HumanPlayer> voter, AnswerCard aCard, ArrayList<AnswerCard> options, QuestionCard qCard)
+	/**
+	 * Saves stats when cards are voted on in a game with the rules "God Is Dead"
+	 * @param voters - The HumanPlayers who voted on the card.
+	 * @param aCard
+	 * @param options
+	 * @param qCard
+	 */
+	public void cardVotedOn(ArrayList<HumanPlayer> voters, AnswerCard aCard, ArrayList<AnswerCard> options, QuestionCard qCard, int humanVotesFor, int humanVotesAgainst)
 	{
 		//Find a way to collectively get the voters profiles.
 	}
+	
 }
