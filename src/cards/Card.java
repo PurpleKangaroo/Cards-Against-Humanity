@@ -8,16 +8,17 @@ import saving.Saver;
 
 /**
  * A type object that represents a card.
- * The type of card is determined by which subclass({@linkplain questionCard} or {@linkplain answerCard}) is used.
+ * The type of card is determined by which subclass({@linkplain QuestionCard} or {@linkplain AnswerCard}) is used.
  * The class card by its self is never intended to be used, but is meant to be used for its subclasses constructors and methods.
- * The classes {@linkplain questionCard} and {@linkplain answerCard} are different because questionCards allow the card to require the user to play or draw a certain number of cards.
- * @see {@linkplain deck}, {@linkplain questionCard}, {@linkplain answerCard}, {@linkplain tag}
+ * The classes {@linkplain QuestionCard} and {@linkplain AnswerCard} are different because questionCards allow the card to require
+ *  the user to play or draw a certain number of cards.
+ * @see {@linkplain Deck}, {@linkplain QuestionCard}, {@linkplain AnswerCard}
  * @author Holt Maki
  * @since CAH1.0
  * @version CAH1.0
  */
 public class Card {
-	protected String cardString;
+	private String cardString;
 	private ArrayList<Tag> tags;
 	private static int cardNumberCounter = 0;
 	private static ArrayList<String> prefixes;
@@ -60,6 +61,11 @@ public class Card {
 	public void addTag(Tag aTag)
 	{
 		tags.add(aTag);
+	}
+	
+	protected void setCardString(String cardStr)
+	{
+		cardString = cardStr;
 	}
 	
 	/**

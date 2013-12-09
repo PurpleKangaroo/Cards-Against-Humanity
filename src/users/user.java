@@ -21,7 +21,7 @@ public class User {
 	//Password protection???
 	
 	/**
-	 * Creates a new user
+	 * Creates an object that represents a user.
 	 * @param first - First Name.
 	 * @param last - Last Name.
 	 * @param userName - Username
