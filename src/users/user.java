@@ -15,6 +15,7 @@ public class User {
 	private UserActionLog log;
 	private UserBehavior behaviorStats;
 	private UserGameHistory history;
+	private Player player; //TODO ??? SHOULD USER CONTAIN PLAYER, PLAYER CONTAIN USER, OR EACH CONTAINS THE OTHER?
 	//TODO Make CAH have a static UserID list that contains all userIDs
 	//TODO Make each user have a userID number
 	private File userInfoFile;//TODO Do work on this part! make it so that it supports both new users and old users and saves user info.
