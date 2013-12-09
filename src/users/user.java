@@ -1,6 +1,7 @@
 package users;
 
 import java.io.File;
+import java.util.GregorianCalendar;
 
 /**
  * An object that represents a user
@@ -25,12 +26,16 @@ public class User {
 	 * @param last - Last Name.
 	 * @param userName - Username
 	 * @param gender - Gender (m or f)
+	 * @param bDateMonth - the month that the player was born in.
+	 * @param bDateDay - the day of the month the player was born in.
+	 * @param bDateYear - the year that the player was born in.
 	 * @see {@linkplain userProfile}
 	 * @since CAH1.0
 	 */
-	public User(String first, String last, String userName, char gender)
+	public User(String first, String last, String userName, char gender, int bDateMonth, int bDateDay, int bDateYear)
 	{
-		profile = new UserProfile(first, last, userName, gender);
+		GregorianCalendar birthDate = new GregorianCalendar(bDateYear, bDateMonth, bDateDay);
+		profile = new UserProfile(first, last, userName, gender, birthDate);
 	}
 	
 	/**

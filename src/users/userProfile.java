@@ -18,6 +18,8 @@ public class UserProfile {
 	private Gender gender;
 	private GregorianCalendar bDate;
 	
+	//TODO password.
+	
 	/**
 	 * Creates a user profile.
 	 * @param first - The user's first name.
@@ -78,6 +80,7 @@ public class UserProfile {
 	 * @return age - the user's age.
 	 * @since CAH1.0
 	 */
+	@SuppressWarnings("static-access")
 	private int calculateAge()
 	{
 		GregorianCalendar now = new GregorianCalendar();
@@ -112,6 +115,7 @@ public class UserProfile {
 	 * @return isBirthday - the boolean that tells whether or not it is the user's birthday.
 	 * @since CAH1.0
 	 */
+	@SuppressWarnings("static-access")
 	public boolean isBirthday()
 	{
 		GregorianCalendar now = new GregorianCalendar();
@@ -133,5 +137,13 @@ public class UserProfile {
 		return gender;
 	}
 	
-	
+	/**
+	 * Sets the players birth date.
+	 * @param newBirthDate - the player's new birthDate.
+	 * @since CAH1.0
+	 */
+	public void setBirthDate(GregorianCalendar newBirthDate)
+	{
+		bDate = newBirthDate;
+	}
 }
