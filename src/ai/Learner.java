@@ -75,9 +75,9 @@ public class Learner
 	/**
 	 * Saves stats when cards are voted on in a game with the rules "God Is Dead"
 	 * @param voters - The HumanPlayers who voted on the card.
-	 * @param aCard
-	 * @param options
-	 * @param qCard
+	 * @param aCard - The Answer Card that was voted on
+	 * @param options - The cards that people had to pick from.
+	 * @param qCard - The QuestionCard.
 	 */
 	public void cardVotedOn(ArrayList<HumanPlayer> voters, AnswerCard aCard, ArrayList<AnswerCard> options, QuestionCard qCard, int humanVotesFor, int humanVotesAgainst)
 	{
