@@ -15,9 +15,9 @@ public class User {
 	private UserActionLog log;
 	private UserBehavior behaviorStats;
 	private UserGameHistory history;
-	//Make CAH have a static UserID list that contains all userIDs
-	//Make each user have a userID
-	private File userInfoFile;//Do work on this part! make it so that it supports both new users and old users and saves user info.
+	//TODO Make CAH have a static UserID list that contains all userIDs
+	//TODO Make each user have a userID number
+	private File userInfoFile;//TODO Do work on this part! make it so that it supports both new users and old users and saves user info.
 	//Password protection???
 	
 	/**
@@ -46,6 +46,35 @@ public class User {
 	public UserProfile getUserProfile()
 	{
 		return profile;
+	}
+
+	/**
+	 * Gets the user's behavior stats.
+	 * @return behaviorStats - the User's UserBehavior.
+	 * @since CAH1.0
+	 */
+	public UserBehavior getBehaviorStats() {
+		return behaviorStats;
+	}
+	
+	/**
+	 * Gets the users game history stats.
+	 * @return history - the use's game history stats.
+	 * @since CAH1.0
+	 */
+	public UserGameHistory getUserGameHistory()
+	{
+		return history;
+	}
+	
+	/**
+	 * Gets the user's action log.
+	 * @return log - the user's action log.
+	 * @since CAH1.0
+	 */
+	public UserActionLog getLog()
+	{
+		return log;
 	}
 
 }
