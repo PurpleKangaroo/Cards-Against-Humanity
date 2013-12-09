@@ -5,9 +5,9 @@ import java.util.GregorianCalendar;
 /**
  * An object that represents profile of a user.
  * @author Holt Maki
- * @since 1.0
- * @version 1.0
- * @see {@linkplain user}, {@linkplain userSave}
+ * @since CAH1.0
+ * @version CAH1.0
+ * @see {@linkplain User}
  *
  */
 
@@ -123,4 +123,15 @@ public class UserProfile {
 		return isBirthday;
 	}
 
+	/**
+	 * Gets the user's gender.
+	 * @return gender - the user's gender.
+	 * @since CAH1.0
+	 */
+	public Gender getGender()
+	{
+		return gender;
+	}
+	
+	
 }
