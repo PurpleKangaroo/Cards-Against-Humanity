@@ -1,8 +1,3 @@
-CardsAgainstHumanity
-====================
-
-A Cards Against Humanity Game
-
 ### Coming Out By May 2014
 We may be able to release this game earlier, but we hope to have the game out by May so that High School Seniors with Senioritis may play it after they have taken their AP tests.
 
