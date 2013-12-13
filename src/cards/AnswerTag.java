@@ -36,6 +36,24 @@ public enum AnswerTag
 	 */
 	
 	//Another idea - consolodate the AnswerTag and QuestionTag into one enum that would contain all of them.
+	RACIAL,
+	RACIAL_BLACK,
+	RACIAL_WHITE,
+	RACIAL_LATINO,
+	RACIAL_ASIAN,
+	RACIAL_INDIAN,
+	RACIAL_JEWISH,
+	SEXUAL,
+	SEXUAL_MALE,
+	SEXUAL_FEMALE,
+	EVENT,
+	EVENT_HOLOCAUST,
+	HOLIDAY,
+	HOLIDAY_CHRISTMAS,
+	CELEBRITY,
+	CELEBRITY_POLITICS_PRESIDENT,
+	SPORT
+	
 	
 }
 
