@@ -20,7 +20,7 @@ public class AnswerCard extends Card{
 	 * @see {@link #Card(String card)}
 	 */
 	public AnswerCard(String card) {
-		super(card);
+		super(Card);
 		// TODO Auto-generated constructor stub
 	}
 
