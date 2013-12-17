@@ -7,7 +7,7 @@ package cards;
  * @version CAH1.0
  *
  */
-public enum AnswerTag
+public enum Tag
 {
 	//I have no idea how we should do this.a
 	//IDEAS:

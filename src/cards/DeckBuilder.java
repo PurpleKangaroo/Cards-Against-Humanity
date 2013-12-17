@@ -42,7 +42,7 @@ public class DeckBuilder {
 		Scanner answerScanner = new Scanner(answers);
 		while(answerScanner.hasNextLine())
 		{
-			answerList.add(new AnswerCard(answerScanner.nextLine()));
+			answerList.add(new AnswerCard(answerScanner.nextLine())); //TODO fix these errors
 		}
 		Scanner questionScanner = new Scanner(questions);
 		while(questionScanner.hasNextLine())
