@@ -1,5 +1,8 @@
 package cards;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+
 /**
  * A type object that represents an answer card (The white cards in Cards Against Humanity).
  * <dl>
@@ -19,9 +22,12 @@ public class AnswerCard extends Card{
 	 * @param {@link #card} - the writing that will be on the card
 	 * @see {@link #Card(String card)}
 	 */
-	public AnswerCard(String card) {
-		super(Card);
-		// TODO Auto-generated constructor stub
+	public AnswerCard(String card, String folder, String filePrefix) throws URISyntaxException, IOException 
+	{
+		super(card, folder, filePrefix);
+		String card1 = card + "";
+		card1 = card1.replaceAll("[LINE]", "\n\n"); //TODO encoder
+		setCardString(card1);		
 	}
 
 }
