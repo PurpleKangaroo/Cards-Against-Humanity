@@ -36,7 +36,7 @@ public class CAH_Game {
 	private boolean first;
 	
 	/*
-	 * Add a draw extra method that allows the hand to contain an extra card durring a draw 2 pick 3.
+	 * Add a draw extra method that allows the hand to contain an extra card during a draw 2 pick 3.
 	 */
 	
 	/*
