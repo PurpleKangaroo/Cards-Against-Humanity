@@ -38,7 +38,7 @@ public class DeckBuilder {
 		answerList = new ArrayList<AnswerCard>();
 		questionList = new ArrayList<QuestionCard>();
 		answers = new File(a.getCAH_Path("/Cards Against Humanity/src/cards/Answers"));
-		questions = new File(a.getCAH_Path("/Cards Against Humanity/src/cards/Answers"));
+		questions = new File(a.getCAH_Path("/Cards Against Humanity/src/cards/Questions"));
 		Scanner answerScanner = new Scanner(answers);
 		while(answerScanner.hasNextLine())
 		{
