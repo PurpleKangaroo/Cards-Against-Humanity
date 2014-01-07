@@ -9,25 +9,26 @@ import javax.print.attribute.standard.Media;
 public class MusicPlayer implements Runnable 
 {
 	//TODO use sliders for music and sound effects volume.
-	private Map<String, SongInfo> songs;
+	private Map<String, SongInfo> allSongs;
+	private Map<String, SongInfo> selectedSongs;
 	
 	public MusicPlayer()
 	{
-		songs = new TreeMap<String, SongInfo>();
+		allSongs = new TreeMap<String, SongInfo>();
 		//TODO: initialize Map with the songs file location 
 	}
 	
 	public MusicPlayer(TreeMap<String, SongInfo> songmap)
 	{
-		songs = songmap;
+		allSongs = songmap;
 	}
 	
 	protected void addSong(String pathname, SongInfo info)
 	{
-		songs.put(pathname, info);
+		allSongs.put(pathname, info);
 	}
 	
-	private void playSongs(ArrayList<> songlist)
+	private void playSongs()
 	{
 		
 	}
