@@ -28,6 +28,8 @@ public class MusicPlayer implements Runnable
 		allSongs.put(pathname, info);
 	}
 	
+	//TODO: Maybe make a song selecter class
+	
 	private void playSongs()
 	{
 		
