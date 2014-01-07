@@ -40,16 +40,6 @@ public class CAH_Frame extends JFrame{
 		setVisible(true);
 	}
 	
-	/**
-	 * Paints the frame.
-	 * @param g - the graphics that will be painted onto the frame
-	 * @since CAH1.0
-	 */
-	public void Paint(Graphics g)
-	{
-		Graphics2D g2 = (Graphics2D) g;
-	}
-	
 	public static void main(String [] args) throws URISyntaxException, IOException
 	{
 		PathFinder a = new PathFinder();
