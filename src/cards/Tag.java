@@ -7,7 +7,7 @@ package cards;
  * @version CAH1.0
  *
  */
-public enum AnswerTag
+public enum Tag
 {
 	//I have no idea how we should do this.a
 	//IDEAS:
@@ -36,6 +36,12 @@ public enum AnswerTag
 	 */
 	
 	//Another idea - consolodate the AnswerTag and QuestionTag into one enum that would contain all of them.
+	//Type of Card TAGS
+	THING,
+	LIVINGTHING,
+	ACTION,
+	THINGDOINGACTION,
+	//TOPIC TAGS
 	RACIAL,
 	RACIAL_BLACK,
 	RACIAL_WHITE,
@@ -47,9 +53,8 @@ public enum AnswerTag
 	SEXUAL_MALE,
 	SEXUAL_FEMALE,
 	SEXUAL_CREEPY,
-	EVENT,
-	EVENT_DISASTER_HOLOCAUST,
-	EVENT_DISASTER_911,
+	HISTORICAL,
+	HISTORICAL_EVENT,
 	HOLIDAY,
 	HOLIDAY_CHRISTMAS,
 	HOLIDAY_NEWYEARS,
@@ -63,8 +68,14 @@ public enum AnswerTag
 	CELEBRITY_MUSIC,
 	CELEBRITY_POLITICS_HISTORICAL,
 	CELEBRITY_SPORTS,
+	CELEBRITY_MOVIES,
 	SPORT,
 	SPORT_FOOTBALL,
+	SPORT_BASKETBALL,
+	SPORT_BASEBALL,
+	SPORT_HOCKEY,
+	SPORT_SOCCER,
+	SPORT_OBSCURE,
 	SOCIAL_DRUGS,
 	SOCIAL_GAY,
 	SOCIAL_RELIGIOUS_CHRISTIANITY,
@@ -75,6 +86,8 @@ public enum AnswerTag
 	SOCIAL_ALCOHOL,
 	SOCIAL_DISEASE,
 	FOOD,
+	FOOD_FATTY,
+	FOOD_GROSS;
 	
 	
 }

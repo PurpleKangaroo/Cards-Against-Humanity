@@ -43,8 +43,9 @@ public class QuestionCard extends Card{
 			draw = Integer.parseInt(cardSub);
 			card1 = card.substring(0,card.indexOf("{") -1);
 		}
-		cardString = card1;
-		cardString = cardString.replaceAll("[LINE]", "\n\n");
+		card1 = card1.replaceAll("[LINE]", "\n\n"); //TODO encoder
+		setCardString(card1);
+		
 	}
 	/**
 	 * Gets the number of cards that will be drawn by each player at the begining of the turn.
