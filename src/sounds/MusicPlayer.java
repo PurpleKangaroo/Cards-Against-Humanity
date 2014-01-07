@@ -1,10 +1,7 @@
 package sounds;
 
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
-
-import javax.print.attribute.standard.Media;
 
 /**
  * A class of object that plays music.
@@ -79,10 +76,9 @@ public class MusicPlayer implements Runnable
 		boolean on = true;
 		while(on = true)
 		{
-			//put the music playing in here
+			//TODO put the music playing in here
 		}
-		// TODO Auto-generated method stub
-		
+		//TODO make the music player sleep or whatever when it is turned off. also we want the music to be the same across netbooks, and in sync.
 	}
 	
 
