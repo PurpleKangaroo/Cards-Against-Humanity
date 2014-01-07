@@ -22,9 +22,9 @@ public class AnswerCard extends Card{
 	 * @param {@link #card} - the writing that will be on the card
 	 * @see {@link #Card(String card)}
 	 */
-	public AnswerCard(String card, String folder, String filePrefix) throws URISyntaxException, IOException 
+	public AnswerCard(String card) throws URISyntaxException, IOException 
 	{
-		super(card, folder, filePrefix);
+		super(card);
 		String card1 = card + "";
 		card1 = card1.replaceAll("[LINE]", "\n\n"); //TODO encoder
 		setCardString(card1);		
