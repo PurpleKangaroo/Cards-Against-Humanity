@@ -59,16 +59,20 @@ public class MusicPlayer implements Runnable
 	
 	//TODO: Maybe make a song selecter class
 	
-	private void playSongs()
+	/**
+	 * Plays songs.
+	 */
+	private void playSongs(SongProperty a)
 	{
 		
 	}
 	
 	@Override
 	public void run() {
-		while(true)
+		boolean on = true;
+		while(on = true)
 		{
-			
+			//put the music playing in here
 		}
 		// TODO Auto-generated method stub
 		
