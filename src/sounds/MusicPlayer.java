@@ -62,8 +62,12 @@ public class MusicPlayer implements Runnable
 	
 	/**
 	 * Plays songs.
+	 * @param aPropertyType - the type of the peoperty that the songs are being sorted by
+	 * @param selection - the selection from the property's options (Ex: if the property was artist, this could be 2pac)
+	 * @since CAH1.0
+	 * @version CAH1.0
 	 */
-	private void playSongs(SongProperty a)
+	private void playSongs(SongProperty aPropertyType, String selection)
 	{
 		
 	}
@@ -74,7 +78,7 @@ public class MusicPlayer implements Runnable
 	@Override
 	public void run() {
 		boolean on = true;
-		while(on = true)
+		while(on)
 		{
 			//TODO put the music playing in here
 		}
