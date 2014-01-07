@@ -1,7 +1,10 @@
 package sounds;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
+
+import javax.print.attribute.standard.Media;
 
 public class MusicPlayer implements Runnable 
 {
@@ -22,7 +25,12 @@ public class MusicPlayer implements Runnable
 	protected void addSong(String pathname, SongInfo info)
 	{
 		songs.put(pathname, info);
-	}	
+	}
+	
+	private void playSongs(ArrayList<> songlist)
+	{
+		
+	}
 	
 	@Override
 	public void run() {
