@@ -11,11 +11,15 @@ import javax.print.attribute.standard.Media;
  * @author Holt Maki
  * @since CAH1.0
  * @version CAH1.0
+ * <dt>
+ * <b>Implements:</b><dl> {@linkplain Runnable} </ul>
  */
 public class MusicPlayer implements Runnable 
 {
 	//TODO use sliders for music and sound effects volume.
+	/** All the songs that the user is playing*/
 	private Map<String, SongInfo> allSongs;
+	/**The songs that the user chooses to play*/
 	private Map<String, SongInfo> selectedSongs;
 	
 	/**
@@ -67,6 +71,9 @@ public class MusicPlayer implements Runnable
 		
 	}
 	
+	/**
+	 * Runs the MusicPlayer.
+	 */
 	@Override
 	public void run() {
 		boolean on = true;
