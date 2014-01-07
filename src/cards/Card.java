@@ -20,12 +20,9 @@ import java.util.ArrayList;
 public class Card {
 	private String cardString;
 	private ArrayList<Tag> tags;
-	private static int cardNumberCounter = 0;
-	private static ArrayList<String> prefixes;
 	//TODO Make it so that each prefix & folder will have their own numbering so that multiple decks can be combined without problems.
 	
 	
-	private Saver save;
 	private CardHistory history;//TODO Make this when the card is created to help the AI understand the cards better
 	
 	/**
@@ -37,15 +34,8 @@ public class Card {
 	 * @since CAH1.0
 	 * @see {@linkplain answerCard}, {@linkplain questionCard}
 	 */
-	public Card(String card, String folder, String filePrefix) throws URISyntaxException, IOException
-	{
-		cardNumberCounter++;
-		String fileName = filePrefix + cardNumberCounter + "";
-		save = new Saver(fileName, folder);
-		//Make tags and history with save
-		//Maybe make a class of object that tags and gets the history
-		
-		
+	public Card(String card)
+	{		
 		cardString = card;
 	}
 	

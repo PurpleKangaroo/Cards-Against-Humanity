@@ -1,7 +1,10 @@
 package cards;
 
+import import_export.Saver;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 /**
  * A type object that represents a question card (The black cards in Cards Against Humanity).
@@ -15,6 +18,10 @@ import java.net.URISyntaxException;
 public class QuestionCard extends Card{
 	private int draw;
 	private int pick;
+	private static int cardNumberCounter = 0;
+	private static ArrayList<String> prefixes;
+	private Saver save;
+	
 	/**
 	 * Creates a question card.
 	 * @since CAH1.0
@@ -25,7 +32,13 @@ public class QuestionCard extends Card{
 	 */
 	public QuestionCard(String card, String folder, String filePrefix) throws URISyntaxException, IOException 
 	{
-		super(card, folder, filePrefix);
+		super(card);
+		cardNumberCounter++;
+		String fileName = filePrefix + cardNumberCounter + "";
+		save = new Saver(fileName, folder);
+		//Make tags and history with save
+		//Maybe make a class of object that tags and gets the history
+			
 		draw = 0;
 		pick = 1;
 		String card1 = card + "";

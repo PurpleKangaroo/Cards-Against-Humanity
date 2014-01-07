@@ -4,6 +4,7 @@ import import_export.PathFinder;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -26,13 +27,13 @@ public class DeckBuilder {
 	
 	/**
 	 * Creates an object that will import a file and convert it into a deck of cards
-	 * @throws FileNotFoundException
 	 * @throws URISyntaxException 
+	 * @throws IOException 
 	 * @since CAH1.0
 	 */
 	
 	@SuppressWarnings("resource")
-	public DeckBuilder() throws FileNotFoundException, URISyntaxException
+	public DeckBuilder() throws URISyntaxException, IOException
 	{
 		PathFinder a = new PathFinder();
 		answerList = new ArrayList<AnswerCard>();
@@ -42,12 +43,12 @@ public class DeckBuilder {
 		Scanner answerScanner = new Scanner(answers);
 		while(answerScanner.hasNextLine())
 		{
-			answerList.add(new AnswerCard(answerScanner.nextLine())); //TODO fix these errors
+			answerList.add(new AnswerCard(answerScanner.nextLine()));
 		}
 		Scanner questionScanner = new Scanner(questions);
 		while(questionScanner.hasNextLine())
 		{
-			questionList.add(new QuestionCard(questionScanner.nextLine()));
+			questionList.add(new QuestionCard(questionScanner.nextLine(), "CardInfo", "Q"));
 		}
 		originalDeck = new Deck(answerList, questionList);
 	}
