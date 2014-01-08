@@ -17,4 +17,4 @@ Nick Walker([@oswin5656](https://github.com/oswin5656?source=cc))
 
 ### Support or Contact
 purplekangs@gmail.com
-####Follow us on Twitter @PurpleKangs_Dev
+####Follow us on Twitter [@PurpleKangs_Dev]((https://twitter.com/PurpleKangs_Dev)
