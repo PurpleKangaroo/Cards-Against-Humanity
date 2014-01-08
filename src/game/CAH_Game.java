@@ -55,7 +55,7 @@ public class CAH_Game {
 	public CAH_Game(Rules rules, DeckBuilder a)
 	{
 		ruleSet = rules;
-		gameDeck = a.getOriginalDeck();
+		gameDeck = a.getDeck();
 		first = true;
 		roundCount = 0;
 	}
