@@ -18,6 +18,12 @@ import javax.swing.JMenuItem;
 public class CAH_MenuBar extends JMenuBar{
 	private static final long serialVersionUID = -4687887555666164293L;
 	
+	/**
+	 * Creates an object that represents the menu bar at the top of the CAH_Fra e
+	 * @author Holt Maki
+	 * @since CAH1.0
+	 * @version CAH1.0
+	 */
 	public CAH_MenuBar()
 	{
 		super();
@@ -32,9 +38,17 @@ public class CAH_MenuBar extends JMenuBar{
 		super.add(file);
 	}
 	
+	/**
+	 * A listener for the exit button on the CAH_MenuBar
+	 * Tells the program to exit when clicked.
+	 * @author Holt Maki
+	 *
+	 */
 	private class ExitListener implements ActionListener 
 	{
-		
+		/*TODO: make a dialog that is liek are u sure you want to exit,
+		 * And that will ask about saving so that if its exit is hit by accident its not that big a deal
+		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.exit(0);
