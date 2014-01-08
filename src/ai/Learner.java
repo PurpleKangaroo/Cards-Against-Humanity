@@ -1,8 +1,5 @@
 package ai;
 
-import java.io.FileNotFoundException;
-import java.net.URISyntaxException;
-
 import cards.AnswerCard;
 import cards.QuestionCard;
 import users.HumanPlayer;
