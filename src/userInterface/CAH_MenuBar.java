@@ -38,9 +38,17 @@ public class CAH_MenuBar extends JMenuBar{
 		super.add(file);
 	}
 	
+	/**
+	 * A listener for the exit button on the CAH_MenuBar
+	 * Tells the program to exit when clicked.
+	 * @author Holt Maki
+	 *
+	 */
 	private class ExitListener implements ActionListener 
 	{
-		
+		/*TODO: make a dialog that is liek are u sure you want to exit,
+		 * And that will ask about saving so that if its exit is hit by accident its not that big a deal
+		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.exit(0);
