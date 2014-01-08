@@ -30,20 +30,42 @@ public class CAH_Frame extends JFrame{
 	public CAH_Frame() throws IOException, URISyntaxException
 	{
 		super("Cards Against Humanity");
-		PathFinder a = new PathFinder();
+		//PathFinder a = new PathFinder();
 		setDefaultLookAndFeelDecorated(true);
-		setIconImage(new ImageIcon(a.getCAH_Path("/Cards Against Humanity/src/CAH_GraphicsFiles/CAHIcon.png")).getImage());
+		//setIconImage(new ImageIcon(a.getCAH_Path("/Cards Against Humanity/src/CAH_GraphicsFiles/CAHIcon.png")).getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		pack();
+	
 		setMinimumSize(new Dimension(800,600));
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		
+		
+		//pack();
 		setVisible(true);
+	}
+	
+	/**
+	 * Paints the frame.
+	 * @param g - the graphics that will be painted onto the frame
+	 * @since CAH1.0
+	 */
+	public void Paint(Graphics g)
+	{
+		Graphics2D g2 = (Graphics2D) g;
 	}
 	
 	public static void main(String [] args) throws URISyntaxException, IOException
 	{
-		PathFinder a = new PathFinder();
+		//PathFinder a = new PathFinder();
+		
 		CAH_Frame b = new CAH_Frame();
+		
+		
+		
+		CAH_Panel_GAME panel = new CAH_Panel_GAME();
+		b.add(panel);
+		b.setVisible(true);
+		
+		
 	}
 
 }
