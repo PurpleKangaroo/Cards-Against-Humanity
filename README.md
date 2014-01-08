@@ -1,3 +1,7 @@
+#[Cards Against Humanity](http://cardsagainsthumanity.com/) in Java
+###A Party Game for Terrible People
+![Picture][picture]
+[picture]: http://upload.wikimedia.org/wikipedia/commons/0/0f/Cards_Against_Humanity_Box.jpg
 ### Coming Out By May 2014
 We may be able to release this game earlier, but we hope to have the game out by May so that High School Seniors with Senioritis may play it after they have taken their AP tests.
 
