@@ -1,3 +1,7 @@
+#[Cards Against Humanity](http://cardsagainsthumanity.com/)
+###"A Party Game for Terrible People" in Java
+![Picture][picture]
+[picture]: http://upload.wikimedia.org/wikipedia/commons/0/0f/Cards_Against_Humanity_Box.jpg
 ### Coming Out By May 2014
 We may be able to release this game earlier, but we hope to have the game out by May so that High School Seniors with Senioritis may play it after they have taken their AP tests.
 
@@ -13,4 +17,4 @@ Nick Walker([@oswin5656](https://github.com/oswin5656?source=cc))
 
 ### Support or Contact
 purplekangs@gmail.com
-####Follow us on Twitter @PurpleKangs_Dev
+####Follow us on Twitter [@PurpleKangs_Dev](https://twitter.com/PurpleKangs_Dev)
