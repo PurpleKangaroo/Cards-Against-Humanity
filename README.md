@@ -8,6 +8,9 @@ We may be able to release this game earlier, but we hope to have the game out by
 ###[PurpleKangaroo](https://github.com/PurpleKangaroo)
 [@PurpleKangaroo](https://github.com/PurpleKangaroo) is a small organization of [Lake Washington High School](http://www.lwsd.org/school/lwhs/Pages/default.aspx) students who are interested in programing, many of whom are in the school's AP Computer Science class.
 
+###How to Play Cards Against Humanity
+[Cards Against Humanity Rules](http://s3.amazonaws.com/cah/CAH_Rules.pdf)
+
 ### Authors and Contributors
 Holt Maki([@HoltMaki](https://github.com/HoltMaki))
 
