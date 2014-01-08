@@ -44,6 +44,28 @@ public class CAH_Server extends Thread {
 	
 	public void run()
 	{
-		
+		while(true)
+		{
+			try
+			{
+				Socket server = serverSocket.accept();
+				
+				DataInputStream in = new DataInputStream(server.getInputStream());
+				DataOutputStream out = new DataOutputStream(server.getOutputStream());
+				
+				ObjectInputStream objIn = new ObjectInputStream(server.getInputStream());
+				ObjectOutputStream objOut = new ObjectOutputStream(server.getOutputStream());
+			}
+			
+			catch(SocketTimeoutException t)
+			{
+				
+			}
+			
+			catch(IOException e)
+			{
+				
+			}
+		}
 	}
 }
