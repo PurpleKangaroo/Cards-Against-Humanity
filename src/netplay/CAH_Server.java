@@ -55,6 +55,8 @@ public class CAH_Server extends Thread {
 				
 				ObjectInputStream objIn = new ObjectInputStream(server.getInputStream());
 				ObjectOutputStream objOut = new ObjectOutputStream(server.getOutputStream());
+				
+				//FIXME The input and output stream need to actually do stuff.	
 			}
 			
 			catch(SocketTimeoutException t)
