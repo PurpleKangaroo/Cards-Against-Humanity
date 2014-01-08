@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 
 /**
  * A class of object that makes the frame that a Cards Against Humanity game is run in.
+ * @author {@linkplain ([Nick Walker] (https://github.com/oswin5656))}
  * @author Holt Maki
  * @since CAH1.0
  * @version CAH1.0
@@ -41,8 +42,7 @@ public class CAH_Frame extends JFrame{
 		setMinimumSize(new Dimension(800,600));
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		
-		
-		//pack();
+		pack();
 		setVisible(true);
 	}
 	

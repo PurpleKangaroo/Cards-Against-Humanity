@@ -15,11 +15,21 @@ import java.text.AttributedString;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+/**
+ * A class of object that represents the panel for the Game's UI.
+ * @author Nick Walker
+ * @author Holt Maki
+ * @since CAH1.0
+ * @version CAH1.0
+ */
+@SuppressWarnings("serial")
 public class CAH_Panel_GAME extends JPanel {
 	
 	private Image blackCard;
 	private Image whiteCard;
-	private Font font = new Font("SansSerif", Font.PLAIN, 12);
+	private Font font = new Font("Helvetica", Font.PLAIN, 12);
+	//TODO the font is not doing anything right now, it actually needs to be used, we need to make the card show the font.
+	//TODO Also make the font larger, and then make it autosize to be slightly smaller for the REALLY long cards until it fits well.
 	private AttributedCharacterIterator iterator;
 	private int numberOfCards = 6; //TODO need variable from somewhere else to plug in here, not sure where to get it.
 	
@@ -27,6 +37,7 @@ public class CAH_Panel_GAME extends JPanel {
 	
 	public CAH_Panel_GAME() //TODO probably a player object will have to be passed into the constructor so we can draw the appropriate cards on the screen. 
 	{
+		//TODO start out with nobody having white cards and have animations showing them being dealt from the white card deck.
 		ImageIcon b = new ImageIcon(this.getClass().getResource("Black_Card.png"));
 		ImageIcon w = new ImageIcon(this.getClass().getResource("White_Card.png"));
 		blackCard = b.getImage();
@@ -71,7 +82,6 @@ public class CAH_Panel_GAME extends JPanel {
 				y+= layout.getDescent() + layout.getLeading();
 				
 			}
-			
 			
 		}
 		

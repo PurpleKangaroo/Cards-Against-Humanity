@@ -18,6 +18,12 @@ import javax.swing.JMenuItem;
 public class CAH_MenuBar extends JMenuBar{
 	private static final long serialVersionUID = -4687887555666164293L;
 	
+	/**
+	 * Creates an object that represents the menu bar at the top of the CAH_Fra e
+	 * @author Holt Maki
+	 * @since CAH1.0
+	 * @version CAH1.0
+	 */
 	public CAH_MenuBar()
 	{
 		super();
