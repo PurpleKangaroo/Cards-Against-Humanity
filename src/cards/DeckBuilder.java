@@ -14,14 +14,15 @@ import java.util.Scanner;
  * @version CAH1.0
  * @since CAH1.0
  * @author Holt Maki
- * @see {@linkplain deck}, {@linkplain Card}, {@linkplain expansionDeckBuilder}
+ * @see {@linkplain Deck}, {@linkplain Card}
  *
  */
 
 public class DeckBuilder {
 	private File answers;
 	private File questions;
-	private Deck originalDeck;
+	/**The deck that the DeckBuilder is building */
+	private Deck deck;
 	private ArrayList<AnswerCard> answerList;
 	private ArrayList<QuestionCard> questionList;
 	
@@ -50,18 +51,18 @@ public class DeckBuilder {
 		{
 			questionList.add(new QuestionCard(questionScanner.nextLine(), "CardInfo", "Q"));
 		}
-		originalDeck = new Deck(answerList, questionList);
+		deck = new Deck(answerList, questionList);
 	}
 	
 	/**
 	 * Gets the original card deck as it is at the start of the game.
-	 * @return {@link #originalDeck} - the deck at the start of the game.
+	 * @return {@link #deck} - the deck at the start of the game.
 	 * @since CAH1.0
 	 */
 	
-	public Deck getOriginalDeck()
+	public Deck getDeck()
 	{
-		return originalDeck;
+		return deck;
 	}
 
 }
