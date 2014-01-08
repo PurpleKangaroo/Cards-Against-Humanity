@@ -19,6 +19,7 @@ Guidelines:
 		
 		Method documentation:Explanation 
 							@since(CAH#.#(.#))(dont change since after it has been finished)
+							@version (CAH#.#(.#)) updated version with new version.
 							(only if necessary) @param paramater - Explanation
 							(only if necessary) @throws Throwable Explanation (NO DASH - java doc puts it in for you in @throws)
 							(only if necessary) @see {@linkplain (the thing that the link is too)}, {@linkplain (another thing for this link)}	
