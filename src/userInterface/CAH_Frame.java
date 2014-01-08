@@ -2,6 +2,7 @@ package userInterface;
 
 import import_export.PathFinder;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -30,6 +31,8 @@ public class CAH_Frame extends JFrame{
 	public CAH_Frame() throws IOException, URISyntaxException
 	{
 		super("Cards Against Humanity");
+		super.setLayout(new BorderLayout());
+		add(new CAH_MenuBar(), BorderLayout.NORTH);
 		//PathFinder a = new PathFinder();
 		setDefaultLookAndFeelDecorated(true);
 		//setIconImage(new ImageIcon(a.getCAH_Path("/Cards Against Humanity/src/CAH_GraphicsFiles/CAHIcon.png")).getImage());

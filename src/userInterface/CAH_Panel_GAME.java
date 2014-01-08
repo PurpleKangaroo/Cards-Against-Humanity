@@ -21,15 +21,11 @@ public class CAH_Panel_GAME extends JPanel {
 	private Image whiteCard;
 	private Font font = new Font("SansSerif", Font.PLAIN, 12);
 	private AttributedCharacterIterator iterator;
-	private int numberOfCards = 6; // need variable from somewhere else to plug in here, not sure where to get it.
+	private int numberOfCards = 6; //TODO need variable from somewhere else to plug in here, not sure where to get it.
 	
+	private String card = "Hi my name is bob and I like to eat chicken."; //TODO for testing, eventually a list of cards will be passed into this class and the text for each card will be used.
 	
-	
-	private String card = "Hi my name is bob and I like to eat chicken."; // for testing, eventually a list of cards will be passed into this class and the text for each card will be used.
-	
-	
-	
-	public CAH_Panel_GAME() // probably a player object will have to be passed into the constructor so we can draw the appropriate cards on the screen. 
+	public CAH_Panel_GAME() //TODO probably a player object will have to be passed into the constructor so we can draw the appropriate cards on the screen. 
 	{
 		ImageIcon b = new ImageIcon(this.getClass().getResource("Black_Card.png"));
 		ImageIcon w = new ImageIcon(this.getClass().getResource("White_Card.png"));
@@ -78,10 +74,6 @@ public class CAH_Panel_GAME extends JPanel {
 			
 			
 		}
-		
-		
-	
-		
 		
 	}
 
