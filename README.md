@@ -16,7 +16,7 @@ Holt Maki([@HoltMaki](https://github.com/HoltMaki))
 
 Devon Grove ([@devongrove](https://github.com/devongrove))
 
-Nick Walker([@oswin5656](https://github.com/oswin5656?source=cc))
+Nick Walker([@oswin5656](https://github.com/oswin5656))
 
 ### Support or Contact
 purplekangs@gmail.com
