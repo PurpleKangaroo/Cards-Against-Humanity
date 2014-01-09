@@ -1,5 +1,5 @@
 #[Cards Against Humanity](http://cardsagainsthumanity.com/)
-###"A Party Game for Terrible People" in Java
+###"A Party Game for Horrible People" in Java
 ![Picture][picture]
 [picture]: http://upload.wikimedia.org/wikipedia/commons/0/0f/Cards_Against_Humanity_Box.jpg
 ### Coming Out By May 2014
