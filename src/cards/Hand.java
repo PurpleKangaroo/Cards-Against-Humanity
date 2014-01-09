@@ -35,7 +35,7 @@ public class Hand {
 	
 	public Deck deal_draw(Deck a)
 	{
-		while (cards.size() <= max)
+		while (cards.size() < max)
 		{
 			cards.add(a.drawAnswerCard());
 		}
@@ -53,7 +53,7 @@ public class Hand {
 	public Deck exceedLimitDraw(Deck a, int numberOfCardsOverLimit)
 	{
 		int newLimit = cards.size() + numberOfCardsOverLimit;
-		while (cards.size() >= newLimit)
+		while (cards.size() < newLimit)
 		{
 			cards.add(a.drawAnswerCard());
 		}

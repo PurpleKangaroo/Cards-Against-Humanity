@@ -18,7 +18,7 @@ import cards.AnswerCard;
  * @author Holt Maki
  *
  */
-public class CAH_Game {
+public class CAH_Game implements Runnable {
 	/**The set of rules that the game will use */
 	private Rules ruleSet;
 	/**The list of players playing the game */
@@ -51,18 +51,25 @@ public class CAH_Game {
 	 * right now the deck builder can't change, but eventually will be different
 	 *  depending on what expansion decks are used.
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 */
-	public CAH_Game(Rules rules, DeckBuilder a)
+	public CAH_Game(Rules rules, DeckBuilder a, ArrayList<Player> players)
 	{
+		this.players = players;
 		ruleSet = rules;
 		gameDeck = a.getDeck();
 		first = true;
 		roundCount = 0;
+		for(int i = 0; i < players.size(); i++)
+		{
+			gameDeck = players.get(i).deal_draw(gameDeck);//Now every player has their hand of cards and these cards have beem taken from the deck.
+		}
 	}
 	
 	/**
 	 * Adds Rando Cardrissian to the game if the game is being played with the Rule Rando Cardrissian.
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 * 
 	 */
 	public void addRando()
@@ -395,6 +402,15 @@ public class CAH_Game {
 		}
 		return awesomePointArray;
 	}
+
+	@Override
+	public void run() 
+	{
+		
+		
+	}
+	
+	
 	
 	
 	
