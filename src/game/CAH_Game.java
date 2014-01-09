@@ -50,6 +50,7 @@ public class CAH_Game implements Runnable {
 	 * @param a - the deck builder used to build the deck
 	 * right now the deck builder can't change, but eventually will be different
 	 *  depending on what expansion decks are used.
+	 *  @param players - the players that are playing the game
 	 * @since CAH1.0
 	 * @version CAH1.0
 	 */

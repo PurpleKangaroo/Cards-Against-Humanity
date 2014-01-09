@@ -1,6 +1,7 @@
 package userInterface;
 
 import game.CAH_Game;
+import game.RuleConflictException;
 import import_export.PathFinder;
 
 import java.awt.BorderLayout;
@@ -29,8 +30,9 @@ public class CAH_Frame extends JFrame{
 	 * Creates a new frame in which a cards against of humanity game is shown in.
 	 * @throws URISyntaxException
 	 * @throws IOException
+	 * @throws RuleConflictException Thrown if there is a rule conflict. Handle by telling the user that they used an invalid combination of rules.
 	 */
-	public CAH_Frame() throws IOException, URISyntaxException
+	public CAH_Frame() throws IOException, URISyntaxException, RuleConflictException
 	{
 		super("Cards Against Humanity");
 		super.setLayout(new BorderLayout());
@@ -52,7 +54,7 @@ public class CAH_Frame extends JFrame{
 		//Then we start up the game.
 		
 		game = start.getGame();
-		CAH_Panel_GAME panel = new CAH_Panel_GAME();
+		CAH_Panel_GAME panel = new CAH_Panel_GAME(10, );
 		super.remove(start);
 		
 		//TODO change to get the number of players

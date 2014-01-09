@@ -71,7 +71,7 @@ public class CAH_Panel_GAME extends JPanel {
 			r = new Rectangle(x + ((i-1)*(cardWidth)), (this.getHeight() / 2) + (whiteCard.getHeight(null) / 2), cardWidth, whiteCard.getHeight(null));
 			g2d.drawImage(whiteCard, (int)r.getX(), (int)r.getY(), (int)r.getWidth(), (int)r.getHeight(), null);
 			
-			AttributedString text = new AttributedString(card);
+			AttributedString text = new AttributedString(cards.get(i));
 			iterator = text.getIterator();
 			start = iterator.getBeginIndex();
 			end = iterator.getEndIndex();
