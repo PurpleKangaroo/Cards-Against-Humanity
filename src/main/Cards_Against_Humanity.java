@@ -11,9 +11,6 @@ public class Cards_Against_Humanity {
 	public static void main(String[] args) throws URISyntaxException, IOException
 	{
 		
-		
-		
-
 	}
 
 }

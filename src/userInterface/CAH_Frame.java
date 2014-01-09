@@ -52,7 +52,7 @@ public class CAH_Frame extends JFrame{
 		//Then we start up the game.
 		
 		game = start.getGame();
-		CAH_Panel_GAME panel = new CAH_Panel_GAME(game.);
+		CAH_Panel_GAME panel = new CAH_Panel_GAME();
 		super.remove(start);
 		
 		//TODO change to get the number of players

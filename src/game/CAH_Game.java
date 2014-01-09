@@ -119,7 +119,7 @@ public class CAH_Game implements Runnable {
 	 * Deals AnswerCards to all the players.
 	 * @since CAH1.0
 	 */
-	public void Deal_Draw()
+	public void deal_Draw()
 	{
 		for (int i = 0; i<players.size(); i++)
 		{
