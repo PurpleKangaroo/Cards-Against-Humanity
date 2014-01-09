@@ -11,9 +11,12 @@ import java.awt.font.LineBreakMeasurer;
 import java.awt.font.TextLayout;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+
+import users.Player;
 
 /**
  * A class of object that represents the panel for the Game's UI.
@@ -31,13 +34,14 @@ public class CAH_Panel_GAME extends JPanel {
 	//TODO the font is not doing anything right now, it actually needs to be used, we need to make the card show the font.
 	//TODO Also make the font larger, and then make it autosize to be slightly smaller for the REALLY long cards until it fits well.
 	private AttributedCharacterIterator iterator;
-	private int numberOfCards = 6; //TODO need variable from somewhere else to plug in here, not sure where to get it.
+	private int numberOfCards; //TODO need variable from somewhere else to plug in here, not sure where to get it.
 	
-	private String card = "Hi my name is bob and I like to eat chicken."; //TODO for testing, eventually a list of cards will be passed into this class and the text for each card will be used.
+	private ArrayList<String> cards; //TODO for testing, eventually a list of cards will be passed into this class and the text for each card will be used.
 	
-	public CAH_Panel_GAME() //TODO probably a player object will have to be passed into the constructor so we can draw the appropriate cards on the screen. 
+	public CAH_Panel_GAME(int numberOfCards, Player player) //TODO probably a player object will have to be passed into the constructor so we can draw the appropriate cards on the screen. 
 	{
-		//TODO start out with nobody having white cards and have animations showing them being dealt from the white card deck.
+		this.numberOfCards = numberOfCards;
+		//TODO start out with nobody having white cards and have animations showing them being dealt from the white card deck.(EVENTUALLY)
 		ImageIcon b = new ImageIcon(this.getClass().getResource("Black_Card.png"));
 		ImageIcon w = new ImageIcon(this.getClass().getResource("White_Card.png"));
 		blackCard = b.getImage();
@@ -67,7 +71,7 @@ public class CAH_Panel_GAME extends JPanel {
 			r = new Rectangle(x + ((i-1)*(cardWidth)), (this.getHeight() / 2) + (whiteCard.getHeight(null) / 2), cardWidth, whiteCard.getHeight(null));
 			g2d.drawImage(whiteCard, (int)r.getX(), (int)r.getY(), (int)r.getWidth(), (int)r.getHeight(), null);
 			
-			AttributedString text = new AttributedString(card);
+			AttributedString text = new AttributedString(cards.get(i));
 			iterator = text.getIterator();
 			start = iterator.getBeginIndex();
 			end = iterator.getEndIndex();

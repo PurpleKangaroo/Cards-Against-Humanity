@@ -1,5 +1,7 @@
 package userInterface;
 
+import game.CAH_Game;
+import game.RuleConflictException;
 import import_export.PathFinder;
 
 import java.awt.BorderLayout;
@@ -21,15 +23,16 @@ import javax.swing.JFrame;
  *
  */
 public class CAH_Frame extends JFrame{
-	
 	private static final long serialVersionUID = -3033860031108235857L;
+	private CAH_Game game;
 
 	/**
 	 * Creates a new frame in which a cards against of humanity game is shown in.
 	 * @throws URISyntaxException
 	 * @throws IOException
+	 * @throws RuleConflictException Thrown if there is a rule conflict. Handle by telling the user that they used an invalid combination of rules.
 	 */
-	public CAH_Frame() throws IOException, URISyntaxException
+	public CAH_Frame() throws IOException, URISyntaxException, RuleConflictException
 	{
 		super("Cards Against Humanity");
 		super.setLayout(new BorderLayout());
@@ -44,6 +47,19 @@ public class CAH_Frame extends JFrame{
 		
 		pack();
 		setVisible(true);
+		
+		CAH_Panel_START start = new CAH_Panel_START();
+		super.add(start);
+		super.setVisible(true);
+		//Then we start up the game.
+		
+		game = start.getGame();
+		CAH_Panel_GAME panel = new CAH_Panel_GAME(10, );
+		super.remove(start);
+		
+		//TODO change to get the number of players
+		super.add(panel);
+		
 	}
 	
 	/**
@@ -60,13 +76,8 @@ public class CAH_Frame extends JFrame{
 	{
 		//PathFinder a = new PathFinder();
 		
-		CAH_Frame b = new CAH_Frame();
+	
 		
-		
-		
-		CAH_Panel_GAME panel = new CAH_Panel_GAME();
-		b.add(panel);
-		b.setVisible(true);
 		
 		
 	}
