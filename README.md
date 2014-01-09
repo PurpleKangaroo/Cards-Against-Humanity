@@ -14,7 +14,7 @@ We may be able to release this game earlier, but we hope to have the game out by
 ### Authors and Contributors
 Holt Maki([@HoltMaki](https://github.com/HoltMaki))
 
-Devon Grove ([@devongrove](https://github.com/oswin5656?source=cc))
+Devon Grove ([@devongrove](https://github.com/devongrove))
 
 Nick Walker([@oswin5656](https://github.com/oswin5656?source=cc))
 
