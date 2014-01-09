@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 //We should obviscate these files.
-<userName>
-   
-</userName>
+<userProfile>
+    <userName>
+        
+    </userName>    
+    
+    <firstName>
+        
+    </firstName>
+    
+    <lastName>
+        
+    </lastName>
+    
+    <gender>
+        
+    </gender>
+    
+    <birthDate>
+        
+    </birthDate>
+    
+</userProfile>
+
+<userGameHistory>
+    <game>
+        <date>
+            
+        </date>
+        
+    </game>
+</userGameHistory>
