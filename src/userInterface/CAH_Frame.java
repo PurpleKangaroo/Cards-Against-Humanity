@@ -54,7 +54,7 @@ public class CAH_Frame extends JFrame{
 		//Then we start up the game.
 		
 		game = start.getGame();
-		CAH_Panel_GAME panel = new CAH_Panel_GAME(10, );
+		CAH_Panel_GAME panel = new CAH_Panel_GAME(10, game.getPlayers().get(0));//FIXME We have to find a way to identify which player is which
 		super.remove(start);
 		
 		//TODO change to get the number of players
@@ -72,14 +72,10 @@ public class CAH_Frame extends JFrame{
 		Graphics2D g2 = (Graphics2D) g;
 	}
 	
-	public static void main(String [] args) throws URISyntaxException, IOException
+	public static void main(String [] args) throws URISyntaxException, IOException, RuleConflictException
 	{
 		//PathFinder a = new PathFinder();
-		
-	
-		
-		
-		
+		CAH_Frame a = new CAH_Frame();
 	}
 
 }

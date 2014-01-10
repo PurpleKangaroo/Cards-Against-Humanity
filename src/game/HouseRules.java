@@ -43,7 +43,7 @@ public enum HouseRules {
 	 *  dramatically)."
 	 * @since CAH1.0
 	 */
-	HAPPY_ENDING,
+	HAPPY_ENDING("\"At any time players may trade in an Awesome Point to return as many White Cards as they'd like to the deck and draw back up to ten.\""),
 	
 	/**
 	 * "At any time players may
@@ -52,14 +52,14 @@ public enum HouseRules {
 	 *  up to ten."
 	 * @since CAH1.0
 	 */
-	REBOOTING_THE_UNIVERSE,
+	REBOOTING_THE_UNIVERSE("\"For Pick 2s (and pick 3, draw 2s), all players draw an extra card before playing the hand to open up more options.\""),
 	
 	/**
 	 * "For Pick 2s (and pick 3, draw 2s), all players draw an extra
 	 *  card before playing the hand to open up more options."
 	 * @since CAH1.0
 	 */
-	PACKING_HEAT,
+	PACKING_HEAT("\"Every round, pick one random White Card from the pile and place it into play. This card belongs to an Imaginary player named Rando Cardrissian and if he wins the game, all players go home in a state of everlasting shame.\""),
 	
 	/**
 	 * "Every round, pick one random
@@ -69,7 +69,7 @@ public enum HouseRules {
 	 *  go home in a state of everlasting shame."
 	 * @since CAH1.0
 	 */
-	RANDO_CARDRISSIAN,
+	RANDO_CARDRISSIAN("\"Every round, pick one random White Card from the pile and place it into play. This card belongs to an Imaginary player named Rando Cardrissian and if he wins the game, all players go home in a state of everlasting shame.\""),
 	
 	/**
 	 * "Play without a Card Czar. Each player
@@ -83,7 +83,7 @@ public enum HouseRules {
 	 *  Compatability Issues:</b> {@linkplain #SURVIVAL_OF_THE_FITTEST}, {@linkplain #SERIOUS_BUSINESS}
 	 * @since CAH1.0
 	 */
-	GOD_IS_DEAD,
+	GOD_IS_DEAD("\"Play without a Card Czar. Each player picks his or her favorite card each round. The card with the most votes wins the round.\""),
 	
 	/**
 	 * "Play without a Card Czar. After everyone has answered
@@ -98,7 +98,7 @@ public enum HouseRules {
 	 *  {@linkplain #SERIOUS_BUSINESS}, {@linkplain #GOD_IS_DEAD}
 	 * @since CAH1.0
 	 */
-	SURVIVAL_OF_THE_FITTEST,
+	SURVIVAL_OF_THE_FITTEST("\"Play without a Card Czar. After everyone has answered the question, players take turns eliminating one card each. The last remaining card is declared the funniest."),
 	
 	/**
 	 * "Instead of picking a favorite card
@@ -114,7 +114,7 @@ public enum HouseRules {
 	 * @since CAH1.0
 	 * 
 	 */
-	SERIOUS_BUSINESS,
+	SERIOUS_BUSINESS("\"Instead of picking a favorite card each round, the card Czar ranks the top three in order. The best card gets 3 Awesome Points, the second-best gets 2, and the third gets 1. Keep a running tally of the score, and at the end of the game, the winner is declared the funniest, mathematically speaking.\""),
 	
 	/**
 	 * "At any time players may discard
@@ -126,6 +126,17 @@ public enum HouseRules {
 	 *  it can discard it so that it may learn about it. </ul>
 	 * @since CAH1.0
 	 */
-	NEVER_HAVE_I_EVER;
+	NEVER_HAVE_I_EVER("\"At any time players may discard cards that they don't understand, but they must confess their ignorance to the group and suffer the resulting humilliation.\"");
+	
+	private final String description;
+	HouseRules(String description)
+	{
+		this.description = description;
+	}
+	
+	public String getDescription()
+	{
+		return description;
+	}
 
 }

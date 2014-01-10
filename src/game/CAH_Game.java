@@ -403,6 +403,11 @@ public class CAH_Game implements Runnable {
 		}
 		return awesomePointArray;
 	}
+	
+	public ArrayList<Player> getPlayers()
+	{
+		return players;
+	}
 
 	@Override
 	public void run() 
