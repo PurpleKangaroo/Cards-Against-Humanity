@@ -3,9 +3,11 @@ package userInterface;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import game.*;
 
+import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
@@ -40,6 +42,25 @@ public class CAH_Panel_START extends JPanel
 	public CAH_Panel_START()
 	{
 		super();
+		
+		JCheckBox happyEnding = new JCheckBox("Happy Ending");
+		JCheckBox rebootingTheUniverse = new JCheckBox("Rebooting the Universe");
+		JCheckBox packingHeat = new JCheckBox("Packing Heat");
+		JCheckBox randoCardrissian = new JCheckBox("Rando Cardrissian");
+		JCheckBox godIsDead = new JCheckBox("God Is Dead");
+		JCheckBox survivalOfTheFittest = new JCheckBox("Survival of the Fittest");
+		JCheckBox seriousBuisness = new JCheckBox("Serious Buisness");
+		JCheckBox neverHaveIEver = new JCheckBox("Never Have I Ever");
+		
+		HashMap<JCheckBox, HouseRules> ruleCheckBoxes = new HashMap<JCheckBox, HouseRules>();
+		ruleCheckBoxes.put(happyEnding, HouseRules.HAPPY_ENDING);
+		ruleCheckBoxes.put(rebootingTheUniverse, HouseRules.REBOOTING_THE_UNIVERSE);
+		ruleCheckBoxes.put(packingHeat, HouseRules.PACKING_HEAT);
+		ruleCheckBoxes.put(randoCardrissian, HouseRules.RANDO_CARDRISSIAN);
+		ruleCheckBoxes.put(godIsDead, HouseRules.GOD_IS_DEAD);
+		ruleCheckBoxes.put(survivalOfTheFittest, HouseRules.SURVIVAL_OF_THE_FITTEST);
+		ruleCheckBoxes.put(seriousBuisness, HouseRules.SERIOUS_BUSINESS);
+		ruleCheckBoxes.put(neverHaveIEver, HouseRules.NEVER_HAVE_I_EVER);
 		
 		players = new ArrayList<Player>();
 		houseRules = new ArrayList<HouseRules>();
