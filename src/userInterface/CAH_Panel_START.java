@@ -1,5 +1,8 @@
 package userInterface;
 
+import java.awt.BorderLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -36,12 +39,14 @@ public class CAH_Panel_START extends JPanel
 	/**The list of house rules that the game is using.*/
 	private ArrayList<HouseRules> houseRules;
 	
+	private HashMap<JCheckBox, HouseRules> ruleCheckBoxesMap;
+	
 	/**
 	 * Creates an object that represents the start screen for Cards Against Humanity.
 	 */
 	public CAH_Panel_START()
 	{
-		super();
+		super(new BorderLayout());
 		
 		JCheckBox happyEnding = new JCheckBox("Happy Ending");
 		JCheckBox rebootingTheUniverse = new JCheckBox("Rebooting the Universe");
@@ -52,15 +57,20 @@ public class CAH_Panel_START extends JPanel
 		JCheckBox seriousBuisness = new JCheckBox("Serious Buisness");
 		JCheckBox neverHaveIEver = new JCheckBox("Never Have I Ever");
 		
-		HashMap<JCheckBox, HouseRules> ruleCheckBoxes = new HashMap<JCheckBox, HouseRules>();
-		ruleCheckBoxes.put(happyEnding, HouseRules.HAPPY_ENDING);
-		ruleCheckBoxes.put(rebootingTheUniverse, HouseRules.REBOOTING_THE_UNIVERSE);
-		ruleCheckBoxes.put(packingHeat, HouseRules.PACKING_HEAT);
-		ruleCheckBoxes.put(randoCardrissian, HouseRules.RANDO_CARDRISSIAN);
-		ruleCheckBoxes.put(godIsDead, HouseRules.GOD_IS_DEAD);
-		ruleCheckBoxes.put(survivalOfTheFittest, HouseRules.SURVIVAL_OF_THE_FITTEST);
-		ruleCheckBoxes.put(seriousBuisness, HouseRules.SERIOUS_BUSINESS);
-		ruleCheckBoxes.put(neverHaveIEver, HouseRules.NEVER_HAVE_I_EVER);
+		HashMap<JCheckBox, HouseRules> ruleCheckBoxesMap = new HashMap<JCheckBox, HouseRules>();
+		
+		ruleCheckBoxesMap.put(happyEnding, HouseRules.HAPPY_ENDING);
+		ruleCheckBoxesMap.put(rebootingTheUniverse, HouseRules.REBOOTING_THE_UNIVERSE);
+		ruleCheckBoxesMap.put(packingHeat, HouseRules.PACKING_HEAT);
+		ruleCheckBoxesMap.put(randoCardrissian, HouseRules.RANDO_CARDRISSIAN);
+		ruleCheckBoxesMap.put(godIsDead, HouseRules.GOD_IS_DEAD);
+		ruleCheckBoxesMap.put(survivalOfTheFittest, HouseRules.SURVIVAL_OF_THE_FITTEST);
+		ruleCheckBoxesMap.put(seriousBuisness, HouseRules.SERIOUS_BUSINESS);
+		ruleCheckBoxesMap.put(neverHaveIEver, HouseRules.NEVER_HAVE_I_EVER);
+		
+		this.ruleCheckBoxesMap = ruleCheckBoxesMap;
+				
+		
 		
 		players = new ArrayList<Player>();
 		houseRules = new ArrayList<HouseRules>();
@@ -72,6 +82,41 @@ public class CAH_Panel_START extends JPanel
 		//TODO Create each part of the game.
 		//TODO deal with rule conflict exception by telling it that that is not a valid input.
 		return new CAH_Game(new Rules(houseRules), new DeckBuilder(), players);
+	}
+	
+	private class ruleHelpListener implements MouseListener
+	{
+
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+		
 	}
 	
 }
