@@ -6,7 +6,7 @@ import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 import game.*;
 
@@ -39,7 +39,7 @@ public class CAH_Panel_START extends JPanel
 	/**The list of house rules that the game is using.*/
 	private ArrayList<HouseRules> houseRules;
 	
-	private HashMap<JCheckBox, HouseRules> ruleCheckBoxesMap;
+	private TreeMap<JCheckBox, HouseRules> ruleCheckBoxesMap;
 	
 	/**
 	 * Creates an object that represents the start screen for Cards Against Humanity.
@@ -57,7 +57,9 @@ public class CAH_Panel_START extends JPanel
 		JCheckBox seriousBuisness = new JCheckBox("Serious Buisness");
 		JCheckBox neverHaveIEver = new JCheckBox("Never Have I Ever");
 		
-		HashMap<JCheckBox, HouseRules> ruleCheckBoxesMap = new HashMap<JCheckBox, HouseRules>();
+		JCheckBox[] ruleBoxes = {happyEnding, rebootingTheUniverse, packingHeat, randoCardrissian, godIsDead, survivalOfTheFittest, seriousBuisness, neverHaveIEver};
+		
+		TreeMap<JCheckBox, HouseRules> ruleCheckBoxesMap = new TreeMap<JCheckBox, HouseRules>();
 		
 		ruleCheckBoxesMap.put(happyEnding, HouseRules.HAPPY_ENDING);
 		ruleCheckBoxesMap.put(rebootingTheUniverse, HouseRules.REBOOTING_THE_UNIVERSE);
@@ -69,8 +71,12 @@ public class CAH_Panel_START extends JPanel
 		ruleCheckBoxesMap.put(neverHaveIEver, HouseRules.NEVER_HAVE_I_EVER);
 		
 		this.ruleCheckBoxesMap = ruleCheckBoxesMap;
-				
 		
+		for(int i = 0; i<ruleBoxes.length; i++)
+		{
+			ruleBoxes[i].addMouseListener(new RuleHelpListener());
+			ruleBoxes[i].setToolTipText(ruleCheckBoxesMap.get(ruleBoxes[i]).getDescription());
+		}
 		
 		players = new ArrayList<Player>();
 		houseRules = new ArrayList<HouseRules>();
@@ -84,7 +90,7 @@ public class CAH_Panel_START extends JPanel
 		return new CAH_Game(new Rules(houseRules), new DeckBuilder(), players);
 	}
 	
-	private class ruleHelpListener implements MouseListener
+	private class RuleHelpListener implements MouseListener
 	{
 
 		@Override
