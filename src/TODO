@@ -1,6 +1,3 @@
-Look into using mock objects (Big Java page 483-484) to test parts of the program.
-
-
 Basics:
 
 X	Step 1: Cards (Package) - ?This applys to players/users and game as well? 
@@ -19,10 +16,10 @@ X	Step 3: game (Package): PRIORITIES: CAH_Game, playerManager; Figure out how to
 	Step 4: ai (Package)
 	Step 5:	user package - add the other stuff once the other classes are done.
 			REPLACE ALL PROTECTED VARIABLES WITH PRIVATE ONES, AND MAKE THE PROGRAM SO THAT IT CAN WORK WITH THE PRIVATE VARIABLES.
-			CONCEAL CODE SO THAT IT CANNOT BE ALTERED!!!!!!!!!!
+			CONCEAL DATA SO THAT IT CANNOT BE ALTERED!!!!!!!!!!
 	Step 6: userInterface (Package)
-	Step 7a: Encryption/obviscation (package) 
-	Step 7b: saving(package). ADD saveable interface to saveable objects.
+X	Step 7a: Encryption/obviscation (package) 
+X	Step 7b: saving(package). ADD saveable interface to saveable objects.
 	Step 8: Fix any Text File problems
 	Step 9a: have people who are interested in CAH listen to the playlist Songs against humanity and provide feedback.
 	Step 9b: Sounds: Songs against Humanity playlist.
