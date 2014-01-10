@@ -2,6 +2,8 @@ package userInterface;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
@@ -41,7 +43,7 @@ public class CAH_Panel_START extends JPanel
 	/**A list of the players playing in the game*/
 	private ArrayList<Player> players;
 	/**The list of house rules that the game is using.*/
-	private ArrayList<HouseRules> houseRules;
+	private ArrayList<HouseRules> houseRulesList;
 	
 	private HashMap<JCheckBox, HouseRules> ruleCheckBoxesMap;
 	
@@ -50,6 +52,8 @@ public class CAH_Panel_START extends JPanel
 	 */
 	public CAH_Panel_START()
 	{
+		//TODO get the checkbox that is checked by having the program look at which checkboxes are clicked when the user hits the start button.
+		//TODO get tooltips to works
 		super();
 		
 		JCheckBox happyEnding = new JCheckBox("Happy Ending");
@@ -60,6 +64,8 @@ public class CAH_Panel_START extends JPanel
 		JCheckBox survivalOfTheFittest = new JCheckBox("Survival of the Fittest");
 		JCheckBox seriousBuisness = new JCheckBox("Serious Buisness");
 		JCheckBox neverHaveIEver = new JCheckBox("Never Have I Ever");
+		
+		//TODO: add Radio buttons for gambling mode.
 		
 		JCheckBox[] ruleBoxes = {happyEnding, rebootingTheUniverse, packingHeat, randoCardrissian, godIsDead, survivalOfTheFittest, seriousBuisness, neverHaveIEver};
 		
@@ -74,21 +80,26 @@ public class CAH_Panel_START extends JPanel
 		ruleCheckBoxesMap.put(seriousBuisness, HouseRules.SERIOUS_BUSINESS);
 		ruleCheckBoxesMap.put(neverHaveIEver, HouseRules.NEVER_HAVE_I_EVER);
 		
+		JPanel houseRules = new JPanel();
 		JPanel rules = new JPanel();
 		
 		this.ruleCheckBoxesMap = ruleCheckBoxesMap;
 		
 		for(int i = 0; i<ruleBoxes.length; i++)
 		{
-			ruleBoxes[i].setToolTipText(ruleCheckBoxesMap.get(ruleBoxes[i]).getDescription());
-			rules.add(ruleBoxes[i]);
+			ruleBoxes[i].setToolTipText(ruleCheckBoxesMap.get(ruleBoxes[i]).getDescription());//TODO: Nick - do the wrapping in these.
+			//FIXME - we need the tool tips to show up more reliably
+			houseRules.add(ruleBoxes[i]);
 		}
 		
+		rules.add(houseRules);
+		
 		rules.setBorder(BorderFactory.createTitledBorder("Rules"));
+		houseRules.setBorder(BorderFactory.createTitledBorder("House Rules"));
 		this.add(rules);
 		
 		players = new ArrayList<Player>();
-		houseRules = new ArrayList<HouseRules>();
+		houseRulesList = new ArrayList<HouseRules>();
 	}
 	
 	public CAH_Game getGame() throws RuleConflictException, URISyntaxException, IOException
@@ -96,7 +107,7 @@ public class CAH_Panel_START extends JPanel
 		//Have the thing wait until the user clicks  start.
 		//TODO Create each part of the game.
 		//TODO deal with rule conflict exception by telling it that that is not a valid input.
-		return new CAH_Game(new Rules(houseRules), new DeckBuilder(), players);
+		return new CAH_Game(new Rules(houseRulesList), new DeckBuilder(), players);
 	}
-	
+
 }
