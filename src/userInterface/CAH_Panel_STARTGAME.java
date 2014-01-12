@@ -33,7 +33,7 @@ import cards.DeckBuilder;
  *
  */
 @SuppressWarnings("serial")
-public class CAH_Panel_START extends JPanel 
+public class CAH_Panel_STARTGAME extends JPanel 
 {
 	//TODO add tool tips for the tools, especially for when someone has an invalid set of rules.
 	/**The slider that is used to choose how many players with each player chosen
@@ -46,16 +46,20 @@ public class CAH_Panel_START extends JPanel
 	private ArrayList<Player> players;
 	/**The list of house rules that the game is using.*/
 	private ArrayList<HouseRules> houseRulesList;
-	
+	/**A HashMap of all the check boxes and the house rules that they represent.*/
 	private HashMap<JCheckBox, HouseRules> ruleCheckBoxesMap;
 	
 	/**
 	 * Creates an object that represents the start screen for Cards Against Humanity.
 	 */
-	public CAH_Panel_START()
+	public CAH_Panel_STARTGAME()
 	{
 		//TODO get the checkbox that is checked by having the program look at which checkboxes are clicked when the user hits the start button.
 		//TODO get tooltips to works
+		//FIXME Fix the layout.
+		//FIXME make it work when its both maximized and restored.
+		
+		//TODO  nice moving background, it needs to look better
 		super();
 		
 		JCheckBox happyEnding = new JCheckBox("Happy Ending");
@@ -108,6 +112,11 @@ public class CAH_Panel_START extends JPanel
 		
 		gambling.add(gamblingOn);
 		gambling.add(gamblingOff);
+		
+		//TODO add a tool tip for gambling.
+		
+		//FIXME we need a warning to come up whenever two incompatible rules are selected.
+		//(i dont think radio buttons would work here because once one is selected there is no way to not click any of them (i think))
 		
 		rules.add(gambling);
 		

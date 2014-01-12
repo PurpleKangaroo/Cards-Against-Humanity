@@ -48,7 +48,7 @@ public class CAH_Frame extends JFrame{
 		pack();
 		setVisible(true);
 		
-		CAH_Panel_START start = new CAH_Panel_START();
+		CAH_Panel_STARTGAME start = new CAH_Panel_STARTGAME();
 		super.add(start);
 		super.setVisible(true);
 		//Then we start up the game.
