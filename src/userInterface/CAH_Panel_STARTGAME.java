@@ -71,9 +71,35 @@ public class CAH_Panel_STARTGAME extends JPanel
 		JCheckBox seriousBuisness = new JCheckBox("Serious Buisness");
 		JCheckBox neverHaveIEver = new JCheckBox("Never Have I Ever");
 		
-		//TODO: add Radio buttons for gambling mode.
-		
 		JCheckBox[] ruleBoxes = {happyEnding, rebootingTheUniverse, packingHeat, randoCardrissian, godIsDead, survivalOfTheFittest, seriousBuisness, neverHaveIEver};
+		
+		JCheckBox originalCAHDeck = new JCheckBox("Original");//TODO add tool tips to these
+		//TODO set the default setting as checked for the original CAH deck
+		JCheckBox expansion1 = new JCheckBox("Expansion 1");//TODO have an option for just 1.0, just 1.2, or both.
+		JCheckBox expansion2 = new JCheckBox("Expansion 2");
+		JCheckBox expansion3 = new JCheckBox("Expansion 3");
+		JCheckBox expansion4 = new JCheckBox("Expansion 4");
+		JCheckBox holidayExpansion = new JCheckBox("Holiday Expansion");
+		
+		JCheckBox[] deckBoxes = {originalCAHDeck, expansion1, expansion2, expansion3, expansion4, holidayExpansion};
+		
+		JPanel decks = new JPanel();
+		
+		for (int i = 0; i<deckBoxes.length; i++)
+		{
+			if (i<3)//TODO have these boxes added to the upper part
+			{
+				decks.add(deckBoxes[i]);
+			}
+			
+			else//TODO ... and these added to the lower part
+			{
+				decks.add(deckBoxes[i]);
+			}
+		}
+		
+		decks.setBorder(BorderFactory.createTitledBorder("Decks"));
+		//TODO add a tool tip that comes up when the mouse is over the title that says "select the decks you want your game to use"
 		
 		HashMap<JCheckBox, HouseRules> ruleCheckBoxesMap = new HashMap<JCheckBox, HouseRules>();
 		
@@ -136,7 +162,9 @@ public class CAH_Panel_STARTGAME extends JPanel
 		gambling.setBorder(BorderFactory.createTitledBorder("Gambling"));
 		//TODO make the gambling border smaller so that theres not a bunch of empty space in it.
 		//TODO also make the gambling panel centered within the area
+		//TODO Rules - LEFT, decks - RIGHT.
 		this.add(rules);
+		this.add(decks);
 		
 		players = new ArrayList<Player>();
 		houseRulesList = new ArrayList<HouseRules>();
