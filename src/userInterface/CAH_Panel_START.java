@@ -14,9 +14,11 @@ import java.util.HashMap;
 import game.*;
 
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.GroupLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JSlider;
 import javax.swing.border.Border;
 
@@ -94,12 +96,34 @@ public class CAH_Panel_START extends JPanel
 		
 		rules.add(houseRules);
 		
+		JRadioButton gamblingOn = new JRadioButton("On");
+		JRadioButton gamblingOff = new JRadioButton("Off");
+		
+		ButtonGroup gamblingGroup = new ButtonGroup();
+		
+		gamblingGroup.add(gamblingOn);
+		gamblingGroup.add(gamblingOff);
+		
+		JPanel gambling = new JPanel();
+		
+		gambling.add(gamblingOn);
+		gambling.add(gamblingOff);
+		
+		rules.add(gambling);
+		
 		rules.setBorder(BorderFactory.createTitledBorder("Rules"));
 		houseRules.setBorder(BorderFactory.createTitledBorder("House Rules"));
+		gambling.setBorder(BorderFactory.createTitledBorder("Gambling"));
 		this.add(rules);
 		
 		players = new ArrayList<Player>();
 		houseRulesList = new ArrayList<HouseRules>();
+	}
+	
+	private void checkRules()
+	{
+		//TODO fill
+		//Make this method get which check boxes are checked in rules to create the rules.
 	}
 	
 	public CAH_Game getGame() throws RuleConflictException, URISyntaxException, IOException
@@ -107,6 +131,7 @@ public class CAH_Panel_START extends JPanel
 		//Have the thing wait until the user clicks  start.
 		//TODO Create each part of the game.
 		//TODO deal with rule conflict exception by telling it that that is not a valid input.
+		checkRules();
 		return new CAH_Game(new Rules(houseRulesList), new DeckBuilder(), players);
 	}
 
