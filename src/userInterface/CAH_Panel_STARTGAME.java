@@ -88,6 +88,7 @@ public class CAH_Panel_STARTGAME extends JPanel
 		
 		JPanel houseRules = new JPanel();
 		JPanel rules = new JPanel();
+		rules.setLayout(new BorderLayout());
 		
 		this.ruleCheckBoxesMap = ruleCheckBoxesMap;
 		
@@ -98,7 +99,7 @@ public class CAH_Panel_STARTGAME extends JPanel
 			houseRules.add(ruleBoxes[i]);
 		}
 		
-		rules.add(houseRules);
+		rules.add(houseRules,BorderLayout.NORTH);
 		
 		JRadioButton gamblingOn = new JRadioButton("On");
 		JRadioButton gamblingOff = new JRadioButton("Off");
@@ -118,11 +119,13 @@ public class CAH_Panel_STARTGAME extends JPanel
 		//FIXME we need a warning to come up whenever two incompatible rules are selected.
 		//(i dont think radio buttons would work here because once one is selected there is no way to not click any of them (i think))
 		
-		rules.add(gambling);
+		rules.add(gambling, BorderLayout.SOUTH);
 		
 		rules.setBorder(BorderFactory.createTitledBorder("Rules"));
 		houseRules.setBorder(BorderFactory.createTitledBorder("House Rules"));
 		gambling.setBorder(BorderFactory.createTitledBorder("Gambling"));
+		//TODO make the gambling border smaller so that theres not a bunch of empty space in it.
+		//TODO also make the gambling panel centered within the area
 		this.add(rules);
 		
 		players = new ArrayList<Player>();
