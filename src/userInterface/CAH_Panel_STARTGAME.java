@@ -86,7 +86,9 @@ public class CAH_Panel_STARTGAME extends JPanel
 		ruleCheckBoxesMap.put(seriousBuisness, HouseRules.SERIOUS_BUSINESS);
 		ruleCheckBoxesMap.put(neverHaveIEver, HouseRules.NEVER_HAVE_I_EVER);
 		
-		JPanel houseRules = new JPanel();
+		JPanel houseRules = new JPanel();//TODO initialize with a layout that allows two lines of checkboxes.
+										//Maybe use group layout, but we dont have a GUI builder
+		
 		JPanel rules = new JPanel();
 		rules.setLayout(new BorderLayout());
 		
@@ -96,7 +98,15 @@ public class CAH_Panel_STARTGAME extends JPanel
 		{
 			ruleBoxes[i].setToolTipText(ruleCheckBoxesMap.get(ruleBoxes[i]).getDescription());//TODO: Nick - do the wrapping in these.
 			//FIXME - we need the tool tips to show up more reliably
-			houseRules.add(ruleBoxes[i]);
+			if(i<4)
+			{
+				houseRules.add(ruleBoxes[i]);//TODO make it so that if its below four it has an upper line of boxes
+			}
+			else
+			{
+				houseRules.add(ruleBoxes[i]);//TODO ... and if its below four it is in the lower line of boxes
+			}
+			
 		}
 		
 		rules.add(houseRules,BorderLayout.NORTH);
