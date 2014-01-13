@@ -12,11 +12,11 @@ We may be able to release this game earlier, but we hope to have the game out by
 [Cards Against Humanity Rules](http://s3.amazonaws.com/cah/CAH_Rules.pdf)
 
 ### Authors and Contributors
-Holt Maki([@HoltMaki](https://github.com/HoltMaki)) - Lead Developer
+Holt Maki ([@HoltMaki](https://github.com/HoltMaki)) - Lead Developer
 
 Devon Grove ([@devongrove](https://github.com/devongrove)) - Associate Developer, Public Relations
 
-Nick Walker([@oswin5656](https://github.com/oswin5656)) - Associate Developer, Head Graphic Design
+Nick Walker ([@oswin5656](https://github.com/oswin5656)) - Associate Developer, Head Graphic Design
 
 ### Support or Contact
 purplekangs@gmail.com
