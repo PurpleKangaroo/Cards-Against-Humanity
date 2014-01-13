@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 //We should obviscate these files.
-<userProfile>
+<xml>
+    <userProfile>
     <userName>
         
     </userName>    
@@ -26,8 +27,149 @@
 <userGameHistory>
     <game>
         <date>
-            
+            date
         </date>
+        
+        <player>
+            <userName>
+                username
+            </userName>
+            
+            <awesomePoints>
+                4
+            </awesomePoints>
+        </player>
+        
+        <player>
+            <userName>
+                username
+            </userName>
+            
+            <awesomePoints>
+                3
+            </awesomePoints>
+            
+        </player>
+        
+        <gameLog>
+            <round>
+                
+                <blackCard>
+                    
+                </blackCard>
+                
+                <cardCzar>
+                    <player>
+                        
+                    </player>
+                </cardCzar>
+                
+                <whiteCard>
+                    whatevers on the card goes here?
+                    <player>
+                        whoeverplayedit
+                    </player>
+                    
+                </whiteCard>
+                
+                <whiteCard>
+                    whatevers on the card goes here?
+                    <player>
+                        whoeverplayedit
+                    </player>
+                </whiteCard>
+                
+                <whiteCard>
+                    whatevers on the card goes here?
+                    <player>
+                        whoeverplayedit
+                    </player>
+                </whiteCard>
+                
+                <whiteCard>
+                    whatevers on the card goes here?
+                    <player>
+                        whoeverplayedit
+                    </player>
+                </whiteCard>
+                
+            </round>
+        </gameLog>
+        
+    </game>
+    
+     <game>
+        <date>
+            date
+        </date>
+        
+        <player>
+            <userName>
+                username
+            </userName>
+            
+            <awesomePoints>
+                4
+            </awesomePoints>
+        </player>
+        
+        <player>
+            <userName>
+                username
+            </userName>
+            
+            <awesomePoints>
+                3
+            </awesomePoints>
+            
+        </player>
+        
+        <gameLog>
+            <round>
+                
+                <blackCard>
+                    
+                </blackCard>
+                
+                <cardCzar>
+                    <player>
+                        
+                    </player>
+                </cardCzar>
+                
+                <whiteCard>
+                    whatevers on the card goes here?
+                    <player>
+                        whoeverplayedit
+                    </player>
+                    
+                </whiteCard>
+                
+                <whiteCard>
+                    whatevers on the card goes here?
+                    <player>
+                        whoeverplayedit
+                    </player>
+                </whiteCard>
+                
+                <whiteCard>
+                    whatevers on the card goes here?
+                    <player>
+                        whoeverplayedit
+                    </player>
+                </whiteCard>
+                
+                <whiteCard>
+                    whatevers on the card goes here?
+                    <player>
+                        whoeverplayedit
+                    </player>
+                </whiteCard>
+                
+            </round>
+        </gameLog>
         
     </game>
 </userGameHistory>
+    
+</xml>
