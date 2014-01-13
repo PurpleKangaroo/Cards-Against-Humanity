@@ -6,6 +6,7 @@ import game.RuleConflictException;
 import game.Rules;
 
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -50,16 +51,18 @@ public class CAH_Panel_STARTGAME extends JPanel
 	 */
 	public CAH_Panel_STARTGAME()
 	{
+		//FIXME add text at the top that says something like "New Game" or "Game Setup"
+		//TODO sizing!!!
 		//TODO idea allow people to make and add custom decks.
 		//TODO idea alow people to save game settings.
 		//TODO get the checkbox that is checked by having the program look at which checkboxes are clicked when the user hits the start button.
 		//TODO get tooltips to work
 		//FIXME Fix the layout.
 		//FIXME make it work when its both maximized and restored.
-		//TODO add background
+		//TODO add background, maybe in the sides have cards combonations like on the CAH website.
 		//Idea in a start menu have the background be one that shows good random (or maybe selected but in a ramdom order) combinations of cards.
 		//TODO  nice moving background, it needs to look better
-		super();
+		super(new GridLayout(1,2));
 		
 		JCheckBox happyEnding = new JCheckBox("Happy Ending");
 		JCheckBox rebootingTheUniverse = new JCheckBox("Rebooting the Universe");
@@ -115,7 +118,7 @@ public class CAH_Panel_STARTGAME extends JPanel
 										//Maybe use group layout, but we dont have a GUI builder
 		
 		JPanel rules = new JPanel();
-		rules.setLayout(new BorderLayout());
+		rules.setLayout(new GridLayout(2,1));
 		
 		this.ruleCheckBoxesMap = ruleCheckBoxesMap;
 		
@@ -134,7 +137,7 @@ public class CAH_Panel_STARTGAME extends JPanel
 			
 		}
 		
-		rules.add(houseRules,BorderLayout.NORTH);
+		rules.add(houseRules);
 		
 		JRadioButton gamblingOn = new JRadioButton("On");
 		JRadioButton gamblingOff = new JRadioButton("Off");
@@ -156,7 +159,7 @@ public class CAH_Panel_STARTGAME extends JPanel
 		
 		rules.add(gambling, BorderLayout.SOUTH);
 		
-		rules.setBorder(BorderFactory.createTitledBorder("Rules"));
+		rules.setBorder((BorderFactory.createTitledBorder("Rules")));
 		houseRules.setBorder(BorderFactory.createTitledBorder("House Rules"));
 		gambling.setBorder(BorderFactory.createTitledBorder("Gambling"));
 		//TODO make the gambling border smaller so that theres not a bunch of empty space in it.
