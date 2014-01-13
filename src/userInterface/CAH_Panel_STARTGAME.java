@@ -4,9 +4,14 @@ import game.CAH_Game;
 import game.HouseRules;
 import game.RuleConflictException;
 import game.Rules;
+import import_export.PathFinder;
 
 import java.awt.BorderLayout;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -36,24 +41,38 @@ import cards.Decks;
 public class CAH_Panel_STARTGAME extends JPanel 
 {
 	//TODO add tool tips for the tools, especially for when someone has an invalid set of rules.
-	/**The slider that is used to choose how many players with each player chosen
+	/**
+	 * The slider that is used to choose how many players with each player chosen
 	 *  a new bordered area with swing tools that allow player setup will be added.
 	 *  This bordered area will include information such as if the player is a computer,
 	 *  and maybe their username or IP. (maybe we can have them send that information automatically to the
-	 *  computer which will display it when the user connects.*/
+	 *  computer which will display it when the user connects.
+	 *  
+	 */
 	private JSlider numberOfPlayerSlider;
-	/**A list of the players playing in the game*/
+	/**
+	 * A list of the players playing in the game
+	 */
 	private ArrayList<Player> players;
-	/**The list of house rules that the game is using.*/
+	/**
+	 * The list of house rules that the game is using.
+	 */
 	private ArrayList<HouseRules> houseRulesList;
-	/**A HashMap of all the check boxes and the house rules that they represent.*/
+	/**
+	 * A HashMap of all the check boxes and the house rules that they represent.
+	 * */
 	private HashMap<JCheckBox, HouseRules> ruleCheckBoxesMap;
+	/**
+	 * The background of this start screen.
+	 */
+	private JPanel background;
 	
 	/**
 	 * Creates an object that represents the start screen for Cards Against Humanity.
+	 * @throws URISyntaxException 
 	 * @since CAH1.0
 	 */
-	public CAH_Panel_STARTGAME()
+	public CAH_Panel_STARTGAME() throws URISyntaxException
 	{
 		//TODO maybe have a picture of each deck instead of text?
 		//FIXME add text at the top that says something like "New Game" or "Game Setup"
@@ -67,6 +86,8 @@ public class CAH_Panel_STARTGAME extends JPanel
 		//Idea: in a start menu have the background be one that shows good random (or maybe selected but in a ramdom order) combinations of cards.
 		//TODO  nice moving background, it needs to look better
 		super(new GridLayout(1,2));
+		
+		setBackground();
 		
 		JCheckBox happyEnding = new JCheckBox("Happy Ending");
 		JCheckBox rebootingTheUniverse = new JCheckBox("Rebooting the Universe");
@@ -190,11 +211,36 @@ public class CAH_Panel_STARTGAME extends JPanel
 		houseRulesList = new ArrayList<HouseRules>();
 	}
 	
+	/**
+	 * A method that cheks the rules to get the rules for the game.
+	 * @since CAH1.0
+	 */
 	private void checkRules()
 	{
 		//TODO fill
 		//Make this method get which check boxes are checked in rules to create the rules.
 	}
+	
+	/**
+	 * Paints the background of the panel
+	 * @throws URISyntaxException
+	 * @since CAH1.0
+	 */
+	private void setBackground() throws URISyntaxException
+	{
+		background = new JPanel();
+		Image backgroundImage = Toolkit.getDefaultToolkit().getImage((new PathFinder()).getCAH_Path("/CardsAgainstHumanity/src/CAH_GraphicsFiles/signupbackground.jpg"));
+		//FIXME somehow paint the background here
+	}
+	
+	/**
+	 * Creates a new CAH game based on the user's settings.
+	 * @return A new Cards Against Humanity Game with the settings selected by the user.
+	 * @throws RuleConflictException
+	 * @throws URISyntaxException
+	 * @throws IOException
+	 * @since CAH1.0
+	 */
 	
 	public CAH_Game getGame() throws RuleConflictException, URISyntaxException, IOException
 	{
@@ -204,6 +250,17 @@ public class CAH_Panel_STARTGAME extends JPanel
 		checkRules();
 		return new CAH_Game(new Rules(houseRulesList), new DeckBuilder(), players);
 	}
+	
+	/**
+	 * Wraps the string for the tool tips.
+	 * The wrapping is done with HTML
+	 * @param str - the string that will be wrapped with HTML.
+	 * @return str + "<</html>/html>" - the String wrapped in HTML plus the closing "<</html>/html>".
+	 * <html>
+	 * @since CAH1.0
+	 * @author Holt Maki
+	 * 
+	 */
 	
 	private String wrap(String str)
 	{
