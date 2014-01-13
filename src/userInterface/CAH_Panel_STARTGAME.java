@@ -18,7 +18,6 @@ import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSlider;
-import javax.swing.JToolTip;
 import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
 
@@ -52,6 +51,7 @@ public class CAH_Panel_STARTGAME extends JPanel
 	
 	/**
 	 * Creates an object that represents the start screen for Cards Against Humanity.
+	 * @since CAH1.0
 	 */
 	public CAH_Panel_STARTGAME()
 	{
@@ -64,7 +64,7 @@ public class CAH_Panel_STARTGAME extends JPanel
 		//FIXME Fix the layout.
 		//FIXME make it work when its both maximized and restored.
 		//TODO add background, maybe in the sides have cards combonations like on the CAH website.
-		//Idea in a start menu have the background be one that shows good random (or maybe selected but in a ramdom order) combinations of cards.
+		//Idea: in a start menu have the background be one that shows good random (or maybe selected but in a ramdom order) combinations of cards.
 		//TODO  nice moving background, it needs to look better
 		super(new GridLayout(1,2));
 		
