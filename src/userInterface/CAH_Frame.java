@@ -2,7 +2,6 @@ package userInterface;
 
 import game.CAH_Game;
 import game.RuleConflictException;
-import import_export.PathFinder;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -11,7 +10,6 @@ import java.awt.Graphics2D;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
