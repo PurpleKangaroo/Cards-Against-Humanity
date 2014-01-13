@@ -18,9 +18,13 @@ import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSlider;
+import javax.swing.JToolTip;
+import javax.swing.UIManager;
+import javax.swing.plaf.ColorUIResource;
 
 import users.Player;
 import cards.DeckBuilder;
+import cards.Decks;
 
 /**
  * A class of object that represents the start screen for Cards Against Humanity.
@@ -51,12 +55,12 @@ public class CAH_Panel_STARTGAME extends JPanel
 	 */
 	public CAH_Panel_STARTGAME()
 	{
+		//TODO maybe have a picture of each deck instead of text?
 		//FIXME add text at the top that says something like "New Game" or "Game Setup"
 		//TODO sizing!!!
 		//TODO idea allow people to make and add custom decks.
 		//TODO idea alow people to save game settings.
 		//TODO get the checkbox that is checked by having the program look at which checkboxes are clicked when the user hits the start button.
-		//TODO get tooltips to work
 		//FIXME Fix the layout.
 		//FIXME make it work when its both maximized and restored.
 		//TODO add background, maybe in the sides have cards combonations like on the CAH website.
@@ -83,12 +87,24 @@ public class CAH_Panel_STARTGAME extends JPanel
 		JCheckBox expansion4 = new JCheckBox("Expansion 4");
 		JCheckBox holidayExpansion = new JCheckBox("Holiday Expansion");
 		
+		HashMap<JCheckBox, Decks> deckMaps = new HashMap<JCheckBox, Decks>();
+		
+		deckMaps.put(originalCAHDeck, Decks.ORIGINAL);
+		deckMaps.put(expansion1, Decks.EXPANSION1);
+		deckMaps.put(expansion2, Decks.EXPANSION2);
+		deckMaps.put(expansion3, Decks.EXPANSION3);
+		deckMaps.put(expansion4, Decks.EXPANSION4);
+		deckMaps.put(holidayExpansion, Decks.HOLIDAYEXPANSION);
+		
 		JCheckBox[] deckBoxes = {originalCAHDeck, expansion1, expansion2, expansion3, expansion4, holidayExpansion};
 		
 		JPanel decks = new JPanel();
 		
 		for (int i = 0; i<deckBoxes.length; i++)
 		{
+			
+			deckBoxes[i].setToolTipText((wrap(deckMaps.get(deckBoxes[i]).getDescription())).replaceAll("-", " -").replaceAll("surface -to -air", "surface-to-air"));
+			
 			if (i<3)//TODO have these boxes added to the upper part
 			{
 				decks.add(deckBoxes[i]);
@@ -122,9 +138,11 @@ public class CAH_Panel_STARTGAME extends JPanel
 		
 		this.ruleCheckBoxesMap = ruleCheckBoxesMap;
 		
+		UIManager.put("ToolTip.background", new ColorUIResource(253, 255, 166));
+		
 		for(int i = 0; i<ruleBoxes.length; i++)
-		{
-			ruleBoxes[i].setToolTipText(ruleCheckBoxesMap.get(ruleBoxes[i]).getDescription());//TODO: Nick - do the wrapping in these.
+		{			
+			ruleBoxes[i].setToolTipText(wrap(ruleCheckBoxesMap.get(ruleBoxes[i]).getDescription()));
 			//FIXME - we need the tool tips to show up more reliably
 			if(i<4)
 			{
@@ -185,6 +203,35 @@ public class CAH_Panel_STARTGAME extends JPanel
 		//TODO deal with rule conflict exception by telling it that that is not a valid input.
 		checkRules();
 		return new CAH_Game(new Rules(houseRulesList), new DeckBuilder(), players);
+	}
+	
+	private String wrap(String str)
+	{
+		str = "<html>" + str;
+		for(int i = 50; i<str.length(); i+=50)
+		{
+		
+			try
+			{
+				while(str.charAt(i) != ' ' && i <str.length())
+				{
+					i++;
+				}
+				
+				if (i<str.length())
+				{
+					str = str.substring(0,i) +"<br>" + str.substring(i);
+				}
+			}
+			
+			catch(Exception e)
+			{
+				
+			}
+						
+		}
+		
+		return str + "</html>";
 	}
 
 }
