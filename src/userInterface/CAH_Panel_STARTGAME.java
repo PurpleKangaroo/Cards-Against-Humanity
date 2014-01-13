@@ -1,26 +1,22 @@
 package userInterface;
 
+import game.CAH_Game;
+import game.HouseRules;
+import game.RuleConflictException;
+import game.Rules;
+
 import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import game.*;
-
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
-import javax.swing.GroupLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSlider;
-import javax.swing.border.Border;
 
 import users.Player;
 import cards.DeckBuilder;
@@ -54,11 +50,14 @@ public class CAH_Panel_STARTGAME extends JPanel
 	 */
 	public CAH_Panel_STARTGAME()
 	{
+		//TODO idea allow people to make and add custom decks.
+		//TODO idea alow people to save game settings.
 		//TODO get the checkbox that is checked by having the program look at which checkboxes are clicked when the user hits the start button.
-		//TODO get tooltips to works
+		//TODO get tooltips to work
 		//FIXME Fix the layout.
 		//FIXME make it work when its both maximized and restored.
-		
+		//TODO add background
+		//Idea in a start menu have the background be one that shows good random (or maybe selected but in a ramdom order) combinations of cards.
 		//TODO  nice moving background, it needs to look better
 		super();
 		
