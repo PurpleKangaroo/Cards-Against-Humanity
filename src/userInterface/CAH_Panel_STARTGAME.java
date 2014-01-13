@@ -18,6 +18,9 @@ import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSlider;
+import javax.swing.JToolTip;
+import javax.swing.UIManager;
+import javax.swing.plaf.ColorUIResource;
 
 import users.Player;
 import cards.DeckBuilder;
@@ -51,6 +54,7 @@ public class CAH_Panel_STARTGAME extends JPanel
 	 */
 	public CAH_Panel_STARTGAME()
 	{
+		//TODO maybe have a picture of each deck instead of text?
 		//FIXME add text at the top that says something like "New Game" or "Game Setup"
 		//TODO sizing!!!
 		//TODO idea allow people to make and add custom decks.
@@ -122,9 +126,11 @@ public class CAH_Panel_STARTGAME extends JPanel
 		
 		this.ruleCheckBoxesMap = ruleCheckBoxesMap;
 		
+		UIManager.put("ToolTip.background", new ColorUIResource(253, 255, 166));
+		
 		for(int i = 0; i<ruleBoxes.length; i++)
-		{
-			ruleBoxes[i].setToolTipText(ruleCheckBoxesMap.get(ruleBoxes[i]).getDescription());//TODO: Nick - do the wrapping in these.
+		{			
+			ruleBoxes[i].setToolTipText(wrap(ruleCheckBoxesMap.get(ruleBoxes[i]).getDescription()));
 			//FIXME - we need the tool tips to show up more reliably
 			if(i<4)
 			{
@@ -185,6 +191,35 @@ public class CAH_Panel_STARTGAME extends JPanel
 		//TODO deal with rule conflict exception by telling it that that is not a valid input.
 		checkRules();
 		return new CAH_Game(new Rules(houseRulesList), new DeckBuilder(), players);
+	}
+	
+	private String wrap(String str)
+	{
+		str = "<html>" + str;
+		for(int i = 50; i<str.length(); i+=50)
+		{
+		
+			try
+			{
+				while(str.charAt(i) != ' ' && i <str.length())
+				{
+					i++;
+				}
+				
+				if (i<str.length())
+				{
+					str = str.substring(0,i) +"<br>" + str.substring(i);
+				}
+			}
+			
+			catch(Exception e)
+			{
+				
+			}
+						
+		}
+		
+		return str + "</html>";
 	}
 
 }
