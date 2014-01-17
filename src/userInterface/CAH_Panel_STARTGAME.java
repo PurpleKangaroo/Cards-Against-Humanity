@@ -200,6 +200,9 @@ public class CAH_Panel_STARTGAME extends JPanel
 		
 		JList<String> playerList = new JList<String>(new DefaultListModel<String>());//FIXME get this list working
 		//TODO list show different details like the way the details view does in windows
+		//TODO to add players use a button with a "+" on it and to remove them use a "-" button.
+		//TODO maybe use a dialogue box to enter the players information maybe.
+		//TODO Or maybe automatically get a users information when they connect.
 		
 		//TODO add a tool tip for gambling.
 		
@@ -210,7 +213,7 @@ public class CAH_Panel_STARTGAME extends JPanel
 		
 		rules.add(gambling);
 		
-		JButton startGameButton = new JButton("Start Game");
+		JButton startGameButton = new JButton("Start Game");//This needs to go at the very bottom.
 		startGameButton.setBackground(Color.orange);
 		startGameButton.addActionListener(new StartGameListener(this));
 		
