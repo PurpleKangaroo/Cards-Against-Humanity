@@ -6,14 +6,14 @@ import game.RuleConflictException;
 import game.Rules;
 import import_export.PathFinder;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -22,6 +22,7 @@ import java.util.HashMap;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -197,7 +198,7 @@ public class CAH_Panel_STARTGAME extends JPanel
 		
 		JPanel playerPanel = new JPanel();
 		
-		JList playerList = new JList(new DefaultListModel());//FIXME get this list working
+		JList<String> playerList = new JList<String>(new DefaultListModel<String>());//FIXME get this list working
 		//TODO list show different details like the way the details view does in windows
 		
 		//TODO add a tool tip for gambling.
@@ -208,6 +209,10 @@ public class CAH_Panel_STARTGAME extends JPanel
 		playerPanel.add(playerList);
 		
 		rules.add(gambling);
+		
+		JButton startGameButton = new JButton("Start Game");
+		startGameButton.setBackground(Color.orange);
+		startGameButton.addActionListener(new StartGameListener(this));
 		
 		rules.setBorder((BorderFactory.createTitledBorder("Rules")));
 		houseRules.setBorder(BorderFactory.createTitledBorder("House Rules"));
@@ -221,9 +226,46 @@ public class CAH_Panel_STARTGAME extends JPanel
 		this.add(rules);
 		this.add(decks);
 		this.add(playerPanel);
+		this.add(startGameButton);
 		
 		players = new ArrayList<Player>();
 		houseRulesList = new ArrayList<HouseRules>();
+	}
+	
+	/**
+	 * An ActionListener for when the start game button is clicked.
+	 * It starts the game.
+	 * @author Holt Maki
+	 * @since CAH1.0
+	 * @version CAH1.0
+	 *
+	 */
+	private class StartGameListener implements ActionListener
+	{
+		private CAH_Panel_STARTGAME startPanel;
+		
+		/**
+		 * Creates the a StartGameListener with the CAH_Panel_STARTGAME.
+		 * @param startPanel - the CAH_Panel_STARTGAME.
+		 * @since CAH1.0
+		 */
+		public StartGameListener(CAH_Panel_STARTGAME startPanel)
+		{
+			this.startPanel = startPanel;
+		}
+
+		/**
+		 * From ActionListener.
+		 * When an action is performed, this will start the game.
+		 * @since CAH1.0
+		 */
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			//TODO we need to make it so that this will make the start panel give the game to the CAH_Frame, which will then start up the CAH_Game.
+			
+			
+		}
+		
 	}
 	
 	/**
