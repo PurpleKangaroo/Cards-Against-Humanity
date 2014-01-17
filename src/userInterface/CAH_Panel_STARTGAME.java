@@ -7,8 +7,10 @@ import game.Rules;
 import import_export.PathFinder;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -19,7 +21,9 @@ import java.util.HashMap;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
+import javax.swing.DefaultListModel;
 import javax.swing.JCheckBox;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSlider;
@@ -85,7 +89,7 @@ public class CAH_Panel_STARTGAME extends JPanel
 		//TODO add background, maybe in the sides have cards combonations like on the CAH website.
 		//Idea: in a start menu have the background be one that shows good random (or maybe selected but in a ramdom order) combinations of cards.
 		//TODO  nice moving background, it needs to look better
-		super(new GridLayout(1,2));
+		super(new GridBagLayout());
 		
 		setBackground();
 		
@@ -151,7 +155,7 @@ public class CAH_Panel_STARTGAME extends JPanel
 		ruleCheckBoxesMap.put(seriousBuisness, HouseRules.SERIOUS_BUSINESS);
 		ruleCheckBoxesMap.put(neverHaveIEver, HouseRules.NEVER_HAVE_I_EVER);
 		
-		JPanel houseRules = new JPanel();//TODO initialize with a layout that allows two lines of checkboxes.
+		JPanel houseRules = new JPanel(new GridLayout(2,1));//TODO initialize with a layout that allows two lines of checkboxes.
 										//Maybe use group layout, but we dont have a GUI builder
 		
 		JPanel rules = new JPanel();
@@ -191,21 +195,32 @@ public class CAH_Panel_STARTGAME extends JPanel
 		gambling.add(gamblingOn);
 		gambling.add(gamblingOff);
 		
+		JPanel playerPanel = new JPanel();
+		
+		JList playerList = new JList(new DefaultListModel());//FIXME get this list working
+		//TODO list show different details like the way the details view does in windows
+		
 		//TODO add a tool tip for gambling.
 		
 		//FIXME we need a warning to come up whenever two incompatible rules are selected.
 		//(i dont think radio buttons would work here because once one is selected there is no way to not click any of them (i think))
 		
-		rules.add(gambling, BorderLayout.SOUTH);
+		playerPanel.add(playerList);
+		
+		rules.add(gambling);
 		
 		rules.setBorder((BorderFactory.createTitledBorder("Rules")));
 		houseRules.setBorder(BorderFactory.createTitledBorder("House Rules"));
 		gambling.setBorder(BorderFactory.createTitledBorder("Gambling"));
+		gambling.setLayout(new FlowLayout());
+		
 		//TODO make the gambling border smaller so that theres not a bunch of empty space in it.
 		//TODO also make the gambling panel centered within the area
 		//TODO Rules - LEFT, decks - RIGHT.
+		
 		this.add(rules);
 		this.add(decks);
+		this.add(playerPanel);
 		
 		players = new ArrayList<Player>();
 		houseRulesList = new ArrayList<HouseRules>();
