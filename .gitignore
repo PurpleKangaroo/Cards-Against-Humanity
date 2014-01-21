@@ -2,7 +2,6 @@
 *.xml
 
 # Package Files #
-*.jar
 *.war
 *.ear
 /bin
