@@ -4,6 +4,7 @@ import game.CAH_Game;
 import game.HouseRules;
 import game.RuleConflictException;
 import game.Rules;
+import graphics.ImageLoad;
 import import_export.PathFinder;
 
 import java.awt.Color;
@@ -289,8 +290,8 @@ public class CAH_Panel_STARTGAME extends JPanel
 	private void setBackground() throws URISyntaxException
 	{
 		background = new JPanel();
-		Image backgroundImage = Toolkit.getDefaultToolkit().getImage((new PathFinder()).getCAH_Path("/CardsAgainstHumanity/src/CAH_GraphicsFiles/signupbackground.jpg"));
-		//FIXME somehow paint the background here
+		Image backgroundImage = ImageLoad.loadImage("signupbackground.jpg");
+		background
 	}
 	
 	/**

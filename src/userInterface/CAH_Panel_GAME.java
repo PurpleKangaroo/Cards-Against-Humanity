@@ -1,5 +1,7 @@
 package userInterface;
 
+import graphics.ImageLoad;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -42,10 +44,8 @@ public class CAH_Panel_GAME extends JPanel {
 	{
 		this.numberOfCards = numberOfCards;
 		//TODO start out with nobody having white cards and have animations showing them being dealt from the white card deck.(EVENTUALLY)
-		ImageIcon b = new ImageIcon(this.getClass().getResource("Black_Card.png"));
-		ImageIcon w = new ImageIcon(this.getClass().getResource("White_Card.png"));
-		blackCard = b.getImage();
-		whiteCard = w.getImage();  //card images are loaded
+		blackCard = ImageLoad.loadImage("bc.png");
+		whiteCard = ImageLoad.loadImage("wc.png");  //card images are loaded
 		
 		this.setBackground(Color.lightGray);
 	}
