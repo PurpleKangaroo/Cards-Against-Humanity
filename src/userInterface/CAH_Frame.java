@@ -20,7 +20,7 @@ import javax.swing.JFrame;
  * @version CAH1.0
  *
  */
-public class CAH_Frame extends JFrame{
+public class CAH_Frame extends JFrame implements Runnable {
 	private static final long serialVersionUID = -3033860031108235857L;
 	private CAH_Game game;
 
@@ -60,14 +60,9 @@ public class CAH_Frame extends JFrame{
 		
 	}
 	
-	/**
-	 * Paints the frame.
-	 * @param g - the graphics that will be painted onto the frame
-	 * @since CAH1.0
-	 */
-	public void Paint(Graphics g)
+	public void run()
 	{
-		Graphics2D g2 = (Graphics2D) g;
+		
 	}
 	
 	public static void main(String [] args) throws URISyntaxException, IOException, RuleConflictException
