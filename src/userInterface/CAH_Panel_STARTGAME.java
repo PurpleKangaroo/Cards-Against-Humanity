@@ -9,9 +9,12 @@ import import_export.PathFinder;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -72,6 +75,11 @@ public class CAH_Panel_STARTGAME extends JPanel
 	 * The background of this start screen.
 	 */
 	private JPanel background;
+	
+	/**
+	 * The image that appears in the background
+	 */
+	private Image backgroundImage;
 	
 	/**
 	 * Creates an object that represents the start screen for Cards Against Humanity.
@@ -241,7 +249,6 @@ public class CAH_Panel_STARTGAME extends JPanel
 	 * It starts the game.
 	 * @author Holt Maki
 	 * @since CAH1.0
-	 * @version CAH1.0
 	 *
 	 */
 	private class StartGameListener implements ActionListener
@@ -290,8 +297,19 @@ public class CAH_Panel_STARTGAME extends JPanel
 	private void setBackground() throws URISyntaxException
 	{
 		background = new JPanel();
-		Image backgroundImage = ImageLoad.loadImage("signupbackground.jpg");
-		background
+		backgroundImage = ImageLoad.loadImage("signupbackground.jpg");
+		background.paint(getGraphics());
+		this.add(background);
+		background.setVisible(true);
+	}
+	
+	public void paint(Graphics g)
+	{
+		super.paint(g);
+		
+		Graphics2D g2d = (Graphics2D) g;
+		
+		g2d.drawImage(backgroundImage, this.getWidth(), this.getHeight(), this);
 	}
 	
 	/**
