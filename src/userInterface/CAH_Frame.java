@@ -39,21 +39,22 @@ public class CAH_Frame extends JFrame implements Runnable {
 		setDefaultLookAndFeelDecorated(true);
 		//setIconImage(new ImageIcon(a.getCAH_Path("/Cards Against Humanity/src/CAH_GraphicsFiles/CAHIcon.png")).getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	
-		setMinimumSize(new Dimension(800,600));
-		setExtendedState(JFrame.MAXIMIZED_BOTH);
-		
-		pack();
-		setVisible(true);
 		
 		CAH_Panel_STARTGAME start = new CAH_Panel_STARTGAME();
 		super.add(start);
+		
+		setMinimumSize(new Dimension(800,600));
+		super.pack();
+		
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		
 		super.setVisible(true);
+		
 		//Then we start up the game.
 		
 		game = start.getGame();
 		CAH_Panel_GAME panel = new CAH_Panel_GAME(10, game.getPlayers().get(0));//FIXME We have to find a way to identify which player is which
-		super.remove(start);
+		//super.remove(start);
 		
 		//TODO change to get the number of players
 		super.add(panel);

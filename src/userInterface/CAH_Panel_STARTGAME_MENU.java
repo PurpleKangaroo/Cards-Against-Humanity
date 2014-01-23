@@ -72,6 +72,10 @@ public class CAH_Panel_STARTGAME_MENU extends JPanel
 	 * A HashMap of all the check boxes and the house rules that they represent.
 	 * */
 	private HashMap<JCheckBox, HouseRules> ruleCheckBoxesMap;
+	/**
+	 * A list of the decks that are being used in the game
+	 */
+	private ArrayList<Decks> deckList;
 	
 	/**
 	 * Creates an object that represents menu for the the start screen for Cards Against Humanity.
@@ -93,7 +97,7 @@ public class CAH_Panel_STARTGAME_MENU extends JPanel
 		//TODO  nice moving background, it needs to look better
 		super(new GridBagLayout());
 		
-		this.setBackground(new Color(Color.TRANSLUCENT));
+		this.setBackground(null);
 		
 		JCheckBox happyEnding = new JCheckBox("Happy Ending");
 		JCheckBox rebootingTheUniverse = new JCheckBox("Rebooting the Universe");
@@ -126,15 +130,14 @@ public class CAH_Panel_STARTGAME_MENU extends JPanel
 		JCheckBox[] deckBoxes = {originalCAHDeck, expansion1, expansion2, expansion3, expansion4, holidayExpansion};
 		
 		JPanel decks = new JPanel();
-		decks.setBackground(new Color(Color.TRANSLUCENT));
+		decks.setBackground(null);
 		decks.setForeground(Color.WHITE);
 		
 		for (int i = 0; i<deckBoxes.length; i++)
 		{
 			
 			deckBoxes[i].setToolTipText((wrap(deckMaps.get(deckBoxes[i]).getDescription())).replaceAll("-", " -").replaceAll("surface -to -air", "surface-to-air"));
-			deckBoxes[i].setVisible(true);
-			deckBoxes[i].setBackground(new Color(Color.TRANSLUCENT));
+			deckBoxes[i].setBackground(null);
 			deckBoxes[i].setForeground(Color.WHITE);
 			
 			if (i<3)//TODO have these boxes added to the upper part
@@ -148,7 +151,7 @@ public class CAH_Panel_STARTGAME_MENU extends JPanel
 			}
 		}
 		
-		Border deckBorder = BorderFactory.createTitledBorder("Decks");
+		Border deckBorder = BorderFactory.createTitledBorder("<html><body style=\"color:WHITE\">Decks</body></html>");
 		
 		decks.setBorder(deckBorder);
 		//TODO add a tool tip that comes up when the mouse is over the title that says "select the decks you want your game to use"
@@ -177,6 +180,9 @@ public class CAH_Panel_STARTGAME_MENU extends JPanel
 		for(int i = 0; i<ruleBoxes.length; i++)
 		{
 			ruleBoxes[i].setToolTipText(wrap(ruleCheckBoxesMap.get(ruleBoxes[i]).getDescription()));
+			ruleBoxes[i].setBackground(null);
+			ruleBoxes[i].setForeground(Color.WHITE);
+			
 			//FIXME - we need the tool tips to show up more reliably
 			if(i<4)
 			{
@@ -193,6 +199,12 @@ public class CAH_Panel_STARTGAME_MENU extends JPanel
 		
 		JRadioButton gamblingOn = new JRadioButton("On");
 		JRadioButton gamblingOff = new JRadioButton("Off");
+		
+		gamblingOn.setBackground(null);
+		gamblingOn.setForeground(Color.WHITE);
+		
+		gamblingOff.setBackground(null);
+		gamblingOff.setForeground(Color.WHITE);
 		
 		ButtonGroup gamblingGroup = new ButtonGroup();
 		
@@ -221,13 +233,19 @@ public class CAH_Panel_STARTGAME_MENU extends JPanel
 		
 		rules.add(gambling);
 		
+		rules.setForeground(Color.WHITE);
+		rules.setBackground(null);
+		
+		houseRules.setForeground(Color.WHITE);
+		houseRules.setBackground(null);
+		
 		JButton startGameButton = new JButton("Start Game");//This needs to go at the very bottom.
 		startGameButton.setBackground(Color.orange);
 		startGameButton.addActionListener(new StartGameListener(this));
 		
-		rules.setBorder((BorderFactory.createTitledBorder("Rules")));
-		houseRules.setBorder(BorderFactory.createTitledBorder("House Rules"));
-		gambling.setBorder(BorderFactory.createTitledBorder("Gambling"));
+		rules.setBorder((BorderFactory.createTitledBorder("<html><body style=\"color:WHITE\">Rules</body></html>")));
+		houseRules.setBorder(BorderFactory.createTitledBorder("<html><body style=\"color:WHITE\">House Rules</body></html>"));
+		gambling.setBorder(BorderFactory.createTitledBorder("<html><body style=\"color:WHITE\">Gambling</body></html>"));
 		gambling.setLayout(new FlowLayout());
 		
 		//TODO make the gambling border smaller so that theres not a bunch of empty space in it.
@@ -239,9 +257,11 @@ public class CAH_Panel_STARTGAME_MENU extends JPanel
 		this.add(playerPanel);
 		this.add(startGameButton);
 		
+		this.setForeground(Color.WHITE);
 		
 		players = new ArrayList<Player>();
 		houseRulesList = new ArrayList<HouseRules>();
+		deckList = new ArrayList<Decks>();
 	}
 	
 	/**
@@ -304,7 +324,7 @@ public class CAH_Panel_STARTGAME_MENU extends JPanel
 		//TODO Create each part of the game.
 		//TODO deal with rule conflict exception by telling it that that is not a valid input.
 		checkRules();
-		return new CAH_Game(new Rules(houseRulesList), new DeckBuilder(), players);
+		return new CAH_Game(new Rules(houseRulesList), new DeckBuilder((Decks[]) deckList.toArray()), players);
 	}
 	
 	/**

@@ -1,9 +1,7 @@
 package userInterface;
 
 import game.CAH_Game;
-import game.HouseRules;
 import game.RuleConflictException;
-import game.Rules;
 import graphics.ImageLoad;
 
 import java.awt.Graphics;
@@ -12,12 +10,8 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.HashMap;
 
-import javax.swing.JCheckBox;
 import javax.swing.JPanel;
-
-import cards.DeckBuilder;
 
 public class CAH_Panel_STARTGAME extends JPanel{
 	
@@ -44,11 +38,18 @@ public class CAH_Panel_STARTGAME extends JPanel{
 	
 	public CAH_Panel_STARTGAME() throws URISyntaxException
 	{
+		menu = new CAH_Panel_STARTGAME_MENU();
+		menu.setOpaque(false);
+		
 		setBackground();
 		
-		menu = new CAH_Panel_STARTGAME_MENU();
+		this.add(background);
 		
-		background.add(menu);
+		super.setVisible(true);
+		background.setVisible(true);
+		menu.setVisible(true);
+		
+		revalidate();
 		
 	}
 	
@@ -60,10 +61,10 @@ public class CAH_Panel_STARTGAME extends JPanel{
 	private void setBackground() throws URISyntaxException
 	{
 		background = new JPanel();
+		background.add(menu);
 		backgroundImage = ImageLoad.loadImage("signupbackground.jpg");
 		background.paint(getGraphics());
-		this.add(background);
-		background.setVisible(true);
+		
 	}
 	
 	public void paint(Graphics g)
