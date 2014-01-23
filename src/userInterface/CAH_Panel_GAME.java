@@ -1,5 +1,7 @@
 package userInterface;
 
+import graphics.ImageLoad;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -42,10 +44,8 @@ public class CAH_Panel_GAME extends JPanel {
 	{
 		this.numberOfCards = numberOfCards;
 		//TODO start out with nobody having white cards and have animations showing them being dealt from the white card deck.(EVENTUALLY)
-		ImageIcon b = new ImageIcon(this.getClass().getResource("Black_Card.png"));
-		ImageIcon w = new ImageIcon(this.getClass().getResource("White_Card.png"));
-		blackCard = b.getImage();
-		whiteCard = w.getImage();  //card images are loaded
+		blackCard = ImageLoad.loadImage("bc.png");
+		whiteCard = ImageLoad.loadImage("wc.png");  //card images are loaded
 		
 		this.setBackground(Color.lightGray);
 	}
@@ -58,12 +58,10 @@ public class CAH_Panel_GAME extends JPanel {
 		
 		FontRenderContext frc = g2d.getFontRenderContext(); //gets font render context, used to properly wrap text onto cards.
 		
-		
 		int start;
 		int end;
 		int x = this.getWidth() / 40;
 		int cardWidth = (this.getWidth() - (2*x)) / (numberOfCards);
-		
 		
 		Rectangle r; 
 		for (int i = 1; i <= numberOfCards; i++)  // this loop draws each card and then the text on top of it, works for any number of cards(within reason).
@@ -72,23 +70,26 @@ public class CAH_Panel_GAME extends JPanel {
 			g2d.drawImage(whiteCard, (int)r.getX(), (int)r.getY(), (int)r.getWidth(), (int)r.getHeight(), null);
 			
 			AttributedString text = new AttributedString(cards.get(i));
+			
 			iterator = text.getIterator();
 			start = iterator.getBeginIndex();
 			end = iterator.getEndIndex();
+			
 			LineBreakMeasurer measurer = new LineBreakMeasurer(iterator, frc);
+			
 			measurer.setPosition(start);
+			
 			float y = 0;
 			while (measurer.getPosition() < end)  // this loop creates a new line when text goes past rectangle that text is drawn in, until string is fully drawn.
 			{
+				
 				TextLayout layout = measurer.nextLayout((float) (r.getWidth()*.9));
 				y += layout.getAscent();	
 				layout.draw(g2d,(float) (r.getX() + .05*r.width), (float)(r.getY() + r.getHeight()*.1 + y));
 				y+= layout.getDescent() + layout.getLeading();
 				
 			}
-			
 		}
-		
 	}
 
 }
