@@ -35,24 +35,42 @@ public class DeckBuilder {
 	 */
 	
 	@SuppressWarnings("resource")
-	public DeckBuilder() throws URISyntaxException, IOException
+	public DeckBuilder(Decks[] decklist) throws URISyntaxException, IOException
 	{
 		PathFinder a = new PathFinder();
 		answerList = new ArrayList<AnswerCard>();
 		questionList = new ArrayList<QuestionCard>();
-		answers = new File(a.getCAH_Path("/Cards Against Humanity/src/cards/Answers"));
-		questions = new File(a.getCAH_Path("/Cards Against Humanity/src/cards/Questions"));
+		
+		for(int i = 0; i < decklist.length; i++)
+		{
+			String[] AnsPaths = decklist[i].getAnswerPaths();
+			String[] QPaths = decklist[i].getQuestionPaths();
+			for(int n = 0; n < AnsPaths.length; n++)
+			{
+				answers = new File(a.getCAH_Path(AnsPaths[i]));
+				questions = new File(a.getCAH_Path(QPaths[i]));
+				addToDeck();
+			}
+			
+		}
+		
+		deck = new Deck(answerList, questionList);
+	}
+	
+	private void addToDeck() throws URISyntaxException, IOException
+	{
+		@SuppressWarnings("resource")
 		Scanner answerScanner = new Scanner(answers);
 		while(answerScanner.hasNextLine())
 		{
 			answerList.add(new AnswerCard(answerScanner.nextLine()));
 		}
+		@SuppressWarnings("resource")
 		Scanner questionScanner = new Scanner(questions);
 		while(questionScanner.hasNextLine())
 		{
 			questionList.add(new QuestionCard(questionScanner.nextLine(), "CardInfo", "Q"));
 		}
-		deck = new Deck(answerList, questionList);
 	}
 	
 	/**
