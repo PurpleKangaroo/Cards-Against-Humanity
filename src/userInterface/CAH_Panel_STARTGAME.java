@@ -47,6 +47,7 @@ public class CAH_Panel_STARTGAME extends JPanel{
 		setBackground();
 		
 		menu = new CAH_Panel_STARTGAME_MENU();
+		
 		background.add(menu);
 		
 	}
