@@ -34,14 +34,45 @@ public class CardComboApplet extends Applet implements Runnable {
 	private int month;
 	
 	/**
-	 * 
+	 * The image used for the white cards.
+	 */
+	private Image whiteCard;
+	
+	/**
+	 * The image used for the black cards.
+	 */
+	
+	/**
+	 * Creates an applet that shows different combinations of cards against humanity cards.
 	 * @throws URISyntaxException
 	 * @throws IOException
+	 * @since CAH1.0
 	 */
 	public CardComboApplet() throws URISyntaxException, IOException
 	{
+		getMonth();
+		createDecks();
+	}
+	
+	/**
+	 * Gets the current month in order to better choose the cards \
+	 * (in december, there will be a 50% chance of getting a holiday card)
+	 * @since CAH1.0
+	 */
+	private void getMonth()
+	{
 		Calendar currentTime = new GregorianCalendar();
 		month = currentTime.MONTH;
+	}
+	
+	/**
+	 * Creates the decks.
+	 * @throws URISyntaxException
+	 * @throws IOException
+	 * @since CAH1.0
+	 */
+	private void createDecks() throws URISyntaxException, IOException
+	{
 		Decks[] decklist = {Decks.ORIGINAL, Decks.EXPANSION1_0,	Decks.EXPANSION1_2, Decks.EXPANSION1, Decks.EXPANSION2, Decks.EXPANSION3, Decks.EXPANSION4};
 		deck = new DeckBuilder(decklist).getDeck();
 		Decks[] holidayDecks = {Decks.HOLIDAYEXPANSION};
@@ -50,7 +81,7 @@ public class CardComboApplet extends Applet implements Runnable {
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
