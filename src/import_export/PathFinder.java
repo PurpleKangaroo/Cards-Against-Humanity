@@ -27,6 +27,10 @@ public class PathFinder {
 		int index = CAH_Path.indexOf("%");
 		CAH_Path = CAH_Path.substring(0,index);
 		CAH_Path = CAH_Path.substring(0, CAH_Path.lastIndexOf("file"));
+		if(CAH_Path.contains("bin"))
+		{
+			CAH_Path = CAH_Path.substring(0,CAH_Path.indexOf("bin"));
+		}
 	}
 
 	/**

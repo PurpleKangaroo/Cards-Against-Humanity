@@ -20,7 +20,7 @@ public class QuestionCard extends Card{
 	private int pick;
 	private static int cardNumberCounter = 0;
 	private static ArrayList<String> prefixes;
-	private Saver save;
+	//private Saver save;
 	
 	/**
 	 * Creates a question card.
@@ -35,7 +35,7 @@ public class QuestionCard extends Card{
 		super(card);
 		cardNumberCounter++;
 		String fileName = filePrefix + cardNumberCounter + "";
-		save = new Saver(fileName, folder);
+		//save = new Saver(fileName, folder);
 		//Make tags and history with save
 		//Maybe make a class of object that tags and gets the history
 			

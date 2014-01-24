@@ -47,8 +47,8 @@ public class DeckBuilder {
 			String[] QPaths = decklist[i].getQuestionPaths();
 			for(int n = 0; n < AnsPaths.length; n++)
 			{
-				answers = new File(a.getCAH_Path(AnsPaths[i]));
-				questions = new File(a.getCAH_Path(QPaths[i]));
+				answers = new File(a.getCAH_Path(AnsPaths[n]));
+				questions = new File(a.getCAH_Path(QPaths[n]));
 				addToDeck();
 			}
 			
