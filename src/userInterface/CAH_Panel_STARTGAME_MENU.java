@@ -97,7 +97,7 @@ public class CAH_Panel_STARTGAME_MENU extends JPanel
 		//TODO  nice moving background, it needs to look better
 		super(new GridBagLayout());
 		
-		this.setBackground(null);
+		this.setOpaque(false);
 		
 		JCheckBox happyEnding = new JCheckBox("Happy Ending");
 		JCheckBox rebootingTheUniverse = new JCheckBox("Rebooting the Universe");
