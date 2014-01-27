@@ -1,6 +1,9 @@
 package userInterface;
 
+import graphics.ImageLoad;
+
 import java.applet.Applet;
+import java.awt.Image;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Calendar;
@@ -36,11 +39,22 @@ public class CardComboApplet extends Applet implements Runnable {
 	/**
 	 * The image used for the white cards.
 	 */
-	private Image whiteCard;
+	private Image whiteCardImg;
+	
+	/**
+	 * The image used for the CAH logo on white cards.
+	 */
+	private Image whiteLogo;
 	
 	/**
 	 * The image used for the black cards.
 	 */
+	private Image blackCardImg;
+	
+	/**
+	 * The image used for the CAH logo on black cards.
+	 */
+	private Image blackLogo;
 	
 	/**
 	 * Creates an applet that shows different combinations of cards against humanity cards.
@@ -52,6 +66,7 @@ public class CardComboApplet extends Applet implements Runnable {
 	{
 		getMonth();
 		createDecks();
+		getImages();
 	}
 	
 	/**
@@ -59,6 +74,7 @@ public class CardComboApplet extends Applet implements Runnable {
 	 * (in december, there will be a 50% chance of getting a holiday card)
 	 * @since CAH1.0
 	 */
+	@SuppressWarnings("static-access")
 	private void getMonth()
 	{
 		Calendar currentTime = new GregorianCalendar();
@@ -78,7 +94,24 @@ public class CardComboApplet extends Applet implements Runnable {
 		Decks[] holidayDecks = {Decks.HOLIDAYEXPANSION};
 		holiday = new DeckBuilder(holidayDecks).getDeck();
 	}
-
+	
+	/**
+	 * Gets the images that the applet needs.
+	 * @since CAH1.0
+	 */
+	private void getImages()
+	{
+		blackCardImg = ImageLoad.loadImage("bc.png");
+		whiteCardImg = ImageLoad.loadImage("wc.png");
+		
+		blackLogo = ImageLoad.loadImage("icon_b.png");
+		whiteLogo = ImageLoad.loadImage("icon_w.png");
+	}
+	
+	/**
+	 * Runs the applet.
+	 * @since CAH1.0
+	 */
 	@Override
 	public void run() {
 		
