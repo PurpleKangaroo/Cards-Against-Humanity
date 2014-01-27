@@ -4,6 +4,7 @@ import graphics.ImageLoad;
 
 import java.applet.Applet;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -22,7 +23,6 @@ import java.util.Queue;
 import java.util.Random;
 
 import cards.AnswerCard;
-import cards.Card;
 import cards.Deck;
 import cards.DeckBuilder;
 import cards.Decks;
@@ -86,6 +86,8 @@ public class CardComboApplet extends Applet /*implements Runnable*/ {
 	 */
 	private AttributedCharacterIterator iterator;
 	
+	private Font font = new Font("Helvetica", Font.PLAIN, 12);
+	
 	/**
 	 * Creates an applet that shows different combinations of cards against humanity cards.
 	 * @throws URISyntaxException
@@ -94,7 +96,9 @@ public class CardComboApplet extends Applet /*implements Runnable*/ {
 	 */
 	public CardComboApplet() throws URISyntaxException, IOException
 	{
-		//TODO setSize(Set Some default dimensions);
+		setSize(500,300);
+		
+		this.setFont(font);
 		
 		whiteCards = new LinkedList<AnswerCard>();
 		blackCards = new LinkedList<QuestionCard>();
@@ -103,7 +107,6 @@ public class CardComboApplet extends Applet /*implements Runnable*/ {
 		createDecks();
 		getImages();
 		fillCardQueues();
-		paint(this.getGraphics());
 	}
 	
 	/**
@@ -116,6 +119,8 @@ public class CardComboApplet extends Applet /*implements Runnable*/ {
 	public CardComboApplet(Dimension dimensions) throws URISyntaxException, IOException
 	{
 		setSize(dimensions);
+		
+		this.setFont(font);
 		
 		whiteCards = new LinkedList<AnswerCard>();
 		blackCards = new LinkedList<QuestionCard>();
