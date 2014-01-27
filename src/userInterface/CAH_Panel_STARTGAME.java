@@ -44,12 +44,11 @@ public class CAH_Panel_STARTGAME extends JPanel{
 		setBackground();
 		
 		this.add(background);
+		background.add(menu);
 		
 		super.setVisible(true);
 		background.setVisible(true);
 		menu.setVisible(true);
-		
-		revalidate();
 		
 	}
 	
@@ -61,7 +60,6 @@ public class CAH_Panel_STARTGAME extends JPanel{
 	private void setBackground() throws URISyntaxException
 	{
 		background = new JPanel();
-		background.add(menu);
 		backgroundImage = ImageLoad.loadImage("signupbackground.jpg");
 		background.paint(getGraphics());
 		

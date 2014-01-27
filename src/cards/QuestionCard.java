@@ -9,8 +9,8 @@ import java.util.ArrayList;
 /**
  * A type object that represents a question card (The black cards in Cards Against Humanity).
  * <dl>
- * The classes {@linkplain questionCard} and {@linkplain answerCard} are different because questionCards allow the card to require the user to play or draw a certain number of cards.
- * @see {@linkplain answerCard}, {@linkplain Card}
+ * The classes {@linkplain QuestionCard} and {@linkplain AnswerCard} are different because QuestionCards allow the card to require the user to play or draw a certain number of cards.
+ * @see {@linkplain AnswerCard}, {@linkplain Card}
  * @author Holt Maki
  * @since CAH1.0
  * @version CAH1.0
@@ -25,10 +25,10 @@ public class QuestionCard extends Card{
 	/**
 	 * Creates a question card.
 	 * @since CAH1.0
-	 * @param {@link #card} - the writing that will be on the card
+	 * @param {@linkplain #card} - the writing that will be on the card
 	 * @throws IOException 
 	 * @throws URISyntaxException 
-	 * @see {@link #Card(String card)}
+	 * @see {@linkplain #Card(String card)}
 	 */
 	public QuestionCard(String card, String folder, String filePrefix) throws URISyntaxException, IOException 
 	{
