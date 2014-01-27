@@ -260,8 +260,8 @@ public class CardComboApplet extends Applet /*implements Runnable*/ {
 		
 		int numberOfCards = blackCards.peek().getDraw();
 		
-		int x = this.getWidth() / 40;
-		int cardWidth = (this.getWidth() - (2*x)) / (numberOfCards + 1);
+		int x = 5;
+		int cardWidth = (75 - (2*x)) / (numberOfCards + 1);
 		
 		Rectangle r; 
 		for (int i = 1; i <= numberOfCards; i++)  // this loop draws each card and then the text on top of it, works for any number of cards(within reason).
