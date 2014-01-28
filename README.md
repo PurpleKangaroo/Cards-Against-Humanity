@@ -14,9 +14,9 @@ We may be able to release this game earlier, but we hope to have the game out by
 ### Authors and Contributors
 Holt Maki ([@HoltMaki](https://github.com/HoltMaki)) - Lead Developer
 
-Devon Grove ([@devongrove](https://github.com/devongrove)) - Associate Developer, Public Relations
+Devon Grove ([@devongrove](https://github.com/devongrove)) - Associate Developer, Lead Tester, Public Relations
 
-Nick Walker ([@oswin5656](https://github.com/oswin5656)) - Associate Developer, Head Graphic Design
+Nick Walker ([@oswin5656](https://github.com/oswin5656)) - Associate Developer, Lead Graphic Design
 
 ### Support or Contact
 purplekangs@gmail.com
