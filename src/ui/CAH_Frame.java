@@ -1,29 +1,25 @@
 package ui;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.SpringLayout;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import java.awt.FlowLayout;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.factories.FormFactory;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import javax.swing.JLayeredPane;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-import java.awt.Color;
+import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.RowSpec;
 
 public class CAH_Frame extends JFrame {
 
@@ -73,79 +69,63 @@ public class CAH_Frame extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
-		panel.setBounds(339, 235, 594, 361);
+		panel.setBounds(347, 227, 594, 441);
 		layeredPane.add(panel);
 		
 		JLabel lblNewGame = new JLabel("New Game");
+		lblNewGame.setBounds(281, 10, 303, 69);
 		lblNewGame.setIconTextGap(1);
 		lblNewGame.setAlignmentX(Component.CENTER_ALIGNMENT);
-		
-		lblNewGame.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				//TODO- JLabel should grow
-			}
-		});
-		SpringLayout sl_panel = new SpringLayout();
-		sl_panel.putConstraint(SpringLayout.NORTH, lblNewGame, 10, SpringLayout.NORTH, panel);
-		sl_panel.putConstraint(SpringLayout.SOUTH, lblNewGame, -284, SpringLayout.SOUTH, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, lblNewGame, -10, SpringLayout.EAST, panel);
-		panel.setLayout(sl_panel);
+		lblNewGame.addMouseListener(new LabelGrow());
+		panel.setLayout(null);
 		lblNewGame.setFont(new Font("Shruti", Font.BOLD, 62));
 		lblNewGame.setForeground(new Color(255, 255, 255));
 		panel.add(lblNewGame);
 		
 		JLabel lblStats = new JLabel("Stats");
-		sl_panel.putConstraint(SpringLayout.NORTH, lblStats, 6, SpringLayout.SOUTH, lblNewGame);
-		sl_panel.putConstraint(SpringLayout.SOUTH, lblStats, -211, SpringLayout.SOUTH, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, lblStats, -10, SpringLayout.EAST, panel);
+		lblStats.setBounds(449, 160, 135, 69);
 		lblStats.setIconTextGap(1);
 		lblStats.setForeground(Color.WHITE);
 		lblStats.setFont(new Font("Shruti", Font.BOLD, 62));
 		lblStats.setAlignmentX(0.5f);
-		
-		lblStats.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				//TODO- JLabel should grow
-			}
-		});
+		lblStats.addMouseListener(new LabelGrow());
 		panel.add(lblStats);
 		
 		JLabel lblUsers = new JLabel("Users");
-		sl_panel.putConstraint(SpringLayout.NORTH, lblUsers, 6, SpringLayout.SOUTH, lblStats);
-		sl_panel.putConstraint(SpringLayout.SOUTH, lblUsers, -138, SpringLayout.SOUTH, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, lblUsers, 0, SpringLayout.EAST, lblNewGame);
+		lblUsers.setBounds(430, 235, 154, 69);
 		lblUsers.setIconTextGap(1);
 		lblUsers.setForeground(Color.WHITE);
 		lblUsers.setFont(new Font("Shruti", Font.BOLD, 62));
 		lblUsers.setAlignmentX(0.5f);
-		lblUsers.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				//TODO- JLabel should grow
-			}
-		});
-		
+		lblUsers.addMouseListener(new LabelGrow());		
 		panel.add(lblUsers);
 		
 		JLabel lblCards = new JLabel("Cards");
-		sl_panel.putConstraint(SpringLayout.NORTH, lblCards, 6, SpringLayout.SOUTH, lblUsers);
-		sl_panel.putConstraint(SpringLayout.WEST, lblCards, 426, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.SOUTH, lblCards, -65, SpringLayout.SOUTH, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, lblCards, 0, SpringLayout.EAST, lblNewGame);
+		lblCards.setBounds(426, 310, 158, 62);
 		lblCards.setIconTextGap(1);
 		lblCards.setForeground(Color.WHITE);
 		lblCards.setFont(new Font("Shruti", Font.BOLD, 62));
 		lblCards.setAlignmentX(0.5f);
-		lblCards.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				//TODO- JLabel should grow
-			}
-		});
-		
+		lblCards.addMouseListener(new LabelGrow());
 		panel.add(lblCards);
+		
+		JLabel lblLoadGame = new JLabel("Load Game");
+		lblLoadGame.setBounds(268, 85, 316, 69);
+		lblLoadGame.setIconTextGap(1);
+		lblLoadGame.setForeground(Color.WHITE);
+		lblLoadGame.setFont(new Font("Shruti", Font.BOLD, 62));
+		lblLoadGame.setAlignmentX(0.5f);
+		panel.add(lblLoadGame);
+		lblLoadGame.addMouseListener(new LabelGrow());
+		
+		JLabel lblRules = new JLabel("Rules");
+		lblRules.setIconTextGap(1);
+		lblRules.setForeground(Color.WHITE);
+		lblRules.setFont(new Font("Shruti", Font.BOLD, 62));
+		lblRules.setAlignmentX(0.5f);
+		lblRules.setBounds(426, 368, 158, 62);
+		lblRules.addMouseListener(new LabelGrow());
+		panel.add(lblRules);
 		
 		JLabel BackgroundImage = new JLabel("");
 		BackgroundImage.setBounds(0, 0, 1500, 722);
@@ -155,5 +135,12 @@ public class CAH_Frame extends JFrame {
 		BackgroundImage.setIcon(new ImageIcon(CAH_Frame.class.getResource("/graphics/signupbackground.jpg")));
 		layeredPane.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{BackgroundImage, panel}));
 		
+	}
+	
+	private class LabelGrow extends MouseAdapter {
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			//TODO- JLabel should grow
+		}
 	}
 }
