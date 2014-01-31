@@ -96,7 +96,7 @@ public class CardComboApplet extends Applet /*implements Runnable*/ {
 	 */
 	public CardComboApplet() throws URISyntaxException, IOException
 	{
-		setSize(500,300);
+		setSize(10,10);
 		
 		this.setFont(font);
 		
@@ -320,11 +320,9 @@ public class CardComboApplet extends Applet /*implements Runnable*/ {
 	 * Runs the applet.
 	 * @since CAH1.0
 	 */
-	/*
-	@Override
+
 	public void run() 
 	{
 		
 	}
-	*/
 }
