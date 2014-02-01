@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -21,10 +22,15 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import java.awt.FlowLayout;
+import com.jgoodies.forms.factories.FormFactory;
+
 @SuppressWarnings("serial")
 public class CAH_Frame extends JFrame {
 
-	private JPanel StartScreen;
+	private JPanel CAH_Panel;
 
 	/**
 	 * Launch the application.
@@ -54,34 +60,54 @@ public class CAH_Frame extends JFrame {
 		setTitle("Cards Against Humanity");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		StartScreen = new JPanel();
-		StartScreen.setMinimumSize(new Dimension(1400, 700));
-		StartScreen.setMaximumSize(new Dimension(1450, 700));
-		StartScreen.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(StartScreen);
-		StartScreen.setLayout(new FormLayout(new ColumnSpec[] {
+		getContentPane().setLayout(new CardLayout());
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnFile = new JMenu("File");
+		menuBar.add(mnFile);
+		
+		JMenu mnHelp = new JMenu("Help");
+		menuBar.add(mnHelp);
+		CAH_Panel = new JPanel();
+		CAH_Panel.setMinimumSize(new Dimension(1400, 700));
+		CAH_Panel.setMaximumSize(new Dimension(1450, 700));
+		CAH_Panel.setBorder(null);
+		setContentPane(CAH_Panel);
+		CAH_Panel.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("1500px:grow"),},
 			new RowSpec[] {
-				RowSpec.decode("default:grow"),
 				RowSpec.decode("722px"),}));
 		
-		JLayeredPane layeredPane = new JLayeredPane();
-		StartScreen.add(layeredPane, "1, 2, fill, fill");
+		JLayeredPane CAH_Layers = new JLayeredPane();
+		CAH_Layers.setBorder(null);
+		CAH_Panel.add(CAH_Layers, "1, 1, fill, fill");
+		CAH_Layers.setLayout(new FormLayout(new ColumnSpec[] {
+				ColumnSpec.decode("1px"),
+				ColumnSpec.decode("1450px"),},
+			new RowSpec[] {
+				RowSpec.decode("722px"),}));
 		
-		JPanel panel = new JPanel();
-		panel.setOpaque(false);
-		panel.setBounds(347, 227, 594, 441);
-		layeredPane.add(panel);
+		JLayeredPane StartPane = new JLayeredPane();
+		CAH_Layers.add(StartPane, "1, 1, fill, fill");
+		StartPane.setLayout(null);
+		
+		JPanel MainMenuPanel = new JPanel();
+		MainMenuPanel.setBounds(5, 185, 189, -179);
+		StartPane.add(MainMenuPanel);
+		MainMenuPanel.setOpaque(false);
+		MainMenuPanel.setLayout(null);
 		
 		JLabel lblNewGame = new JLabel("New Game");
 		lblNewGame.setBounds(281, 10, 303, 69);
 		lblNewGame.setIconTextGap(1);
 		lblNewGame.setAlignmentX(Component.CENTER_ALIGNMENT);
-		lblNewGame.addMouseListener(new LabelGrow());
-		panel.setLayout(null);
+		lblNewGame.addMouseListener(new LabelGrow(lblNewGame));
 		lblNewGame.setFont(new Font("Shruti", Font.BOLD, 62));
 		lblNewGame.setForeground(new Color(255, 255, 255));
-		panel.add(lblNewGame);
+		MainMenuPanel.add(lblNewGame);
+		
 		
 		JLabel lblStats = new JLabel("Stats");
 		lblStats.setBounds(449, 160, 135, 69);
@@ -89,8 +115,8 @@ public class CAH_Frame extends JFrame {
 		lblStats.setForeground(Color.WHITE);
 		lblStats.setFont(new Font("Shruti", Font.BOLD, 62));
 		lblStats.setAlignmentX(0.5f);
-		lblStats.addMouseListener(new LabelGrow());
-		panel.add(lblStats);
+		lblStats.addMouseListener(new LabelGrow(lblStats));
+		MainMenuPanel.add(lblStats);
 		
 		JLabel lblUsers = new JLabel("Users");
 		lblUsers.setBounds(430, 235, 154, 69);
@@ -98,8 +124,8 @@ public class CAH_Frame extends JFrame {
 		lblUsers.setForeground(Color.WHITE);
 		lblUsers.setFont(new Font("Shruti", Font.BOLD, 62));
 		lblUsers.setAlignmentX(0.5f);
-		lblUsers.addMouseListener(new LabelGrow());		
-		panel.add(lblUsers);
+		lblUsers.addMouseListener(new LabelGrow(lblUsers));		
+		MainMenuPanel.add(lblUsers);
 		
 		JLabel lblCards = new JLabel("Cards");
 		lblCards.setBounds(426, 310, 158, 62);
@@ -107,8 +133,8 @@ public class CAH_Frame extends JFrame {
 		lblCards.setForeground(Color.WHITE);
 		lblCards.setFont(new Font("Shruti", Font.BOLD, 62));
 		lblCards.setAlignmentX(0.5f);
-		lblCards.addMouseListener(new LabelGrow());
-		panel.add(lblCards);
+		lblCards.addMouseListener(new LabelGrow(lblCards));
+		MainMenuPanel.add(lblCards);
 		
 		JLabel lblLoadGame = new JLabel("Load Game");
 		lblLoadGame.setBounds(268, 85, 316, 69);
@@ -116,32 +142,69 @@ public class CAH_Frame extends JFrame {
 		lblLoadGame.setForeground(Color.WHITE);
 		lblLoadGame.setFont(new Font("Shruti", Font.BOLD, 62));
 		lblLoadGame.setAlignmentX(0.5f);
-		panel.add(lblLoadGame);
-		lblLoadGame.addMouseListener(new LabelGrow());
+		MainMenuPanel.add(lblLoadGame);
+		lblLoadGame.addMouseListener(new LabelGrow(lblLoadGame));
 		
 		JLabel lblRules = new JLabel("Rules");
 		lblRules.setIconTextGap(1);
 		lblRules.setForeground(Color.WHITE);
 		lblRules.setFont(new Font("Shruti", Font.BOLD, 62));
 		lblRules.setAlignmentX(0.5f);
-		lblRules.setBounds(426, 368, 158, 62);
-		lblRules.addMouseListener(new LabelGrow());
-		panel.add(lblRules);
+		lblRules.setBounds(426, 383, 158, 62);
+		lblRules.addMouseListener(new LabelGrow(lblRules));
+		MainMenuPanel.add(lblRules);
+		
+		JLabel lblCardsAgainstHumanity = new JLabel("Cards Against Humanity");
+		lblCardsAgainstHumanity.setBounds(-52, 738, 115, 14);
+		StartPane.add(lblCardsAgainstHumanity);
+		
 		
 		JLabel BackgroundImage = new JLabel("");
-		BackgroundImage.setBounds(0, 0, 1500, 722);
-		layeredPane.add(BackgroundImage);
+		CAH_Layers.add(BackgroundImage, "2, 1, left, top");
 		BackgroundImage.setIconTextGap(0);
 		BackgroundImage.setAlignmentX(Component.CENTER_ALIGNMENT);
 		BackgroundImage.setIcon(new ImageIcon(CAH_Frame.class.getResource("/graphics/signupbackground.jpg")));
-		layeredPane.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{BackgroundImage, panel}));
+		CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{MainMenuPanel, StartPane, lblNewGame, lblStats, lblUsers, lblCards, lblLoadGame, lblRules, lblCardsAgainstHumanity, BackgroundImage}));
 		
 	}
 	
 	private class LabelGrow extends MouseAdapter {
+		private JLabel label;
+		
+		public LabelGrow(JLabel label)
+		{
+			this.label = label;
+		}
 		@Override
 		public void mouseEntered(MouseEvent arg0) {
 			//TODO- JLabel should grow
+		}
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			if(label.getText().equals("New Game"))
+			{
+				
+			}
+			else if(label.getText().equals("Load Game"))
+			{
+				
+			}
+			else if(label.getText().equals("Stats"))
+			{
+				
+			}
+			else if(label.getText().equals("Cards"))
+			{
+				
+			}
+			else if(label.getText().equals("Users"))
+			{
+				
+			}
+			else if(label.getText().equals("Rules"))
+			{
+				
+			}
 		}
 	}
 }
