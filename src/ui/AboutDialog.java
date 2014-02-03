@@ -1,30 +1,23 @@
 package ui;
 
 import java.awt.BorderLayout;
+import java.awt.Cursor;
 import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.factories.FormFactory;
-import javax.swing.SpringLayout;
-import javax.swing.BoxLayout;
-import javax.swing.JTextField;
-import javax.swing.JScrollBar;
 import javax.swing.JTextArea;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
-import java.awt.Cursor;
+import javax.swing.border.EmptyBorder;
 
+@SuppressWarnings("serial")
 public class AboutDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
