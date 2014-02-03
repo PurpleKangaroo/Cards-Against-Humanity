@@ -2,39 +2,33 @@ package ui;
 
 import game.HouseRules;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 
-import javax.swing.JLayeredPane;
-import javax.swing.JLabel;
-
-import java.awt.Component;
-
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JList;
 import javax.swing.JPanel;
-
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 import javax.swing.plaf.ColorUIResource;
-import javax.swing.BoxLayout;
-import javax.swing.UIManager;
 
-import java.awt.Color;
-
-import javax.swing.ButtonGroup;
-import javax.swing.JRadioButton;
-import javax.swing.JToggleButton;
-import javax.swing.JCheckBox;
-import javax.swing.JSeparator;
-import javax.swing.JButton;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.JList;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class CAH_NewGame extends JLayeredPane {
-
+//TODO: Create examples applet in the left area.
 	/**
 	 * Create the panel.
 	 * @since CAH1.0
@@ -154,7 +148,7 @@ public class CAH_NewGame extends JLayeredPane {
 		JPanel AddPlayerPanel = new JPanel();
 		AddPlayerPanel.setBorder(new TitledBorder(null, "Players", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		AddPlayerPanel.setOpaque(false);
-		AddPlayerPanel.setBounds(0, 201, 636, 247);
+		AddPlayerPanel.setBounds(0, 201, 636, 226);
 		StartGameMenus.add(AddPlayerPanel);
 		AddPlayerPanel.setLayout(null);
 		
@@ -163,17 +157,27 @@ public class CAH_NewGame extends JLayeredPane {
 		AddPlayerPanel.add(separator);
 		
 		JButton btnAddPlayer = new JButton("Add Player");
+		btnAddPlayer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//TODO: fill
+			}
+		});
 		btnAddPlayer.setOpaque(false);
 		btnAddPlayer.setBounds(537, 11, 89, 23);
 		AddPlayerPanel.add(btnAddPlayer);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setOpaque(false);
-		scrollPane.setBounds(10, 45, 616, 191);
+		scrollPane.setBounds(10, 45, 616, 170);
 		AddPlayerPanel.add(scrollPane);
 		
-		JList list = new JList();
-		scrollPane.setViewportView(list);
+		JList PlayerList = new JList();
+		scrollPane.setViewportView(PlayerList);
+		
+		JButton btnStartGame = new JButton("Start Game");
+		btnStartGame.setOpaque(false);
+		btnStartGame.setBounds(274, 436, 89, 23);
+		StartGameMenus.add(btnStartGame);
 		
 		JLabel NewGameBackground = new JLabel("");
 		NewGameBackground.setIcon(new ImageIcon(CAH_NewGame.class.getResource("/graphics/signupbackground.jpg")));
