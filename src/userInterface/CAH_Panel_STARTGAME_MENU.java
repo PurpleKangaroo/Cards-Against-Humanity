@@ -327,44 +327,8 @@ public class CAH_Panel_STARTGAME_MENU extends JPanel
 		return new CAH_Game(new Rules(houseRulesList), new DeckBuilder((Decks[]) deckList.toArray()), players);
 	}
 	
-	/**
-	 * Wraps the string for the tool tips.
-	 * The wrapping is done with HTML
-	 * @param str - the string that will be wrapped with HTML.
-	 * @return str + "<</html>/html>" - the String wrapped in HTML plus the closing "<</html>/html>".
-	 * <html>
-	 * @since CAH1.0
-	 * @author Holt Maki
-	 * 
-	 */
 	
-	private String wrap(String str)
-	{
-		str = "<html>" + str;
-		for(int i = 50; i<str.length(); i+=50)
-		{
-		
-			try
-			{
-				while(str.charAt(i) != ' ' && i <str.length())
-				{
-					i++;
-				}
-				
-				if (i<str.length())
-				{
-					str = str.substring(0,i) +"<br>" + str.substring(i);
-				}
-			}
-			
-			catch(Exception e)
-			{
-				
-			}
-						
-		}
-		
-		return str + "</html>";
-	}
+	
+	
 
 }
