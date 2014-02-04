@@ -15,6 +15,7 @@ public class HumanPlayer extends NonRandoPlayer{
 	 * @param numberOfCards - the number of cards allowed to each player in the game.
 	 * @param userName - the userName of the user that is controlling the player.
 	 * @since CAH1.0
+	 * @author Holt Maki
 	 */
 	public HumanPlayer(int numberOfCards, String userName) 
 	{
@@ -34,6 +35,7 @@ public class HumanPlayer extends NonRandoPlayer{
 	/**
 	 * Gets the User that controls the Player.
 	 * @since CAH1.0
+	 * @author Holt Maki
 	 * @return person - the User that controls the Player.
 	 */
 	public User getUser()
@@ -44,6 +46,7 @@ public class HumanPlayer extends NonRandoPlayer{
 	/**
 	 * Gets the players name
 	 * @since CAH1.0
+	 * @author Holt Maki
 	 * @return The players first and last name.
 	 */
 	public String getName()
@@ -54,6 +57,7 @@ public class HumanPlayer extends NonRandoPlayer{
 	/**
 	 * Gets the players username.
 	 * @since CAH1.0
+	 * @author Holt Maki
 	 * @return The players username.
 	 */
 	public String getUserName() {
