@@ -9,6 +9,7 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.MatteBorder;
 import java.awt.Dimension;
 import javax.swing.JLabel;
+import java.awt.Font;
 
 /**
  * A class of object that represents the panel where a players information is displayed
@@ -20,6 +21,7 @@ import javax.swing.JLabel;
 @SuppressWarnings("serial")
 public class PlayerPanel extends JPanel 
 {
+	//TODO set tooltip with html.
 	/**
 	 * The player whose information is in the panel.
 	 */
@@ -41,8 +43,13 @@ public class PlayerPanel extends JPanel
 		setLayout(null);
 		
 		JLabel UserName = new JLabel("<html><body style=\"color:WHITE\">" + player.getUserName() + "</body></html>");
-		UserName.setBounds(10, 0, 116, 14);
+		UserName.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		UserName.setBounds(10, 0, 116, 20);
 		add(UserName);
+		
+		JLabel Name = new JLabel("<html><body style=\"color:WHITE\">" + player.getName() + "</body></html>");
+		Name.setBounds(10, 22, 116, 14);
+		add(Name);
 
 	}
 }
