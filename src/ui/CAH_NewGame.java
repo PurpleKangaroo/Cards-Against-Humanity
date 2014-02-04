@@ -25,6 +25,7 @@ import javax.swing.plaf.ColorUIResource;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class CAH_NewGame extends JLayeredPane {
@@ -178,6 +179,12 @@ public class CAH_NewGame extends JLayeredPane {
 		btnStartGame.setOpaque(false);
 		btnStartGame.setBounds(274, 436, 89, 23);
 		StartGameMenus.add(btnStartGame);
+		
+		JLabel lblCardsAgainstHumanity = new JLabel("Cards Against Humanity");
+		lblCardsAgainstHumanity.setBounds(83, 43, 1024, 139);
+		add(lblCardsAgainstHumanity);
+		lblCardsAgainstHumanity.setForeground(Color.WHITE);
+		lblCardsAgainstHumanity.setFont(new Font("Arial Black", Font.BOLD, 70));
 		
 		JLabel NewGameBackground = new JLabel("");
 		NewGameBackground.setIcon(new ImageIcon(CAH_NewGame.class.getResource("/graphics/signupbackground.jpg")));
