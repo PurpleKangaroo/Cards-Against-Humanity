@@ -40,9 +40,9 @@ public class PlayerPanel extends JPanel
 		this.player = player;
 		setLayout(null);
 		
-		JLabel PlayerName = new JLabel("<html><body style=\"color:WHITE\">" + player.</body></html>");
-		PlayerName.setBounds(0, 0, 46, 14);
-		add(PlayerName);
+		JLabel UserName = new JLabel("<html><body style=\"color:WHITE\">" + player.getUserName() + "</body></html>");
+		UserName.setBounds(10, 0, 116, 14);
+		add(UserName);
 
 	}
 }

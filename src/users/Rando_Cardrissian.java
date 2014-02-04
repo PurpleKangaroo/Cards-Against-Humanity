@@ -36,10 +36,22 @@ public class Rando_Cardrissian extends Player{
 	 * Gets the players name.
 	 * In this case it is always Rando Cardrissian.
 	 * @return "Rando Cardrissian" the player's name.
+	 * @since CAH1.0
 	 */
 	public String getName()
 	{
 		return "Rando Cardrissian";
+	}
+	
+	/**
+	 * Gets the player's user name.
+	 * @return "RandoCardrissian" - the username.
+	 * @since CAH1.0
+	 * @author Holt Maki
+	 */
+	public String getUserName()
+	{
+		return "RandoCardrissian";
 	}
 
 }

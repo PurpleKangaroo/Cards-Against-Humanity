@@ -169,5 +169,6 @@ public abstract class Player {
 	 * @return the player's name.
 	 */
 	public abstract String getName();
+	public abstract String getUserName();
 	
 }
