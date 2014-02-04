@@ -13,7 +13,7 @@ import cards.Hand;
  *
  */
 
-public class Player {
+public abstract class Player {
 	protected boolean Card_Czar;
 	protected int AwesomePoints = 0;
 	private boolean RandoCard;
@@ -163,4 +163,11 @@ public class Player {
 	{
 		return RandoCard;
 	}
+	
+	/**
+	 * Gets the player's name.
+	 * @return the player's name.
+	 */
+	public abstract String getName();
+	
 }

@@ -8,10 +8,10 @@ import cards.Hand;
  * @author Holt Maki
  * @since CAH1.0
  * @version CAH1.0
- * @see {@linkplain user}
+ * @see {@linkplain User}
  *
  */
-public class NonRandoPlayer extends Player
+public abstract class NonRandoPlayer extends Player
 {
 	
 	/**
