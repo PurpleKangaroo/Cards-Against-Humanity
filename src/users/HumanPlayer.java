@@ -33,6 +33,7 @@ public class HumanPlayer extends NonRandoPlayer{
 	
 	/**
 	 * Gets the User that controls the Player.
+	 * @since CAH1.0
 	 * @return person - the User that controls the Player.
 	 */
 	public User getUser()
@@ -42,11 +43,21 @@ public class HumanPlayer extends NonRandoPlayer{
 	
 	/**
 	 * Gets the players name
+	 * @since CAH1.0
 	 * @return The players first and last name.
 	 */
 	public String getName()
 	{
 		return person.getUserProfile().getFirstName() + person.getUserProfile().getLastName();
+	}
+
+	/**
+	 * Gets the players username.
+	 * @since CAH1.0
+	 * @return The players username.
+	 */
+	public String getUserName() {
+		return person.getUserProfile().getUserName();
 	}
 	
 
