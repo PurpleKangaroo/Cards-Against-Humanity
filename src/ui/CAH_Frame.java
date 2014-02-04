@@ -41,6 +41,7 @@ public class CAH_Frame extends JFrame {
 	/**
 	 * Launch the application.
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 * @author Holt Maki
 	 */
 	public static void main(String[] args) {
@@ -59,6 +60,7 @@ public class CAH_Frame extends JFrame {
 	/**
 	 * Create the frame.
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 * @author Holt Maki
 	 */
 	public CAH_Frame() {
