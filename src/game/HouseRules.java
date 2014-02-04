@@ -128,12 +128,28 @@ public enum HouseRules {
 	 */
 	NEVER_HAVE_I_EVER("\"At any time players may discard cards that they don't understand, but they must confess their ignorance to the group and suffer the resulting humilliation.\"");
 	
+	/**
+	 * The description of the rule.
+	 */
 	private final String description;
+	
+	/**
+	 * Creates a new house rule.
+	 * @param description - the description of the house rule.
+	 * @since CAH1.0
+	 * @author Holt Maki
+	 */
 	HouseRules(String description)
 	{
 		this.description = description;
 	}
 	
+	/**
+	 * Gets the description of the rule.
+	 * @since CAH1.0
+	 * @author Holt Maki
+	 * @return
+	 */
 	public String getDescription()
 	{
 		return description;
