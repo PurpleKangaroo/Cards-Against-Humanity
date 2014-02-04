@@ -19,7 +19,7 @@ import java.awt.Font;
  *
  */
 @SuppressWarnings("serial")
-public class PlayerPanel extends JPanel 
+public class PlayerPanel extends JPanel implements Runnable
 {
 	//TODO set tooltip with html.
 	/**
@@ -51,5 +51,41 @@ public class PlayerPanel extends JPanel
 		Name.setBounds(10, 22, 116, 14);
 		add(Name);
 
+	}
+
+	/**
+	 * Runs the panel.
+	 * @since CAH1.0
+	 * @author Holt Maki
+	 */
+	@Override
+	public void run() {
+		cardCzarBackground();
+	}
+	
+	/**
+	 * Sets the background to white if the player is the cardCzar.
+	 * @since CAH1.0
+	 * @author Holt Maki
+	 */
+	private void cardCzarBackground()
+	{
+		if(player.getCard_Czar() == true)
+		{
+			setBackground(Color.WHITE);
+		}
+		else
+		{
+			setBackground(Color.BLACK);
+		}
+	}
+	
+	/**
+	 * Sets the image that represents the player.
+	 * @since incomplete
+	 */
+	private void setImage()
+	{
+		//TODO fill
 	}
 }
