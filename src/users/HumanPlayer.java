@@ -40,5 +40,14 @@ public class HumanPlayer extends NonRandoPlayer{
 		return person;
 	}
 	
+	/**
+	 * Gets the players name
+	 * @return The players first and last name.
+	 */
+	public String getName()
+	{
+		return person.getUserProfile().getFirstName() + person.getUserProfile().getLastName();
+	}
+	
 
 }

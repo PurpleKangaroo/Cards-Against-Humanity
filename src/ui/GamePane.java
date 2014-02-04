@@ -16,6 +16,8 @@ import javax.swing.border.LineBorder;
 import javax.swing.JList;
 import javax.swing.DropMode;
 
+import users.Player;
+
 /**
  * The layered pane that contains the game.
  * @author Holt Maki
@@ -28,16 +30,24 @@ public class GamePane extends JLayeredPane {
 	 * The game of Cards Against Humanity being shown in the pane.
 	 */
 	private CAH_Game game;
+	
+	/**
+	 * The player who is playing the game through this pane.
+	 */
+	private Player player;
 
 	/**
 	 * Creates the panel.
 	 * @author Holt Maki
 	 * @since CAH1.0
 	 * @param game - the game of CAH being shown in the pane.
+	 * @param player - the player who is playing the game on the computer that is showing the pane.
+	 * 
 	 */
-	public GamePane(CAH_Game game) 
+	public GamePane(CAH_Game game, Player player) 
 	{
 		this.game = game;
+		this.player = player;
 		
 		setBounds(new Rectangle(0, 0, 1450, 700));
 		setLayout(null);

@@ -7,6 +7,7 @@ package users;
  * @since incomplete
  */
 public class AIPlayer extends NonRandoPlayer{
+	private String name;
 
 	public AIPlayer(int numberOfCards) {
 		super(numberOfCards);
@@ -18,6 +19,14 @@ public class AIPlayer extends NonRandoPlayer{
 		 */
 		
 		// TODO Auto-generated constructor stub
+	}
+	
+	/**
+	 * Gets the player's name.
+	 */
+	public String getName()
+	{
+		return name;
 	}
 
 }

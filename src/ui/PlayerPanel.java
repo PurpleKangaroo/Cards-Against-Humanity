@@ -3,6 +3,12 @@ package ui;
 import javax.swing.JPanel;
 
 import users.Player;
+import java.awt.Rectangle;
+import java.awt.Color;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.MatteBorder;
+import java.awt.Dimension;
+import javax.swing.JLabel;
 
 /**
  * A class of object that represents the panel where a players information is displayed
@@ -27,8 +33,16 @@ public class PlayerPanel extends JPanel
 	 */
 	public PlayerPanel(Player player) 
 	{
+		setMaximumSize(new Dimension(136, 130));
+		setBorder(new CompoundBorder(new MatteBorder(0, 3, 0, 3, (Color) new Color(0, 0, 0)), new MatteBorder(0, 1, 0, 1, (Color) new Color(255, 255, 255))));
+		setBackground(Color.BLACK);
+		setBounds(new Rectangle(0, 0, 136, 130));
 		this.player = player;
+		setLayout(null);
+		
+		JLabel PlayerName = new JLabel("<html><body style=\"color:WHITE\">" + player.</body></html>");
+		PlayerName.setBounds(0, 0, 46, 14);
+		add(PlayerName);
 
 	}
-
 }
