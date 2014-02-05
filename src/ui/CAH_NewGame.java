@@ -242,16 +242,19 @@ public class CAH_NewGame extends JLayeredPane {
 		StartGameMenus.add(GameType);
 		
 		JRadioButton rdbtnSinglePlayer = new JRadioButton("<html><body style=\"color:WHITE\">Single Player</body></html>");
+		rdbtnSinglePlayer.setFocusPainted(false);
 		rdbtnSinglePlayer.setToolTipText(wrap("Play on your own against a computer player!"));
 		rdbtnSinglePlayer.setOpaque(false);
 		GameType.add(rdbtnSinglePlayer);
 		
 		JRadioButton rdbtnmultiplayer = new JRadioButton("<html><body style=\"color:WHITE\">Multiplayer</body></html>");
+		rdbtnmultiplayer.setFocusPainted(false);
 		rdbtnmultiplayer.setToolTipText(wrap("Gather around one computer with your friends to play a multiplayer game!"));
 		rdbtnmultiplayer.setOpaque(false);
 		GameType.add(rdbtnmultiplayer);
 		
 		JRadioButton rdbtnNetplayMultiplayer = new JRadioButton("<html><body style=\"color:WHITE\">Netplay Multiplayer</body></html>");
+		rdbtnNetplayMultiplayer.setFocusPainted(false);
 		rdbtnNetplayMultiplayer.setToolTipText(wrap("Play over a local internet connection."));
 		rdbtnNetplayMultiplayer.setOpaque(false);
 		GameType.add(rdbtnNetplayMultiplayer);
