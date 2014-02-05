@@ -14,10 +14,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -39,8 +41,13 @@ import com.jgoodies.forms.layout.RowSpec;
 @SuppressWarnings("serial")
 public class CAH_Frame extends JFrame {
 
+	/**
+	 * The panel that contains CAH.
+	 */
 	private JPanel CAH_Panel;
-
+	
+	private JLayeredPane CAH_Layers;
+	
 	/**
 	 * Launch the application.
 	 * @since CAH1.0
@@ -67,6 +74,7 @@ public class CAH_Frame extends JFrame {
 	 * @author Holt Maki
 	 */
 	public CAH_Frame() {
+		
 		setMaximizedBounds(new Rectangle(0, 0, 1450, 700));
 		setMaximumSize(new Dimension(1450, 700));
 		setMinimumSize(new Dimension(1300, 752));
@@ -324,7 +332,10 @@ public class CAH_Frame extends JFrame {
 		CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblLoadGame, lblUsers, lblStats, lblRules, lblCards, lblNewGame, CAH_Layers, Start, StartPanel, lblCardsAgainstHumanity, StartBackground}));
 		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, mnFile, mntmNewGame, mntmExit, mnNetplay, mnHelp, mntmAbout, mntmRules, lblCardsAgainstHumanity, lblStats, lblLoadGame, lblUsers, lblCards, lblRules, lblNewGame, CAH_Panel, Start, StartPanel, CAH_Layers, StartBackground}));
 		
-		CAH_Layers.addPropertyChangeListener();
+		CAH_NewGame newGame = new CAH_NewGame();
+		CAH_Layers.add(newGame);
+		
+		CAH_Layers.addPropertyChangeListener(new LayerListener());
 	}
 	
 	/**
@@ -354,45 +365,23 @@ public class CAH_Frame extends JFrame {
 	 *
 	 */
 	private class LayerListener implements PropertyChangeListener
-	{
-		/**
-		 * The source of the change
-		 */
-		private Object source;
-		
-		/**
-		 * The pane that the listener belongs to.
-		 */
-		private JLayeredPane pane;
+	{		
 		
 		/**
 		 * Creates a new object that listens for the command to change the screen.
 		 * @since CAH1.0
 		 * @version CAH1.0
 		 * @author Holt Maki
-		 * @param pane - the pane that the listener belongs to.
 		 */
-		public LayerListener(JLayeredPane pane)
+		public LayerListener()
 		{
-			this.pane = pane;
+			
 		}
 
 		@Override
 		public void propertyChange(PropertyChangeEvent arg0) {
-			Object newScreen = arg0.getOldValue();
-			
-			oldScreen();
-		}
-		
-		/**
-		 * Gets rid of the old screen.
-		 * @since CAH1.0
-		 * @author Holt Maki
-		 * @version CAH1.0
-		 */
-		private void oldScreen()
-		{
-			
+			Object newScreen = arg0.getNewValue();
+			CardLayout layout = CAH_Layers.
 		}
 		
 	}
