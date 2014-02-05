@@ -157,14 +157,14 @@ public class CAH_NewGame extends JLayeredPane {
 		separator.setBounds(10, 32, 616, 2);
 		AddPlayerPanel.add(separator);
 		
-		JButton btnAddPlayer = new JButton("Add Player");
+		JButton btnAddPlayer = new JButton("<html><h2 style=\"color:GREEN\">+</h2></html>");
 		btnAddPlayer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//TODO: fill
 			}
 		});
 		btnAddPlayer.setOpaque(false);
-		btnAddPlayer.setBounds(537, 11, 89, 23);
+		btnAddPlayer.setBounds(579, 11, 47, 23);
 		AddPlayerPanel.add(btnAddPlayer);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -177,7 +177,7 @@ public class CAH_NewGame extends JLayeredPane {
 		
 		JButton btnStartGame = new JButton("Start Game");
 		btnStartGame.setOpaque(false);
-		btnStartGame.setBounds(274, 436, 89, 23);
+		btnStartGame.setBounds(272, 425, 89, 23);
 		StartGameMenus.add(btnStartGame);
 		
 		JLabel lblCardsAgainstHumanity = new JLabel("Cards Against Humanity");
