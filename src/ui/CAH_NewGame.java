@@ -31,6 +31,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.JPopupMenu;
+import javax.swing.JComboBox;
 
 /**
  * The panel that creates the menu for a new CAH game.
@@ -62,7 +63,7 @@ public class CAH_NewGame extends JLayeredPane {
 		StartGameMenus.setLayout(null);
 		
 		final JPanel Rules = new JPanel();
-		Rules.setBounds(0, 0, 649, 115);
+		Rules.setBounds(0, 0, 649, 106);
 		Rules.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Rules", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		Rules.setOpaque(false);
 		StartGameMenus.add(Rules);
@@ -139,7 +140,7 @@ public class CAH_NewGame extends JLayeredPane {
 		final JPanel DecksPanel = new JPanel();
 		DecksPanel.setBorder(new TitledBorder(null, "Decks", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		DecksPanel.setOpaque(false);
-		DecksPanel.setBounds(0, 126, 649, 64);
+		DecksPanel.setBounds(0, 117, 374, 82);
 		StartGameMenus.add(DecksPanel);
 		
 		final JCheckBox chckbxOriginal = new JCheckBox("<html><body style=\"color:WHITE\">Original</body></html>");
@@ -234,6 +235,27 @@ public class CAH_NewGame extends JLayeredPane {
 		btnStartGame.setBounds(272, 425, 102, 23);
 		StartGameMenus.add(btnStartGame);
 		
+		JPanel GameType = new JPanel();
+		GameType.setOpaque(false);
+		GameType.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Game Type", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
+		GameType.setBounds(384, 117, 265, 82);
+		StartGameMenus.add(GameType);
+		
+		JRadioButton rdbtnSinglePlayer = new JRadioButton("<html><body style=\"color:WHITE\">Single Player</body></html>");
+		rdbtnSinglePlayer.setToolTipText(wrap("Play on your own against a computer player!"));
+		rdbtnSinglePlayer.setOpaque(false);
+		GameType.add(rdbtnSinglePlayer);
+		
+		JRadioButton rdbtnmultiplayer = new JRadioButton("<html><body style=\"color:WHITE\">Multiplayer</body></html>");
+		rdbtnmultiplayer.setToolTipText(wrap("Gather around one computer with your friends to play a multiplayer game!"));
+		rdbtnmultiplayer.setOpaque(false);
+		GameType.add(rdbtnmultiplayer);
+		
+		JRadioButton rdbtnNetplayMultiplayer = new JRadioButton("<html><body style=\"color:WHITE\">Netplay Multiplayer</body></html>");
+		rdbtnNetplayMultiplayer.setToolTipText(wrap("Play over a local internet connection."));
+		rdbtnNetplayMultiplayer.setOpaque(false);
+		GameType.add(rdbtnNetplayMultiplayer);
+		
 		JLabel lblCardsAgainstHumanity = new JLabel("Cards Against Humanity");
 		lblCardsAgainstHumanity.setBounds(83, 43, 1024, 139);
 		add(lblCardsAgainstHumanity);
@@ -243,7 +265,7 @@ public class CAH_NewGame extends JLayeredPane {
 		final JLabel NewGameBackground = new JLabel("");
 		NewGameBackground.setIcon(new ImageIcon(CAH_NewGame.class.getResource("/graphics/signupbackground.jpg")));
 		NewGameBackground.setAlignmentX(Component.CENTER_ALIGNMENT);
-		NewGameBackground.setBounds(0, 0, 1450, 722);
+		NewGameBackground.setBounds(0, 11, 1450, 722);
 		add(NewGameBackground);
 		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{HouseRulesPanel, Rules, StartGameMenus, NewGameBackground, chckbxhappyEnding, chckbxrebootingTheUniverse, chckbxpackingHeat, chckbxrandoCardrissian, chckbxsurvivalOfThe, chckbxseriousBuisness, chckbxneverHaveI, gamblingPanel, rdbtnOn, rdbtnoff, DecksPanel, chckbxOriginal, chckbxExpansion1, chckbxExpansion2, chckbxExpansion3, chckbxExpansion4, chckbxHolidayExpansion, AddPlayerPanel}));
 		
@@ -308,3 +330,4 @@ public class CAH_NewGame extends JLayeredPane {
 		return str + "</html>";
 	}
 }
+
