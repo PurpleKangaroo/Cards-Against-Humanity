@@ -1,21 +1,17 @@
 package ui;
 
-import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.LayoutManager;
+import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -31,15 +27,20 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
-import javax.swing.event.MouseInputAdapter;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
-import java.awt.GridLayout;
 
+/**
+ * A class of object that represents the frame that contains Cards against humanity.
+ * @author Holt Maki
+ * @since CAH1.0
+ * @version CAH1.0
+ *
+ */
 @SuppressWarnings("serial")
 public class CAH_Frame extends JFrame {
 
