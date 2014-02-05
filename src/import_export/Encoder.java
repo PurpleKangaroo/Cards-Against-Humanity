@@ -33,16 +33,16 @@ public class Encoder {
 	
 	/**
 	 * Gets the text in the right encoding.
-	 * @param encodeString - The string that will have its encoding fixed.
+	 * @param encodeStr - The string that will have its encoding fixed.
 	 * @return encoded - the corectly encoded String.
 	 * @since CAH1.0
 	 */
 	public String encode(String encodeStr)
 	{
-		String encoded = new String();
+		String encoded = encodeStr;
 		for (int i = 0; i< chars.length; i++)
 		{
-			encoded = encoded.replaceAll(strs[i], chars[i] + "");
+			encoded = encoded.replaceAll(strs[i], chars[i] +"");
 		}
 		return encoded;
 	}	
