@@ -33,6 +33,7 @@ public final class Rules {
 	 * come up that says you may not have both of these two rules, because they disagree.
 	 * </ul>
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 */
 	public Rules(ArrayList<HouseRules> rules) throws RuleConflictException
 	{
@@ -121,6 +122,7 @@ public final class Rules {
 	 * Gets the number of cards a player holds in their hand in a game.
 	 * @return NUMBER_OF_CARDS - The number of cards a player holds in their hand in a game.
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 */
 	protected int NUMBER_OF_CARDS()
 	{
@@ -131,6 +133,7 @@ public final class Rules {
 	 * Gets the boolean that tells whether or not basic rules are being used.
 	 * @return basic - The boolean that tells whether or not basic rules are in effect.
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 */
 	protected boolean basic()
 	{
@@ -141,6 +144,7 @@ public final class Rules {
 	 * Gets the boolean that tells whether or not the Card Czar exists.
 	 * @return cCzarExists - The boolean that tells whether or not the Card Czar exists.
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 */
 	protected boolean cCzarExists()
 	{
@@ -151,6 +155,7 @@ public final class Rules {
 	 * Gets the boolean that tells whether or not the God Is Dead rule is in effect.
 	 * @return GodIsDead - The boolean that tells whether or not the God Is Dead rule is in effect.
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 */
 	protected boolean GodIsDead()
 	{
@@ -161,6 +166,7 @@ public final class Rules {
 	 * Gets the boolean that tells whether or not the Happy Ending rule is in effect.
 	 * @return HappyEnding - The boolean that tells whether or not the Happy Ending rule is in effect.
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 */
 	protected boolean HappyEnding()
 	{
@@ -171,6 +177,7 @@ public final class Rules {
 	 * Gets the boolean that tells whether or not the Never Have I Ever rule is in effect.
 	 * @return NeverHaveIEver - The boolean that tells whether or not the Never Have I Ever rule is in effect.
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 */
 	protected boolean NeverHaveIEver()
 	{
@@ -181,6 +188,7 @@ public final class Rules {
 	 * Gets the boolean that tells whether or not the Packing Heat rule is in effect.
 	 * @return PackingHeat - The boolean that tells whether or not the Packing Heat rule is in effect.
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 */
 	protected boolean PackingHeat()
 	{
@@ -191,6 +199,7 @@ public final class Rules {
 	 * Gets the boolean that tells whether or not Rando Cardrissian exists. This also tells us if the Rando Cardrissian rule is in effect.
 	 * @return RandoCardrissianExists - The boolean that tells if Rando Cardrissian exists and if the {@linkplain HouseRules} Rando Cardrissian is in effect.
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 */
 	protected boolean RandoCardrissianExists()
 	{
@@ -201,6 +210,7 @@ public final class Rules {
 	 * Gets the boolean that tells whether or not the Rebooting The Universe rule is in effect.
 	 * @return RebootingTheUniverse - The boolean that tells whether or not the Rebooting The Universe rule is in effect.
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 */
 	protected boolean RebootingTheUniverse()
 	{
@@ -211,6 +221,7 @@ public final class Rules {
 	 * Gets the boolean that tells whether or not the Serious Buisness rule is in effect.
 	 * @return SeriousBuisness - The boolean that tells whether or not the Serious Buisness rule is in effect.
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 */
 	protected boolean SeriousBuisness()
 	{
@@ -221,6 +232,7 @@ public final class Rules {
 	 * Gets the boolean that tells whether or not the Surviaval Of The Fittest rule is in effect.
 	 * @return SurviavalOfTheFittest - The boolean that tells whether or not the Surviaval Of The Fittest rule is in effect.
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 */
 	protected boolean SurviavalOfTheFittest()
 	{
@@ -231,6 +243,7 @@ public final class Rules {
 	 * Gets the arrayList of House Rules used in the game.
 	 * @return houseRules - The arrayList of House Rules used in the game.
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 */
 	protected ArrayList<HouseRules> houseRules()
 	{

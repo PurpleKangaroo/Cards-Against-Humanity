@@ -8,6 +8,7 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -28,8 +29,11 @@ import cards.Decks;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.Font;
 import java.awt.Insets;
+
 import javax.swing.JPopupMenu;
 import javax.swing.JComboBox;
 import javax.swing.border.LineBorder;
@@ -60,19 +64,19 @@ public class CAH_NewGame extends JLayeredPane {
 		final JPanel StartGameMenus = new JPanel();
 		StartGameMenus.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		StartGameMenus.setOpaque(false);
-		StartGameMenus.setBounds(263, 230, 672, 447);
+		StartGameMenus.setBounds(240, 230, 695, 447);
 		add(StartGameMenus);
 		StartGameMenus.setLayout(null);
 		
 		final JPanel Rules = new JPanel();
-		Rules.setBounds(13, 0, 649, 106);
+		Rules.setBounds(13, 0, 672, 106);
 		Rules.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Rules", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		Rules.setOpaque(false);
 		StartGameMenus.add(Rules);
 		Rules.setLayout(null);
 		
 		final JPanel HouseRulesPanel = new JPanel();
-		HouseRulesPanel.setBounds(10, 16, 538, 81);
+		HouseRulesPanel.setBounds(10, 16, 561, 81);
 		HouseRulesPanel.setBorder(new TitledBorder(null, "House Rules", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		HouseRulesPanel.setOpaque(false);
 		Rules.add(HouseRulesPanel);
@@ -101,6 +105,12 @@ public class CAH_NewGame extends JLayeredPane {
 		chckbxrandoCardrissian.setToolTipText(wrap(HouseRules.RANDO_CARDRISSIAN.getDescription()));
 		HouseRulesPanel.add(chckbxrandoCardrissian);
 		
+		final JCheckBox chckbxgodIsDead = new JCheckBox("<html><body style=\"color:WHITE\">God Is Dead</body></html>");
+		chckbxgodIsDead.setFocusPainted(false);
+		chckbxgodIsDead.setOpaque(false);
+		chckbxgodIsDead.setToolTipText(wrap(HouseRules.GOD_IS_DEAD.getDescription()));
+		HouseRulesPanel.add(chckbxgodIsDead);
+		
 		final JCheckBox chckbxsurvivalOfThe = new JCheckBox("<html><body style=\"color:WHITE\">Survival of the Fittest</body></html>");
 		chckbxsurvivalOfThe.setFocusPainted(false);
 		chckbxsurvivalOfThe.setOpaque(false);
@@ -119,10 +129,16 @@ public class CAH_NewGame extends JLayeredPane {
 		chckbxneverHaveI.setToolTipText(wrap(HouseRules.NEVER_HAVE_I_EVER.getDescription()));
 		HouseRulesPanel.add(chckbxneverHaveI);
 		
+		CheckBoxGroup conflictingRules = new CheckBoxGroup();
+		conflictingRules.add(chckbxgodIsDead);
+		conflictingRules.add(chckbxsurvivalOfThe);
+		conflictingRules.add(chckbxseriousBuisness);
+		
 		final JPanel gamblingPanel = new JPanel();
 		gamblingPanel.setBorder(new TitledBorder(null, "Gambling", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		gamblingPanel.setOpaque(false);
-		gamblingPanel.setBounds(558, 16, 81, 81);
+		gamblingPanel.setBounds(581, 16, 81, 81);
+		gamblingPanel.setToolTipText(wrap("If a Black Card is played and you have more than one White Card that you think could win, you can bet one of your Awesome Points to play an additional White Card. If you win, keep the point. If you lose, whoever won the round gets the point you wagered."));
 		Rules.add(gamblingPanel);
 		
 		ButtonGroup gamblingButtons = new ButtonGroup();
@@ -134,6 +150,7 @@ public class CAH_NewGame extends JLayeredPane {
 		gamblingPanel.add(rdbtnOn);
 		
 		final JRadioButton rdbtnoff = new JRadioButton("<html><body style=\"color:WHITE\">Off</body></html>");
+		rdbtnoff.setSelected(true);
 		rdbtnoff.setFocusPainted(false);
 		rdbtnoff.setOpaque(false);
 		gamblingButtons.add(rdbtnoff);
@@ -142,10 +159,11 @@ public class CAH_NewGame extends JLayeredPane {
 		final JPanel DecksPanel = new JPanel();
 		DecksPanel.setBorder(new TitledBorder(null, "Decks", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		DecksPanel.setOpaque(false);
-		DecksPanel.setBounds(13, 117, 374, 82);
+		DecksPanel.setBounds(13, 117, 397, 82);
 		StartGameMenus.add(DecksPanel);
 		
 		final JCheckBox chckbxOriginal = new JCheckBox("<html><body style=\"color:WHITE\">Original</body></html>");
+		chckbxOriginal.setSelected(true);
 		chckbxOriginal.setFocusPainted(false);
 		chckbxOriginal.setOpaque(false);
 		chckbxOriginal.setToolTipText(wrap(Decks.ORIGINAL.getDescription()).replaceAll("-", " -").replaceAll("surface -to -air", "surface-to-air"));
@@ -185,7 +203,7 @@ public class CAH_NewGame extends JLayeredPane {
 		final JPanel AddPlayerPanel = new JPanel();
 		AddPlayerPanel.setBorder(new TitledBorder(null, "Players", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		AddPlayerPanel.setOpaque(false);
-		AddPlayerPanel.setBounds(13, 207, 649, 213);
+		AddPlayerPanel.setBounds(13, 207, 672, 213);
 		StartGameMenus.add(AddPlayerPanel);
 		AddPlayerPanel.setLayout(null);
 		
@@ -234,16 +252,17 @@ public class CAH_NewGame extends JLayeredPane {
 		btnStartGame.setFocusTraversalKeysEnabled(false);
 		btnStartGame.setFocusPainted(false);
 		btnStartGame.setOpaque(false);
-		btnStartGame.setBounds(285, 419, 102, 17);
+		btnStartGame.setBounds(308, 419, 102, 17);
 		StartGameMenus.add(btnStartGame);
 		
 		JPanel GameType = new JPanel();
 		GameType.setOpaque(false);
 		GameType.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Game Type", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
-		GameType.setBounds(397, 117, 265, 82);
+		GameType.setBounds(420, 117, 265, 82);
 		StartGameMenus.add(GameType);
 		
 		JRadioButton rdbtnSinglePlayer = new JRadioButton("<html><body style=\"color:WHITE\">Single Player</body></html>");
+		rdbtnSinglePlayer.setSelected(true);
 		rdbtnSinglePlayer.setFocusPainted(false);
 		rdbtnSinglePlayer.setToolTipText(wrap("Play on your own against a computer player!"));
 		rdbtnSinglePlayer.setOpaque(false);
@@ -277,7 +296,7 @@ public class CAH_NewGame extends JLayeredPane {
 		NewGameBackground.setAlignmentX(Component.CENTER_ALIGNMENT);
 		NewGameBackground.setBounds(0, 0, 1450, 722);
 		add(NewGameBackground);
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{HouseRulesPanel, Rules, StartGameMenus, NewGameBackground, chckbxhappyEnding, chckbxrebootingTheUniverse, chckbxpackingHeat, chckbxrandoCardrissian, chckbxsurvivalOfThe, chckbxseriousBuisness, chckbxneverHaveI, gamblingPanel, rdbtnOn, rdbtnoff, DecksPanel, chckbxOriginal, chckbxExpansion1, chckbxExpansion2, chckbxExpansion3, chckbxExpansion4, chckbxHolidayExpansion, AddPlayerPanel}));
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{HouseRulesPanel, Rules, StartGameMenus, NewGameBackground, chckbxhappyEnding, chckbxrebootingTheUniverse, chckbxpackingHeat, chckbxrandoCardrissian, chckbxsurvivalOfThe, chckbxseriousBuisness, chckbxneverHaveI, chckbxgodIsDead, gamblingPanel, rdbtnOn, rdbtnoff, DecksPanel, chckbxOriginal, chckbxExpansion1, chckbxExpansion2, chckbxExpansion3, chckbxExpansion4, chckbxHolidayExpansion, AddPlayerPanel}));
 		
 		UIManager.put("ToolTip.background", new ColorUIResource(253, 255, 166));
 		
@@ -292,7 +311,7 @@ public class CAH_NewGame extends JLayeredPane {
 					expansion1.setVisible(true);
 					expansion1.setLocation(500,225);
 					add(expansion1);
-					setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{expansion1, HouseRulesPanel, Rules, StartGameMenus, NewGameBackground, chckbxhappyEnding, chckbxrebootingTheUniverse, chckbxpackingHeat, chckbxrandoCardrissian, chckbxsurvivalOfThe, chckbxseriousBuisness, chckbxneverHaveI, gamblingPanel, rdbtnOn, rdbtnoff, DecksPanel, chckbxOriginal, chckbxExpansion1, chckbxExpansion2, chckbxExpansion3, chckbxExpansion4, chckbxHolidayExpansion, AddPlayerPanel}));
+					setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{expansion1, HouseRulesPanel, Rules, StartGameMenus, NewGameBackground, chckbxhappyEnding, chckbxrebootingTheUniverse, chckbxpackingHeat, chckbxrandoCardrissian, chckbxsurvivalOfThe, chckbxseriousBuisness, chckbxneverHaveI,chckbxgodIsDead, gamblingPanel, rdbtnOn, rdbtnoff, DecksPanel, chckbxOriginal, chckbxExpansion1, chckbxExpansion2, chckbxExpansion3, chckbxExpansion4, chckbxHolidayExpansion, AddPlayerPanel}));
 				}	
 			}
 			
@@ -338,6 +357,30 @@ public class CAH_NewGame extends JLayeredPane {
 		}
 		
 		return str + "</html>";
+	}
+	
+	/**
+	 * A class of object that groups JCheckBoxes together.
+	 * It allows a user to deselect the group
+	 * @author Holt Maki
+	 * @since CAH1.0
+	 * @version CAH1.0
+	 *
+	 */
+	private class CheckBoxGroup extends ButtonGroup
+	{
+		@Override
+		public void setSelected(ButtonModel model, boolean selected)
+		{
+			if(!selected)
+			{
+				clearSelection();
+			}
+			else
+			{
+				super.setSelected(model, selected);
+			}
+		}
 	}
 }
 
