@@ -32,6 +32,7 @@ import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.JPopupMenu;
 import javax.swing.JComboBox;
+import javax.swing.border.LineBorder;
 
 /**
  * The panel that creates the menu for a new CAH game.
@@ -57,13 +58,14 @@ public class CAH_NewGame extends JLayeredPane {
 		setMaximumSize(new Dimension(1450, 700));
 		
 		final JPanel StartGameMenus = new JPanel();
+		StartGameMenus.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		StartGameMenus.setOpaque(false);
-		StartGameMenus.setBounds(286, 230, 649, 459);
+		StartGameMenus.setBounds(263, 230, 672, 447);
 		add(StartGameMenus);
 		StartGameMenus.setLayout(null);
 		
 		final JPanel Rules = new JPanel();
-		Rules.setBounds(0, 0, 649, 106);
+		Rules.setBounds(13, 0, 649, 106);
 		Rules.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Rules", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		Rules.setOpaque(false);
 		StartGameMenus.add(Rules);
@@ -140,7 +142,7 @@ public class CAH_NewGame extends JLayeredPane {
 		final JPanel DecksPanel = new JPanel();
 		DecksPanel.setBorder(new TitledBorder(null, "Decks", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		DecksPanel.setOpaque(false);
-		DecksPanel.setBounds(0, 117, 374, 82);
+		DecksPanel.setBounds(13, 117, 374, 82);
 		StartGameMenus.add(DecksPanel);
 		
 		final JCheckBox chckbxOriginal = new JCheckBox("<html><body style=\"color:WHITE\">Original</body></html>");
@@ -183,7 +185,7 @@ public class CAH_NewGame extends JLayeredPane {
 		final JPanel AddPlayerPanel = new JPanel();
 		AddPlayerPanel.setBorder(new TitledBorder(null, "Players", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		AddPlayerPanel.setOpaque(false);
-		AddPlayerPanel.setBounds(0, 201, 649, 226);
+		AddPlayerPanel.setBounds(13, 207, 649, 213);
 		StartGameMenus.add(AddPlayerPanel);
 		AddPlayerPanel.setLayout(null);
 		
@@ -210,7 +212,7 @@ public class CAH_NewGame extends JLayeredPane {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setOpaque(false);
-		scrollPane.setBounds(10, 45, 629, 170);
+		scrollPane.setBounds(20, 45, 619, 157);
 		AddPlayerPanel.add(scrollPane);
 		
 		JList PlayerList = new JList();
@@ -232,13 +234,13 @@ public class CAH_NewGame extends JLayeredPane {
 		btnStartGame.setFocusTraversalKeysEnabled(false);
 		btnStartGame.setFocusPainted(false);
 		btnStartGame.setOpaque(false);
-		btnStartGame.setBounds(272, 425, 102, 23);
+		btnStartGame.setBounds(285, 419, 102, 17);
 		StartGameMenus.add(btnStartGame);
 		
 		JPanel GameType = new JPanel();
 		GameType.setOpaque(false);
 		GameType.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Game Type", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
-		GameType.setBounds(384, 117, 265, 82);
+		GameType.setBounds(397, 117, 265, 82);
 		StartGameMenus.add(GameType);
 		
 		JRadioButton rdbtnSinglePlayer = new JRadioButton("<html><body style=\"color:WHITE\">Single Player</body></html>");
@@ -273,7 +275,7 @@ public class CAH_NewGame extends JLayeredPane {
 		final JLabel NewGameBackground = new JLabel("");
 		NewGameBackground.setIcon(new ImageIcon(CAH_NewGame.class.getResource("/graphics/signupbackground.jpg")));
 		NewGameBackground.setAlignmentX(Component.CENTER_ALIGNMENT);
-		NewGameBackground.setBounds(0, 11, 1450, 722);
+		NewGameBackground.setBounds(0, 0, 1450, 722);
 		add(NewGameBackground);
 		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{HouseRulesPanel, Rules, StartGameMenus, NewGameBackground, chckbxhappyEnding, chckbxrebootingTheUniverse, chckbxpackingHeat, chckbxrandoCardrissian, chckbxsurvivalOfThe, chckbxseriousBuisness, chckbxneverHaveI, gamblingPanel, rdbtnOn, rdbtnoff, DecksPanel, chckbxOriginal, chckbxExpansion1, chckbxExpansion2, chckbxExpansion3, chckbxExpansion4, chckbxHolidayExpansion, AddPlayerPanel}));
 		
