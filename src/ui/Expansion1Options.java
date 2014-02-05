@@ -25,19 +25,6 @@ import java.awt.event.ActionEvent;
 @SuppressWarnings("serial")
 public class Expansion1Options extends JDialog
 {
-	public static void main(String[] args)
-	{
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Expansion1Options options = new Expansion1Options();
-					options.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 	/**
 	 * The JPanel that contains the dialog's content.
 	 */
@@ -72,6 +59,9 @@ public class Expansion1Options extends JDialog
 		buttonGroup.add(rdbtnExpansionAnd);
 		
 		JButton button = new JButton("OK");
+		button.setOpaque(false);
+		button.setFocusPainted(false);
+		button.setBorderPainted(false);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(buttonGroup.getSelection() != null)
