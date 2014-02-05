@@ -26,6 +26,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
@@ -41,6 +42,7 @@ public class CAH_Frame extends JFrame {
 	/**
 	 * Launch the application.
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 * @author Holt Maki
 	 */
 	public static void main(String[] args) {
@@ -59,6 +61,7 @@ public class CAH_Frame extends JFrame {
 	/**
 	 * Create the frame.
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 * @author Holt Maki
 	 */
 	public CAH_Frame() {
@@ -135,14 +138,10 @@ public class CAH_Frame extends JFrame {
 		JLayeredPane CAH_Layers = new JLayeredPane();
 		CAH_Layers.setBorder(null);
 		CAH_Panel.add(CAH_Layers, "1, 1, fill, fill");
-		CAH_Layers.setLayout(new FormLayout(new ColumnSpec[] {
-				ColumnSpec.decode("1px"),
-				ColumnSpec.decode("1450px:grow"),},
-			new RowSpec[] {
-				RowSpec.decode("722px:grow"),}));
+		CAH_Layers.setLayout(new CardLayout(0, 0));
 		
 		JLayeredPane Start = new JLayeredPane();
-		CAH_Layers.add(Start, "2, 1, fill, fill");
+		CAH_Layers.add(Start, "name_15266405508283");
 		Start.setLayout(null);
 		
 		JPanel StartPanel = new JPanel();
@@ -154,11 +153,12 @@ public class CAH_Frame extends JFrame {
 		lblNewGame.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				//TODO:fill
+				JLabel label = (JLabel)arg0.getSource();
+				label.getAccessibleContext();
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				//TODO:fill
+				//TODO fill
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
