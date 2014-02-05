@@ -44,12 +44,15 @@ public class Expansion1Options extends JDialog
 		contentPanel.setLayout(new FlowLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		JRadioButton rdbtnExpansion = new JRadioButton("Expansion 1.0");
+		rdbtnExpansion.setFocusPainted(false);
 		rdbtnExpansion.setToolTipText(wrap(Decks.EXPANSION1_0.getDescription()).replaceAll("-", " -").replaceAll("surface -to -air", "surface-to-air"));
 		contentPanel.add(rdbtnExpansion);
 		JRadioButton rdbtnExpansion_1 = new JRadioButton("Expansion 1.2");
+		rdbtnExpansion_1.setFocusPainted(false);
 		rdbtnExpansion.setToolTipText(wrap(Decks.EXPANSION1_2.getDescription()).replaceAll("-", " -").replaceAll("surface -to -air", "surface-to-air"));
 		contentPanel.add(rdbtnExpansion_1);
 		JRadioButton rdbtnExpansionAnd = new JRadioButton("Expansions 1.0 and 1.2");
+		rdbtnExpansionAnd.setFocusPainted(false);
 		rdbtnExpansion.setToolTipText(wrap(Decks.EXPANSION1.getDescription()).replaceAll("-", " -").replaceAll("surface -to -air", "surface-to-air"));
 		contentPanel.add(rdbtnExpansionAnd);
 		
@@ -59,8 +62,8 @@ public class Expansion1Options extends JDialog
 		buttonGroup.add(rdbtnExpansionAnd);
 		
 		JButton button = new JButton("OK");
-		button.setOpaque(false);
 		button.setFocusPainted(false);
+		button.setOpaque(false);
 		button.setBorderPainted(false);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
