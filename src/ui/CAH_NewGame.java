@@ -23,161 +23,215 @@ import javax.swing.border.TitledBorder;
 import javax.swing.plaf.ColorUIResource;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
+
+import cards.Decks;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.Insets;
+import javax.swing.JPopupMenu;
 
+/**
+ * The panel that creates the menu for a new CAH game.
+ * @author Holt Maki
+ * @since CAH1.0
+ * @version CAH1.0
+ *
+ */
 @SuppressWarnings("serial")
 public class CAH_NewGame extends JLayeredPane {
 //TODO: Create examples applet in the left area.
 	/**
 	 * Create the panel.
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 * @author Holt Maki
 	 */
 	public CAH_NewGame() {
+		final Expansion1Options expansion1 = new Expansion1Options();
+		expansion1.setVisible(false);
+		
 		setBounds(new Rectangle(0, 0, 1450, 700));
 		setMaximumSize(new Dimension(1450, 700));
 		
-		JPanel StartGameMenus = new JPanel();
+		final JPanel StartGameMenus = new JPanel();
 		StartGameMenus.setOpaque(false);
-		StartGameMenus.setBounds(299, 230, 636, 459);
+		StartGameMenus.setBounds(286, 230, 649, 459);
 		add(StartGameMenus);
 		StartGameMenus.setLayout(null);
 		
-		JPanel Rules = new JPanel();
-		Rules.setBounds(0, 0, 636, 115);
+		final JPanel Rules = new JPanel();
+		Rules.setBounds(0, 0, 649, 115);
 		Rules.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Rules", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		Rules.setOpaque(false);
 		StartGameMenus.add(Rules);
 		Rules.setLayout(null);
 		
-		JPanel HouseRulesPanel = new JPanel();
-		HouseRulesPanel.setBounds(16, 16, 473, 81);
+		final JPanel HouseRulesPanel = new JPanel();
+		HouseRulesPanel.setBounds(10, 16, 538, 81);
 		HouseRulesPanel.setBorder(new TitledBorder(null, "House Rules", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		HouseRulesPanel.setOpaque(false);
 		Rules.add(HouseRulesPanel);
 		
-		JCheckBox chckbxhappyEnding = new JCheckBox("<html><body style=\"color:WHITE\">Happy Ending</body></html>");
+		final JCheckBox chckbxhappyEnding = new JCheckBox("<html><body style=\"color:WHITE\">Happy Ending</body></html>");
+		chckbxhappyEnding.setFocusPainted(false);
 		chckbxhappyEnding.setToolTipText(wrap(HouseRules.HAPPY_ENDING.getDescription()));
 		chckbxhappyEnding.setOpaque(false);
 		HouseRulesPanel.add(chckbxhappyEnding);
 		
-		JCheckBox chckbxrebootingTheUniverse = new JCheckBox("<html><body style=\"color:WHITE\">Rebooting the Universe</body></html>");
+		final JCheckBox chckbxrebootingTheUniverse = new JCheckBox("<html><body style=\"color:WHITE\">Rebooting the Universe</body></html>");
+		chckbxrebootingTheUniverse.setFocusPainted(false);
 		chckbxrebootingTheUniverse.setOpaque(false);
 		chckbxrebootingTheUniverse.setToolTipText(wrap(HouseRules.REBOOTING_THE_UNIVERSE.getDescription()));
 		HouseRulesPanel.add(chckbxrebootingTheUniverse);
 		
-		JCheckBox chckbxpackingHeat = new JCheckBox("<html><body style=\"color:WHITE\">Packing Heat</body></html>");
+		final JCheckBox chckbxpackingHeat = new JCheckBox("<html><body style=\"color:WHITE\">Packing Heat</body></html>");
+		chckbxpackingHeat.setFocusPainted(false);
 		chckbxpackingHeat.setOpaque(false);
 		chckbxpackingHeat.setToolTipText(wrap(HouseRules.PACKING_HEAT.getDescription()));
 		HouseRulesPanel.add(chckbxpackingHeat);
 		
-		JCheckBox chckbxrandoCardrissian = new JCheckBox("<html><body style=\"color:WHITE\">Rando Cardrissian</body></html>");
+		final JCheckBox chckbxrandoCardrissian = new JCheckBox("<html><body style=\"color:WHITE\">Rando Cardrissian</body></html>");
+		chckbxrandoCardrissian.setFocusPainted(false);
 		chckbxrandoCardrissian.setOpaque(false);
 		chckbxrandoCardrissian.setToolTipText(wrap(HouseRules.RANDO_CARDRISSIAN.getDescription()));
 		HouseRulesPanel.add(chckbxrandoCardrissian);
 		
-		JCheckBox chckbxgodIsDead = new JCheckBox("<html><body style=\"color:WHITE\">God Is Dead</body></html>");
-		chckbxgodIsDead.setOpaque(false);
-		chckbxgodIsDead.setToolTipText(wrap(HouseRules.GOD_IS_DEAD.getDescription()));
-		HouseRulesPanel.add(chckbxgodIsDead);
-		
-		JCheckBox chckbxsurvivalOfThe = new JCheckBox("<html><body style=\"color:WHITE\">Survival of the Fittest</body></html>");
+		final JCheckBox chckbxsurvivalOfThe = new JCheckBox("<html><body style=\"color:WHITE\">Survival of the Fittest</body></html>");
+		chckbxsurvivalOfThe.setFocusPainted(false);
 		chckbxsurvivalOfThe.setOpaque(false);
 		chckbxsurvivalOfThe.setToolTipText(wrap(HouseRules.SURVIVAL_OF_THE_FITTEST.getDescription()));
 		HouseRulesPanel.add(chckbxsurvivalOfThe);
 		
-		JCheckBox chckbxseriousBuisness = new JCheckBox("<html><body style=\"color:WHITE\">Serious Buisness</body></html>");
+		final JCheckBox chckbxseriousBuisness = new JCheckBox("<html><body style=\"color:WHITE\">Serious Buisness</body></html>");
+		chckbxseriousBuisness.setFocusPainted(false);
 		chckbxseriousBuisness.setOpaque(false);
 		chckbxseriousBuisness.setToolTipText(wrap(HouseRules.SERIOUS_BUSINESS.getDescription()));
 		HouseRulesPanel.add(chckbxseriousBuisness);
 		
-		JCheckBox chckbxneverHaveI = new JCheckBox("<html><body style=\"color:WHITE\">Never Have I Ever</body</html>");
+		final JCheckBox chckbxneverHaveI = new JCheckBox("<html><body style=\"color:WHITE\">Never Have I Ever</body</html>");
+		chckbxneverHaveI.setFocusPainted(false);
 		chckbxneverHaveI.setOpaque(false);
 		chckbxneverHaveI.setToolTipText(wrap(HouseRules.NEVER_HAVE_I_EVER.getDescription()));
 		HouseRulesPanel.add(chckbxneverHaveI);
 		
-		JPanel gamblingPanel = new JPanel();
+		final JPanel gamblingPanel = new JPanel();
 		gamblingPanel.setBorder(new TitledBorder(null, "Gambling", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		gamblingPanel.setOpaque(false);
-		gamblingPanel.setBounds(494, 33, 132, 50);
+		gamblingPanel.setBounds(558, 16, 81, 81);
 		Rules.add(gamblingPanel);
 		
 		ButtonGroup gamblingButtons = new ButtonGroup();
 		
-		JRadioButton rdbtnOn = new JRadioButton("<html><body style=\"color:WHITE\">On</body></html>");
+		final JRadioButton rdbtnOn = new JRadioButton("<html><body style=\"color:WHITE\">On</body></html>");
+		rdbtnOn.setFocusPainted(false);
 		rdbtnOn.setOpaque(false);
 		gamblingButtons.add(rdbtnOn);
 		gamblingPanel.add(rdbtnOn);
 		
-		JRadioButton rdbtnoff = new JRadioButton("<html><body style=\"color:WHITE\">Off</body></html>");
+		final JRadioButton rdbtnoff = new JRadioButton("<html><body style=\"color:WHITE\">Off</body></html>");
+		rdbtnoff.setFocusPainted(false);
 		rdbtnoff.setOpaque(false);
 		gamblingButtons.add(rdbtnoff);
 		gamblingPanel.add(rdbtnoff);
 		
-		JPanel Decks = new JPanel();
-		Decks.setBorder(new TitledBorder(null, "Decks", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
-		Decks.setOpaque(false);
-		Decks.setBounds(0, 126, 636, 64);
-		StartGameMenus.add(Decks);
+		final JPanel DecksPanel = new JPanel();
+		DecksPanel.setBorder(new TitledBorder(null, "Decks", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
+		DecksPanel.setOpaque(false);
+		DecksPanel.setBounds(0, 126, 649, 64);
+		StartGameMenus.add(DecksPanel);
 		
-		JCheckBox chckbxOriginal = new JCheckBox("<html><body style=\"color:WHITE\">Original</body></html>");
+		final JCheckBox chckbxOriginal = new JCheckBox("<html><body style=\"color:WHITE\">Original</body></html>");
+		chckbxOriginal.setFocusPainted(false);
 		chckbxOriginal.setOpaque(false);
-		Decks.add(chckbxOriginal);
+		chckbxOriginal.setToolTipText(wrap(Decks.ORIGINAL.getDescription()).replaceAll("-", " -").replaceAll("surface -to -air", "surface-to-air"));
+		DecksPanel.add(chckbxOriginal);
 		
-		JCheckBox chckbxExpansion = new JCheckBox("<html><body style=\"color:WHITE\">Expansion 1</body></html>");
-		chckbxExpansion.setOpaque(false);
-		Decks.add(chckbxExpansion);
+		final JCheckBox chckbxExpansion1 = new JCheckBox("<html><body style=\"color:WHITE\">Expansion 1</body></html>");
+		chckbxExpansion1.setFocusPainted(false);
+		chckbxExpansion1.setOpaque(false);
+		chckbxExpansion1.setToolTipText(wrap("The First Cards Against Humanity Expansion").replaceAll("-", " -").replaceAll("surface -to -air", "surface-to-air"));
 		
-		JCheckBox chckbxExpansion_1 = new JCheckBox("<html><body style=\"color:WHITE\">Expansion 2</body></html>");
-		chckbxExpansion_1.setOpaque(false);
-		Decks.add(chckbxExpansion_1);
+		DecksPanel.add(chckbxExpansion1);
 		
-		JCheckBox chckbxExpansion_2 = new JCheckBox("<html><body style=\"color:WHITE\">Expansion 3</body></html>");
-		chckbxExpansion_2.setOpaque(false);
-		Decks.add(chckbxExpansion_2);
+		final JCheckBox chckbxExpansion2 = new JCheckBox("<html><body style=\"color:WHITE\">Expansion 2</body></html>");
+		chckbxExpansion2.setFocusPainted(false);
+		chckbxExpansion2.setOpaque(false);
+		chckbxExpansion2.setToolTipText(wrap(Decks.EXPANSION2.getDescription()).replaceAll("-", " -").replaceAll("surface -to -air", "surface-to-air"));
+		DecksPanel.add(chckbxExpansion2);
 		
-		JCheckBox chckbxExpansion_3 = new JCheckBox("<html><body style=\"color:WHITE\">Expansion 4</body></hmtl>");
-		chckbxExpansion_3.setOpaque(false);
-		Decks.add(chckbxExpansion_3);
+		final JCheckBox chckbxExpansion3 = new JCheckBox("<html><body style=\"color:WHITE\">Expansion 3</body></html>");
+		chckbxExpansion3.setFocusPainted(false);
+		chckbxExpansion3.setOpaque(false);
+		chckbxExpansion3.setToolTipText(wrap(Decks.EXPANSION3.getDescription()).replaceAll("-", " -").replaceAll("surface -to -air", "surface-to-air"));
+		DecksPanel.add(chckbxExpansion3);
 		
-		JCheckBox chckbxHolidayExpansion = new JCheckBox("<html><body style=\"color:WHITE\">Holiday Expansion</body></html>");
+		final JCheckBox chckbxExpansion4 = new JCheckBox("<html><body style=\"color:WHITE\">Expansion 4</body></hmtl>");
+		chckbxExpansion4.setFocusPainted(false);
+		chckbxExpansion4.setOpaque(false);
+		chckbxExpansion4.setToolTipText(wrap(Decks.EXPANSION4.getDescription()).replaceAll("-", " -").replaceAll("surface -to -air", "surface-to-air"));
+		DecksPanel.add(chckbxExpansion4);
+		
+		final JCheckBox chckbxHolidayExpansion = new JCheckBox("<html><body style=\"color:WHITE\">Holiday Expansion</body></html>");
+		chckbxHolidayExpansion.setFocusPainted(false);
 		chckbxHolidayExpansion.setOpaque(false);
-		Decks.add(chckbxHolidayExpansion);
+		chckbxHolidayExpansion.setToolTipText(wrap(Decks.HOLIDAYEXPANSION.getDescription()).replaceAll("-", " -").replaceAll("surface -to -air", "surface-to-air"));
+		DecksPanel.add(chckbxHolidayExpansion);
 		
-		JPanel AddPlayerPanel = new JPanel();
+		final JPanel AddPlayerPanel = new JPanel();
 		AddPlayerPanel.setBorder(new TitledBorder(null, "Players", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		AddPlayerPanel.setOpaque(false);
-		AddPlayerPanel.setBounds(0, 201, 636, 226);
+		AddPlayerPanel.setBounds(0, 201, 649, 226);
 		StartGameMenus.add(AddPlayerPanel);
 		AddPlayerPanel.setLayout(null);
 		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(10, 32, 616, 2);
+		final JSeparator separator = new JSeparator();
+		separator.setBounds(10, 32, 629, 2);
 		AddPlayerPanel.add(separator);
 		
 		JButton btnAddPlayer = new JButton("<html><h2 style=\"color:GREEN\">+</h2></html>");
+		btnAddPlayer.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnAddPlayer.setBorderPainted(false);
+		btnAddPlayer.setBorder(UIManager.getBorder("Button.border"));
+		btnAddPlayer.setMargin(new Insets(2, 1, 2, 1));
+		btnAddPlayer.setFocusPainted(false);
+		btnAddPlayer.setFocusTraversalKeysEnabled(false);
+		btnAddPlayer.setToolTipText("Add Player");
 		btnAddPlayer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//TODO: fill
 			}
 		});
 		btnAddPlayer.setOpaque(false);
-		btnAddPlayer.setBounds(579, 11, 47, 23);
+		btnAddPlayer.setBounds(585, 11, 25, 23);
 		AddPlayerPanel.add(btnAddPlayer);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setOpaque(false);
-		scrollPane.setBounds(10, 45, 616, 170);
+		scrollPane.setBounds(10, 45, 629, 170);
 		AddPlayerPanel.add(scrollPane);
 		
 		JList PlayerList = new JList();
 		scrollPane.setViewportView(PlayerList);
 		
+		JButton button = new JButton("<html><h2 style=\"color:RED\">-</h2></html>");
+		button.setAlignmentY(Component.TOP_ALIGNMENT);
+		button.setMargin(new Insets(2, 1, 2, 1));
+		button.setBorderPainted(false);
+		button.setFocusPainted(false);
+		button.setFocusTraversalKeysEnabled(false);
+		button.setToolTipText("Remove Player");
+		button.setOpaque(false);
+		button.setBounds(614, 11, 25, 23);
+		AddPlayerPanel.add(button);
+		
 		JButton btnStartGame = new JButton("Start Game");
+		btnStartGame.setBorderPainted(false);
+		btnStartGame.setFocusTraversalKeysEnabled(false);
+		btnStartGame.setFocusPainted(false);
 		btnStartGame.setOpaque(false);
-		btnStartGame.setBounds(272, 425, 89, 23);
+		btnStartGame.setBounds(272, 425, 102, 23);
 		StartGameMenus.add(btnStartGame);
 		
 		JLabel lblCardsAgainstHumanity = new JLabel("Cards Against Humanity");
@@ -186,14 +240,31 @@ public class CAH_NewGame extends JLayeredPane {
 		lblCardsAgainstHumanity.setForeground(Color.WHITE);
 		lblCardsAgainstHumanity.setFont(new Font("Arial Black", Font.BOLD, 70));
 		
-		JLabel NewGameBackground = new JLabel("");
+		final JLabel NewGameBackground = new JLabel("");
 		NewGameBackground.setIcon(new ImageIcon(CAH_NewGame.class.getResource("/graphics/signupbackground.jpg")));
 		NewGameBackground.setAlignmentX(Component.CENTER_ALIGNMENT);
 		NewGameBackground.setBounds(0, 0, 1450, 722);
 		add(NewGameBackground);
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{HouseRulesPanel, Rules, StartGameMenus, NewGameBackground, chckbxhappyEnding, chckbxrebootingTheUniverse, chckbxpackingHeat, chckbxrandoCardrissian, chckbxgodIsDead, chckbxsurvivalOfThe, chckbxseriousBuisness, chckbxneverHaveI, gamblingPanel, rdbtnOn, rdbtnoff, Decks, chckbxOriginal, chckbxExpansion, chckbxExpansion_1, chckbxExpansion_2, chckbxExpansion_3, chckbxHolidayExpansion, AddPlayerPanel}));
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{HouseRulesPanel, Rules, StartGameMenus, NewGameBackground, chckbxhappyEnding, chckbxrebootingTheUniverse, chckbxpackingHeat, chckbxrandoCardrissian, chckbxsurvivalOfThe, chckbxseriousBuisness, chckbxneverHaveI, gamblingPanel, rdbtnOn, rdbtnoff, DecksPanel, chckbxOriginal, chckbxExpansion1, chckbxExpansion2, chckbxExpansion3, chckbxExpansion4, chckbxHolidayExpansion, AddPlayerPanel}));
 		
 		UIManager.put("ToolTip.background", new ColorUIResource(253, 255, 166));
+		
+		chckbxExpansion1.addActionListener(new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent arg0)
+			{
+				if(chckbxExpansion1.isSelected())
+				{
+					expansion1.setVisible(true);
+					expansion1.setLocation(500,225);
+					add(expansion1);
+					setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{expansion1, HouseRulesPanel, Rules, StartGameMenus, NewGameBackground, chckbxhappyEnding, chckbxrebootingTheUniverse, chckbxpackingHeat, chckbxrandoCardrissian, chckbxsurvivalOfThe, chckbxseriousBuisness, chckbxneverHaveI, gamblingPanel, rdbtnOn, rdbtnoff, DecksPanel, chckbxOriginal, chckbxExpansion1, chckbxExpansion2, chckbxExpansion3, chckbxExpansion4, chckbxHolidayExpansion, AddPlayerPanel}));
+				}	
+			}
+			
+		});
 		
 		
 	}
