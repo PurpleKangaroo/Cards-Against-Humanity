@@ -12,6 +12,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -48,6 +50,11 @@ public class CAH_Frame extends JFrame {
 	 * The panel that contains CAH.
 	 */
 	private JPanel CAH_Panel;
+	
+	/**
+	 * The JLayeredPane that contains information about cards.
+	 */
+	private Cards cards;
 	
 	/**
 	 * The layered pane that contains CAH.
@@ -260,25 +267,13 @@ public class CAH_Frame extends JFrame {
 		btnUsers.setForeground(Color.WHITE);
 		btnUsers.setFont(new Font("Arial Black", Font.BOLD, 35));
 		
-		final JButton btnCards = new JButton("Cards");
-		btnCards.setOpaque(false);
+		final JButton btnCards = new JButton("<html><body align=\"left\">Cards</body></html>");
+		btnCards.setHorizontalTextPosition(SwingConstants.RIGHT);
 		btnCards.setContentAreaFilled(false);
-		btnCards.setBorderPainted(false);
+		btnCards.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		btnCards.setFocusPainted(false);
-		btnCards.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				//TODO:fill
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				//TODO:fill
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				//TODO:fill
-			}
-		});
+		btnCards.setBorderPainted(false);
+		btnCards.setOpaque(false);
 		
 		btnCards.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnCards.setForeground(Color.WHITE);
@@ -358,7 +353,7 @@ public class CAH_Frame extends JFrame {
 		StartBackground.setIcon(new ImageIcon(CAH_Frame.class.getResource("/graphics/signupbackground.jpg")));
 		Start.add(StartBackground);
 		
-		Start.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{btnNewGame, StartPanel, StartBackground, lblCardsAgainstHumanity, btnStats, btnLoadGame, btnUsers, btnCards, btnRules}));
+		Start.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{btnNewGame, btnCards, btnStats, btnLoadGame, btnUsers, btnRules, StartPanel, StartBackground, lblCardsAgainstHumanity}));
 		
 			btnNewGame.addActionListener(new ActionListener()
 			{
@@ -371,6 +366,33 @@ public class CAH_Frame extends JFrame {
 					CAH_Layers.remove(Start);
 					CAH_Layers.add(newGame);
 					CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{newGame}));
+					CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{CAH_Layers}));
+				}
+				
+			});
+			
+			btnCards.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					try
+					{
+						cards = new Cards();
+					} catch (URISyntaxException e1)
+					{
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1)
+					{
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					cards.setVisible(true);
+					cards.setName("cards");
+					CAH_Layers.remove(Start);
+					CAH_Layers.add(cards);
+					CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{cards}));
 					CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{CAH_Layers}));
 				}
 				

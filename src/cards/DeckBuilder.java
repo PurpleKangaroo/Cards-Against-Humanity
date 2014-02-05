@@ -1,5 +1,6 @@
 package cards;
 
+import import_export.Encoder;
 import import_export.PathFinder;
 
 import java.io.File;
@@ -61,6 +62,7 @@ public class DeckBuilder {
 	{
 		@SuppressWarnings("resource")
 		Scanner answerScanner = new Scanner(answers);
+		Encoder encode = new Encoder();
 		while(answerScanner.hasNextLine())
 		{
 			answerList.add(new AnswerCard(answerScanner.nextLine()));
