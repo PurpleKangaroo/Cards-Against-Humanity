@@ -256,6 +256,11 @@ public class CAH_NewGame extends JLayeredPane {
 		rdbtnNetplayMultiplayer.setOpaque(false);
 		GameType.add(rdbtnNetplayMultiplayer);
 		
+		ButtonGroup gameTypeGroup = new ButtonGroup();
+		gameTypeGroup.add(rdbtnSinglePlayer);
+		gameTypeGroup.add(rdbtnmultiplayer);
+		gameTypeGroup.add(rdbtnNetplayMultiplayer);
+		
 		JLabel lblCardsAgainstHumanity = new JLabel("Cards Against Humanity");
 		lblCardsAgainstHumanity.setBounds(83, 43, 1024, 139);
 		add(lblCardsAgainstHumanity);
