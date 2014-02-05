@@ -317,6 +317,11 @@ public class CAH_NewGame extends JLayeredPane {
 			
 		});
 		
+		btnStartGame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//TODO fill.
+			}
+		});
 		
 	}
 	
