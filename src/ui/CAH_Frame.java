@@ -12,6 +12,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -151,10 +153,9 @@ public class CAH_Frame extends JFrame {
 		
 		JLabel lblNewGame = new JLabel("New Game");
 		lblNewGame.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				JLabel label = (JLabel)arg0.getSource();
-				label.getAccessibleContext();
+			public void mouseClicked(MouseEvent e)
+			{
+				firePropertyChange("screen", screens.START, screens.NEWGAME);
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -322,5 +323,78 @@ public class CAH_Frame extends JFrame {
 		CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblStats, lblLoadGame, lblUsers, lblCards, lblRules, lblNewGame, lblCardsAgainstHumanity, StartPanel, Start, StartBackground}));
 		CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblLoadGame, lblUsers, lblStats, lblRules, lblCards, lblNewGame, CAH_Layers, Start, StartPanel, lblCardsAgainstHumanity, StartBackground}));
 		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, mnFile, mntmNewGame, mntmExit, mnNetplay, mnHelp, mntmAbout, mntmRules, lblCardsAgainstHumanity, lblStats, lblLoadGame, lblUsers, lblCards, lblRules, lblNewGame, CAH_Panel, Start, StartPanel, CAH_Layers, StartBackground}));
+		
+		CAH_Layers.addPropertyChangeListener();
 	}
+	
+	/**
+	 * A list of the different screens that there are.
+	 * @author Holt Maki
+	 * @since CAH1.0
+	 * @version CAH1.0
+	 */
+	private enum screens
+	{
+		START,
+		NEWGAME,
+		LOADGAME,
+		STATS,
+		USERS,
+		CARDS,
+		RULES,
+		MAINGAME,
+		ENDGAME;
+	}
+	
+	/**
+	 * A listener that changes the screen.
+	 * @author Holt Maki
+	 * @since CAH1.0
+	 * @version CAH1.0
+	 *
+	 */
+	private class LayerListener implements PropertyChangeListener
+	{
+		/**
+		 * The source of the change
+		 */
+		private Object source;
+		
+		/**
+		 * The pane that the listener belongs to.
+		 */
+		private JLayeredPane pane;
+		
+		/**
+		 * Creates a new object that listens for the command to change the screen.
+		 * @since CAH1.0
+		 * @version CAH1.0
+		 * @author Holt Maki
+		 * @param pane - the pane that the listener belongs to.
+		 */
+		public LayerListener(JLayeredPane pane)
+		{
+			this.pane = pane;
+		}
+
+		@Override
+		public void propertyChange(PropertyChangeEvent arg0) {
+			Object newScreen = arg0.getOldValue();
+			
+			oldScreen();
+		}
+		
+		/**
+		 * Gets rid of the old screen.
+		 * @since CAH1.0
+		 * @author Holt Maki
+		 * @version CAH1.0
+		 */
+		private void oldScreen()
+		{
+			
+		}
+		
+	}
+	
 }
