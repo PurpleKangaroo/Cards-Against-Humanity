@@ -12,10 +12,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -37,8 +41,13 @@ import com.jgoodies.forms.layout.RowSpec;
 @SuppressWarnings("serial")
 public class CAH_Frame extends JFrame {
 
+	/**
+	 * The panel that contains CAH.
+	 */
 	private JPanel CAH_Panel;
-
+	
+	private JLayeredPane CAH_Layers;
+	
 	/**
 	 * Launch the application.
 	 * @since CAH1.0
@@ -65,6 +74,7 @@ public class CAH_Frame extends JFrame {
 	 * @author Holt Maki
 	 */
 	public CAH_Frame() {
+		
 		setMaximizedBounds(new Rectangle(0, 0, 1450, 700));
 		setMaximumSize(new Dimension(1450, 700));
 		setMinimumSize(new Dimension(1300, 752));
@@ -151,10 +161,9 @@ public class CAH_Frame extends JFrame {
 		
 		JLabel lblNewGame = new JLabel("New Game");
 		lblNewGame.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				JLabel label = (JLabel)arg0.getSource();
-				label.getAccessibleContext();
+			public void mouseClicked(MouseEvent e)
+			{
+				firePropertyChange("screen", screens.START, screens.NEWGAME);
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -322,5 +331,59 @@ public class CAH_Frame extends JFrame {
 		CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblStats, lblLoadGame, lblUsers, lblCards, lblRules, lblNewGame, lblCardsAgainstHumanity, StartPanel, Start, StartBackground}));
 		CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblLoadGame, lblUsers, lblStats, lblRules, lblCards, lblNewGame, CAH_Layers, Start, StartPanel, lblCardsAgainstHumanity, StartBackground}));
 		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, mnFile, mntmNewGame, mntmExit, mnNetplay, mnHelp, mntmAbout, mntmRules, lblCardsAgainstHumanity, lblStats, lblLoadGame, lblUsers, lblCards, lblRules, lblNewGame, CAH_Panel, Start, StartPanel, CAH_Layers, StartBackground}));
+		
+		CAH_NewGame newGame = new CAH_NewGame();
+		CAH_Layers.add(newGame);
+		
+		CAH_Layers.addPropertyChangeListener(new LayerListener());
 	}
+	
+	/**
+	 * A list of the different screens that there are.
+	 * @author Holt Maki
+	 * @since CAH1.0
+	 * @version CAH1.0
+	 */
+	private enum screens
+	{
+		START,
+		NEWGAME,
+		LOADGAME,
+		STATS,
+		USERS,
+		CARDS,
+		RULES,
+		MAINGAME,
+		ENDGAME;
+	}
+	
+	/**
+	 * A listener that changes the screen.
+	 * @author Holt Maki
+	 * @since CAH1.0
+	 * @version CAH1.0
+	 *
+	 */
+	private class LayerListener implements PropertyChangeListener
+	{		
+		
+		/**
+		 * Creates a new object that listens for the command to change the screen.
+		 * @since CAH1.0
+		 * @version CAH1.0
+		 * @author Holt Maki
+		 */
+		public LayerListener()
+		{
+			
+		}
+
+		@Override
+		public void propertyChange(PropertyChangeEvent arg0) {
+			Object newScreen = arg0.getNewValue();
+			CardLayout layout = CAH_Layers.
+		}
+		
+	}
+	
 }
