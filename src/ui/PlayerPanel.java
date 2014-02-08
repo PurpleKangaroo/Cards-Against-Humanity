@@ -35,6 +35,7 @@ public class PlayerPanel extends JPanel implements Runnable
 	 */
 	public PlayerPanel(Player player) 
 	{
+		setSize(new Dimension(136, 130));
 		setMaximumSize(new Dimension(136, 130));
 		setBorder(new CompoundBorder(new MatteBorder(0, 3, 0, 3, (Color) new Color(0, 0, 0)), new MatteBorder(0, 1, 0, 1, (Color) new Color(255, 255, 255))));
 		setBackground(Color.BLACK);
