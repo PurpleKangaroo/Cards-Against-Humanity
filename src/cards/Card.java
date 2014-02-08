@@ -1,9 +1,5 @@
 package cards;
 
-import import_export.Saver;
-
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 /**
@@ -35,7 +31,7 @@ public class Card {
 	 * @see {@linkplain answerCard}, {@linkplain questionCard}
 	 */
 	public Card(String card)
-	{		
+	{
 		cardString = card;
 	}
 	
