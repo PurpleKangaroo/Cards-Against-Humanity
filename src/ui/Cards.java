@@ -1,5 +1,7 @@
 package ui;
 
+import graphics.ImageLoad;
+
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
@@ -8,6 +10,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Rectangle;
 import java.awt.Dimension;
@@ -33,6 +36,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+
 /**
  * A class of object that represents the layered pane that contains information about a players statistics.
  * @author Holt Maki
@@ -40,10 +45,38 @@ import javax.swing.SwingConstants;
  * @version CAH1.0
  *
  */
-public class Cards extends JLayeredPane
+public class Cards extends JLayeredPane implements Runnable
 {
+	/**
+	 * The card being displayed.
+	 */
+	private CardDisplay card;
+	
+	/**
+	 * The tabbed pane with all the decks tabs.
+	 */
+	private JTabbedPane decksTabbed;
+	
+	/**
+	 * The tabbed pane for the original deck.
+	 */
+	private JTabbedPane originalDeck;
+	
+	/**
+	 * The scroll pane for the original CAH deck's questions.
+	 */
 	private JScrollPane originalQscr;
-
+	
+	/**
+	 * The list with all of the questions for CAH's original deck.
+	 */
+	private JList qList;
+	
+	/**
+	 * The array list of the different question cards from the original CAH deck.
+	 */
+	private ArrayList<QuestionCard> qCards;
+	
 	/**
 	 * Creates the pane.
 	 * @author Holt Maki
@@ -54,6 +87,7 @@ public class Cards extends JLayeredPane
 	 */
 	public Cards() throws URISyntaxException, IOException
 	{
+		
 		setOpaque(true);
 		setBorder(null);
 		setBackground(Color.BLACK);
@@ -65,16 +99,16 @@ public class Cards extends JLayeredPane
 		lblCardsAgainstHumanity.setBounds(84, 43, 1024, 139);
 		add(lblCardsAgainstHumanity);
 		
-		JTabbedPane decksTabbed = new JTabbedPane(JTabbedPane.TOP);
+		decksTabbed = new JTabbedPane(JTabbedPane.TOP);
 		decksTabbed.setBounds(84, 195, 883, 494);
 		add(decksTabbed);
 		
-		JTabbedPane originalDeck = new JTabbedPane(JTabbedPane.TOP);
+		originalDeck = new JTabbedPane(JTabbedPane.TOP);
 		decksTabbed.addTab("Original", null, originalDeck, null);
 		
 		
 		DeckBuilder original = new DeckBuilder(new Decks[]{Decks.ORIGINAL});
-		ArrayList<QuestionCard> qCards = original.getDeck().getQuestionCardList();
+		qCards = original.getDeck().getQuestionCardList();
 		String[][] qCardsData = new String[qCards.size()][2];
 		for(int i = 0; i < qCards.size(); i++)
 		{
@@ -105,7 +139,7 @@ public class Cards extends JLayeredPane
 		
 		originalDeck.addTab("Black Cards", null, originalQscr, null);
 		
-		JList qList = new QColumnedList(qCardsData);
+		qList = new QColumnedList(qCardsData);
 		qList.setForeground(Color.WHITE);
 		qList.setSelectionBackground(new Color(0, 153, 255));
 		qList.setSelectionForeground(Color.WHITE);
@@ -134,7 +168,7 @@ public class Cards extends JLayeredPane
 	 * @version CAH1.0
 	 * @author Holt Maki
 	 */
-	@SuppressWarnings("serial")
+	@SuppressWarnings({ "serial", "rawtypes" })
 	public class QColumnedList extends JList
 	{
 		/**
@@ -165,6 +199,7 @@ public class Cards extends JLayeredPane
 	 * 
 	 *
 	 */
+	@SuppressWarnings({ "serial", "rawtypes" })
 	public class QListCellRenderer extends JPanel implements ListCellRenderer
 	{
 		/**
@@ -229,6 +264,22 @@ public class Cards extends JLayeredPane
 			setFont(list.getFont());
 			
 			return this;
+		}
+		
+	}
+
+	@Override
+	public void run()
+	{
+		if(decksTabbed.getSelectedComponent().equals(originalDeck))
+		{
+			if(originalDeck.getSelectedComponent().equals(originalQscr))
+			{
+				card = new BlackCard(qCards.get(qList.getSelectedIndex()));
+				((Component) card).setBounds(1043, 273, 188, 270);
+				this.add((Component) card);
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+			}
 		}
 		
 	}
