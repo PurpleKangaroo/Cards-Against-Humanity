@@ -4,7 +4,6 @@ import import_export.Encoder;
 import import_export.PathFinder;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -30,12 +29,13 @@ public class DeckBuilder {
 	
 	/**
 	 * Creates an object that will import a file and convert it into a deck of cards
+	 * @param decklist - the list of subdecks that the deck that the deckbuilder is building will contain.
 	 * @throws URISyntaxException 
 	 * @throws IOException 
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 */
 	
-	@SuppressWarnings("resource")
 	public DeckBuilder(Decks[] decklist) throws URISyntaxException, IOException
 	{
 		PathFinder a = new PathFinder();
@@ -58,6 +58,14 @@ public class DeckBuilder {
 		deck = new Deck(answerList, questionList);
 	}
 	
+	/**
+	 * Adds the cards to the deck.
+	 * @throws URISyntaxException
+	 * @throws IOException
+	 * @since CAH1.0
+	 * @version CAH1.0
+	 * @author Holt Maki
+	 */
 	private void addToDeck() throws URISyntaxException, IOException
 	{
 		@SuppressWarnings("resource")
@@ -77,8 +85,9 @@ public class DeckBuilder {
 	
 	/**
 	 * Gets the original card deck as it is at the start of the game.
-	 * @return {@link #deck} - the deck at the start of the game.
+	 * @return {@linkplain Deck} - the deck at the start of the game.
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 */
 	
 	public Deck getDeck()
