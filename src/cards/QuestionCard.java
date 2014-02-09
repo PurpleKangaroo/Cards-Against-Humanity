@@ -1,5 +1,6 @@
 package cards;
 
+import import_export.Encoder;
 import import_export.Saver;
 
 import java.io.IOException;
@@ -38,7 +39,7 @@ public class QuestionCard extends Card{
 		//save = new Saver(fileName, folder);
 		//Make tags and history with save
 		//Maybe make a class of object that tags and gets the history
-			
+		Encoder encode = new Encoder();
 		draw = 0;
 		pick = 1;
 		String card1 = card + "";
@@ -47,17 +48,17 @@ public class QuestionCard extends Card{
 			String cardSub = card.substring(card.indexOf("{p"));
 			cardSub = cardSub.substring(2, cardSub.indexOf("}"));
 			pick = Integer.parseInt(cardSub);
-			card1 = card.substring(0,card.indexOf("{") -1);
+			card1 = card.substring(0,card.indexOf("{"));
 		}
 		if (card.contains("{d"))
 		{
 			String cardSub = card.substring(card.indexOf("{d"));
 			cardSub = cardSub.substring(2, cardSub.indexOf("}"));
 			draw = Integer.parseInt(cardSub);
-			card1 = card.substring(0,card.indexOf("{") -1);
+			card1 = card.substring(0,card.indexOf("{"));
 		}
-		card1 = card1.replaceAll("[LINE]", "\n\n"); //TODO encoder
-		setCardString(card1);
+		card1 = card1.replaceAll("<LINE>", "\n\n"); //TODO encoder
+		super.setCardString(encode.encode(card1).replaceAll("_", "_____"));
 		
 	}
 	/**
