@@ -12,6 +12,7 @@ import javax.swing.ButtonModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JList;
@@ -47,6 +48,8 @@ import javax.swing.border.LineBorder;
  */
 @SuppressWarnings("serial")
 public class CAH_NewGame extends JLayeredPane {
+	
+	private JComponent StartGameMenus;
 //TODO: Create examples applet in the left area.
 	/**
 	 * Create the panel.
@@ -61,7 +64,7 @@ public class CAH_NewGame extends JLayeredPane {
 		setBounds(new Rectangle(0, 0, 1450, 700));
 		setMaximumSize(new Dimension(1450, 700));
 		
-		final JPanel StartGameMenus = new JPanel();
+		StartGameMenus = new JPanel();
 		StartGameMenus.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		StartGameMenus.setOpaque(false);
 		StartGameMenus.setBounds(240, 230, 695, 447);
@@ -252,7 +255,7 @@ public class CAH_NewGame extends JLayeredPane {
 		btnStartGame.setFocusTraversalKeysEnabled(false);
 		btnStartGame.setFocusPainted(false);
 		btnStartGame.setOpaque(false);
-		btnStartGame.setBounds(308, 419, 102, 17);
+		btnStartGame.setBounds(250, 419, 102, 17);
 		StartGameMenus.add(btnStartGame);
 		
 		JPanel GameType = new JPanel();
@@ -323,6 +326,17 @@ public class CAH_NewGame extends JLayeredPane {
 			}
 		});
 		
+	}
+	
+	/**
+	 * Allows StartGameMenus to add a component. This is important for allowing the program to add the main menu button which will return the user to the main menu.
+	 * @author Holt Maki
+	 * @since CAH1.0
+	 * @param component - the JComponent being added.
+	 */
+	protected void startGameMenuAdd(JComponent component)
+	{
+		StartGameMenus.add(component);
 	}
 	
 	/**

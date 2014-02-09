@@ -17,6 +17,13 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Shows the "about" information.
+ * @author Holt Maki
+ * @since CAH1.0
+ * @version CAH1.0
+ *
+ */
 @SuppressWarnings("serial")
 public class AboutDialog extends JDialog {
 
