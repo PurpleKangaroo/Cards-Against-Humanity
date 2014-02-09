@@ -4,6 +4,12 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+/**
+ * A class that loads images.
+ * @author Holt Maki
+ * @since CAH1.0
+ * @version CAH1.0
+ */
 public class ImageLoad
 {
 	/**
