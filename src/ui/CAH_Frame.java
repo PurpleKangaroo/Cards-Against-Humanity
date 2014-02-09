@@ -69,7 +69,7 @@ public class CAH_Frame extends JFrame {
 	/**
 	 * The layered pane that contains the new game menu.
 	 */
-	private JLayeredPane newGame;
+	private CAH_NewGame newGame;
 	
 	/**
 	 * Launch the application.
@@ -105,15 +105,15 @@ public class CAH_Frame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		
-		JMenuBar menuBar = new JMenuBar();
+		final JMenuBar menuBar = new JMenuBar();
 		menuBar.setBorderPainted(false);
 		menuBar.setBorder(null);
 		setJMenuBar(menuBar);
 		
-		JMenu mnFile = new JMenu("File");
+		final JMenu mnFile = new JMenu("File");
 		menuBar.add(mnFile);
 		
-		JMenuItem mntmNewGame = new JMenuItem("New Game");
+		final JMenuItem mntmNewGame = new JMenuItem("New Game");
 		mntmNewGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//TODO fill
@@ -121,7 +121,7 @@ public class CAH_Frame extends JFrame {
 		});
 		mnFile.add(mntmNewGame);
 		
-		JMenuItem mntmExit = new JMenuItem("Exit");
+		final JMenuItem mntmExit = new JMenuItem("Exit");
 		mntmExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//TODO have some kind of warning come up before exiting
@@ -130,13 +130,13 @@ public class CAH_Frame extends JFrame {
 		});
 		mnFile.add(mntmExit);
 		
-		JMenu mnNetplay = new JMenu("Netplay");
+		final JMenu mnNetplay = new JMenu("Netplay");
 		menuBar.add(mnNetplay);
 		
-		JMenu mnHelp = new JMenu("Help");
+		final JMenu mnHelp = new JMenu("Help");
 		menuBar.add(mnHelp);
 		
-		JMenuItem mntmAbout = new JMenuItem("About");
+		final JMenuItem mntmAbout = new JMenuItem("About");
 		mntmAbout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -151,7 +151,7 @@ public class CAH_Frame extends JFrame {
 		});
 		mnHelp.add(mntmAbout);
 		
-		JMenuItem mntmRules = new JMenuItem("Rules");
+		final JMenuItem mntmRules = new JMenuItem("Rules");
 		mntmRules.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//TODO fill
@@ -363,6 +363,28 @@ public class CAH_Frame extends JFrame {
 				{
 					newGame = new CAH_NewGame();
 					newGame.setName("newGame");
+					JButton mainMenu = new JButton("Main Menu");
+					mainMenu.setOpaque(false);
+					mainMenu.setFocusTraversalKeysEnabled(false);
+					mainMenu.setFocusPainted(false);
+					mainMenu.setBorderPainted(false);
+					mainMenu.setBounds(362, 419, 102, 17);
+					newGame.startGameMenuAdd(mainMenu);
+					
+					mainMenu.addActionListener(new ActionListener(){
+
+						@Override
+						public void actionPerformed(ActionEvent arg0)
+						{
+							CAH_Layers.remove(newGame);
+							CAH_Layers.add(Start);
+							CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{Start, StartPanel, btnStats, btnLoadGame, btnUsers, btnCards, btnRules, btnNewGame, lblCardsAgainstHumanity, StartBackground}));
+							CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{CAH_Layers}));
+							setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, mnFile, mntmNewGame, mntmExit, mnNetplay, mnHelp, mntmAbout, mntmRules, CAH_Panel}));
+						}
+						
+					});
+					
 					CAH_Layers.remove(Start);
 					CAH_Layers.add(newGame);
 					CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{newGame}));
@@ -381,14 +403,35 @@ public class CAH_Frame extends JFrame {
 						cards = new Cards();
 					} catch (URISyntaxException e1)
 					{
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} catch (IOException e1)
 					{
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					cards.setVisible(true);
+					
+					JButton mainMenu = new JButton("Main Menu");
+					mainMenu.setFocusPainted(false);
+					mainMenu.setOpaque(false);
+					mainMenu.setBounds(1097, 666, 100, 23);
+					mainMenu.setFocusTraversalKeysEnabled(false);
+					mainMenu.setBorderPainted(false);
+					cards.add(mainMenu);
+					
+					mainMenu.addActionListener(new ActionListener(){
+
+						@Override
+						public void actionPerformed(ActionEvent arg0)
+						{
+							CAH_Layers.remove(cards);
+							CAH_Layers.add(Start);
+							CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{Start, StartPanel, btnStats, btnLoadGame, btnUsers, btnCards, btnRules, btnNewGame, lblCardsAgainstHumanity, StartBackground}));
+							CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{CAH_Layers}));
+							setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, mnFile, mntmNewGame, mntmExit, mnNetplay, mnHelp, mntmAbout, mntmRules, CAH_Panel}));
+						}
+						
+					});
+					
 					cards.setName("cards");
 					CAH_Layers.remove(Start);
 					CAH_Layers.add(cards);

@@ -41,6 +41,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
+import javax.swing.JButton;
 
 /**
  * A class of object that represents the layered pane that contains information about a players statistics.
@@ -326,5 +327,4 @@ public class Cards extends JLayeredPane
 			}
 		}
 	}
-	
 }
