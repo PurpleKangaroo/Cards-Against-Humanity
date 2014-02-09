@@ -1,9 +1,9 @@
 package cards;
 
+import import_export.Encoder;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
-
-import users.Card_Czar_Exception;
 
 /**
  * A type object that represents an answer card (The white cards in Cards Against Humanity).
@@ -33,8 +33,9 @@ public class AnswerCard extends Card
 	{
 		super(card);
 		String card1 = card + "";
-		card1 = card1.replaceAll("[LINE]", "\n\n"); //TODO encoder
-		setCardString(card1);		
+		card1 = card1.replaceAll("<LINE>", "\n\n"); //TODO encoder
+		Encoder encode = new Encoder();
+		setCardString(encode.encode(card1));
 	}
 
 }

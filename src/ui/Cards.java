@@ -30,6 +30,8 @@ import cards.QuestionCard;
 
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingConstants;
 
 /**
  * A class of object that represents the layered pane that contains information about a players statistics.
@@ -73,12 +75,11 @@ public class Cards extends JLayeredPane
 		
 		DeckBuilder original = new DeckBuilder(new Decks[]{Decks.ORIGINAL});
 		ArrayList<QuestionCard> qCards = original.getDeck().getQuestionCardList();
-		String[][] qCardsData = new String[qCards.size()][3];
+		String[][] qCardsData = new String[qCards.size()][2];
 		for(int i = 0; i < qCards.size(); i++)
 		{
-			qCardsData[i][0] = qCards.get(i).getCardString();
-			qCardsData[i][1] = qCards.get(i).getDraw() + "";
-			qCardsData[i][2] = qCards.get(i).getPick() + "";
+			qCardsData[i][0] = "<html><body style=\"color:WHITE\">" + qCards.get(i).getCardString() + "</body></html>";
+			qCardsData[i][1] = "    "+ qCards.get(i).getDraw() + "               " + qCards.get(i).getPick() + "";
 		}
 		
 		GridBagLayout qScrollLayout = new GridBagLayout();
@@ -98,17 +99,31 @@ public class Cards extends JLayeredPane
 		qScrollConstraints.weighty = 1.0;
 		
 		originalQscr = new JScrollPane();
+		originalQscr.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
 		qScrollLayout.setConstraints(originalQscr, qScrollConstraints);
 		
 		originalDeck.addTab("Black Cards", null, originalQscr, null);
 		
 		JList qList = new QColumnedList(qCardsData);
+		qList.setForeground(Color.WHITE);
+		qList.setSelectionBackground(new Color(0, 153, 255));
+		qList.setSelectionForeground(Color.WHITE);
+		
+		qList.setBackground(Color.BLACK);
 		qList.setAutoscrolls(false);
 		qList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		originalQscr.setViewportView(qList);
 		
+		JLabel lblCardText = new JLabel("Card Text" +
+										"                                                                                                                         " + 
+										"                                                                                                                   " +
+										"Draw" + "          " + "Pick");
+		lblCardText.setHorizontalTextPosition(SwingConstants.LEFT);
+		originalQscr.setColumnHeaderView(lblCardText);
+		
 		JList originalAns = new JList();
+		originalAns.setSelectionBackground(new Color(0, 153, 255));
 		originalDeck.addTab("White Cards", null, originalAns, null);
 
 	}
@@ -157,14 +172,9 @@ public class Cards extends JLayeredPane
 		 */
 		private JLabel cardStr;
 		/**
-		 * The number of cards drawn for the {@linkplain cards.QuestionCard}
+		 * The number of cards drawn and the number of cards picked for the {@linkplain cards.QuestionCard}
 		 */
-		private JLabel draw;
-		
-		/**
-		 * The number of cards picked for the {@linkplain cards.QuestionCard}.
-		 */
-		private JLabel pick;
+		private JLabel drawpick;
 		
 		/**
 		 * Creates the renderer.
@@ -176,16 +186,13 @@ public class Cards extends JLayeredPane
 			setLayout(new GridLayout(1,3));
 			
 			cardStr = new JLabel();
-			draw = new JLabel();
-			pick = new JLabel();
+			drawpick = new JLabel();
 			
 			cardStr.setOpaque(true);
-			draw.setOpaque(true);
-			pick.setOpaque(true);
+			drawpick.setOpaque(true);
 			
 			add(cardStr);
-			add(draw);
-			add(pick);
+			add(drawpick);
 		}
 		
 		@Override
@@ -193,23 +200,17 @@ public class Cards extends JLayeredPane
 				int index, boolean isSelected, boolean hasFocus)
 		{
 			String cardStrData = ((String[])value)[0];
-			String drawData = ((String[])value)[1];
-			String pickData = ((String[])value)[2];
+			String drawpickData = ((String[])value)[1];
 			
 			cardStr.setText(cardStrData);
-			draw.setText(drawData + "");
-			pick.setText(pickData + "");
+			drawpick.setText(drawpickData + "");
 			
-			draw.setBounds(draw.getX(), draw.getY(), 5, draw.getHeight());
-			pick.setBounds(pick.getX(), pick.getY(), 5, pick.getHeight());
+			drawpick.setBounds(drawpick.getX(), drawpick.getY(), 5, drawpick.getHeight());
 			
 			if(isSelected)
 			{
-				draw.setBackground(list.getSelectionBackground());
-				draw.setForeground(list.getSelectionForeground());
-				
-				pick.setBackground(list.getSelectionBackground());
-				pick.setForeground(list.getSelectionForeground());
+				drawpick.setBackground(list.getSelectionBackground());
+				drawpick.setForeground(list.getSelectionForeground());
 				
 				cardStr.setBackground(list.getSelectionBackground());
 				cardStr.setForeground(list.getSelectionForeground());
@@ -217,11 +218,8 @@ public class Cards extends JLayeredPane
 			
 			else
 			{
-				draw.setBackground(list.getBackground());
-				draw.setForeground(list.getForeground());
-				
-				pick.setBackground(list.getBackground());
-				pick.setForeground(list.getForeground());
+				drawpick.setBackground(list.getBackground());
+				drawpick.setForeground(list.getForeground());
 				
 				cardStr.setBackground(list.getBackground());
 				cardStr.setForeground(list.getForeground());
