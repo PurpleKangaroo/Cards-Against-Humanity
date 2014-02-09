@@ -14,11 +14,17 @@ import java.util.ArrayList;
  * @version CAH1.0
  */
 public class Card {
+	/**
+	 * The String that will appear on the card.
+	 */
 	private String cardString;
 	private ArrayList<Tag> tags;
 	//TODO Make it so that each prefix & folder will have their own numbering so that multiple decks can be combined without problems.
 	
-	
+	/**
+	 * The cards history.
+	 * This includes information about when it is played and when it wins.
+	 */
 	private CardHistory history;//TODO Make this when the card is created to help the AI understand the cards better
 	
 	/**
@@ -28,6 +34,7 @@ public class Card {
 	 * The classes {@linkplain QuestionCard} and {@linkplain AnswerCard} are different because questionCards allow the card to require the user to play or draw a certain number of cards.
 	 * @param card - the writing that will be on the card. {@link #cardString} = card.
 	 * @since CAH1.0
+	 * @version CAH1.0
 	 * @see {@linkplain AnswerCard}, {@linkplain QuestionCard}
 	 */
 	public Card(String card)
@@ -41,7 +48,10 @@ public class Card {
 	 * It is also used by impersonators to best imitate the the person that it is impersonating.
 	 * @param {@link #aTag} - the {@linkplain Tag} that will be attached to the card.
 	 * @since CAH1.0
-	 * @see {@linkplain tag}
+	 * @version CAH1.0
+	 * @author Holt Maki
+	 * @param aTag - The {@linkplain Tag} that will be added to the Card.
+	 * @see {@linkplain Tag}
 	 */
 	public void addTag(Tag aTag)
 	{
@@ -65,7 +75,7 @@ public class Card {
 	 * @since CAH1.0
 	 * @version CAH1.0
 	 * @author Holt Maki
-	 * @return {@link #cardString} - The String that is made up of the text that the card has written on it.
+	 * @return {@linkplain #cardString} - The String that is made up of the text that the card has written on it.
 	 */
 	public String getCardString()
 	{
