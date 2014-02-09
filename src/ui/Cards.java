@@ -1,34 +1,38 @@
 package ui;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.text.AttributedCharacterIterator;
-import java.util.ArrayList;
-
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.Insets;
+import java.awt.Rectangle;
+import java.awt.Dimension;
+import java.awt.Color;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+
 import javax.swing.JTabbedPane;
-import javax.swing.ScrollPaneConstants;
+import javax.swing.JPanel;
+import javax.swing.JList;
+import javax.swing.BoxLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.ListCellRenderer;
 
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-
-import cards.Deck;
 import cards.DeckBuilder;
 import cards.Decks;
 import cards.QuestionCard;
+
+import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
 /**
- * A class of object that represents the JLayeredPane that contains the information about each of the cards and their decks.
+ * A class of object that represents the layered pane that contains information about a players statistics.
  * @author Holt Maki
  * @since CAH1.0
  * @version CAH1.0
@@ -36,133 +40,198 @@ import javax.swing.ListSelectionModel;
  */
 public class Cards extends JLayeredPane
 {
+	private JScrollPane originalQscr;
 
 	/**
-	 * The original Cards Against Humanity deck.
-	 */
-	private Deck original;
-	
-	/**
-	 * The header for the question cards.
-	 */
-	private String qHeading;
-	
-	/**
-	 * The iterator for the lists.
-	 */
-	private AttributedCharacterIterator iterator;
-	
-	/**
-	 * Create the pane.
+	 * Creates the pane.
+	 * @author Holt Maki
 	 * @since CAH1.0
 	 * @version CAH1.0
-	 * @author Holt Maki
 	 * @throws IOException 
 	 * @throws URISyntaxException 
 	 */
 	public Cards() throws URISyntaxException, IOException
 	{
-		createDecks();
-		
-		setMaximumSize(new Dimension(1450, 700));
 		setOpaque(true);
+		setBorder(null);
 		setBackground(Color.BLACK);
+		setMaximumSize(new Dimension(1450, 700));
 		setBounds(new Rectangle(0, 0, 1450, 700));
+		final JLabel lblCardsAgainstHumanity = new JLabel("Cards Against Humanity");
+		lblCardsAgainstHumanity.setFont(new Font("Arial Black", Font.BOLD, 70));
+		lblCardsAgainstHumanity.setForeground(Color.WHITE);
+		lblCardsAgainstHumanity.setBounds(84, 43, 1024, 139);
+		add(lblCardsAgainstHumanity);
 		
-		JLabel label = new JLabel("Cards Against Humanity");
-		label.setLocation(new Point(83, 43));
-		label.setBounds(new Rectangle(83, 43, 1024, 139));
-		label.setForeground(Color.WHITE);
-		label.setFont(new Font("Arial Black", Font.BOLD, 70));
-		label.setBounds(83, 43, 1024, 139);
-		add(label);
+		JTabbedPane decksTabbed = new JTabbedPane(JTabbedPane.TOP);
+		decksTabbed.setBounds(84, 195, 883, 494);
+		add(decksTabbed);
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBorder(null);
-		tabbedPane.setBounds(90, 179, 533, 480);
-		add(tabbedPane);
+		JTabbedPane originalDeck = new JTabbedPane(JTabbedPane.TOP);
+		decksTabbed.addTab("Original", null, originalDeck, null);
 		
-		JTabbedPane Original = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.addTab("Original", null, Original, null);
 		
-		JScrollPane OriginalQ = new JScrollPane();
-		OriginalQ.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		Original.addTab("Black Cards", null, OriginalQ, null);
-		
-		ArrayList<QuestionCard> ArrLiOriginalQ = original.getQuestionCardList();
-		
-		String[] arrOriginalQ = new String[ArrLiOriginalQ.size()];
-		
-		for(int i = 0; i < ArrLiOriginalQ.size(); i++)
+		DeckBuilder original = new DeckBuilder(new Decks[]{Decks.ORIGINAL});
+		ArrayList<QuestionCard> qCards = original.getDeck().getQuestionCardList();
+		String[][] qCardsData = new String[qCards.size()][3];
+		for(int i = 0; i < qCards.size(); i++)
 		{
-			System.out.println(ArrLiOriginalQ.get(i).getCardString());
-			arrOriginalQ[i] = formatQ(ArrLiOriginalQ.get(i).getCardString(), ArrLiOriginalQ.get(i).getDraw(), ArrLiOriginalQ.get(i).getPick());
+			qCardsData[i][0] = qCards.get(i).getCardString();
+			qCardsData[i][1] = qCards.get(i).getDraw() + "";
+			qCardsData[i][2] = qCards.get(i).getPick() + "";
 		}
 		
-		JList OriginalQList = new JList(arrOriginalQ);
-		OriginalQList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		OriginalQList.setVisibleRowCount(arrOriginalQ.length);
-		OriginalQ.setViewportView(OriginalQList);
+		GridBagLayout qScrollLayout = new GridBagLayout();
+		GridBagConstraints qScrollConstraints = new GridBagConstraints();
 		
-		JPanel OriginalAns = new JPanel();
-		Original.addTab("White Cards", null, OriginalAns, null);
+		qScrollConstraints.gridx = 0;
+		qScrollConstraints.gridy = 0;
 		
-		JList OriginalAnsList = new JList();
-		OriginalAns.add(OriginalAnsList);
+		qScrollConstraints.gridwidth = 1;
+		qScrollConstraints.gridheight = 1;
 		
-		JTabbedPane Expansion1 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.addTab("Expansion 1", null, Expansion1, null);
+		qScrollConstraints.fill = GridBagConstraints.BOTH;
+		qScrollConstraints.anchor = GridBagConstraints.CENTER;
+		qScrollConstraints.insets = new Insets(1,1,1,1);
 		
-		JPanel Expansion1Q = new JPanel();
-		Expansion1.addTab("Black Cards", null, Expansion1Q, null);
+		qScrollConstraints.weightx = 1.0;
+		qScrollConstraints.weighty = 1.0;
 		
-		JPanel Expansion1Ans = new JPanel();
-		Expansion1.addTab("White Cards", null, Expansion1Ans, null);
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{label, OriginalAnsList, tabbedPane, Original, OriginalQ, OriginalQList, OriginalAns, Expansion1, Expansion1Q, Expansion1Ans}));
+		originalQscr = new JScrollPane();
+		
+		qScrollLayout.setConstraints(originalQscr, qScrollConstraints);
+		
+		originalDeck.addTab("Black Cards", null, originalQscr, null);
+		
+		JList qList = new QColumnedList(qCardsData);
+		qList.setAutoscrolls(false);
+		qList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		originalQscr.setViewportView(qList);
+		
+		JList originalAns = new JList();
+		originalDeck.addTab("White Cards", null, originalAns, null);
 
 	}
 	
 	/**
-	 * Creates the decks.
+	 * A class of object that represents a columned list.
 	 * @since CAH1.0
 	 * @version CAH1.0
 	 * @author Holt Maki
-	 * @throws IOException 
-	 * @throws URISyntaxException 
 	 */
-	private void createDecks() throws URISyntaxException, IOException
+	@SuppressWarnings("serial")
+	public class QColumnedList extends JList
 	{
-		DeckBuilder originalDeckBuilder = new DeckBuilder(new Decks[]{Decks.ORIGINAL});
-		original = originalDeckBuilder.getDeck();
+		/**
+		 * The data that the list contains.
+		 */
+		private String[][] data;
+		
+		/**
+		 * Creates a new QColumnedList.
+		 * @since CAH1.0
+		 * @author Holt Maki
+		 * @param data the data that will be represented in the columns
+		 */
+		@SuppressWarnings("unchecked")
+		public QColumnedList(String[][] data)
+		{
+			this.data = data;
+			super.setListData(this.data);
+			super.setCellRenderer(new QListCellRenderer());
+		}
 	}
 	
 	/**
-	 * Formats a string for the lists.
-	 * @param cardStr - the card string that is being formatted.
-	 * @param draw - the integer that says how many cards are drawn for a certain question card.
-	 * @param play - the integer that says how many cards are played for a certain question card.
-	 * @return str - the now formatted String.
+	 * A class of object that renders the cells of the {@linkplain cards.QuestionCard}s {@linkplain javax.swing.JList}.
+	 * @author Holt Maki
 	 * @since CAH1.0
 	 * @version CAH1.0
-	 * @author Holt Maki
+	 * 
+	 *
 	 */
-	private String formatQ(String cardStr, int draw, int play)
+	public class QListCellRenderer extends JPanel implements ListCellRenderer
 	{
-		String str = new String();
-		cardStr = cardStr.replaceAll("_", "______");
+		/**
+		 * The {@linkplain cards.QuestionCard}s' {@linkplain cards.Card#cardString}.
+		 */
+		private JLabel cardStr;
+		/**
+		 * The number of cards drawn for the {@linkplain cards.QuestionCard}
+		 */
+		private JLabel draw;
 		
-		for(int i = 0; i < 80; i++)
+		/**
+		 * The number of cards picked for the {@linkplain cards.QuestionCard}.
+		 */
+		private JLabel pick;
+		
+		/**
+		 * Creates the renderer.
+		 * @since CAH1.0
+		 * @author Holt Maki		
+		 */
+		private QListCellRenderer()
 		{
-			if(i < cardStr.length() && i < 86)
+			setLayout(new GridLayout(1,3));
+			
+			cardStr = new JLabel();
+			draw = new JLabel();
+			pick = new JLabel();
+			
+			cardStr.setOpaque(true);
+			draw.setOpaque(true);
+			pick.setOpaque(true);
+			
+			add(cardStr);
+			add(draw);
+			add(pick);
+		}
+		
+		@Override
+		public Component getListCellRendererComponent(JList list, Object value,
+				int index, boolean isSelected, boolean hasFocus)
+		{
+			String cardStrData = ((String[])value)[0];
+			String drawData = ((String[])value)[1];
+			String pickData = ((String[])value)[2];
+			
+			cardStr.setText(cardStrData);
+			draw.setText(drawData + "");
+			pick.setText(pickData + "");
+			
+			draw.setBounds(draw.getX(), draw.getY(), 5, draw.getHeight());
+			pick.setBounds(pick.getX(), pick.getY(), 5, pick.getHeight());
+			
+			if(isSelected)
 			{
-				str = str + cardStr.charAt(i);
+				draw.setBackground(list.getSelectionBackground());
+				draw.setForeground(list.getSelectionForeground());
+				
+				pick.setBackground(list.getSelectionBackground());
+				pick.setForeground(list.getSelectionForeground());
+				
+				cardStr.setBackground(list.getSelectionBackground());
+				cardStr.setForeground(list.getSelectionForeground());
 			}
 			
-			else if(i < cardStr.length())
+			else
 			{
-				str = str + ".";
+				draw.setBackground(list.getBackground());
+				draw.setForeground(list.getForeground());
+				
+				pick.setBackground(list.getBackground());
+				pick.setForeground(list.getForeground());
+				
+				cardStr.setBackground(list.getBackground());
+				cardStr.setForeground(list.getForeground());
 			}
+			
+			setEnabled(list.isEnabled());
+			setFont(list.getFont());
+			
+			return this;
 		}
-		return str;
+		
 	}
 }
