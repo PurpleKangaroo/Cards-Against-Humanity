@@ -11,17 +11,5 @@ import javax.swing.JLayeredPane;
  */
 public class CAH_Stats extends JLayeredPane
 {
-
-	/**
-	 * Creates the pane.
-	 * @author Holt Maki
-	 * @since CAH1.0
-	 * @version CAH1.0
-	 */
-	public CAH_Stats()
-	{
-		//TODO fill
-
-	}
-
+	
 }
