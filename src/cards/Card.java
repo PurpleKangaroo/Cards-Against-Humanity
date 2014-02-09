@@ -4,11 +4,13 @@ import java.util.ArrayList;
 
 /**
  * A type object that represents a card.
- * The type of card is determined by which subclass({@linkplain QuestionCard} or {@linkplain AnswerCard}) is used.
+ * The type of card is determined by which subclass({@link QuestionCard} or {@linkplain AnswerCard}) is used.
  * The class card by its self is never intended to be used, but is meant to be used for its subclasses constructors and methods.
  * The classes {@linkplain QuestionCard} and {@linkplain AnswerCard} are different because questionCards allow the card to require
  *  the user to play or draw a certain number of cards.
- * @see {@linkplain Deck}, {@linkplain QuestionCard}, {@linkplain AnswerCard}
+ * @see Deck 
+ * @see QuestionCard 
+ * @see AnswerCard
  * @author Holt Maki
  * @since CAH1.0
  * @version CAH1.0
@@ -35,7 +37,8 @@ public class Card {
 	 * @param card - the writing that will be on the card. {@link #cardString} = card.
 	 * @since CAH1.0
 	 * @version CAH1.0
-	 * @see {@linkplain AnswerCard}, {@linkplain QuestionCard}
+	 * @see AnswerCard
+	 * @see QuestionCard
 	 */
 	public Card(String card)
 	{
@@ -51,7 +54,7 @@ public class Card {
 	 * @version CAH1.0
 	 * @author Holt Maki
 	 * @param aTag - The {@linkplain Tag} that will be added to the Card.
-	 * @see {@linkplain Tag}
+	 * @see Tag
 	 */
 	public void addTag(Tag aTag)
 	{

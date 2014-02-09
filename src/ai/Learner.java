@@ -47,6 +47,7 @@ public class Learner
 	 * @param aCard - The AnswerCard that the Card Czar chose.
 	 * @param options - The cards that the Card Czar could have chosen from.
 	 * @param qCard - The QuestionCard.
+	 * @since CAH1.0
 	 */
 	public void cardWon(HumanPlayer cardCzar, AnswerCard aCard, ArrayList<AnswerCard> options, QuestionCard qCard)
 	{
@@ -62,6 +63,7 @@ public class Learner
 	 * @param aCard - The AnswerCard that was eliminated.
 	 * @param options - The cards that could have been eliminated.
 	 * @param qCard - The QuestionCard.
+	 * @since CAH1.0
 	 */
 	public void cardEliminated(HumanPlayer eliminator, AnswerCard aCard, ArrayList<AnswerCard> options, QuestionCard qCard)
 	{
@@ -75,6 +77,7 @@ public class Learner
 	 * @param aCard - The Answer Card that was voted on
 	 * @param options - The cards that people had to pick from.
 	 * @param qCard - The QuestionCard.
+	 * @since CAH1.0
 	 */
 	public void cardVotedOn(ArrayList<HumanPlayer> voters, AnswerCard aCard, ArrayList<AnswerCard> options, QuestionCard qCard, int humanVotesFor, int humanVotesAgainst)
 	{
