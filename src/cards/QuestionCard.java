@@ -57,7 +57,7 @@ public class QuestionCard extends Card{
 			draw = Integer.parseInt(cardSub);
 			card1 = card.substring(0,card.indexOf("{"));
 		}
-		card1 = card1.replaceAll("<LINE>", "\n\n"); //TODO encoder
+		card1 = card1.replaceAll("<LINE>", "\n"); //TODO encoder
 		super.setCardString(encode.encode(card1).replaceAll("_", "_____"));
 		
 	}

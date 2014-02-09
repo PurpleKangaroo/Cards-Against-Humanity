@@ -35,6 +35,10 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
@@ -45,12 +49,12 @@ import org.eclipse.wb.swing.FocusTraversalOnArray;
  * @version CAH1.0
  *
  */
-public class Cards extends JLayeredPane implements Runnable
+public class Cards extends JLayeredPane
 {
 	/**
 	 * The card being displayed.
 	 */
-	private CardDisplay card;
+	private JPanel card;
 	
 	/**
 	 * The tabbed pane with all the decks tabs.
@@ -78,6 +82,11 @@ public class Cards extends JLayeredPane implements Runnable
 	private ArrayList<QuestionCard> qCards;
 	
 	/**
+	 * The boolean that tells whether or not the JPanel is running.
+	 */
+	private boolean running;
+	
+	/**
 	 * Creates the pane.
 	 * @author Holt Maki
 	 * @since CAH1.0
@@ -87,6 +96,7 @@ public class Cards extends JLayeredPane implements Runnable
 	 */
 	public Cards() throws URISyntaxException, IOException
 	{
+		running = true;
 		
 		setOpaque(true);
 		setBorder(null);
@@ -159,7 +169,42 @@ public class Cards extends JLayeredPane implements Runnable
 		JList originalAns = new JList();
 		originalAns.setSelectionBackground(new Color(0, 153, 255));
 		originalDeck.addTab("White Cards", null, originalAns, null);
+		
+		qList.setSelectedIndex(0);
+		
+		setCard();
+		
+		decksTabbed.addChangeListener(new ChangeListener()
+		{
 
+			@Override
+			public void stateChanged(ChangeEvent arg0)
+			{
+				setCard();
+			}
+			
+		});
+		
+		originalDeck.addChangeListener(new ChangeListener()
+		{
+
+			@Override
+			public void stateChanged(ChangeEvent arg0)
+			{
+				setCard();
+			}
+			
+		});
+		
+		qList.addListSelectionListener(new ListSelectionListener(){
+
+			@Override
+			public void valueChanged(ListSelectionEvent arg0)
+			{
+				setCard();
+			}
+			
+		});
 	}
 	
 	/**
@@ -268,19 +313,18 @@ public class Cards extends JLayeredPane implements Runnable
 		
 	}
 
-	@Override
-	public void run()
+	public void setCard()
 	{
 		if(decksTabbed.getSelectedComponent().equals(originalDeck))
 		{
 			if(originalDeck.getSelectedComponent().equals(originalQscr))
 			{
 				card = new BlackCard(qCards.get(qList.getSelectedIndex()));
-				((Component) card).setBounds(1043, 273, 188, 270);
+				((Component) card).setBounds(1043, 210, 188, 270);
 				this.add((Component) card);
 				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
 			}
 		}
-		
 	}
+	
 }

@@ -23,7 +23,7 @@ import cards.AnswerCard;
  * @see cards.AnswerCard
  *
  */
-public class WhiteCard extends JPanel implements CardDisplay
+public class WhiteCard extends JPanel
 {
 	
 	/**
@@ -36,6 +36,7 @@ public class WhiteCard extends JPanel implements CardDisplay
 	 * @since CAH1.0
 	 * @author Holt Maki
 	 * @param card - The {@linkplain AnswerCard} that the panel represents.
+	 * @wbp.parser.constructor
 	 */
 	public WhiteCard(AnswerCard card)
 	{
@@ -57,7 +58,7 @@ public class WhiteCard extends JPanel implements CardDisplay
 		
 		JTextArea cardTextArea = new JTextArea();
 		cardTextArea.setText(card.getCardString());
-		cardTextArea.setFont(new Font("Arial Black", Font.BOLD, 12));//TODO make font autosize to fit better.
+		cardTextArea.setFont(new Font("Arial Black", Font.BOLD, 15));//TODO make font autosize to fit better.
 		cardTextArea.setDisabledTextColor(Color.BLACK);
 		cardTextArea.setEditable(false);
 		cardTextArea.setEnabled(false);
@@ -95,7 +96,7 @@ public class WhiteCard extends JPanel implements CardDisplay
 		
 		JTextArea cardTextArea = new JTextArea();
 		cardTextArea.setText(cardStr);
-		cardTextArea.setFont(new Font("Arial Black", Font.BOLD, 12));//TODO make font autosize to fit better.
+		cardTextArea.setFont(new Font("Arial Black", Font.BOLD, 15));//TODO make font autosize to fit better.
 		cardTextArea.setDisabledTextColor(Color.BLACK);
 		cardTextArea.setEditable(false);
 		cardTextArea.setEnabled(false);

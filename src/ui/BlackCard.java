@@ -3,12 +3,18 @@ package ui;
 import javax.swing.JPanel;
 
 import cards.QuestionCard;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+
 import java.awt.Dimension;
 import java.awt.Rectangle;
+
 import javax.swing.JTextArea;
+import javax.swing.text.BadLocationException;
+
 import java.awt.Color;
+import java.awt.Font;
 
 /**
  * A class of object that represents a Black CAH card in the form of a panel.
@@ -19,7 +25,7 @@ import java.awt.Color;
  * @see cards.QuestionCard
  *
  */
-public class BlackCard extends JPanel implements CardDisplay
+public class BlackCard extends JPanel
 {
 
 	/**
@@ -30,10 +36,19 @@ public class BlackCard extends JPanel implements CardDisplay
 	 */
 	public BlackCard(QuestionCard card)
 	{
+		setFocusTraversalPolicyProvider(true);
+		setBackground(new Color(Color.TRANSLUCENT));
 		setSize(new Dimension(188, 270));
 		setLayout(null);
 		
-		JTextArea textArea = new JTextArea(card.getCardString());
+		String str = new String();
+		str = card.getCardString();		
+		
+		JTextArea textArea = new JTextArea(str);
+		textArea.setDisabledTextColor(Color.WHITE);
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
+		textArea.setFont(new Font("Arial Black", Font.PLAIN, 15));
 		textArea.setAutoscrolls(false);
 		textArea.setEnabled(false);
 		textArea.setEditable(false);
@@ -41,6 +56,7 @@ public class BlackCard extends JPanel implements CardDisplay
 		textArea.setOpaque(false);
 		textArea.setBounds(10, 11, 168, 192);
 		add(textArea);
+		
 		
 		JLabel d2p3 = new JLabel("");
 		d2p3.setBounds(new Rectangle(0, 0, 522, 37));
@@ -75,8 +91,6 @@ public class BlackCard extends JPanel implements CardDisplay
 		{
 			p2.setVisible(false);
 		}
-		
-		setVisible(true);
 		
 	}
 
