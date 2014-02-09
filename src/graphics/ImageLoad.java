@@ -16,6 +16,7 @@ public class ImageLoad
 	 * Loads an image.
 	 * @param imageName - the name of the image that is being loaded
 	 * @return image - the image that was loaded.
+	 * @since CAH1.0
 	 */
 	public static Image loadImage(String imageName)
 	{
