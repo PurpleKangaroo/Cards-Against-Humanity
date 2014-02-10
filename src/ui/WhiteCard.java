@@ -40,11 +40,26 @@ public class WhiteCard extends JPanel
 	 */
 	public WhiteCard(AnswerCard card)
 	{
+		setFocusTraversalPolicyProvider(true);
+		setBackground(new Color(Color.TRANSLUCENT));
 		setSize(new Dimension(188, 270));
-		setMinimumSize(new Dimension(188, 270));
-		setMaximumSize(new Dimension(188, 270));
-		setOpaque(false);
 		setLayout(null);
+		
+		String str = new String();
+		str = card.getCardString();		
+		
+		JTextArea textArea = new JTextArea(str);
+		textArea.setDisabledTextColor(Color.BLACK);
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
+		textArea.setFont(new Font("Arial Black", Font.PLAIN, 15));
+		textArea.setAutoscrolls(false);
+		textArea.setEnabled(false);
+		textArea.setEditable(false);
+		textArea.setForeground(Color.BLACK);
+		textArea.setOpaque(false);
+		textArea.setBounds(10, 11, 168, 192);
+		add(textArea);
 		
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setBounds(91, 233, 87, 15);
@@ -56,66 +71,6 @@ public class WhiteCard extends JPanel
 		lblCard.setIcon(new ImageIcon(WhiteCard.class.getResource("/graphics/wc.png")));
 		add(lblCard);
 		
-		JTextArea cardTextArea = new JTextArea();
-		cardTextArea.setText(card.getCardString());
-		cardTextArea.setFont(new Font("Arial Black", Font.BOLD, 15));//TODO make font autosize to fit better.
-		cardTextArea.setDisabledTextColor(Color.BLACK);
-		cardTextArea.setEditable(false);
-		cardTextArea.setEnabled(false);
-		cardTextArea.setWrapStyleWord(true);
-		cardTextArea.setOpaque(false);
-		cardTextArea.setAutoscrolls(false);
-		cardTextArea.setBounds(10, 11, 168, 216);
-		add(cardTextArea);
 		answerCard = card;
-	}
-	
-	/**
-	 * Create the panel.
-	 * @since CAH1.0
-	 * @author Holt Maki
-	 * @param cardStr - the string that will appear on the panel.
-	 */
-	public WhiteCard(String cardStr)
-	{
-		setSize(new Dimension(188, 270));
-		setMinimumSize(new Dimension(188, 270));
-		setMaximumSize(new Dimension(188, 270));
-		setOpaque(false);
-		setLayout(null);
-		
-		JLabel lblLogo = new JLabel("");
-		lblLogo.setBounds(91, 233, 87, 15);
-		lblLogo.setIcon(new ImageIcon(WhiteCard.class.getResource("/graphics/icon_w.png")));
-		add(lblLogo);
-		
-		JLabel lblCard = new JLabel("");
-		lblCard.setBounds(0, 5, 188, 270);
-		lblCard.setIcon(new ImageIcon(WhiteCard.class.getResource("/graphics/wc.png")));
-		add(lblCard);
-		
-		JTextArea cardTextArea = new JTextArea();
-		cardTextArea.setText(cardStr);
-		cardTextArea.setFont(new Font("Arial Black", Font.BOLD, 15));//TODO make font autosize to fit better.
-		cardTextArea.setDisabledTextColor(Color.BLACK);
-		cardTextArea.setEditable(false);
-		cardTextArea.setEnabled(false);
-		cardTextArea.setWrapStyleWord(true);
-		cardTextArea.setOpaque(false);
-		cardTextArea.setAutoscrolls(false);
-		cardTextArea.setBounds(10, 11, 168, 216);
-		add(cardTextArea);
-		try
-		{
-			answerCard = new AnswerCard(cardStr);
-		} catch (URISyntaxException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }
