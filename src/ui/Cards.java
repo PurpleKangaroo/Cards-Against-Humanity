@@ -1,37 +1,26 @@
 package ui;
 
-import graphics.ImageLoad;
-
-import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
-
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Rectangle;
-import java.awt.Dimension;
-import java.awt.Color;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-import javax.swing.JTabbedPane;
-import javax.swing.JPanel;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JList;
-import javax.swing.BoxLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.ListCellRenderer;
-
-import cards.DeckBuilder;
-import cards.Decks;
-import cards.QuestionCard;
-
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.ListCellRenderer;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
@@ -41,7 +30,11 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
-import javax.swing.JButton;
+
+import cards.AnswerCard;
+import cards.DeckBuilder;
+import cards.Decks;
+import cards.QuestionCard;
 
 /**
  * A class of object that represents the layered pane that contains information about a players statistics.
@@ -73,9 +66,19 @@ public class Cards extends JLayeredPane
 	private JScrollPane originalQscr;
 	
 	/**
+	 * The scroll pane for the original CAH deck's answers.
+	 */
+	private JScrollPane originalAnsScr;
+	
+	/**
 	 * The list with all of the questions for CAH's original deck.
 	 */
 	private JList qList;
+	
+	/**
+	 * The list with all of the answers for CAH's original deck.
+	 */
+	private JList originalAns;
 	
 	/**
 	 * The array list of the different question cards from the original CAH deck.
@@ -83,9 +86,9 @@ public class Cards extends JLayeredPane
 	private ArrayList<QuestionCard> qCards;
 	
 	/**
-	 * The boolean that tells whether or not the JPanel is running.
+	 * The array list of the different answer cards from the original CAH deck.
 	 */
-	private boolean running;
+	private ArrayList<AnswerCard> aCards;
 	
 	/**
 	 * Creates the pane.
@@ -96,9 +99,7 @@ public class Cards extends JLayeredPane
 	 * @throws URISyntaxException 
 	 */
 	public Cards() throws URISyntaxException, IOException
-	{
-		running = true;
-		
+	{		
 		setOpaque(true);
 		setBorder(null);
 		setBackground(Color.BLACK);
@@ -167,9 +168,32 @@ public class Cards extends JLayeredPane
 		lblCardText.setHorizontalTextPosition(SwingConstants.LEFT);
 		originalQscr.setColumnHeaderView(lblCardText);
 		
-		JList originalAns = new JList();
+		originalAnsScr = new JScrollPane();
+		originalAnsScr.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		
+		GridBagLayout AnsScrollLayout = new GridBagLayout();
+		GridBagConstraints AnsScrollConstraints = new GridBagConstraints();
+		
+		AnsScrollLayout.setConstraints(originalAnsScr, AnsScrollConstraints);
+		
+		originalDeck.addTab("Black Cards", null, originalAnsScr, null);
+		
+		aCards = original.getDeck().getAnswerCardList();
+		String[] aCardsData = new String[aCards.size()];
+		for(int i = 0; i < aCards.size(); i++)
+		{
+			aCardsData[i] = aCards.get(i).getCardString();
+		}
+		originalAns = new JList(aCardsData);
+		
+		originalAns.setCellRenderer(new AListCellRenderer());
+		
+		originalAns.setSelectedIndex(0);
+		
 		originalAns.setSelectionBackground(new Color(0, 153, 255));
-		originalDeck.addTab("White Cards", null, originalAns, null);
+		originalDeck.addTab("White Cards", null, originalAnsScr, null);
+		
+		originalAnsScr.setViewportView(originalAns);
 		
 		qList.setSelectedIndex(0);
 		
@@ -192,12 +216,24 @@ public class Cards extends JLayeredPane
 			@Override
 			public void stateChanged(ChangeEvent arg0)
 			{
+				originalAns.setSelectedIndex(0);
+				qList.setSelectedIndex(0);
 				setCard();
 			}
 			
 		});
 		
 		qList.addListSelectionListener(new ListSelectionListener(){
+
+			@Override
+			public void valueChanged(ListSelectionEvent arg0)
+			{
+				setCard();
+			}
+			
+		});
+		
+		originalAns.addListSelectionListener(new ListSelectionListener(){
 
 			@Override
 			public void valueChanged(ListSelectionEvent arg0)
@@ -313,6 +349,64 @@ public class Cards extends JLayeredPane
 		}
 		
 	}
+	
+	/**
+	 * An answer card list cell renderer.
+	 * @author Holt Maki
+	 * @since CAH1.0
+	 * @version CAH1.0
+	 *
+	 */
+	public class AListCellRenderer extends JPanel implements ListCellRenderer
+	{
+		/**
+		 * The {@linkplain cards.AnswerCard}s' {@linkplain cards.Card#cardString}.
+		 */
+		private JLabel cardStr;
+		
+		/**
+		 * Creates the renderer.
+		 * @since CAH1.0
+		 * @author Holt Maki		
+		 */
+		private AListCellRenderer()
+		{
+			setLayout(new GridLayout(1,1));
+			
+			cardStr = new JLabel();
+			
+			cardStr.setOpaque(true);
+			
+			add(cardStr);
+		}
+		
+		@Override
+		public Component getListCellRendererComponent(JList list, Object value,
+				int index, boolean isSelected, boolean hasFocus)
+		{
+			String cardStrData = (String) (value);
+			
+			cardStr.setText(cardStrData);
+			
+			if(isSelected)
+			{				
+				cardStr.setBackground(list.getSelectionBackground());
+				cardStr.setForeground(list.getSelectionForeground());
+			}
+			
+			else
+			{				
+				cardStr.setBackground(list.getBackground());
+				cardStr.setForeground(list.getForeground());
+			}
+			
+			setEnabled(list.isEnabled());
+			setFont(list.getFont());
+			
+			return this;
+		}
+		
+	}
 
 	public void setCard()
 	{
@@ -322,6 +416,14 @@ public class Cards extends JLayeredPane
 			{
 				card = new BlackCard(qCards.get(qList.getSelectedIndex()));
 				((Component) card).setBounds(1043, 210, 188, 270);
+				this.add((Component) card);
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+			}
+			else if(originalDeck.getSelectedComponent().equals(originalAnsScr))
+			{
+				card = new WhiteCard(aCards.get(originalAns.getSelectedIndex()));
+				((Component) card).setBounds(1043, 210, 188, 270);
+				this.remove((Component)card);
 				this.add((Component) card);
 				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
 			}

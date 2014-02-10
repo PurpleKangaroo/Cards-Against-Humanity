@@ -228,7 +228,7 @@ public class CAH_NewGame extends JLayeredPane {
 			}
 		});
 		btnAddPlayer.setOpaque(false);
-		btnAddPlayer.setBounds(585, 11, 25, 23);
+		btnAddPlayer.setBounds(539, 11, 25, 23);
 		AddPlayerPanel.add(btnAddPlayer);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -247,8 +247,19 @@ public class CAH_NewGame extends JLayeredPane {
 		button.setFocusTraversalKeysEnabled(false);
 		button.setToolTipText("Remove Player");
 		button.setOpaque(false);
-		button.setBounds(614, 11, 25, 23);
+		button.setBounds(568, 11, 25, 23);
 		AddPlayerPanel.add(button);
+		
+		JButton btnAuto = new JButton("Auto");
+		btnAuto.setToolTipText("Automatically add all netplay players connected to the game.");
+		btnAuto.setOpaque(false);
+		btnAuto.setMargin(new Insets(2, 1, 2, 1));
+		btnAuto.setFocusTraversalKeysEnabled(false);
+		btnAuto.setFocusPainted(false);
+		btnAuto.setBorderPainted(false);
+		btnAuto.setAlignmentY(0.0f);
+		btnAuto.setBounds(597, 11, 42, 23);
+		AddPlayerPanel.add(btnAuto);
 		
 		JButton btnStartGame = new JButton("Start Game");
 		btnStartGame.setBorderPainted(false);

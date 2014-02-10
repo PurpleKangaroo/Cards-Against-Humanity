@@ -59,6 +59,7 @@ public class CAH_Frame extends JFrame {
 	/**
 	 * The layered pane that contains CAH.
 	 */
+	@SuppressWarnings("unused")
 	private JLayeredPane CAH_Layers;
 	
 	/**
