@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-import javax.swing.DefaultListCellRenderer;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JList;
@@ -46,6 +45,11 @@ import cards.QuestionCard;
 public class Cards extends JLayeredPane
 {
 	/**
+	 * Serial ID.
+	 */
+	private static final long serialVersionUID = -5121016324694808164L;
+
+	/**
 	 * The card being displayed.
 	 */
 	private JPanel card;
@@ -73,11 +77,13 @@ public class Cards extends JLayeredPane
 	/**
 	 * The list with all of the questions for CAH's original deck.
 	 */
+	@SuppressWarnings("rawtypes")
 	private JList qList;
 	
 	/**
 	 * The list with all of the answers for CAH's original deck.
 	 */
+	@SuppressWarnings("rawtypes")
 	private JList originalAns;
 	
 	/**
@@ -98,6 +104,7 @@ public class Cards extends JLayeredPane
 	 * @throws IOException 
 	 * @throws URISyntaxException 
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Cards() throws URISyntaxException, IOException
 	{		
 		setOpaque(true);
@@ -357,8 +364,14 @@ public class Cards extends JLayeredPane
 	 * @version CAH1.0
 	 *
 	 */
+	@SuppressWarnings("rawtypes")
 	public class AListCellRenderer extends JPanel implements ListCellRenderer
 	{
+		/**
+		 * Serial ID.
+		 */
+		private static final long serialVersionUID = 6935093632361065411L;
+		
 		/**
 		 * The {@linkplain cards.AnswerCard}s' {@linkplain cards.Card#cardString}.
 		 */
@@ -408,6 +421,11 @@ public class Cards extends JLayeredPane
 		
 	}
 
+	/**
+	 * Sets the card panel.
+	 * @since CAH1.0
+	 * @author Holt Maki
+	 */
 	public void setCard()
 	{
 		if(decksTabbed.getSelectedComponent().equals(originalDeck))
