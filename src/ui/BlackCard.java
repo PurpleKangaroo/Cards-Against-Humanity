@@ -6,6 +6,7 @@ import cards.QuestionCard;
 
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import javax.swing.JTextPane;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
@@ -42,12 +43,12 @@ public class BlackCard extends JPanel
 		setLayout(null);
 		
 		String str = new String();
-		str = card.getCardString();		
+		str = card.getCardString();
 		
-		JTextArea textArea = new JTextArea(str);
+		JTextPane textArea = new JTextPane();
+		textArea.setContentType("text/html");
+		textArea.setText("<html><body style=\"font-family: Arial Black; font-size:15; font-color: WHITE\">" + str + "</body></html>");
 		textArea.setDisabledTextColor(Color.WHITE);
-		textArea.setLineWrap(true);
-		textArea.setWrapStyleWord(true);
 		textArea.setFont(new Font("Arial Black", Font.PLAIN, 15));
 		textArea.setAutoscrolls(false);
 		textArea.setEnabled(false);

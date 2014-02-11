@@ -132,6 +132,84 @@ public class Cards extends JLayeredPane
 	private JScrollPane Expansion1ScrQ;
 	
 	/**
+	 * The scroll pane for the second expansion black cards.
+	 */
+	private JScrollPane Expansion2ScrQ;
+	
+	/**
+	 * The JScrollPane for the Second CAH expansion's Answers.
+	 */
+	private JScrollPane Expansion2ScrA;
+
+	/**
+	 * The AList for the second expansions white cards.
+	 */
+	private AList Exp2AList;
+
+	/**
+	 * The QColumned List for Expansion2.
+	 */
+	private QColumnedList Exp2QList;
+	/**
+	 * The scroll pane for the second expansion black cards.
+	 */
+	private JScrollPane Expansion3ScrQ;
+	
+	/**
+	 * The JScrollPane for the Second CAH expansion's Answers.
+	 */
+	private JScrollPane Expansion3ScrA;
+
+	/**
+	 * The AList for the second expansions white cards.
+	 */
+	private AList Exp3AList;
+
+	/**
+	 * The QColumned List for Expansion2.
+	 */
+	private QColumnedList Exp3QList;
+	
+	/**
+	 * The scroll pane for the fourth expansion black cards.
+	 */
+	private JScrollPane Expansion4ScrQ;
+	
+	/**
+	 * The JScrollPane for the fourth CAH expansion's Answers.
+	 */
+	private JScrollPane Expansion4ScrA;
+
+	/**
+	 * The AList for the fourth expansions white cards.
+	 */
+	private AList Exp4AList;
+
+	/**
+	 * The QColumned List for Expansion4.
+	 */
+	private QColumnedList Exp4QList;
+	/**
+	 * The scroll pane for the 2012 CAH Holiday Expansion's black cards.
+	 */
+	private JScrollPane ExpansionHScrQ;
+	
+	/**
+	 * The JScrollPane for the 2012 CAH Holiday Expansion's white cards.
+	 */
+	private JScrollPane ExpansionHScrA;
+
+	/**
+	 * The AList for the for the 2012 CAH Holiday Expansion.
+	 */
+	private AList ExpHAList;
+
+	/**
+	 * The QColumned List for the 2012 CAH Holiday Expansion.
+	 */
+	private QColumnedList ExpHQList;
+	
+	/**
 	 * Creates the pane.
 	 * @author Holt Maki
 	 * @since CAH1.0
@@ -177,14 +255,56 @@ public class Cards extends JLayeredPane
 		Expansion2 = new JTabbedPane(JTabbedPane.TOP);
 		decksTabbed.addTab("Expansion 2", null, Expansion2, null);
 		
+		Expansion2ScrQ = new JScrollPane();
+		Expansion2ScrQ.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		Expansion2.addTab("Black Cards", null, Expansion2ScrQ, null);
+		
+		Expansion2ScrA = new JScrollPane();
+		Expansion2ScrA.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		Expansion2.addTab("White Cards", null, Expansion2ScrA, null);
+		Exp2QList = new QColumnedList(Decks.EXPANSION2);//TODO Find a way of dealing with 1.0 and 1.2
+		Expansion2ScrQ.setViewportView(Exp2QList);
+		Exp2AList = new AList(Decks.EXPANSION2);//TODO Find a way of dealing with 1.0 and 1.2
+		Expansion2ScrA.setViewportView(Exp2AList);
+		
 		Expansion3 = new JTabbedPane(JTabbedPane.TOP);
 		decksTabbed.addTab("Expansion 3", null, Expansion3, null);
+		Expansion3ScrQ = new JScrollPane();
+		Expansion3ScrQ.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		Expansion3.addTab("Black Cards", null, Expansion3ScrQ, null);
+		Expansion3ScrA = new JScrollPane();
+		Expansion3ScrA.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		Expansion3.addTab("White Cards", null, Expansion3ScrA, null);
+		Exp3QList = new QColumnedList(Decks.EXPANSION3);//TODO Find a way of dealing with 1.0 and 1.2
+		Expansion3ScrQ.setViewportView(Exp3QList);
+		Exp3AList = new AList(Decks.EXPANSION3);//TODO Find a way of dealing with 1.0 and 1.2
+		Expansion3ScrA.setViewportView(Exp3AList);
 		
 		Expansion4 = new JTabbedPane(JTabbedPane.TOP);
 		decksTabbed.addTab("Expansion 4", null, Expansion4, null);
+		Expansion4ScrQ = new JScrollPane();
+		Expansion4ScrQ.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		Expansion4.addTab("Black Cards", null, Expansion4ScrQ, null);
+		Expansion4ScrA = new JScrollPane();
+		Expansion4ScrA.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		Expansion4.addTab("White Cards", null, Expansion4ScrA, null);
+		Exp4QList = new QColumnedList(Decks.EXPANSION4);//TODO Find a way of dealing with 1.0 and 1.2
+		Expansion4ScrQ.setViewportView(Exp4QList);
+		Exp4AList = new AList(Decks.EXPANSION4);//TODO Find a way of dealing with 1.0 and 1.2
+		Expansion4ScrA.setViewportView(Exp4AList);
 		
 		HolidayExpansion = new JTabbedPane(JTabbedPane.TOP);
 		decksTabbed.addTab("Holiday Expansion", null, HolidayExpansion, null);
+		ExpansionHScrQ = new JScrollPane();
+		ExpansionHScrQ.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		HolidayExpansion.addTab("Black Cards", null, ExpansionHScrQ, null);
+		ExpansionHScrA = new JScrollPane();
+		ExpansionHScrA.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		HolidayExpansion.addTab("White Cards", null, ExpansionHScrA, null);
+		ExpHQList = new QColumnedList(Decks.HOLIDAYEXPANSION);//TODO Find a way of dealing with 1.0 and 1.2
+		ExpansionHScrQ.setViewportView(ExpHQList);
+		ExpHAList = new AList(Decks.HOLIDAYEXPANSION);//TODO Find a way of dealing with 1.0 and 1.2
+		ExpansionHScrA.setViewportView(ExpHAList);
 		
 		//TODO: Create deck and get cards for expansions
 		
@@ -210,6 +330,26 @@ public class Cards extends JLayeredPane
 		lblCardText.setHorizontalTextPosition(SwingConstants.LEFT);
 		originalQscr.setColumnHeaderView(lblCardText);
 		Expansion1ScrQ.setColumnHeaderView(new JLabel("Card Text" +
+				"                                                                                                                         " + 
+				"                                                                                                                   " +
+				"Draw" + "          " + "Pick"));
+		
+		Expansion2ScrQ.setColumnHeaderView(new JLabel("Card Text" +
+				"                                                                                                                         " + 
+				"                                                                                                                   " +
+				"Draw" + "          " + "Pick"));
+		
+		Expansion3ScrQ.setColumnHeaderView(new JLabel("Card Text" +
+				"                                                                                                                         " + 
+				"                                                                                                                   " +
+				"Draw" + "          " + "Pick"));
+		
+		Expansion4ScrQ.setColumnHeaderView(new JLabel("Card Text" +
+				"                                                                                                                         " + 
+				"                                                                                                                   " +
+				"Draw" + "          " + "Pick"));
+		
+		ExpansionHScrQ.setColumnHeaderView(new JLabel("Card Text" +
 				"                                                                                                                         " + 
 				"                                                                                                                   " +
 				"Draw" + "          " + "Pick"));
@@ -245,10 +385,6 @@ public class Cards extends JLayeredPane
 			@Override
 			public void stateChanged(ChangeEvent arg0)
 			{
-				Exp1AList.setSelectedIndex(0);
-				Exp1QList.setSelectedIndex(0);
-				originalAns.setSelectedIndex(0);
-				qList.setSelectedIndex(0);
 				setCard();
 			}
 			
@@ -260,8 +396,6 @@ public class Cards extends JLayeredPane
 			@Override
 			public void stateChanged(ChangeEvent arg0)
 			{
-				originalAns.setSelectedIndex(0);
-				qList.setSelectedIndex(0);
 				setCard();
 			}
 			
@@ -273,8 +407,50 @@ public class Cards extends JLayeredPane
 			@Override
 			public void stateChanged(ChangeEvent arg0)
 			{
-				Exp1AList.setSelectedIndex(0);
-				Exp1QList.setSelectedIndex(0);
+				setCard();
+			}
+			
+		});
+		
+		Expansion2.addChangeListener(new ChangeListener()
+		{
+
+			@Override
+			public void stateChanged(ChangeEvent arg0)
+			{
+				setCard();
+			}
+			
+		});
+		
+		Expansion3.addChangeListener(new ChangeListener()
+		{
+
+			@Override
+			public void stateChanged(ChangeEvent arg0)
+			{
+				setCard();
+			}
+			
+		});
+		
+		Expansion4.addChangeListener(new ChangeListener()
+		{
+
+			@Override
+			public void stateChanged(ChangeEvent arg0)
+			{
+				setCard();
+			}
+			
+		});
+		
+		HolidayExpansion.addChangeListener(new ChangeListener()
+		{
+
+			@Override
+			public void stateChanged(ChangeEvent arg0)
+			{
 				setCard();
 			}
 			
@@ -317,6 +493,7 @@ public class Cards extends JLayeredPane
 			super.setCellRenderer(new AListCellRenderer());
 			super.setSelectedIndex(0);
 			super.setSelectionBackground(new Color(0, 153, 255));
+			setSelectedIndex(0);
 			addListSelectionListener(new ListSelectionListener(){
 
 				@Override
@@ -390,6 +567,7 @@ public class Cards extends JLayeredPane
 			super.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			
 			setFixedCellWidth(1532);
+			setSelectedIndex(0);
 			
 			addListSelectionListener(new ListSelectionListener(){
 
@@ -618,13 +796,13 @@ public class Cards extends JLayeredPane
 				try
 				{
 					card = new BlackCard((new DeckBuilder(new Decks[] {Decks.ORIGINAL}).getDeck().getQuestionCardList()).get(qList.getSelectedIndex()));
-				} catch (URISyntaxException e)
+				}
+				catch (URISyntaxException e)
 				{
-					// TODO Auto-generated catch block
 					e.printStackTrace();
-				} catch (IOException e)
+				} 
+				catch (IOException e)
 				{
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				((Component) card).setBounds(1043, 210, 188, 270);
@@ -636,13 +814,13 @@ public class Cards extends JLayeredPane
 				try
 				{
 					card = new WhiteCard((new DeckBuilder(new Decks[] {Decks.ORIGINAL}).getDeck().getAnswerCardList()).get(originalAns.getSelectedIndex()));
-				} catch (URISyntaxException e)
+				} 
+				catch (URISyntaxException e)
 				{
-					// TODO Auto-generated catch block
 					e.printStackTrace();
-				} catch (IOException e)
+				} 
+				catch (IOException e)
 				{
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				((Component) card).setBounds(1043, 210, 188, 270);
@@ -658,13 +836,13 @@ public class Cards extends JLayeredPane
 				try
 				{
 					card = new BlackCard((new DeckBuilder(new Decks[] {Decks.EXPANSION1}).getDeck().getQuestionCardList()).get(Exp1QList.getSelectedIndex()));
-				} catch (URISyntaxException e)
+				} 
+				catch (URISyntaxException e)
 				{
-					// TODO Auto-generated catch block
 					e.printStackTrace();
-				} catch (IOException e)
+				}
+				catch (IOException e)
 				{
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				((Component) card).setBounds(1043, 210, 188, 270);
@@ -676,13 +854,167 @@ public class Cards extends JLayeredPane
 				try
 				{
 					card = new WhiteCard((new DeckBuilder(new Decks[] {Decks.EXPANSION1}).getDeck().getAnswerCardList()).get(Exp1AList.getSelectedIndex()));
+				} 
+				catch (URISyntaxException e)
+				{
+					e.printStackTrace();
+				}
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+				((Component) card).setBounds(1043, 210, 188, 270);
+				this.remove((Component)card);
+				this.add((Component) card);
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+			}
+		}
+		else if(decksTabbed.getSelectedComponent().equals(Expansion2))
+		{
+			if(Expansion2.getSelectedComponent().equals(Expansion2ScrQ))
+			{
+				try
+				{
+					card = new BlackCard((new DeckBuilder(new Decks[] {Decks.EXPANSION2}).getDeck().getQuestionCardList()).get(Exp2QList.getSelectedIndex()));
+				} 
+				catch (URISyntaxException e)
+				{
+					e.printStackTrace();
+				}
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+				((Component) card).setBounds(1043, 210, 188, 270);
+				this.add((Component) card);
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+			}
+			else if(Expansion2.getSelectedComponent().equals(Expansion2ScrA))
+			{
+				try
+				{
+					card = new WhiteCard((new DeckBuilder(new Decks[] {Decks.EXPANSION2}).getDeck().getAnswerCardList()).get(Exp2AList.getSelectedIndex()));
+				} 
+				catch (URISyntaxException e)
+				{
+					e.printStackTrace();
+				} 
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+				((Component) card).setBounds(1043, 210, 188, 270);
+				this.remove((Component)card);
+				this.add((Component) card);
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+			}
+		}
+		else if(decksTabbed.getSelectedComponent().equals(Expansion3))
+		{
+			if(Expansion3.getSelectedComponent().equals(Expansion3ScrQ))
+			{
+				try
+				{
+					card = new BlackCard((new DeckBuilder(new Decks[] {Decks.EXPANSION3}).getDeck().getQuestionCardList()).get(Exp3QList.getSelectedIndex()));
+				} 
+				catch (URISyntaxException e)
+				{
+					e.printStackTrace();
+				} 
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+				((Component) card).setBounds(1043, 210, 188, 270);
+				this.add((Component) card);
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+			}
+			else if(Expansion3.getSelectedComponent().equals(Expansion3ScrA))
+			{
+				try
+				{
+					card = new WhiteCard((new DeckBuilder(new Decks[] {Decks.EXPANSION3}).getDeck().getAnswerCardList()).get(Exp3AList.getSelectedIndex()));
+				} 
+				catch (URISyntaxException e)
+				{
+					e.printStackTrace();
+				} 
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+				((Component) card).setBounds(1043, 210, 188, 270);
+				this.remove((Component)card);
+				this.add((Component) card);
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+			}
+		}
+		else if(decksTabbed.getSelectedComponent().equals(Expansion4))
+		{
+			if(Expansion4.getSelectedComponent().equals(Expansion4ScrQ))
+			{
+				try
+				{
+					card = new BlackCard((new DeckBuilder(new Decks[] {Decks.EXPANSION4}).getDeck().getQuestionCardList()).get(Exp4QList.getSelectedIndex()));
+				} 
+				catch (URISyntaxException e)
+				{
+					e.printStackTrace();
+				} 
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+				((Component) card).setBounds(1043, 210, 188, 270);
+				this.add((Component) card);
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+			}
+			else if(Expansion4.getSelectedComponent().equals(Expansion4ScrA))
+			{
+				try
+				{
+					card = new WhiteCard((new DeckBuilder(new Decks[] {Decks.EXPANSION4}).getDeck().getAnswerCardList()).get(Exp4AList.getSelectedIndex()));
 				} catch (URISyntaxException e)
 				{
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IOException e)
 				{
-					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				((Component) card).setBounds(1043, 210, 188, 270);
+				this.remove((Component)card);
+				this.add((Component) card);
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+			}
+		}
+		else if(decksTabbed.getSelectedComponent().equals(HolidayExpansion))
+		{
+			if(HolidayExpansion.getSelectedComponent().equals(ExpansionHScrQ))
+			{
+				try
+				{
+					card = new BlackCard((new DeckBuilder(new Decks[] {Decks.HOLIDAYEXPANSION}).getDeck().getQuestionCardList()).get(ExpHQList.getSelectedIndex()));
+				} catch (URISyntaxException e)
+				{
+					e.printStackTrace();
+				} catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+				((Component) card).setBounds(1043, 210, 188, 270);
+				this.add((Component) card);
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+			}
+			else if(HolidayExpansion.getSelectedComponent().equals(ExpansionHScrA))
+			{
+				try
+				{
+					card = new WhiteCard((new DeckBuilder(new Decks[] {Decks.HOLIDAYEXPANSION}).getDeck().getAnswerCardList()).get(ExpHAList.getSelectedIndex()));
+				} catch (URISyntaxException e)
+				{
+					e.printStackTrace();
+				} catch (IOException e)
+				{
 					e.printStackTrace();
 				}
 				((Component) card).setBounds(1043, 210, 188, 270);
