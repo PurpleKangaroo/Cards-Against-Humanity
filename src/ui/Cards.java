@@ -45,7 +45,7 @@ import cards.QuestionCard;
 public class Cards extends JLayeredPane
 {
 	/**
-	 * Serial ID.
+	 * Serial Version ID.
 	 */
 	private static final long serialVersionUID = -5121016324694808164L;
 
@@ -85,16 +85,51 @@ public class Cards extends JLayeredPane
 	 */
 	@SuppressWarnings("rawtypes")
 	private JList originalAns;
+
+	/**
+	 * The JTabbedPane for the first CAH expansion.
+	 */
+	private JTabbedPane Expansion1;
+
+	/**
+	 * The JTabbedPane for the second CAH expansion.
+	 */
+	private JTabbedPane Expansion2;
 	
 	/**
-	 * The array list of the different question cards from the original CAH deck.
+	 * The JTabbedPane for the third CAH expansion.
 	 */
-	private ArrayList<QuestionCard> qCards;
+	private JTabbedPane Expansion3;
 	
 	/**
-	 * The array list of the different answer cards from the original CAH deck.
+	 * The JTabbedPane for the fourth CAH expansion.
 	 */
-	private ArrayList<AnswerCard> aCards;
+	private JTabbedPane Expansion4;
+	
+	/**
+	 * The JTabbedPane for the CAH Holiday expansion.
+	 */
+	private JTabbedPane HolidayExpansion;
+
+	/**
+	 * The JScrollPane for the First CAH expansion's Answers.
+	 */
+	private JScrollPane Expansion1ScrA;
+
+	/**
+	 * The AList for the first expansions white cards.
+	 */
+	private AList Exp1AList;
+
+	/**
+	 * The QColumned List for Expansion1.
+	 */
+	private QColumnedList Exp1QList;
+
+	/**
+	 * The scroll pane for the first expansion black cards.
+	 */
+	private JScrollPane Expansion1ScrQ;
 	
 	/**
 	 * Creates the pane.
@@ -104,9 +139,8 @@ public class Cards extends JLayeredPane
 	 * @throws IOException 
 	 * @throws URISyntaxException 
 	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Cards() throws URISyntaxException, IOException
-	{		
+	{
 		setOpaque(true);
 		setBorder(null);
 		setBackground(Color.BLACK);
@@ -125,47 +159,48 @@ public class Cards extends JLayeredPane
 		originalDeck = new JTabbedPane(JTabbedPane.TOP);
 		decksTabbed.addTab("Original", null, originalDeck, null);
 		
+		Expansion1 = new JTabbedPane(JTabbedPane.TOP);
+		decksTabbed.addTab("Expansion 1", null, Expansion1, null);
 		
-		DeckBuilder original = new DeckBuilder(new Decks[]{Decks.ORIGINAL});
-		qCards = original.getDeck().getQuestionCardList();
-		String[][] qCardsData = new String[qCards.size()][2];
-		for(int i = 0; i < qCards.size(); i++)
-		{
-			qCardsData[i][0] = "<html><body style=\"color:WHITE\">" + qCards.get(i).getCardString() + "</body></html>";
-			qCardsData[i][1] = "    "+ qCards.get(i).getDraw() + "               " + qCards.get(i).getPick() + "";
-		}
+		Expansion1ScrQ = new JScrollPane();
+		Expansion1ScrQ.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		Expansion1.addTab("Black Cards", null, Expansion1ScrQ, null);
+		
+		Expansion1ScrA = new JScrollPane();
+		Expansion1ScrA.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		Expansion1.addTab("White Cards", null, Expansion1ScrA, null);
+		Exp1QList = new QColumnedList(Decks.EXPANSION1);//TODO Find a way of dealing with 1.0 and 1.2
+		Expansion1ScrQ.setViewportView(Exp1QList);
+		Exp1AList = new AList(Decks.EXPANSION1);//TODO Find a way of dealing with 1.0 and 1.2
+		Expansion1ScrA.setViewportView(Exp1AList);
+		
+		Expansion2 = new JTabbedPane(JTabbedPane.TOP);
+		decksTabbed.addTab("Expansion 2", null, Expansion2, null);
+		
+		Expansion3 = new JTabbedPane(JTabbedPane.TOP);
+		decksTabbed.addTab("Expansion 3", null, Expansion3, null);
+		
+		Expansion4 = new JTabbedPane(JTabbedPane.TOP);
+		decksTabbed.addTab("Expansion 4", null, Expansion4, null);
+		
+		HolidayExpansion = new JTabbedPane(JTabbedPane.TOP);
+		decksTabbed.addTab("Holiday Expansion", null, HolidayExpansion, null);
+		
+		//TODO: Create deck and get cards for expansions
 		
 		GridBagLayout qScrollLayout = new GridBagLayout();
-		GridBagConstraints qScrollConstraints = new GridBagConstraints();
-		
-		qScrollConstraints.gridx = 0;
-		qScrollConstraints.gridy = 0;
-		
-		qScrollConstraints.gridwidth = 1;
-		qScrollConstraints.gridheight = 1;
-		
-		qScrollConstraints.fill = GridBagConstraints.BOTH;
-		qScrollConstraints.anchor = GridBagConstraints.CENTER;
-		qScrollConstraints.insets = new Insets(1,1,1,1);
-		
-		qScrollConstraints.weightx = 1.0;
-		qScrollConstraints.weighty = 1.0;
-		
-		originalQscr = new JScrollPane();
-		originalQscr.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		GridBagConstraints qScrollConstraints = new QScrConstraints();
 		
 		qScrollLayout.setConstraints(originalQscr, qScrollConstraints);
 		
+		GridBagLayout Exp1qScrollLayout = new GridBagLayout();
+		GridBagConstraints Exp1qScrollConstraints = new QScrConstraints();
+		Exp1qScrollLayout.setConstraints(Expansion1ScrQ,Exp1qScrollConstraints);
+		
 		originalDeck.addTab("Black Cards", null, originalQscr, null);
 		
-		qList = new QColumnedList(qCardsData);
-		qList.setForeground(Color.WHITE);
-		qList.setSelectionBackground(new Color(0, 153, 255));
-		qList.setSelectionForeground(Color.WHITE);
+		qList = new QColumnedList(Decks.ORIGINAL);
 		
-		qList.setBackground(Color.BLACK);
-		qList.setAutoscrolls(false);
-		qList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		originalQscr.setViewportView(qList);
 		
 		JLabel lblCardText = new JLabel("Card Text" +
@@ -174,6 +209,10 @@ public class Cards extends JLayeredPane
 										"Draw" + "          " + "Pick");
 		lblCardText.setHorizontalTextPosition(SwingConstants.LEFT);
 		originalQscr.setColumnHeaderView(lblCardText);
+		Expansion1ScrQ.setColumnHeaderView(new JLabel("Card Text" +
+				"                                                                                                                         " + 
+				"                                                                                                                   " +
+				"Draw" + "          " + "Pick"));
 		
 		originalAnsScr = new JScrollPane();
 		originalAnsScr.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -183,21 +222,15 @@ public class Cards extends JLayeredPane
 		
 		AnsScrollLayout.setConstraints(originalAnsScr, AnsScrollConstraints);
 		
+		GridBagLayout Exp1ScrollLayouta = AnsScrollLayout;
+		GridBagConstraints ExpScrollConstraintsa = AnsScrollConstraints;
+		Exp1ScrollLayouta.setConstraints(Expansion1ScrA, ExpScrollConstraintsa);
+		
+		
 		originalDeck.addTab("Black Cards", null, originalAnsScr, null);
 		
-		aCards = original.getDeck().getAnswerCardList();
-		String[] aCardsData = new String[aCards.size()];
-		for(int i = 0; i < aCards.size(); i++)
-		{
-			aCardsData[i] = aCards.get(i).getCardString();
-		}
-		originalAns = new JList(aCardsData);
+		originalAns = new AList(Decks.ORIGINAL);
 		
-		originalAns.setCellRenderer(new AListCellRenderer());
-		
-		originalAns.setSelectedIndex(0);
-		
-		originalAns.setSelectionBackground(new Color(0, 153, 255));
 		originalDeck.addTab("White Cards", null, originalAnsScr, null);
 		
 		originalAnsScr.setViewportView(originalAns);
@@ -212,6 +245,10 @@ public class Cards extends JLayeredPane
 			@Override
 			public void stateChanged(ChangeEvent arg0)
 			{
+				Exp1AList.setSelectedIndex(0);
+				Exp1QList.setSelectedIndex(0);
+				originalAns.setSelectedIndex(0);
+				qList.setSelectedIndex(0);
 				setCard();
 			}
 			
@@ -230,25 +267,86 @@ public class Cards extends JLayeredPane
 			
 		});
 		
-		qList.addListSelectionListener(new ListSelectionListener(){
+		Expansion1.addChangeListener(new ChangeListener()
+		{
 
 			@Override
-			public void valueChanged(ListSelectionEvent arg0)
+			public void stateChanged(ChangeEvent arg0)
 			{
+				Exp1AList.setSelectedIndex(0);
+				Exp1QList.setSelectedIndex(0);
 				setCard();
 			}
 			
 		});
+	}
+	
+	/**
+	 * A class of object that represents a list of answer cards.
+	 * @author Holt Maki
+	 * @since CAH1.0
+	 * @version CAH1.0
+	 *
+	 */
+	@SuppressWarnings("rawtypes")
+	public class AList extends JList
+	{
+		/**
+		 * Serial Version ID.
+		 */
+		private static final long serialVersionUID = 708725502667733498L;
+		/**
+		 * The data that the list contains.
+		 * In this case the data is the {@linkplain cards.AnswerCard}s' card strings.
+		 */
+		private String[] data;
+
+		/**
+		 * Creates the list.
+		 * @author Holt Maki
+		 * @since CAH1.0
+		 * @param deck - the deck that is having its cards' data represented in the list.
+		 * @throws URISyntaxException
+		 * @throws IOException
+		 */
+		@SuppressWarnings("unchecked")
+		public AList(Decks deck) throws URISyntaxException, IOException
+		{
+			findData(deck);
+			super.setListData(this.data);
+			super.setCellRenderer(new AListCellRenderer());
+			super.setSelectedIndex(0);
+			super.setSelectionBackground(new Color(0, 153, 255));
+			addListSelectionListener(new ListSelectionListener(){
+
+				@Override
+				public void valueChanged(ListSelectionEvent arg0)
+				{
+					setCard();
+				}
+				
+			});
+			
+		}
 		
-		originalAns.addListSelectionListener(new ListSelectionListener(){
-
-			@Override
-			public void valueChanged(ListSelectionEvent arg0)
+		/**
+		 * Finds the data for the list.
+		 * @param deck - the deck that is having its data found.
+		 * @since CAH1.0
+		 * @author Holt Maki
+		 * @throws URISyntaxException
+		 * @throws IOException
+		 */
+		private void findData(Decks deck) throws URISyntaxException, IOException
+		{
+			DeckBuilder deckBuild = new DeckBuilder(new Decks[] {deck});
+			ArrayList<AnswerCard> aCards = deckBuild.getDeck().getAnswerCardList();
+			data = new String[aCards.size()];
+			for(int i = 0; i < aCards.size(); i++)
 			{
-				setCard();
+				data[i] = aCards.get(i).getCardString();
 			}
-			
-		});
+		}
 	}
 	
 	/**
@@ -257,9 +355,13 @@ public class Cards extends JLayeredPane
 	 * @version CAH1.0
 	 * @author Holt Maki
 	 */
-	@SuppressWarnings({ "serial", "rawtypes" })
+	@SuppressWarnings({"rawtypes" })
 	public class QColumnedList extends JList
 	{
+		/**
+		 * Serial Version UID.
+		 */
+		private static final long serialVersionUID = 9052427212230650147L;
 		/**
 		 * The data that the list contains.
 		 */
@@ -269,14 +371,54 @@ public class Cards extends JLayeredPane
 		 * Creates a new QColumnedList.
 		 * @since CAH1.0
 		 * @author Holt Maki
-		 * @param data the data that will be represented in the columns
+		 * @param deck the deck whose cards will be represented in the columns
+		 * @throws IOException 
+		 * @throws URISyntaxException 
 		 */
 		@SuppressWarnings("unchecked")
-		public QColumnedList(String[][] data)
+		public QColumnedList(Decks deck) throws URISyntaxException, IOException
 		{
-			this.data = data;
+			findData(deck);
 			super.setListData(this.data);
 			super.setCellRenderer(new QListCellRenderer());
+			super.setForeground(Color.WHITE);
+			super.setSelectionBackground(new Color(0, 153, 255));
+			super.setSelectionForeground(Color.WHITE);
+			
+			super.setBackground(Color.BLACK);
+			super.setAutoscrolls(false);
+			super.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			
+			setFixedCellWidth(1532);
+			
+			addListSelectionListener(new ListSelectionListener(){
+
+				@Override
+				public void valueChanged(ListSelectionEvent arg0)
+				{
+					setCard();
+				}
+				
+			});
+		}
+		
+		/**
+		 * Finds the list data for the deck.
+		 * @param deck - the deck that {@linkplain #getData(Decks[]) will find.
+		 * @since CAH1.0
+		 * @throws URISyntaxException
+		 * @throws IOException
+		 */
+		private void findData(Decks deck) throws URISyntaxException, IOException
+		{
+			DeckBuilder deckBuild = new DeckBuilder(new Decks[] {deck});
+			ArrayList<QuestionCard> qCards = deckBuild.getDeck().getQuestionCardList();
+			data = new String[qCards.size()][2];
+			for(int i = 0; i < qCards.size(); i++)
+			{
+				data[i][0] = "<html><body style=\"color:WHITE\">" + qCards.get(i).getCardString() + "</body></html>";
+				data[i][1] = "    "+ qCards.get(i).getDraw() + "               " + qCards.get(i).getPick() + "";
+			}
 		}
 	}
 	
@@ -352,6 +494,8 @@ public class Cards extends JLayeredPane
 			setEnabled(list.isEnabled());
 			setFont(list.getFont());
 			
+			list.setFixedCellWidth(766);
+			
 			return this;
 		}
 		
@@ -368,7 +512,7 @@ public class Cards extends JLayeredPane
 	public class AListCellRenderer extends JPanel implements ListCellRenderer
 	{
 		/**
-		 * Serial ID.
+		 * Serial Version UID.
 		 */
 		private static final long serialVersionUID = 6935093632361065411L;
 		
@@ -420,6 +564,45 @@ public class Cards extends JLayeredPane
 		}
 		
 	}
+	
+	/**
+	 * A class of object that represents the scroll constraints of a QColumnedList.
+	 * @author Holt Maki
+	 * @since CAH1.0
+	 * @version CAH1.0
+	 *
+	 */
+	private class QScrConstraints extends GridBagConstraints
+	{
+		/**
+		 * Serial Version UID.
+		 */
+		private static final long serialVersionUID = 3715430882347157074L;
+
+		/**
+		 * Creates qScrConstraints
+		 * @author Holt Maki
+		 * @since CAH1.0
+		 */
+		private QScrConstraints()
+		{
+			gridx = 0;
+			gridy = 0;
+			
+			gridwidth = 1;
+			gridheight = 1;
+			
+			fill = GridBagConstraints.BOTH;
+			anchor = GridBagConstraints.CENTER;
+			insets = new Insets(1,1,1,1);
+			
+			weightx = 1.0;
+			weighty = 1.0;
+			
+			originalQscr = new JScrollPane();
+			originalQscr.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		}
+	}
 
 	/**
 	 * Sets the card panel.
@@ -432,14 +615,76 @@ public class Cards extends JLayeredPane
 		{
 			if(originalDeck.getSelectedComponent().equals(originalQscr))
 			{
-				card = new BlackCard(qCards.get(qList.getSelectedIndex()));
+				try
+				{
+					card = new BlackCard((new DeckBuilder(new Decks[] {Decks.ORIGINAL}).getDeck().getQuestionCardList()).get(qList.getSelectedIndex()));
+				} catch (URISyntaxException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				((Component) card).setBounds(1043, 210, 188, 270);
 				this.add((Component) card);
 				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
 			}
 			else if(originalDeck.getSelectedComponent().equals(originalAnsScr))
 			{
-				card = new WhiteCard(aCards.get(originalAns.getSelectedIndex()));
+				try
+				{
+					card = new WhiteCard((new DeckBuilder(new Decks[] {Decks.ORIGINAL}).getDeck().getAnswerCardList()).get(originalAns.getSelectedIndex()));
+				} catch (URISyntaxException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				((Component) card).setBounds(1043, 210, 188, 270);
+				this.remove((Component)card);
+				this.add((Component) card);
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+			}
+		}
+		else if(decksTabbed.getSelectedComponent().equals(Expansion1))
+		{
+			if(Expansion1.getSelectedComponent().equals(Expansion1ScrQ))
+			{
+				try
+				{
+					card = new BlackCard((new DeckBuilder(new Decks[] {Decks.EXPANSION1}).getDeck().getQuestionCardList()).get(Exp1QList.getSelectedIndex()));
+				} catch (URISyntaxException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				((Component) card).setBounds(1043, 210, 188, 270);
+				this.add((Component) card);
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+			}
+			else if(Expansion1.getSelectedComponent().equals(Expansion1ScrA))
+			{
+				try
+				{
+					card = new WhiteCard((new DeckBuilder(new Decks[] {Decks.EXPANSION1}).getDeck().getAnswerCardList()).get(Exp1AList.getSelectedIndex()));
+				} catch (URISyntaxException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				((Component) card).setBounds(1043, 210, 188, 270);
 				this.remove((Component)card);
 				this.add((Component) card);
@@ -447,4 +692,5 @@ public class Cards extends JLayeredPane
 			}
 		}
 	}
+	
 }
