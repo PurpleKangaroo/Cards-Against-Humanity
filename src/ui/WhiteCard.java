@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
 import cards.AnswerCard;
 
@@ -48,10 +49,10 @@ public class WhiteCard extends JPanel
 		String str = new String();
 		str = card.getCardString();		
 		
-		JTextArea textArea = new JTextArea(str);
+		JTextPane textArea = new JTextPane();
+		textArea.setContentType("text/html");
+		textArea.setText("<html><body style=\"font-family: Arial Black; font-size:15; font-color: BLACK\">" + str + "</body></html>");
 		textArea.setDisabledTextColor(Color.BLACK);
-		textArea.setLineWrap(true);
-		textArea.setWrapStyleWord(true);
 		textArea.setFont(new Font("Arial Black", Font.PLAIN, 15));
 		textArea.setAutoscrolls(false);
 		textArea.setEnabled(false);
