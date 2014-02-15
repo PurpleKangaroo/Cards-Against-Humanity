@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JList;
@@ -224,7 +225,16 @@ public class CAH_NewGame extends JLayeredPane {
 		btnAddPlayer.setToolTipText("Add Player");
 		btnAddPlayer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//TODO: fill
+				try{
+					AddPlayerDialog dialog = new AddPlayerDialog();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setLocation(500,225);
+					dialog.setVisible(true);
+				}
+				catch (Exception e) 
+				{
+					e.printStackTrace();
+				}
 			}
 		});
 		btnAddPlayer.setOpaque(false);
