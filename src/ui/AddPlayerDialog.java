@@ -27,6 +27,11 @@ public class AddPlayerDialog extends JDialog
 {
 
 	/**
+	 * Serial Version UID.
+	 */
+	private static final long serialVersionUID = -500231145721899456L;
+
+	/**
 	 * The JPanel that contains the content of the dialog.
 	 */
 	private final JPanel contentPanel = new JPanel();

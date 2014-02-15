@@ -1,21 +1,16 @@
 package ui;
 
-import javax.swing.JPanel;
-
-import cards.QuestionCard;
-
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import javax.swing.JTextPane;
-
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Rectangle;
 
-import javax.swing.JTextArea;
-import javax.swing.text.BadLocationException;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextPane;
 
-import java.awt.Color;
-import java.awt.Font;
+import cards.QuestionCard;
 
 /**
  * A class of object that represents a Black CAH card in the form of a panel.
@@ -28,6 +23,11 @@ import java.awt.Font;
  */
 public class BlackCard extends JPanel
 {
+
+	/**
+	 * Serial Version UID.
+	 */
+	private static final long serialVersionUID = 1241238135562778563L;
 
 	/**
 	 * Create the panel.
