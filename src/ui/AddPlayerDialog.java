@@ -1,6 +1,9 @@
 package ui;
 
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.GroupLayout;
@@ -70,6 +73,7 @@ public class AddPlayerDialog extends JDialog
 		getContentPane().add(contentPanel);
 		{
 			playerType = new JPanel();
+			playerType.setBounds(15, 16, 223, 56);
 			playerType.setBorder(new TitledBorder(null, "Player Type", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			{
 				playerTypeButtonGroup.add(rdbtnComputerPlayer);
@@ -83,32 +87,10 @@ public class AddPlayerDialog extends JDialog
 		}
 		
 		JPanel playerUserName = new JPanel();
+		playerUserName.setBounds(244, 16, 175, 56);
 		playerUserName.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Player Username", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		JPanel userInfoPanel = new JPanel();
-		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
-		gl_contentPanel.setHorizontalGroup(
-			gl_contentPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
-						.addComponent(userInfoPanel, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
-						.addGroup(gl_contentPanel.createSequentialGroup()
-							.addComponent(playerType, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(playerUserName, GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)))
-					.addContainerGap())
-		);
-		gl_contentPanel.setVerticalGroup(
-			gl_contentPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(playerUserName, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(playerType, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(userInfoPanel, GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-					.addContainerGap())
-		);
+		userInfoPanel.setBounds(15, 78, 404, 135);
 		userInfoPanel.setLayout(null);
 		
 		JTextArea userInformation = new JTextArea();
@@ -122,20 +104,27 @@ public class AddPlayerDialog extends JDialog
 		txtPlayerIp.setBounds(10, 18, 155, 20);
 		playerUserName.add(txtPlayerIp);
 		txtPlayerIp.setColumns(10);
-		contentPanel.setLayout(gl_contentPanel);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setBounds(0, 229, 434, 33);
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane);
+			buttonPane.setLayout(null);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.setBounds(312, 5, 47, 23);
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						setVisible(false);
+						//TODO also add the player to the game
+					}
+				});
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.setBounds(364, 5, 65, 23);
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
@@ -148,6 +137,10 @@ public class AddPlayerDialog extends JDialog
 		aiInformation.setBounds(10, 11, 384, 113);
 		aiInfoPanel.add(aiInformation);
 		playerUserName.setLayout(null);
+		contentPanel.setLayout(null);
+		contentPanel.add(userInfoPanel);
+		contentPanel.add(playerType);
+		contentPanel.add(playerUserName);
 		
 
 		aiInfoPanel.setLayout(null);
@@ -155,32 +148,20 @@ public class AddPlayerDialog extends JDialog
 		if(rdbtnComputerPlayer.isSelected())
 		{
 			playerUserName.setVisible(false);
-			
-			
-			gl_contentPanel.setHorizontalGroup(
-					gl_contentPanel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPanel.createSequentialGroup()
-							.addContainerGap()
-							.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
-								.addComponent(aiInfoPanel, GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
-								.addGroup(gl_contentPanel.createSequentialGroup()
-									.addComponent(playerType, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(playerUserName, GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)))
-							.addContainerGap())
-				);
-				gl_contentPanel.setVerticalGroup(
-					gl_contentPanel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPanel.createSequentialGroup()
-							.addContainerGap()
-							.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING, false)
-								.addComponent(playerUserName, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(playerType, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(aiInfoPanel, GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-							.addContainerGap())
-				);
 		}
 		//TODO: Once netplay is finished work on this to allow the server user to add players.
+	}
+	
+	public static void main(String[] args)
+	{
+		try
+		{
+			AddPlayerDialog dialog = new AddPlayerDialog();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 }
