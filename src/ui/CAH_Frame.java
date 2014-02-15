@@ -43,8 +43,12 @@ import com.jgoodies.forms.layout.RowSpec;
  * @version CAH1.0
  *
  */
-@SuppressWarnings("serial")
 public class CAH_Frame extends JFrame {
+
+	/**
+	 * Serial Version UID.
+	 */
+	private static final long serialVersionUID = 6502277192074357063L;
 
 	/**
 	 * The panel that contains CAH.
