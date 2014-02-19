@@ -15,9 +15,20 @@ import javax.swing.ButtonGroup;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * A class of object that represents a dialog that askes the user which type of player they would like to add to a game of Cards Against Humanity.
+ * @author Holt Maki
+ * @since CAH1.0
+ * @version CAH1.0
+ *
+ */
 public class AddPlayer extends JDialog
 {
 
+	/**
+	 * The generated serialVersionUID.
+	 */
+	private static final long serialVersionUID = 3687045392398171342L;
 	private final JPanel contentPanel = new JPanel();
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	/**
