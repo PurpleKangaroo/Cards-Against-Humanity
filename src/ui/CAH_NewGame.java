@@ -35,6 +35,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.Font;
 import java.awt.Insets;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.JPopupMenu;
 import javax.swing.JComboBox;
@@ -300,10 +302,46 @@ public class CAH_NewGame extends JLayeredPane {
 				if(rdbtnSinglePlayer.isSelected())
 				{
 					AddComputerPlayer add = new AddComputerPlayer();
+					add.setVisible(true);
+					add.setLocation(500,225);
+					add.setAlwaysOnTop(true);
+					add.addNotify();
 				}
 				else if(rdbtnmultiplayer.isSelected())
 				{
-					AddPlayer add = new AddPlayer();
+					final AddPlayer add = new AddPlayer();
+					add.setVisible(true);
+					add.setLocation(620,320);
+					add.setAlwaysOnTop(true);
+					add.addNotify();
+					add.addPropertyChangeListener(new PropertyChangeListener(){
+
+						@Override
+						public void propertyChange(PropertyChangeEvent arg0)
+						{
+							if(arg0.getSource().equals(add) && arg0.getPropertyName().equals("visible"))
+							{
+								if(add.getHuman())
+								{
+									AddHumanPlayer add = new AddHumanPlayer();
+									add.setVisible(true);
+									add.setLocation(500,225);
+									add.setAlwaysOnTop(true);
+									add.addNotify();
+								}
+								else
+								{
+									AddComputerPlayer add = new AddComputerPlayer();
+									add.setVisible(true);
+									add.setLocation(500,225);
+									add.setAlwaysOnTop(true);
+									add.addNotify();
+								}
+							}
+							
+						}
+						
+					});
 				}
 				else
 				{
