@@ -11,9 +11,6 @@ We may be able to release this game earlier, but we hope to have the game out by
 ###How to Play Cards Against Humanity
 [Cards Against Humanity Rules](http://s3.amazonaws.com/cah/CAH_Rules.pdf)
 
-###Documentation
-[Javadoc](http://htmlpreview.github.io/?https://raw.github.com/PurpleKangaroo/Cards-Against-Humanity/master/doc/index.html?overview-summary.html)
-
 ### Authors and Contributors
 Holt Maki ([@HoltMaki](https://github.com/HoltMaki)) - Lead Developer
 
