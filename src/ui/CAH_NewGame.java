@@ -223,20 +223,6 @@ public class CAH_NewGame extends JLayeredPane {
 		btnAddPlayer.setFocusPainted(false);
 		btnAddPlayer.setFocusTraversalKeysEnabled(false);
 		btnAddPlayer.setToolTipText("Add Player");
-		btnAddPlayer.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				try{
-					AddPlayerDialog dialog = new AddPlayerDialog();
-					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-					dialog.setLocation(500,225);
-					dialog.setVisible(true);
-				}
-				catch (Exception e) 
-				{
-					e.printStackTrace();
-				}
-			}
-		});
 		btnAddPlayer.setOpaque(false);
 		btnAddPlayer.setBounds(539, 11, 25, 23);
 		AddPlayerPanel.add(btnAddPlayer);
@@ -285,14 +271,14 @@ public class CAH_NewGame extends JLayeredPane {
 		GameType.setBounds(420, 117, 265, 82);
 		StartGameMenus.add(GameType);
 		
-		JRadioButton rdbtnSinglePlayer = new JRadioButton("<html><body style=\"color:WHITE\">Single Player</body></html>");
+		final JRadioButton rdbtnSinglePlayer = new JRadioButton("<html><body style=\"color:WHITE\">Single Player</body></html>");
 		rdbtnSinglePlayer.setSelected(true);
 		rdbtnSinglePlayer.setFocusPainted(false);
 		rdbtnSinglePlayer.setToolTipText(wrap("Play on your own against a computer player!"));
 		rdbtnSinglePlayer.setOpaque(false);
 		GameType.add(rdbtnSinglePlayer);
 		
-		JRadioButton rdbtnmultiplayer = new JRadioButton("<html><body style=\"color:WHITE\">Multiplayer</body></html>");
+		final JRadioButton rdbtnmultiplayer = new JRadioButton("<html><body style=\"color:WHITE\">Multiplayer</body></html>");
 		rdbtnmultiplayer.setFocusPainted(false);
 		rdbtnmultiplayer.setToolTipText(wrap("Gather around one computer with your friends to play a multiplayer game!"));
 		rdbtnmultiplayer.setOpaque(false);
@@ -308,6 +294,23 @@ public class CAH_NewGame extends JLayeredPane {
 		gameTypeGroup.add(rdbtnSinglePlayer);
 		gameTypeGroup.add(rdbtnmultiplayer);
 		gameTypeGroup.add(rdbtnNetplayMultiplayer);
+		
+		btnAddPlayer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(rdbtnSinglePlayer.isSelected())
+				{
+					AddComputerPlayer add = new AddComputerPlayer();
+				}
+				else if(rdbtnmultiplayer.isSelected())
+				{
+					AddPlayer add = new AddPlayer();
+				}
+				else
+				{
+					
+				}
+			}
+		});
 		
 		JLabel lblCardsAgainstHumanity = new JLabel("Cards Against Humanity");
 		lblCardsAgainstHumanity.setBounds(83, 43, 1024, 139);
