@@ -117,6 +117,7 @@ public class AddPlayer extends JDialog
 							computer = false;
 						}
 						setVisible(false);
+						firePropertyChange("visible", true, false);
 					}
 				});
 				okButton.setFocusPainted(false);
@@ -133,7 +134,6 @@ public class AddPlayer extends JDialog
 					public void actionPerformed(ActionEvent e)
 					{
 						setVisible(false);
-						
 					}
 					
 				});
