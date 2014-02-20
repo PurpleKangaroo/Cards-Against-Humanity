@@ -45,8 +45,8 @@ public class DeckBuilder {
 			String[] QPaths = decklist[i].getQuestionPaths();
 			for(int n = 0; n < AnsPaths.length; n++)
 			{
-				answers = new Scanner(new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(AnsPaths[i]))));
-				questions = new Scanner(new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(QPaths[i]))));
+				answers = new Scanner(new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(AnsPaths[n]))));
+				questions = new Scanner(new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(QPaths[n]))));
 				addToDeck();
 			}
 			
