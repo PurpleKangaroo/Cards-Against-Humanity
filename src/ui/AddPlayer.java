@@ -143,6 +143,7 @@ public class AddPlayer extends JDialog
 				buttonPane.add(cancelButton);
 			}
 		}
+		setOpacity(0.95f);
 	}
 	
 	/**
