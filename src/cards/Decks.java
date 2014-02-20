@@ -80,20 +80,8 @@ public enum Decks
 	
 	Decks(String description, String[] answerPaths, String[] questionPaths)
 	{
-		this.description = description;
-		
-		for(int i = 0; i < answerPaths.length; i++)
-		{
-			answerPaths[i] = "/Cards Against Humanity/src/cards/" + answerPaths[i];
-		}
-		
-		this.answerPaths = answerPaths;
-		
-		for(int i = 0; i < questionPaths.length; i++)
-		{
-			questionPaths[i] = "/Cards Against Humanity/src/cards/" + questionPaths[i];
-		}
-		
+		this.description = description;		
+		this.answerPaths = answerPaths;		
 		this.questionPaths = questionPaths;
 	}
 	

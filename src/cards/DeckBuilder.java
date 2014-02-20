@@ -1,10 +1,8 @@
 package cards;
 
-import import_export.Encoder;
-import import_export.PathFinder;
-
-import java.io.File;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -20,8 +18,8 @@ import java.util.Scanner;
 
 public class DeckBuilder {
 	
-	private File answers;
-	private File questions;
+	private Scanner answers;
+	private Scanner questions;
 	/**The deck that the DeckBuilder is building */
 	private Deck deck;
 	private ArrayList<AnswerCard> answerList;
@@ -38,7 +36,6 @@ public class DeckBuilder {
 	
 	public DeckBuilder(Decks[] decklist) throws URISyntaxException, IOException
 	{
-		PathFinder a = new PathFinder();
 		answerList = new ArrayList<AnswerCard>();
 		questionList = new ArrayList<QuestionCard>();
 		
@@ -48,8 +45,8 @@ public class DeckBuilder {
 			String[] QPaths = decklist[i].getQuestionPaths();
 			for(int n = 0; n < AnsPaths.length; n++)
 			{
-				answers = new File(a.getCAH_Path(AnsPaths[n]));
-				questions = new File(a.getCAH_Path(QPaths[n]));
+				answers = new Scanner(new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(AnsPaths[i]))));
+				questions = new Scanner(new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(QPaths[i]))));
 				addToDeck();
 			}
 			
@@ -68,18 +65,13 @@ public class DeckBuilder {
 	 */
 	private void addToDeck() throws URISyntaxException, IOException
 	{
-		@SuppressWarnings("resource")
-		Scanner answerScanner = new Scanner(answers);
-		Encoder encode = new Encoder();
-		while(answerScanner.hasNextLine())
+		while(answers.hasNextLine())
 		{
-			answerList.add(new AnswerCard(answerScanner.nextLine()));
+			answerList.add(new AnswerCard(answers.nextLine()));
 		}
-		@SuppressWarnings("resource")
-		Scanner questionScanner = new Scanner(questions);
-		while(questionScanner.hasNextLine())
+		while(questions.hasNextLine())
 		{
-			questionList.add(new QuestionCard(questionScanner.nextLine(), "CardInfo", "Q"));
+			questionList.add(new QuestionCard(questions.nextLine(), "CardInfo", "Q"));
 		}
 	}
 	
