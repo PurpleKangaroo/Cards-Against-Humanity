@@ -3,6 +3,7 @@ package cards;
  * An enum that contains all of the AnswerCards' tags.
  * Tags are important for helping the computer impersonate people as well as learn what is funny.
  * @author Holt Maki
+ * @author Devon Grove
  * @since CAH1.0
  * @version CAH1.0
  *
