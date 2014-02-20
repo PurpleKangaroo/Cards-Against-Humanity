@@ -3,4 +3,4 @@ $(document).ready(function() {
     event.preventDefault();
     alert("Sorry! We have not released Cards Against Humanity yet. Check back soon.");
   }
-}
+});
