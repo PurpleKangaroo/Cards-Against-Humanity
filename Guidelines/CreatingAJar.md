@@ -5,4 +5,5 @@
 
 ![Picture][picture]
 [picture]: https://github.com/PurpleKangaroo/Cards-Against-Humanity/blob/master/Guidelines/jarImage.png?raw=true
+
 4. Under "Library Handling:" select "Package required libraries into generated JAR.
