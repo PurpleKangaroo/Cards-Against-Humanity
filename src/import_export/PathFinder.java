@@ -45,7 +45,7 @@ public class PathFinder {
 	
 	/**
 	 * Gets the path of another cards against humanity file.
-	 * @param fileString - the file that is trying to be found's directory on the origninal.
+	 * @param fileString the file that is trying to be found's directory on the origninal.
 	 * @return - the path of the file trying to be found
 	 */
 	public String getCAH_Path(String fileString)

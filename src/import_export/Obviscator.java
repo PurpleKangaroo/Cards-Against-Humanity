@@ -43,7 +43,7 @@ public class Obviscator {
 	
 	/**
 	 * Obviscates a String.
-	 * @param obviscateStr - The String that will be obviscated.
+	 * @param obviscateStr The String that will be obviscated.
 	 * @return obviscatedStr - The obviscated String.
 	 * @since CAH1.0
 	 */
@@ -66,7 +66,7 @@ public class Obviscator {
 	
 	/**
 	 * Unobviscates an obviscated String.
-	 * @param unObviscateStr - the obviscated String that will be unobviscated.
+	 * @param unObviscateStr the obviscated String that will be unobviscated.
 	 * @return unObviscatedStr - the unobviscated String.
 	 * @since CAH1.0
 	 */

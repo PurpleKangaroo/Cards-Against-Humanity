@@ -9,7 +9,8 @@ import java.util.Random;
  * @author Holt Maki
  * @version CAH1.0
  * @since CAH1.0
- * @see {@linkplain deckBuilder}, {@linkplain Card}
+ * @see DeckBuilder
+ * @see Card
  *
  */
 
@@ -20,8 +21,8 @@ public class Deck {
 	/**
 	 * Creates a set of two decks in the form of arrayLists
 	 * There is an arrayList of AnswerCards and an arrayList of QuestionCards.
-	 * @param a - the contents of the answer card deck
-	 * @param q - the contents of the question card deck
+	 * @param a the contents of the answer card deck
+	 * @param q the contents of the question card deck
 	 * @since CAH1.0
 	 * @version CAH1.0
 	 * @author Holt Maki
@@ -38,7 +39,7 @@ public class Deck {
 	 * @return card - The answer card that is drawn
 	 * @since CAH1.0
 	 * @version CAH1.0
-	 * @see {@link #drawQuestionCard()}
+	 * @see #drawQuestionCard()
 	 * @author Holt Maki
 	 */
 	
@@ -58,7 +59,7 @@ public class Deck {
 	 * @since CAH1.0
 	 * @version CAH1.0
 	 * @author Holt Maki
-	 * @see {@link #drawAnswerCard()}
+	 * @see #drawAnswerCard()
 	 */
 
 	public QuestionCard drawQuestionCard()

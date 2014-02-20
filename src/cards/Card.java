@@ -34,7 +34,7 @@ public class Card {
 	 * The type of card is determined by which subclass({@linkplain QuestionCard} or {@linkplain AnswerCard}) is used.
 	 * The class card by its self is never intended to be used, but is meant to be used for its subclasses constructors and methods.
 	 * The classes {@linkplain QuestionCard} and {@linkplain AnswerCard} are different because questionCards allow the card to require the user to play or draw a certain number of cards.
-	 * @param card - the writing that will be on the card. {@link #cardString} = card.
+	 * @param card the writing that will be on the card. {@link #cardString} = card.
 	 * @since CAH1.0
 	 * @version CAH1.0
 	 * @see AnswerCard
@@ -49,11 +49,10 @@ public class Card {
 	 * Adds a tag to the card. 
 	 * This allows cards to be sorted by the computer so that it can better understand what people find funny.
 	 * It is also used by impersonators to best imitate the the person that it is impersonating.
-	 * @param {@link #aTag} - the {@linkplain Tag} that will be attached to the card.
 	 * @since CAH1.0
 	 * @version CAH1.0
 	 * @author Holt Maki
-	 * @param aTag - The {@linkplain Tag} that will be added to the Card.
+	 * @param aTag The {@linkplain Tag} that will be added to the Card.
 	 * @see Tag
 	 */
 	public void addTag(Tag aTag)

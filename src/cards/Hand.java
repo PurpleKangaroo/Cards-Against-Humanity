@@ -7,7 +7,11 @@ import java.util.ArrayList;
  * @author Holt Maki
  * @since CAH1.0
  * @version CAH1.0
- * @see {@linkplain Card}, {@linkplain AnswerCard}, {@linkplain questionCard}, {@linkplain Deck}, {@linkplain user}
+ * @see Card
+ * @see AnswerCard
+ * @see QuestionCard
+ * @see Deck
+ * @see User
  */
 
 public class Hand {
@@ -17,7 +21,7 @@ public class Hand {
 	
 	/**
 	 * Creates a hand of cards
-	 * @param limit - the number of cards that should be in the players hand at the end of their turn after drawing
+	 * @param limit the number of cards that should be in the players hand at the end of their turn after drawing
 	 * @since CAH1.0
 	 */
 	
@@ -29,7 +33,7 @@ public class Hand {
 	/**
 	 * Deals cards at the begining of a game and draws cards at the end of each turn.
 	 * @since CAH1.0
-	 * @param a - the Deck that the cards are dealt from
+	 * @param a the Deck that the cards are dealt from
 	 * @return a - the Deck that the cardes are dealt from after the cards have been removed from it
 	 */
 	
@@ -46,8 +50,8 @@ public class Hand {
 	/**
 	 * Draws more cards than the limit in the middle of a turn.
 	 * @since CAH1.0
-	 * @param a - the Deck that the cards are dealt from
-	 * @param numberOfCardsOverLimit - the number of cards over the limit that will be drawn
+	 * @param a the Deck that the cards are dealt from
+	 * @param numberOfCardsOverLimit the number of cards over the limit that will be drawn
 	 * @return a - the Deck that the cardes are dealt from after the cards have been removed from it
 	 */
 	public Deck exceedLimitDraw(Deck a, int numberOfCardsOverLimit)
@@ -62,7 +66,7 @@ public class Hand {
 	
 	/**
 	 * Removes an AnswerCard from the hand and returns it so that it may be played
-	 * @param a - The AnswerCard that will be removed and played.
+	 * @param a The AnswerCard that will be removed and played.
 	 * @return a - the AnswerCard that will be played.
 	 * @since CAH1.0
 	 */
@@ -74,7 +78,7 @@ public class Hand {
 	
 	/**
 	 * Gets an answer card at specified index
-	 * @param index - the index of the card on the arrayList
+	 * @param index the index of the card on the arrayList
 	 * @return card - the AnswerCard at the specified index
 	 * @since CAH1.0
 	 */

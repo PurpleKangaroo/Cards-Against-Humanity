@@ -33,7 +33,7 @@ public class BlackCard extends JPanel
 	 * Create the panel.
 	 * @since CAH1.0
 	 * @author Holt Maki
-	 * @param card - the {@linkplain QuestionCard} represented by the panel.
+	 * @param card the {@linkplain cards.QuestionCard} represented by the panel.
 	 */
 	public BlackCard(QuestionCard card)
 	{

@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
 import java.util.Scanner;
-
+//TODO: Maybe make it work for random accessfiles. Or maybe redo to make this abstract, and make different children of this for different types of files.
 /**
  * The methods for the interface Saveable are written in this clas.
  * @author Holt Maki
@@ -20,7 +20,7 @@ public class Saver {
 	
 	/**
 	 * Creates an object that saves and loads text from files.
-	 * @param fileName - the name of the file that will be accessed.
+	 * @param fileName the name of the file that will be accessed.
 	 * @since CAH1.0
 	 * @throws URISyntaxException
 	 * @throws IOException 
@@ -41,7 +41,7 @@ public class Saver {
 
 	/**
 	 * Saves a line of text to a file
-	 * @param printString - the String that will be printed to the line
+	 * @param printString the String that will be printed to the line
 	 * 
 	 */
 	public void saveln(String printString)
@@ -60,7 +60,7 @@ public class Saver {
 	
 	/**
 	 * Gets the next line from a text document.
-	 * @return a - the string that the next line contains.
+	 * @return a the string that the next line contains.
 	 */
 	public String loadln()
 	{
@@ -69,7 +69,7 @@ public class Saver {
 	}
 	/**
 	 * Saves a String to a text document
-	 * @param printString - the line String that will be saved to the text document.
+	 * @param printString the line String that will be saved to the text document.
 	 */
 	public void save(String printString)
 	{

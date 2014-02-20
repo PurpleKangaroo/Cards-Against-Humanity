@@ -2,7 +2,7 @@ package import_export;
 
 /**
  * A class of object that deals with encoding of text characters.
- * @author s-hmaki
+ * @author Holt Maki
  * @since CAH1.0
  * @version CAH1.0
  *
@@ -33,8 +33,8 @@ public class Encoder {
 	
 	/**
 	 * Gets the text in the right encoding.
-	 * @param encodeStr - The string that will have its encoding fixed.
-	 * @return encoded - the corectly encoded String.
+	 * @param encodeStr The string that will have its encoding fixed.
+	 * @return encoded - The corectly encoded String.
 	 * @since CAH1.0
 	 */
 	public String encode(String encodeStr)

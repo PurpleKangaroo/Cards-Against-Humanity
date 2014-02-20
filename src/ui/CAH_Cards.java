@@ -42,7 +42,7 @@ import cards.QuestionCard;
  * @version CAH1.0
  *
  */
-public class Cards extends JLayeredPane
+public class CAH_Cards extends JLayeredPane
 {
 	/**
 	 * Serial Version ID.
@@ -217,7 +217,7 @@ public class Cards extends JLayeredPane
 	 * @throws IOException 
 	 * @throws URISyntaxException 
 	 */
-	public Cards() throws URISyntaxException, IOException
+	public CAH_Cards() throws URISyntaxException, IOException
 	{
 		setOpaque(true);
 		setBorder(null);
@@ -481,7 +481,7 @@ public class Cards extends JLayeredPane
 		 * Creates the list.
 		 * @author Holt Maki
 		 * @since CAH1.0
-		 * @param deck - the deck that is having its cards' data represented in the list.
+		 * @param deck the deck that is having its cards' data represented in the list.
 		 * @throws URISyntaxException
 		 * @throws IOException
 		 */
@@ -508,7 +508,7 @@ public class Cards extends JLayeredPane
 		
 		/**
 		 * Finds the data for the list.
-		 * @param deck - the deck that is having its data found.
+		 * @param deck the deck that is having its data found.
 		 * @since CAH1.0
 		 * @author Holt Maki
 		 * @throws URISyntaxException
@@ -582,7 +582,7 @@ public class Cards extends JLayeredPane
 		
 		/**
 		 * Finds the list data for the deck.
-		 * @param deck - the deck that {@linkplain #getData(Decks[]) will find.
+		 * @param deck the deck that {@linkplain #getData(Decks[]) will find.
 		 * @since CAH1.0
 		 * @throws URISyntaxException
 		 * @throws IOException
