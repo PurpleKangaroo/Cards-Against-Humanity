@@ -6,7 +6,7 @@ Use whitespace where appropriate.
 
 Use inner classes where appropriate.
 
-Use good documentation. *See also: *
-[Javadoc Guidelines]()
+Use good documentation. **See also: **
+[Javadoc Guidelines](https://github.com/PurpleKangaroo/Cards-Against-Humanity/blob/master/Guidelines/Javadoc%20Guidelines)
 
 [Creating a Jar File](https://github.com/PurpleKangaroo/Cards-Against-Humanity/blob/master/Guidelines/CreatingAJar.md)
