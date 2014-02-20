@@ -22,8 +22,9 @@ This makes it easy to go back later to find how the program used to work if we r
 		 * "A class of object that represents ..."
 		 * Explanation....
 		 * @author(replace s-______ w/ your name; there can be multiple authors, just do @author on a new line.)
-		 * @version (CAH#.#(.#)) update version with new version
 		 * @since(CAH#.#(.#)) (don't change since after it has been finished)
+		 * (only if necessary) @param paramater [NO DASH] Explanation 
+		 * (only if necessary) @throws Throwable [NO DASH] Explanation 
 		 * (only if necessary) @see
 		 * @see DO NOT USE {@link} or {@linkplain} in see tags
 		 */
@@ -33,8 +34,8 @@ This makes it easy to go back later to find how the program used to work if we r
 		/**
 		 * "_______" ... Explanation
 		 * @since(CAH#.#(.#))(dont change since after it has been finished)
-		 * (only if necessary) @param paramater \[NO DASH\] Explanation 
-		 * (only if necessary) @throws Throwable \[NO DASH\] Explanation 
+		 * (only if necessary) @param paramater [NO DASH] Explanation 
+		 * (only if necessary) @throws Throwable [NO DASH] Explanation 
 		 * (only if necessary) @see
 		 * @see DO NOT USE {@link} or {@linkplain} in see tags
 		 */
