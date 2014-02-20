@@ -308,22 +308,33 @@ public class CAH_Frame extends JFrame {
 		btnRules.setForeground(Color.WHITE);
 		btnRules.setFont(new Font("Arial Black", Font.BOLD, 35));
 		
+		JButton netplay = new JButton("Netplay");
+		netplay.setOpaque(false);
+		netplay.setHorizontalAlignment(SwingConstants.RIGHT);
+		netplay.setForeground(Color.WHITE);
+		netplay.setFont(new Font("Arial Black", Font.BOLD, 35));
+		netplay.setFocusPainted(false);
+		netplay.setContentAreaFilled(false);
+		netplay.setBorderPainted(false);
+		
 		GroupLayout gl_StartPanel = new GroupLayout(StartPanel);
 		gl_StartPanel.setHorizontalGroup(
 			gl_StartPanel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_StartPanel.createSequentialGroup()
-					.addContainerGap(220, Short.MAX_VALUE)
+					.addContainerGap(25, Short.MAX_VALUE)
 					.addGroup(gl_StartPanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_StartPanel.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_StartPanel.createParallelGroup(Alignment.LEADING)
+								.addComponent(btnLoadGame, GroupLayout.PREFERRED_SIZE, 296, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnNewGame, Alignment.TRAILING))
+							.addComponent(netplay, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 296, GroupLayout.PREFERRED_SIZE))
+						.addGroup(Alignment.TRAILING, gl_StartPanel.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_StartPanel.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_StartPanel.createParallelGroup(Alignment.LEADING)
-									.addGroup(gl_StartPanel.createParallelGroup(Alignment.LEADING)
-										.addComponent(btnStats, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
-										.addComponent(btnLoadGame, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 296, GroupLayout.PREFERRED_SIZE))
+									.addComponent(btnStats, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
 									.addComponent(btnUsers, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE))
 								.addComponent(btnCards, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE))
-							.addComponent(btnRules, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE))
-						.addComponent(btnNewGame, Alignment.TRAILING))
+							.addComponent(btnRules, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
 		);
 		gl_StartPanel.setVerticalGroup(
@@ -334,6 +345,8 @@ public class CAH_Frame extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnLoadGame, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(netplay, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnStats, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnUsers, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
@@ -341,7 +354,7 @@ public class CAH_Frame extends JFrame {
 					.addComponent(btnCards, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnRules, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(86, Short.MAX_VALUE))
+					.addContainerGap(22, Short.MAX_VALUE))
 		);
 		StartPanel.setLayout(gl_StartPanel);
 		
@@ -469,5 +482,4 @@ public class CAH_Frame extends JFrame {
 		MAINGAME,
 		ENDGAME;
 	}
-	
 }

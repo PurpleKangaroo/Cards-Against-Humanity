@@ -323,11 +323,24 @@ public class CAH_NewGame extends JLayeredPane {
 							{
 								if(add.getHuman())
 								{
-									AddHumanPlayer add = new AddHumanPlayer();
+									final AddHumanPlayer add = new AddHumanPlayer();
 									add.setVisible(true);
 									add.setLocation(500,225);
 									add.setAlwaysOnTop(true);
 									add.addNotify();
+									add.addPropertyChangeListener(new PropertyChangeListener() {
+
+										@Override
+										public void propertyChange(PropertyChangeEvent arg0)
+										{
+											if(arg0.getSource().equals(add) && arg0.getPropertyName().equals("done"))
+											{
+												
+											}
+											
+										}
+										
+									});
 								}
 								else
 								{
