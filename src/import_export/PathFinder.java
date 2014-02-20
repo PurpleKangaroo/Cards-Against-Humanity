@@ -7,6 +7,7 @@ import java.net.URL;
 /**
  * A class of object that finds the paths of files.
  * @author Holt Maki
+ * @deprecated CAH1.0
  * @since CAH1.0
  * @version CAH1.0
  */
