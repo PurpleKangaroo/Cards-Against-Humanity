@@ -58,7 +58,7 @@ public class CAH_Frame extends JFrame {
 	/**
 	 * The JLayeredPane that contains information about cards.
 	 */
-	private Cards cards;
+	private CAH_Cards cards;
 	
 	/**
 	 * The layered pane that contains CAH.
@@ -418,7 +418,7 @@ public class CAH_Frame extends JFrame {
 				{
 					try
 					{
-						cards = new Cards();
+						cards = new CAH_Cards();
 					} catch (URISyntaxException e1)
 					{
 						e1.printStackTrace();

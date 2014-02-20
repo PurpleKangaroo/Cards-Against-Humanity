@@ -73,9 +73,9 @@ public enum Decks
 	
 	/**
 	 * Constructs a new deck's information.
-	 * @param description - the description of the deck.
-	 * @param answerPaths - the name of the files with the answer cards.
-	 * @param questionPaths - the name of the files with the question cards.
+	 * @param description the description of the deck.
+	 * @param answerPaths the name of the files with the answer cards.
+	 * @param questionPaths the name of the files with the question cards.
 	 */
 	
 	Decks(String description, String[] answerPaths, String[] questionPaths)

@@ -14,7 +14,7 @@ public class ImageLoad
 {
 	/**
 	 * Loads an image.
-	 * @param imageName - the name of the image that is being loaded
+	 * @param imageName the name of the image that is being loaded
 	 * @return image - the image that was loaded.
 	 * @since CAH1.0
 	 */

@@ -407,7 +407,7 @@ public class CAH_NewGame extends JLayeredPane {
 	 * Allows StartGameMenus to add a component. This is important for allowing the program to add the main menu button which will return the user to the main menu.
 	 * @author Holt Maki
 	 * @since CAH1.0
-	 * @param component - the JComponent being added.
+	 * @param component the JComponent being added.
 	 */
 	protected void startGameMenuAdd(JComponent component)
 	{
@@ -417,7 +417,7 @@ public class CAH_NewGame extends JLayeredPane {
 	/**
 	 * Wraps the string for the tool tips.
 	 * The wrapping is done with HTML
-	 * @param str - the string that will be wrapped with HTML.
+	 * @param str the string that will be wrapped with HTML.
 	 * @return str + "<</html>/html>" - the String wrapped in HTML plus the closing "<</html>/html>".
 	 * <html>
 	 * @since CAH1.0

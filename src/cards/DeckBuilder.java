@@ -29,7 +29,7 @@ public class DeckBuilder {
 	
 	/**
 	 * Creates an object that will import a file and convert it into a deck of cards
-	 * @param decklist - the list of subdecks that the deck that the deckbuilder is building will contain.
+	 * @param decklist the list of subdecks that the deck that the deckbuilder is building will contain.
 	 * @throws URISyntaxException 
 	 * @throws IOException 
 	 * @since CAH1.0
@@ -85,7 +85,7 @@ public class DeckBuilder {
 	
 	/**
 	 * Gets the original card deck as it is at the start of the game.
-	 * @return {@linkplain Deck} - the deck at the start of the game.
+	 * @return Deck - the {@linkplain Deck} at the start of the game.
 	 * @since CAH1.0
 	 * @version CAH1.0
 	 */
