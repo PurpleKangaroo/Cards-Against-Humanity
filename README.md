@@ -14,7 +14,7 @@ We may be able to release this game earlier, but we hope to have the game out by
 ###Documentation and Help
 [Javadoc](http://htmlpreview.github.io/?https://raw.github.com/PurpleKangaroo/Cards-Against-Humanity/master/doc/index.html?overview-summary.html)
 
-[Project Guidelines]()
+[Project Guidelines](https://github.com/PurpleKangaroo/Cards-Against-Humanity/blob/master/Guidelines/ProjectGuidelines.md)
 
 ### Authors and Contributors
 Holt Maki ([@HoltMaki](https://github.com/HoltMaki)) - Lead Developer
