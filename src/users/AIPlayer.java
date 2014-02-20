@@ -21,7 +21,7 @@ public class AIPlayer extends NonRandoPlayer{
 	 * Creates a new AI player.
 	 * @since CAH1.0
 	 * @author Holt Maki
-	 * @param numberOfCards - the number of cards that the ai player can hold
+	 * @param numberOfCards the number of cards that the ai player can hold
 	 */
 	public AIPlayer(int numberOfCards) {
 		super(numberOfCards);
