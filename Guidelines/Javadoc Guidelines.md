@@ -6,26 +6,28 @@ This makes it easy to go back later to find how the program used to work if we r
 - Constructor Documentation: like method documentation. (See method documentation), but in general starts with "Creates an object that..."
 - Class documentation:Explanation (in general, Start with "A class of object that represents ...")
 	
-	@author(replace s-______ w/ your name; there can be multiple authors, just do @author on a new line.)
-	
-	@version (CAH#.#(.#)) update version with new version
-	
-	@since(CAH#.#(.#)) (don't change since after it has been finished) (both of these should be incomplete if its incomplete)
-	
-	@see
-	
-	@see DO NOT USE {@link} or {@linkplain} in see tags
+		@author(replace s-______ w/ your name; there can be multiple authors, just do @author on a new line.)
+		
+		@version (CAH#.#(.#)) update version with new version
+		
+		@since(CAH#.#(.#)) (don't change since after it has been finished) (both of these should be incomplete if its incomplete)
+		
+		@see
+		
+		@see DO NOT USE {@link} or {@linkplain} in see tags
+		
 - Method documentation:Explanation 
 	
-	@since(CAH#.#(.#))(dont change since after it has been finished)
+		@since(CAH#.#(.#))(dont change since after it has been finished)
+		
+		(only if necessary) @param paramater \[NO DASH\] Explanation 
+		
+		(only if necessary) @throws Throwable \[NO DASH\] Explanation 
+		
+		(only if necessary) @see
 	
-	(only if necessary) @param paramater \[NO DASH\] Explanation 
-	
-	(only if necessary) @throws Throwable \[NO DASH\] Explanation 
-	
-	(only if necessary) @see
-	
-	@see DO NOT USE {@link} or {@linkplain} in see tags
+		@see DO NOT USE {@link} or {@linkplain} in see tags
+		
 - Enum documentation:Explanation (usually starts with "a list of ..."
 		
 		@since (CAH#.#(.#))(dont change since after it has been finished)
