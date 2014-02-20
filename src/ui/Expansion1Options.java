@@ -14,6 +14,9 @@ import javax.swing.JRadioButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextPane;
+import java.awt.Color;
+import javax.swing.SwingConstants;
 
 /**
  * The options for expansion 1.
@@ -38,20 +41,40 @@ public class Expansion1Options extends JDialog
 	 */
 	public Expansion1Options()
 	{
+		setUndecorated(true);
+		setAlwaysOnTop(true);
 		setTitle("Expansion 1");
-		setBounds(100, 100, 214, 164);
+		setBounds(100, 100, 214, 163);
 		contentPanel = new JPanel();
-		contentPanel.setLayout(new FlowLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPanel.setLayout(null);
+		
+		JTextPane txtpnWhichVersionOf = new JTextPane();
+		txtpnWhichVersionOf.setBounds(0, 0, 214, 48);
+		txtpnWhichVersionOf.setFocusCycleRoot(false);
+		txtpnWhichVersionOf.setFocusTraversalKeysEnabled(false);
+		txtpnWhichVersionOf.setEditable(false);
+		txtpnWhichVersionOf.setDisabledTextColor(Color.BLACK);
+		txtpnWhichVersionOf.setEnabled(false);
+		txtpnWhichVersionOf.setFocusable(false);
+		txtpnWhichVersionOf.setOpaque(false);
+		txtpnWhichVersionOf.setText("Which version of the first Cards Against Humanity expansion would you like to use?");
+		contentPanel.add(txtpnWhichVersionOf);
 		JRadioButton rdbtnExpansion = new JRadioButton("Expansion 1.0");
+		rdbtnExpansion.setHorizontalAlignment(SwingConstants.CENTER);
+		rdbtnExpansion.setBounds(10, 49, 198, 22);
 		rdbtnExpansion.setFocusPainted(false);
 		rdbtnExpansion.setToolTipText(wrap(Decks.EXPANSION1_0.getDescription()).replaceAll("-", " -").replaceAll("surface -to -air", "surface-to-air"));
 		contentPanel.add(rdbtnExpansion);
 		JRadioButton rdbtnExpansion_1 = new JRadioButton("Expansion 1.2");
+		rdbtnExpansion_1.setHorizontalAlignment(SwingConstants.CENTER);
+		rdbtnExpansion_1.setBounds(6, 76, 202, 22);
 		rdbtnExpansion_1.setFocusPainted(false);
 		rdbtnExpansion.setToolTipText(wrap(Decks.EXPANSION1_2.getDescription()).replaceAll("-", " -").replaceAll("surface -to -air", "surface-to-air"));
 		contentPanel.add(rdbtnExpansion_1);
 		JRadioButton rdbtnExpansionAnd = new JRadioButton("Expansions 1.0 and 1.2");
+		rdbtnExpansionAnd.setHorizontalAlignment(SwingConstants.CENTER);
+		rdbtnExpansionAnd.setBounds(6, 103, 202, 22);
 		rdbtnExpansionAnd.setFocusPainted(false);
 		rdbtnExpansion.setToolTipText(wrap(Decks.EXPANSION1.getDescription()).replaceAll("-", " -").replaceAll("surface -to -air", "surface-to-air"));
 		contentPanel.add(rdbtnExpansionAnd);
@@ -62,6 +85,7 @@ public class Expansion1Options extends JDialog
 		buttonGroup.add(rdbtnExpansionAnd);
 		
 		JButton button = new JButton("OK");
+		button.setBounds(82, 130, 52, 22);
 		button.setFocusPainted(false);
 		button.setOpaque(false);
 		button.setBorderPainted(false);
@@ -81,6 +105,7 @@ public class Expansion1Options extends JDialog
 		button.setActionCommand("OK");
 		contentPanel.add(button);
 		this.setContentPane(contentPanel);
+		setOpacity(0.95f);
 	}
 	
 	/**
