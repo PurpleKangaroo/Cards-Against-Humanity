@@ -3,5 +3,5 @@
 2. Java > Runnable JAR File
 3. Next
 ![Picture][picture]
-picture: https://github.com/PurpleKangaroo/Cards-Against-Humanity/blob/master/Guidelines/jarImage.png
+[picture]: https://github.com/PurpleKangaroo/Cards-Against-Humanity/blob/master/Guidelines/jarImage.png
 4. Under "Library Handling:" select "Package required libraries into generated JAR.
