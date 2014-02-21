@@ -219,6 +219,9 @@ public class CAH_Cards extends JLayeredPane
 	 */
 	public CAH_Cards() throws URISyntaxException, IOException
 	{
+		originalQscr = new JScrollPane();
+		originalQscr.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		
 		setOpaque(true);
 		setBorder(null);
 		setBackground(Color.BLACK);
@@ -309,12 +312,12 @@ public class CAH_Cards extends JLayeredPane
 		//TODO: Create deck and get cards for expansions
 		
 		GridBagLayout qScrollLayout = new GridBagLayout();
-		GridBagConstraints qScrollConstraints = new QScrConstraints();
+		GridBagConstraints qScrollConstraints = new ListScrConstraints();
 		
 		qScrollLayout.setConstraints(originalQscr, qScrollConstraints);
 		
 		GridBagLayout Exp1qScrollLayout = new GridBagLayout();
-		GridBagConstraints Exp1qScrollConstraints = new QScrConstraints();
+		GridBagConstraints Exp1qScrollConstraints = new ListScrConstraints();
 		Exp1qScrollLayout.setConstraints(Expansion1ScrQ,Exp1qScrollConstraints);
 		
 		originalDeck.addTab("Black Cards", null, originalQscr, null);
@@ -533,7 +536,7 @@ public class CAH_Cards extends JLayeredPane
 	 * @author Holt Maki
 	 */
 	@SuppressWarnings({"rawtypes" })
-	public class QColumnedList extends JList
+	private class QColumnedList extends JList
 	{
 		/**
 		 * Serial Version UID.
@@ -605,12 +608,17 @@ public class CAH_Cards extends JLayeredPane
 	 * @author Holt Maki
 	 * @since CAH1.0
 	 * @version CAH1.0
-	 * 
+	 * @see QColumnedList
+	 * @see CAH_NewGame.PlayerListCellRenderer
 	 *
 	 */
-	@SuppressWarnings({ "serial", "rawtypes" })
-	public class QListCellRenderer extends JPanel implements ListCellRenderer
+	@SuppressWarnings("rawtypes")
+	private class QListCellRenderer extends JPanel implements ListCellRenderer
 	{
+		/**
+		 * Generated serial version UID.
+		 */
+		private static final long serialVersionUID = -6162000359458934287L;
 		/**
 		 * The {@linkplain cards.QuestionCard}s' {@linkplain cards.Card#cardString}.
 		 */
@@ -743,45 +751,6 @@ public class CAH_Cards extends JLayeredPane
 		
 	}
 	
-	/**
-	 * A class of object that represents the scroll constraints of a QColumnedList.
-	 * @author Holt Maki
-	 * @since CAH1.0
-	 * @version CAH1.0
-	 *
-	 */
-	private class QScrConstraints extends GridBagConstraints
-	{
-		/**
-		 * Serial Version UID.
-		 */
-		private static final long serialVersionUID = 3715430882347157074L;
-
-		/**
-		 * Creates qScrConstraints
-		 * @author Holt Maki
-		 * @since CAH1.0
-		 */
-		private QScrConstraints()
-		{
-			gridx = 0;
-			gridy = 0;
-			
-			gridwidth = 1;
-			gridheight = 1;
-			
-			fill = GridBagConstraints.BOTH;
-			anchor = GridBagConstraints.CENTER;
-			insets = new Insets(1,1,1,1);
-			
-			weightx = 1.0;
-			weighty = 1.0;
-			
-			originalQscr = new JScrollPane();
-			originalQscr.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		}
-	}
-
 	/**
 	 * Sets the card panel.
 	 * @since CAH1.0
