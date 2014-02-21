@@ -14,7 +14,7 @@ We may be able to release this game earlier, but we hope to have the game out by
 ###Documentation and Help
 [Javadoc](http://htmlpreview.github.io/?https://raw.github.com/PurpleKangaroo/Cards-Against-Humanity/master/doc/index.html?overview-summary.html)
 
-[Project Guidelines](https://github.com/PurpleKangaroo/Cards-Against-Humanity/blob/master/README.md#project-guidelines)
+[Project Guidelines](https://github.com/HoltMaki/CardsAgainstHumanity/blob/master/README.md#project-guidelines)
 
 ### Authors and Contributors
 Holt Maki ([@HoltMaki](https://github.com/HoltMaki)) - Lead Developer
@@ -36,9 +36,9 @@ Use whitespace where appropriate.
 Use inner classes where appropriate.
 
 Use good documentation. (<em>See also: </em>
-[Javadoc Guidelines](https://github.com/PurpleKangaroo/Cards-Against-Humanity/blob/master/Guidelines/Javadoc%20Guidelines.md))
+[Javadoc Guidelines](https://github.com/HoltMaki/CardsAgainstHumanity/blob/master/Guidelines/Javadoc%20Guidelines.md))
 
-[Creating a Jar File](https://github.com/PurpleKangaroo/Cards-Against-Humanity/edit/master/README.md#creating-a-jar-file-in-eclipse)
+[Creating a Jar File](https://github.com/HoltMaki/CardsAgainstHumanity/edit/master/README.md#creating-a-jar-file-in-eclipse)
 
 ##Creating a JAR File in Eclipse
 1. File > Export
@@ -47,3 +47,64 @@ Use good documentation. (<em>See also: </em>
 [picture]: https://github.com/PurpleKangaroo/Cards-Against-Humanity/blob/master/Guidelines/jarImage.png?raw=true
 </p>
 4. Under "Library Handling:" select "Package required libraries into generated JAR.
+
+##Javadoc Guidelines
+- Add @depricated to (CAH#.#(.#)) to deprecated things. 
+This makes it easy to go back later to find how the program used to work if we run into problems.
+- Documentation for variables (only for instance variables): 
+
+		/**Brief Explanation*/ (preferably one line).
+	
+- Interface Documentation: 
+		
+		/** Start with: "A collection of methods that ..."
+		 * Explanation....
+		 * @author(replace s-______ w/ your name; there can be multiple authors, just do @author on a new line.)
+		 * @version (CAH#.#(.#)) update version with new version
+		 * @since(CAH#.#(.#)) (don't change since after it has been finished)
+		 * (only if necessary) @see
+		 * @see DO NOT USE {@link} or {@linkplain} in see tags
+		 */
+		 
+- Constructor Documentation:
+	
+		/**
+		 * "A class of object that represents ..."
+		 * Explanation....
+		 * @author(replace s-______ w/ your name; there can be multiple authors, just do @author on a new line.)
+		 * @since(CAH#.#(.#)) (don't change since after it has been finished)
+		 * (only if necessary) @param paramater [NO DASH] Explanation 
+		 * (only if necessary) @throws Throwable [NO DASH] Explanation 
+		 * (only if necessary) @see
+		 * @see DO NOT USE {@link} or {@linkplain} in see tags
+		 */
+		
+- Method documentation:
+	
+		/**
+		 * "_______" ... Explanation
+		 * @since(CAH#.#(.#))(dont change since after it has been finished)
+		 * (only if necessary) @param paramater [NO DASH] Explanation 
+		 * (only if necessary) @throws Throwable [NO DASH] Explanation 
+		 * (only if necessary) @see
+		 * @see DO NOT USE {@link} or {@linkplain} in see tags
+		 */
+		
+- Enum documentation:
+		
+		/**
+		 * Explanation: "A list of ..."
+		 * @since (CAH#.#(.#))(dont change since after it has been finished)
+		 * @version (CAH#.#(.#)) update version with new version
+		 * (only if necessary) @see
+		 * @see DO NOT USE {@link} or {@linkplain} in see tags
+		 */
+- Enumcontents documentation:
+		
+		/**
+		 * Explanation
+		 * @since (CAH#.#(.#))(dont change since after it has been finished)
+		 * (only if necessary) @see
+		 * @see DO NOT USE {@link} or {@linkplain} in see tags
+		 */
+		
