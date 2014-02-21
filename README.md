@@ -1,7 +1,7 @@
 #[Cards Against Humanity](http://cardsagainsthumanity.com/)
 ###"A Party Game for Horrible People" in Java
-![Picture][picture]
-[picture]: https://github.com/PurpleKangaroo/Cards-Against-Humanity/blob/master/src/graphics/CAHbox.png?raw=true
+![Picture][CAHbox]
+[CAHbox]: https://github.com/PurpleKangaroo/Cards-Against-Humanity/blob/master/src/graphics/CAHbox.png?raw=true
 ### Coming Out By May 2014
 We may be able to release this game earlier, but we hope to have the game out by May so that High School Seniors with Senioritis may play it after they have taken their AP tests.
 
@@ -23,8 +23,12 @@ Devon Grove ([@devongrove](https://github.com/devongrove)) - Associate Developer
 
 Nick Walker ([@oswin5656](https://github.com/oswin5656)) - Associate Developer, Head Graphic Design
 
-##Project Guidelines
-####General Guidelines:
+### Support or Contact
+purplekangs@gmail.com
+####Follow us on Twitter [@PurpleKangs_Dev](https://twitter.com/PurpleKangs_Dev)
+
+#Project Guidelines
+##General Guidelines:
 Use interfaces to stay organized.
 
 Use whitespace where appropriate.
@@ -34,8 +38,12 @@ Use inner classes where appropriate.
 Use good documentation. (<em>See also: </em>
 [Javadoc Guidelines](https://github.com/PurpleKangaroo/Cards-Against-Humanity/blob/master/Guidelines/Javadoc%20Guidelines.md))
 
-[Creating a Jar File](https://github.com/PurpleKangaroo/Cards-Against-Humanity/blob/master/Guidelines/CreatingAJar.md)
+[Creating a Jar File](https://github.com/PurpleKangaroo/Cards-Against-Humanity/edit/master/README.md#creating-a-jar-file-in-eclipse)
 
-### Support or Contact
-purplekangs@gmail.com
-####Follow us on Twitter [@PurpleKangs_Dev](https://twitter.com/PurpleKangs_Dev)
+##Creating a JAR File in Eclipse
+1. File > Export
+2. Java > Runnable JAR File
+3. Next<p>![Picture][picture]
+[picture]: https://github.com/PurpleKangaroo/Cards-Against-Humanity/blob/master/Guidelines/jarImage.png?raw=true
+</p>
+4. Under "Library Handling:" select "Package required libraries into generated JAR.
