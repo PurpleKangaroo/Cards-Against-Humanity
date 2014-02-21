@@ -38,7 +38,7 @@ Use inner classes where appropriate.
 Use good documentation. (<em>See also: </em>
 [Javadoc Guidelines](https://github.com/HoltMaki/CardsAgainstHumanity/blob/master/Guidelines/Javadoc%20Guidelines.md))
 
-[Creating a Jar File](https://github.com/HoltMaki/CardsAgainstHumanity/edit/master/README.md#creating-a-jar-file-in-eclipse)
+[Creating a Jar File](hhttps://github.com/HoltMaki/CardsAgainstHumanity/blob/master/README.md#creating-a-jar-file-in-eclipse)
 
 ##Creating a JAR File in Eclipse
 1. File > Export
