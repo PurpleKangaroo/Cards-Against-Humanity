@@ -7,6 +7,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Rectangle;
 
 import javax.swing.ButtonGroup;
@@ -23,6 +24,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
+import javax.swing.ListCellRenderer;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 import javax.swing.plaf.ColorUIResource;
@@ -342,7 +344,7 @@ public class CAH_NewGame extends JLayeredPane {
 										{
 											if(arg0.getSource().equals(add) && arg0.getPropertyName().equals("done"))
 											{
-												
+												add.getPlayerName();//TODO add this to the list of players
 											}
 											
 										}
@@ -482,6 +484,118 @@ public class CAH_NewGame extends JLayeredPane {
 				super.setSelected(model, selected);
 			}
 		}
+	}
+	
+	/**
+	 * A class of object that represents a columned list that contains information about players in a game of Cards Against Humanity.
+	 * @author Holt Maki
+	 * @since CAH1.0
+	 * @version CAH1.0
+	 *
+	 */
+	private class PlayerColumnedList extends JList {
+		
+		/**
+		 * The data that the list contains.
+		 */
+		private String[][] data;
+		
+		private PlayerColumnedList(String[][] players)
+		{
+			data = players;
+			super.setListData(this.data);
+			super.setCellRenderer(new PlayerListCellRenderer());
+			//TODO: finish.
+		}
+	}
+	
+	/**
+	 * A class of object that represents the list cell renderer for the list of players involved in a game of Cards Against Humanity.
+	 * @author Holt Maki
+	 * @since CAH1.0
+	 * @version CAH1.0
+	 * 
+	 */
+	private class PlayerListCellRenderer extends JPanel implements ListCellRenderer {
+		/**
+		 * The player's username.
+		 */
+		private JLabel username;
+		/**
+		 * The player's name.
+		 */
+		private JLabel name;
+		/**
+		 * The type of player.
+		 */
+		private JLabel type;
+		
+		/**
+		 * Creates an object that renders the list of players involved in a game of CAH.
+		 * @since CAH1.0
+		 * 
+		 */
+		private PlayerListCellRenderer()
+		{
+			setLayout(new GridLayout(1,3));
+			
+			username = new JLabel();
+			name = new JLabel();
+			type = new JLabel();
+			
+			username.setOpaque(true);
+			name.setOpaque(true);
+			type.setOpaque(true);
+			
+			add(username);
+			add(name);
+			add(type);
+		}
+
+		@Override
+		public Component getListCellRendererComponent(JList list, Object value,
+				int index, boolean isSelected, boolean hasFocus)
+		{
+			String usernameData = ((String[])value)[0];
+			String nameData = ((String[])value)[1];
+			String typeData = ((String[])value)[2];
+			
+			username.setText(usernameData);
+			name.setText(nameData);
+			type.setText(typeData);
+			
+			if(isSelected)
+			{
+				username.setBackground(list.getSelectionBackground());
+				username.setForeground(list.getSelectionForeground());
+				
+				name.setBackground(list.getSelectionBackground());
+				name.setForeground(list.getSelectionForeground());
+				
+				type.setBackground(list.getSelectionBackground());
+				type.setForeground(list.getSelectionForeground());
+			}
+			
+			else
+			{
+				username.setBackground(list.getBackground());
+				username.setForeground(list.getForeground());
+				
+				name.setBackground(list.getBackground());
+				name.setForeground(list.getForeground());
+				
+				type.setBackground(list.getBackground());
+				type.setForeground(list.getForeground());
+			}
+			
+			setEnabled(list.isEnabled());
+			setFont(list.getFont());
+			
+			list.setFixedCellWidth(766);
+			
+			return this;
+		}
+		
 	}
 }
 
