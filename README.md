@@ -14,7 +14,7 @@ We may be able to release this game earlier, but we hope to have the game out by
 ###Documentation and Help
 [Javadoc](http://htmlpreview.github.io/?https://raw.github.com/PurpleKangaroo/Cards-Against-Humanity/master/doc/index.html?overview-summary.html)
 
-[Project Guidelines](https://github.com/HoltMaki/CardsAgainstHumanity#javadoc-guidelines)
+[Project Guidelines](https://github.com/PurpleKangaroo/Cards-Against-Humanity#javadoc-guidelines)
 
 ### Authors and Contributors
 Holt Maki ([@HoltMaki](https://github.com/HoltMaki)) - Lead Developer
@@ -36,9 +36,9 @@ Use whitespace where appropriate.
 Use inner classes where appropriate.
 
 Use good documentation. (<em>See also: </em>
-[Javadoc Guidelines](https://github.com/HoltMaki/CardsAgainstHumanity#javadoc-guidelines))
+[Javadoc Guidelines](https://github.com/PurpleKangaroo/Cards-Against-Humanity#javadoc-guidelines))
 
-[Creating a Jar File](https://github.com/HoltMaki/CardsAgainstHumanity#creating-a-jar-file-in-eclipse)
+[Creating a Jar File](https://github.com/PurpleKangaroo/Cards-Against-Humanity#creating-a-jar-file-in-eclipse)
 
 ##Creating a JAR File in Eclipse
 1. File > Export
