@@ -5,6 +5,8 @@ import game.HouseRules;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Rectangle;
 
 import javax.swing.ButtonGroup;
@@ -237,6 +239,11 @@ public class CAH_NewGame extends JLayeredPane {
 		JList PlayerList = new JList();
 		scrollPane.setViewportView(PlayerList);
 		
+		GridBagLayout PlayerScrollLayout = new GridBagLayout();
+		GridBagConstraints PlayerScrollConstraints = new ListScrConstraints();
+		
+		PlayerScrollLayout.setConstraints(scrollPane, PlayerScrollConstraints);
+		
 		JButton button = new JButton("<html><h2 style=\"color:RED\">-</h2></html>");
 		button.setAlignmentY(Component.TOP_ALIGNMENT);
 		button.setMargin(new Insets(2, 1, 2, 1));
@@ -311,7 +318,7 @@ public class CAH_NewGame extends JLayeredPane {
 				{
 					final AddPlayer add = new AddPlayer();
 					add.setVisible(true);
-					add.setLocation(620,320);
+					add.setLocation(550,320);
 					add.setAlwaysOnTop(true);
 					add.addNotify();
 					add.addPropertyChangeListener(new PropertyChangeListener(){
@@ -325,7 +332,7 @@ public class CAH_NewGame extends JLayeredPane {
 								{
 									final AddHumanPlayer add = new AddHumanPlayer();
 									add.setVisible(true);
-									add.setLocation(650,400);
+									add.setLocation(620,380);
 									add.setAlwaysOnTop(true);
 									add.addNotify();
 									add.addPropertyChangeListener(new PropertyChangeListener() {
