@@ -14,7 +14,7 @@ We may be able to release this game earlier, but we hope to have the game out by
 ###Documentation and Help
 [Javadoc](http://htmlpreview.github.io/?https://raw.github.com/PurpleKangaroo/Cards-Against-Humanity/master/doc/index.html?overview-summary.html)
 
-[Project Guidelines](https://github.com/PurpleKangaroo/Cards-Against-Humanity/blob/master/Guidelines/ProjectGuidelines.md)
+[Project Guidelines](https://github.com/PurpleKangaroo/Cards-Against-Humanity/blob/master/README.md#project-guidelines)
 
 ### Authors and Contributors
 Holt Maki ([@HoltMaki](https://github.com/HoltMaki)) - Lead Developer
@@ -23,7 +23,7 @@ Devon Grove ([@devongrove](https://github.com/devongrove)) - Associate Developer
 
 Nick Walker ([@oswin5656](https://github.com/oswin5656)) - Associate Developer, Head Graphic Design
 
-###Project Guidelines
+##Project Guidelines
 ####General Guidelines:
 Use interfaces to stay organized.
 
