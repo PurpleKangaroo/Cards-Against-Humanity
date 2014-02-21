@@ -35,6 +35,7 @@ This makes it easy to go back later to find how the program used to work if we r
 		 * "_______" ... Explanation
 		 * @since(CAH#.#(.#))(dont change since after it has been finished)
 		 * (only if necessary) @param paramater [NO DASH] Explanation 
+		 * (only if necessary) @return returned - Explanation [There is a dash in this one]
 		 * (only if necessary) @throws Throwable [NO DASH] Explanation 
 		 * (only if necessary) @see
 		 * @see DO NOT USE {@link} or {@linkplain} in see tags
