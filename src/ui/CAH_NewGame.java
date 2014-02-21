@@ -325,7 +325,7 @@ public class CAH_NewGame extends JLayeredPane {
 								{
 									final AddHumanPlayer add = new AddHumanPlayer();
 									add.setVisible(true);
-									add.setLocation(500,225);
+									add.setLocation(650,400);
 									add.setAlwaysOnTop(true);
 									add.addNotify();
 									add.addPropertyChangeListener(new PropertyChangeListener() {
