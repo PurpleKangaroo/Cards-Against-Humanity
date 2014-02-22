@@ -65,6 +65,8 @@ public class AddHumanPlayer extends JDialog
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.setFocusTraversalKeysEnabled(false);
+				okButton.setFocusPainted(false);
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						name = textField.getText();
@@ -78,6 +80,8 @@ public class AddHumanPlayer extends JDialog
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.setFocusTraversalKeysEnabled(false);
+				cancelButton.setFocusPainted(false);
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						setVisible(false);

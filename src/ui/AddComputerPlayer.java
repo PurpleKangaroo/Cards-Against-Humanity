@@ -90,6 +90,8 @@ public class AddComputerPlayer extends JDialog
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.setFocusTraversalKeysEnabled(false);
+				okButton.setFocusPainted(false);
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 					}
@@ -100,6 +102,8 @@ public class AddComputerPlayer extends JDialog
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.setFocusTraversalKeysEnabled(false);
+				cancelButton.setFocusPainted(false);
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						setVisible(false);
