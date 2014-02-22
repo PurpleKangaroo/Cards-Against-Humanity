@@ -8,6 +8,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.Rectangle;
 
 import javax.swing.ButtonGroup;
@@ -218,7 +219,7 @@ public class CAH_NewGame extends JLayeredPane {
 		AddPlayerPanel.setLayout(null);
 		
 		final JSeparator separator = new JSeparator();
-		separator.setBounds(10, 32, 629, 2);
+		separator.setBounds(21, 34, 629, 2);
 		AddPlayerPanel.add(separator);
 		
 		JButton btnAddPlayer = new JButton("<html><h2 style=\"color:GREEN\">+</h2></html>");
@@ -230,12 +231,12 @@ public class CAH_NewGame extends JLayeredPane {
 		btnAddPlayer.setFocusTraversalKeysEnabled(false);
 		btnAddPlayer.setToolTipText("Add Player");
 		btnAddPlayer.setOpaque(false);
-		btnAddPlayer.setBounds(539, 11, 25, 23);
+		btnAddPlayer.setBounds(549, 10, 25, 23);
 		AddPlayerPanel.add(btnAddPlayer);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setOpaque(false);
-		scrollPane.setBounds(20, 45, 619, 157);
+		scrollPane.setBounds(26, 45, 619, 157);
 		AddPlayerPanel.add(scrollPane);
 		
 		JList PlayerList = new JList();
@@ -254,7 +255,7 @@ public class CAH_NewGame extends JLayeredPane {
 		button.setFocusTraversalKeysEnabled(false);
 		button.setToolTipText("Remove Player");
 		button.setOpaque(false);
-		button.setBounds(568, 11, 25, 23);
+		button.setBounds(578, 10, 25, 23);
 		AddPlayerPanel.add(button);
 		
 		JButton btnAuto = new JButton("Auto");
@@ -265,7 +266,7 @@ public class CAH_NewGame extends JLayeredPane {
 		btnAuto.setFocusPainted(false);
 		btnAuto.setBorderPainted(false);
 		btnAuto.setAlignmentY(0.0f);
-		btnAuto.setBounds(597, 11, 42, 23);
+		btnAuto.setBounds(607, 10, 42, 23);
 		AddPlayerPanel.add(btnAuto);
 		
 		JButton btnStartGame = new JButton("Start Game");
@@ -273,7 +274,7 @@ public class CAH_NewGame extends JLayeredPane {
 		btnStartGame.setFocusTraversalKeysEnabled(false);
 		btnStartGame.setFocusPainted(false);
 		btnStartGame.setOpaque(false);
-		btnStartGame.setBounds(250, 419, 102, 17);
+		btnStartGame.setBounds(250, 422, 102, 17);
 		StartGameMenus.add(btnStartGame);
 		
 		JPanel GameType = new JPanel();
@@ -312,7 +313,7 @@ public class CAH_NewGame extends JLayeredPane {
 				{
 					AddComputerPlayer add = new AddComputerPlayer();
 					add.setVisible(true);
-					add.setLocation(500,225);
+					add.setLocation(getCenterOfMenu(new Dimension(add.getWidth(), add.getHeight())));
 					add.setAlwaysOnTop(true);
 					add.addNotify();
 				}
@@ -320,7 +321,7 @@ public class CAH_NewGame extends JLayeredPane {
 				{
 					final AddPlayer add = new AddPlayer();
 					add.setVisible(true);
-					add.setLocation(550,320);
+					add.setLocation(getCenterOfMenu(new Dimension(add.getWidth(), add.getHeight())));
 					add.setAlwaysOnTop(true);
 					add.addNotify();
 					add.addPropertyChangeListener(new PropertyChangeListener(){
@@ -334,7 +335,7 @@ public class CAH_NewGame extends JLayeredPane {
 								{
 									final AddHumanPlayer add = new AddHumanPlayer();
 									add.setVisible(true);
-									add.setLocation(620,380);
+									add.setLocation(getCenterOfMenu(new Dimension(add.getWidth(), add.getHeight())));
 									add.setAlwaysOnTop(true);
 									add.addNotify();
 									add.addPropertyChangeListener(new PropertyChangeListener() {
@@ -355,7 +356,7 @@ public class CAH_NewGame extends JLayeredPane {
 								{
 									AddComputerPlayer add = new AddComputerPlayer();
 									add.setVisible(true);
-									add.setLocation(500,225);
+									add.setLocation(getCenterOfMenu(new Dimension(add.getWidth(), add.getHeight())));
 									add.setAlwaysOnTop(true);
 									add.addNotify();
 								}
@@ -371,6 +372,12 @@ public class CAH_NewGame extends JLayeredPane {
 				}
 			}
 		});
+		
+		JLabel lblNewGame = new JLabel("New Game");
+		lblNewGame.setFont(new Font("Arial Black", Font.PLAIN, 25));
+		lblNewGame.setForeground(Color.WHITE);
+		lblNewGame.setBounds(510, 183, 155, 33);
+		add(lblNewGame);
 		
 		JLabel lblCardsAgainstHumanity = new JLabel("Cards Against Humanity");
 		lblCardsAgainstHumanity.setBounds(83, 43, 1024, 139);
@@ -396,7 +403,7 @@ public class CAH_NewGame extends JLayeredPane {
 				if(chckbxExpansion1.isSelected())
 				{
 					expansion1.setVisible(true);
-					expansion1.setLocation(500,225);
+					expansion1.setLocation(getCenterOfMenu(new Dimension(expansion1.getWidth(), expansion1.getHeight())));//Centered in StartGameMenus
 					add(expansion1);
 					setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{expansion1, HouseRulesPanel, Rules, StartGameMenus, NewGameBackground, chckbxhappyEnding, chckbxrebootingTheUniverse, chckbxpackingHeat, chckbxrandoCardrissian, chckbxsurvivalOfThe, chckbxseriousBuisness, chckbxneverHaveI,chckbxgodIsDead, gamblingPanel, rdbtnOn, rdbtnoff, DecksPanel, chckbxOriginal, chckbxExpansion1, chckbxExpansion2, chckbxExpansion3, chckbxExpansion4, chckbxHolidayExpansion, AddPlayerPanel}));
 				}	
@@ -460,6 +467,23 @@ public class CAH_NewGame extends JLayeredPane {
 		}
 		
 		return str + "</html>";
+	}
+	
+	/**
+	 * Gets the point where a component should be placed in order to be at the center of the StartGameMenu.
+	 * @param d The Dimension of the Component.
+	 * @return p - The point where the component should be placed
+	 * @since CAH1.0
+	 * @author Holt Maki
+	 */
+	private Point getCenterOfMenu(Dimension d)
+	{
+		int x = StartGameMenus.getX() + ((StartGameMenus.getWidth())/2) - ((d.width)/2);
+		int y = StartGameMenus.getY() + ((StartGameMenus.getHeight())/2) - ((d.height)/2);
+		
+		Point p = new Point(x, y);
+		
+		return p;
 	}
 	
 	/**
