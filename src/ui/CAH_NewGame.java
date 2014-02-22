@@ -397,7 +397,7 @@ public class CAH_NewGame extends JLayeredPane {
 		add(lblNewGame);
 		
 		JLabel lblCardsAgainstHumanity = new JLabel("Cards Against Humanity");
-		lblCardsAgainstHumanity.setBounds(83, 43, 1024, 139);
+		lblCardsAgainstHumanity.setBounds(84, 43, 1024, 139);
 		add(lblCardsAgainstHumanity);
 		lblCardsAgainstHumanity.setForeground(Color.WHITE);
 		lblCardsAgainstHumanity.setFont(new Font("Arial Black", Font.BOLD, 70));
