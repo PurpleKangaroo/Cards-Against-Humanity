@@ -12,6 +12,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowStateListener;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
@@ -27,6 +29,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import java.awt.Point;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
@@ -35,6 +38,9 @@ import org.eclipse.wb.swing.FocusTraversalOnArray;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
+
+import java.awt.Window.Type;
+import java.awt.Frame;
 
 /**
  * A class of object that represents the frame that contains Cards against humanity.
@@ -102,13 +108,17 @@ public class CAH_Frame extends JFrame {
 	 * @author Holt Maki
 	 */
 	public CAH_Frame() {
+		setSize(new Dimension(1450, 752));
+		setPreferredSize(new Dimension(1450, 752));
+		setName("CAH");
 		
-		setMaximizedBounds(new Rectangle(0, 0, 1450, 700));
-		setMaximumSize(new Dimension(1450, 700));
-		setMinimumSize(new Dimension(1300, 752));
+		setMaximizedBounds(new Rectangle(0, 0, 1450, 750));
+		setMaximumSize(new Dimension(1450, 752));
+		setMinimumSize(new Dimension(1300, 750));
 		setTitle("Cards Against Humanity");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(0, 0, 1450, 752);
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		
 		final JMenuBar menuBar = new JMenuBar();
 		menuBar.setBorderPainted(false);
@@ -165,7 +175,7 @@ public class CAH_Frame extends JFrame {
 		mnHelp.add(mntmRules);
 		CAH_Panel = new JPanel();
 		CAH_Panel.setMinimumSize(new Dimension(1400, 700));
-		CAH_Panel.setMaximumSize(new Dimension(1450, 700));
+		CAH_Panel.setMaximumSize(new Dimension(1450, 752));
 		CAH_Panel.setBorder(null);
 		setContentPane(CAH_Panel);
 		CAH_Panel.setLayout(new FormLayout(new ColumnSpec[] {
