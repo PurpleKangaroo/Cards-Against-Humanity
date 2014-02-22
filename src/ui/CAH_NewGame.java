@@ -5,11 +5,17 @@ import game.HouseRules;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ButtonModel;
@@ -17,35 +23,23 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
-import javax.swing.JSeparator;
 import javax.swing.ListCellRenderer;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.plaf.ColorUIResource;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import cards.Decks;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.awt.Font;
-import java.awt.Insets;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
-import javax.swing.JPopupMenu;
-import javax.swing.JComboBox;
-import javax.swing.border.LineBorder;
 
 /**
  * The panel that creates the menu for a new CAH game.
@@ -58,6 +52,11 @@ import javax.swing.border.LineBorder;
 public class CAH_NewGame extends JLayeredPane {
 	
 	private JComponent StartGameMenus;
+	
+	/**
+	 * The list of all the information about the players.
+	 */
+	private String[][] players;
 //TODO: Create examples applet in the left area.
 	/**
 	 * Create the panel.
@@ -65,9 +64,12 @@ public class CAH_NewGame extends JLayeredPane {
 	 * @version CAH1.0
 	 * @author Holt Maki
 	 */
+	@SuppressWarnings("rawtypes")
 	public CAH_NewGame() {
 		final Expansion1Options expansion1 = new Expansion1Options();
 		expansion1.setVisible(false);
+		
+		UIManager.put("TitledBorder.border", new LineBorder(new Color(250,250,250), 1, true));
 		
 		setBounds(new Rectangle(0, 0, 1450, 700));
 		setMaximumSize(new Dimension(1450, 700));
@@ -212,34 +214,32 @@ public class CAH_NewGame extends JLayeredPane {
 		DecksPanel.add(chckbxHolidayExpansion);
 		
 		final JPanel AddPlayerPanel = new JPanel();
-		AddPlayerPanel.setBorder(new TitledBorder(null, "Players", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
+		AddPlayerPanel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(255, 255, 255)));
 		AddPlayerPanel.setOpaque(false);
 		AddPlayerPanel.setBounds(13, 207, 672, 213);
 		StartGameMenus.add(AddPlayerPanel);
 		AddPlayerPanel.setLayout(null);
 		
-		final JSeparator separator = new JSeparator();
-		separator.setBounds(21, 34, 629, 2);
-		AddPlayerPanel.add(separator);
-		
 		JButton btnAddPlayer = new JButton("<html><h2 style=\"color:GREEN\">+</h2></html>");
+		btnAddPlayer.setContentAreaFilled(false);
+		btnAddPlayer.setOpaque(false);
 		btnAddPlayer.setAlignmentY(Component.TOP_ALIGNMENT);
-		btnAddPlayer.setBorderPainted(false);
-		btnAddPlayer.setBorder(UIManager.getBorder("Button.border"));
+		btnAddPlayer.setBorder(new LineBorder(Color.WHITE, 1, true));
 		btnAddPlayer.setMargin(new Insets(2, 1, 2, 1));
 		btnAddPlayer.setFocusPainted(false);
 		btnAddPlayer.setFocusTraversalKeysEnabled(false);
 		btnAddPlayer.setToolTipText("Add Player");
-		btnAddPlayer.setOpaque(false);
-		btnAddPlayer.setBounds(549, 10, 25, 23);
+		btnAddPlayer.setBounds(549, 7, 25, 25);
 		AddPlayerPanel.add(btnAddPlayer);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setOpaque(false);
-		scrollPane.setBounds(26, 45, 619, 157);
+		scrollPane.setBackground(Color.BLACK);
+		scrollPane.setBounds(10, 45, 652, 157);
 		AddPlayerPanel.add(scrollPane);
 		
-		JList PlayerList = new JList();
+		players = new String[0][3];
+		
+		JList PlayerList = new PlayerColumnedList(players);
 		scrollPane.setViewportView(PlayerList);
 		
 		GridBagLayout PlayerScrollLayout = new GridBagLayout();
@@ -248,26 +248,43 @@ public class CAH_NewGame extends JLayeredPane {
 		PlayerScrollLayout.setConstraints(scrollPane, PlayerScrollConstraints);
 		
 		JButton button = new JButton("<html><h2 style=\"color:RED\">-</h2></html>");
+		button.setBorder(new LineBorder(Color.WHITE, 1, true));
+		button.setContentAreaFilled(false);
+		button.setOpaque(false);
 		button.setAlignmentY(Component.TOP_ALIGNMENT);
 		button.setMargin(new Insets(2, 1, 2, 1));
-		button.setBorderPainted(false);
 		button.setFocusPainted(false);
 		button.setFocusTraversalKeysEnabled(false);
 		button.setToolTipText("Remove Player");
-		button.setOpaque(false);
-		button.setBounds(578, 10, 25, 23);
+		button.setBounds(578, 7, 25, 25);
 		AddPlayerPanel.add(button);
 		
-		JButton btnAuto = new JButton("Auto");
-		btnAuto.setToolTipText("Automatically add all netplay players connected to the game.");
+		JButton btnAuto = new JButton("<html><body style =\"color:WHITE\">Auto</body></html>");
+		btnAuto.setBorder(new LineBorder(Color.WHITE, 1, true));
+		btnAuto.setContentAreaFilled(false);
 		btnAuto.setOpaque(false);
+		btnAuto.setToolTipText("Automatically add all netplay players connected to the game.");
 		btnAuto.setMargin(new Insets(2, 1, 2, 1));
 		btnAuto.setFocusTraversalKeysEnabled(false);
 		btnAuto.setFocusPainted(false);
-		btnAuto.setBorderPainted(false);
 		btnAuto.setAlignmentY(0.0f);
-		btnAuto.setBounds(607, 10, 42, 23);
+		btnAuto.setBounds(607, 7, 42, 25);
 		AddPlayerPanel.add(btnAuto);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(new Color(255, 255, 255), 1, true));
+		panel.setOpaque(false);
+		panel.setBounds(0, 0, 672, 39);
+		AddPlayerPanel.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblPlayers = new JLabel("Players");
+		lblPlayers.setBounds(10, 9, 75, 21);
+		lblPlayers.setHorizontalTextPosition(SwingConstants.LEADING);
+		lblPlayers.setHorizontalAlignment(SwingConstants.LEFT);
+		lblPlayers.setFont(new Font("Arial Black", Font.PLAIN, 16));
+		lblPlayers.setForeground(Color.WHITE);
+		panel.add(lblPlayers);
 		
 		JButton btnStartGame = new JButton("Start Game");
 		btnStartGame.setBorderPainted(false);
@@ -517,6 +534,7 @@ public class CAH_NewGame extends JLayeredPane {
 	 * @version CAH1.0
 	 *
 	 */
+	@SuppressWarnings("rawtypes")
 	private class PlayerColumnedList extends JList {
 		
 		/**
@@ -524,11 +542,27 @@ public class CAH_NewGame extends JLayeredPane {
 		 */
 		private String[][] data;
 		
+		@SuppressWarnings("unchecked")
 		private PlayerColumnedList(String[][] players)
 		{
 			data = players;
 			super.setListData(this.data);
 			super.setCellRenderer(new PlayerListCellRenderer());
+			super.setForeground(Color.WHITE);
+			super.setSelectionBackground(new Color(0, 153, 255));
+			super.setSelectionForeground(Color.WHITE);
+			
+			super.setOpaque(true);
+			
+			super.setBackground(Color.BLACK);
+			super.setAutoscrolls(false);
+			super.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			
+			setFixedCellWidth(1532);
+			if(data != null)
+			{
+				setSelectedIndex(0);
+			}
 			//TODO: finish.
 		}
 	}
@@ -540,6 +574,7 @@ public class CAH_NewGame extends JLayeredPane {
 	 * @version CAH1.0
 	 * 
 	 */
+	@SuppressWarnings("rawtypes")
 	private class PlayerListCellRenderer extends JPanel implements ListCellRenderer {
 		/**
 		 * The player's username.
