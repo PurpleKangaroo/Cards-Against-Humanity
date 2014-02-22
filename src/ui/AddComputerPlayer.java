@@ -90,6 +90,7 @@ public class AddComputerPlayer extends JDialog
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.setRolloverEnabled(false);
 				okButton.setFocusTraversalKeysEnabled(false);
 				okButton.setFocusPainted(false);
 				okButton.addActionListener(new ActionListener() {
@@ -102,6 +103,7 @@ public class AddComputerPlayer extends JDialog
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.setRolloverEnabled(false);
 				cancelButton.setFocusTraversalKeysEnabled(false);
 				cancelButton.setFocusPainted(false);
 				cancelButton.addActionListener(new ActionListener() {
