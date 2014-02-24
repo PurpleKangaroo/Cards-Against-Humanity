@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -20,6 +21,8 @@ public class AddHumanPlayer extends JDialog
 	private String name;
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
+	private JTextField usernameTextField;
+	private String username;
 
 	/**
 	 * Launch the application.
@@ -45,19 +48,38 @@ public class AddHumanPlayer extends JDialog
 	public AddHumanPlayer()
 	{
 		setUndecorated(true);
-		setBounds(100, 100, 176, 74);
+		setBounds(100, 150, 220, 127);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setLayout(new FlowLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
 		{
-			JLabel lblName = new JLabel("Name:");
-			contentPanel.add(lblName);
+			JPanel namePanel = new JPanel();
+			namePanel.setBounds(32, 11, 178, 30);
+			contentPanel.add(namePanel);
+			{
+				JLabel lblName = new JLabel("Name:");
+				namePanel.add(lblName);
+			}
+			{
+				textField = new JTextField();
+				namePanel.add(textField);
+				textField.setColumns(10);
+			}
 		}
 		{
-			textField = new JTextField();
-			contentPanel.add(textField);
-			textField.setColumns(10);
+			JPanel panel = new JPanel();
+			panel.setBounds(10, 45, 200, 30);
+			contentPanel.add(panel);
+			{
+				JLabel labelUsername = new JLabel("Username:");
+				panel.add(labelUsername);
+			}
+			{
+				usernameTextField = new JTextField();
+				usernameTextField.setColumns(10);
+				panel.add(usernameTextField);
+			}
 		}
 		{
 			JPanel buttonPane = new JPanel();
@@ -72,6 +94,7 @@ public class AddHumanPlayer extends JDialog
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						name = textField.getText();
+						username = usernameTextField.getText();
 						firePropertyChange("done", false, true);
 						setVisible(false);
 					}
@@ -106,6 +129,16 @@ public class AddHumanPlayer extends JDialog
 	protected String getPlayerName()
 	{
 		return name;
+	}
+	
+	/**
+	 * Gets the user that is being added's username.
+	 * @since CAH1.0
+	 * @author Holt Maki
+	 */
+	protected String getUsername()
+	{
+		return username;
 	}
 	
 }
