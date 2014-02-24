@@ -363,7 +363,7 @@ public class CAH_NewGame extends JLayeredPane {
 										{
 											if(arg0.getSource().equals(add) && arg0.getPropertyName().equals("done"))
 											{
-												PlayerList.addPlayer(add.getPlayerName(), add.getPlayerName(), "Human");//TODO add this to the list of players
+												PlayerList.addPlayer(add.getUsername(), add.getPlayerName(), "Human");//TODO add this to the list of players
 												PlayerList.validate();
 											}
 											
