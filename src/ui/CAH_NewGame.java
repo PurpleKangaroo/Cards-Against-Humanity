@@ -19,6 +19,7 @@ import java.beans.PropertyChangeListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ButtonModel;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -56,7 +57,7 @@ public class CAH_NewGame extends JLayeredPane {
 	/**
 	 * The list of all the information about the players.
 	 */
-	private String[][] players;
+	private DefaultListModel players;
 //TODO: Create examples applet in the left area.
 	/**
 	 * Create the panel.
@@ -237,9 +238,9 @@ public class CAH_NewGame extends JLayeredPane {
 		scrollPane.setBounds(10, 45, 652, 157);
 		AddPlayerPanel.add(scrollPane);
 		
-		players = new String[0][3];
+		players = new DefaultListModel();
 		
-		JList PlayerList = new PlayerColumnedList(players);
+		final PlayerColumnedList PlayerList = new PlayerColumnedList(players);
 		scrollPane.setViewportView(PlayerList);
 		
 		GridBagLayout PlayerScrollLayout = new GridBagLayout();
@@ -362,7 +363,8 @@ public class CAH_NewGame extends JLayeredPane {
 										{
 											if(arg0.getSource().equals(add) && arg0.getPropertyName().equals("done"))
 											{
-												add.getPlayerName();//TODO add this to the list of players
+												PlayerList.addPlayer(add.getPlayerName(), add.getPlayerName(), "Human");//TODO add this to the list of players
+												PlayerList.validate();
 											}
 											
 										}
@@ -538,15 +540,15 @@ public class CAH_NewGame extends JLayeredPane {
 	private class PlayerColumnedList extends JList {
 		
 		/**
-		 * The data that the list contains.
+		 * The model of the lists data.
 		 */
-		private String[][] data;
+		private DefaultListModel model;
 		
 		@SuppressWarnings("unchecked")
-		private PlayerColumnedList(String[][] players)
+		private PlayerColumnedList(DefaultListModel players)
 		{
-			data = players;
-			super.setListData(this.data);
+			model = players;
+			super.setModel(model);
 			super.setCellRenderer(new PlayerListCellRenderer());
 			super.setForeground(Color.WHITE);
 			super.setSelectionBackground(new Color(0, 153, 255));
@@ -558,12 +560,59 @@ public class CAH_NewGame extends JLayeredPane {
 			super.setAutoscrolls(false);
 			super.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			
-			setFixedCellWidth(1532);
-			if(data != null)
+			setFixedCellWidth(100);
+			if(!model.isEmpty())
 			{
 				setSelectedIndex(0);
 			}
 			//TODO: finish.
+		}
+		
+		private void addPlayer(String username, String name, String type)
+		{
+			String[] newData = new String[3];
+			
+			newData[0] = username;
+			newData[1] = name;
+			newData[2] = type;
+			
+			if(!checkUsername(username))
+			{
+				//TODO create dialog saying that there is already a player with that name
+			}
+			else
+			{
+				model.addElement(newData);
+				this.setSelectedIndex(model.size() - 1);
+			}
+		}
+		
+		/**
+		 * Checks to make sure there is not a user with the same username in the game.
+		 * @param username the username being checked.
+		 * @return valid - whether or not the username is valid.
+		 */
+		private boolean checkUsername(String username)
+		{
+			if(model.size() > 0)
+			{
+				boolean found = false;
+				for(int i = 0; i < model.size() && !found; i++)
+				{
+					String[] check = (String[]) model.get(i);
+					if(check[0].equals(username))
+					{
+						found = true;
+						return false;
+					}
+				}
+				return true;
+				
+			}
+			else
+			{
+				return true;
+			}
 		}
 	}
 	
@@ -650,7 +699,7 @@ public class CAH_NewGame extends JLayeredPane {
 			setEnabled(list.isEnabled());
 			setFont(list.getFont());
 			
-			list.setFixedCellWidth(766);
+			list.setFixedCellWidth(100);
 			
 			return this;
 		}
