@@ -111,7 +111,7 @@ public class CAH_Frame extends JFrame {
 		setSize(new Dimension(1450, 752));
 		setPreferredSize(new Dimension(1450, 752));
 		setName("CAH");
-		
+		setBackground(Color.BLACK);
 		setMaximizedBounds(new Rectangle(0, 0, 1450, 750));
 		setMaximumSize(new Dimension(1450, 752));
 		setMinimumSize(new Dimension(1300, 750));

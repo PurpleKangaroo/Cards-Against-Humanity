@@ -242,6 +242,10 @@ public class CAH_NewGame extends JLayeredPane {
 		
 		final PlayerColumnedList PlayerList = new PlayerColumnedList(players);
 		scrollPane.setViewportView(PlayerList);
+		scrollPane.setColumnHeaderView(new JLabel("Username" +
+				"                                                    " + 
+				"Name" + "                                                             " + 
+				"Player Type"));
 		
 		GridBagLayout PlayerScrollLayout = new GridBagLayout();
 		GridBagConstraints PlayerScrollConstraints = new ListScrConstraints();
