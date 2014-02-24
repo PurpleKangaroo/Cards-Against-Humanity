@@ -242,6 +242,10 @@ public class CAH_NewGame extends JLayeredPane {
 		
 		final PlayerColumnedList PlayerList = new PlayerColumnedList(players);
 		scrollPane.setViewportView(PlayerList);
+		scrollPane.setColumnHeaderView(new JLabel("Username" +
+				"                                                    " + 
+				"Name" + "                                                             " + 
+				"Player Type"));
 		
 		GridBagLayout PlayerScrollLayout = new GridBagLayout();
 		GridBagConstraints PlayerScrollConstraints = new ListScrConstraints();
@@ -363,6 +367,9 @@ public class CAH_NewGame extends JLayeredPane {
 										{
 											if(arg0.getSource().equals(add) && arg0.getPropertyName().equals("done"))
 											{
+												//TODO Change add human player so that it doesnt close itsself, this closes it
+												//TODO Then add if statement that will only close it if the username is unused, and neither username nore name are blank
+												//TODO In the else statemment have a lable fade in then fade out that says that is not a valid username. Or "You must fill all fields".
 												PlayerList.addPlayer(add.getUsername(), add.getPlayerName(), "Human");//TODO add this to the list of players
 												PlayerList.validate();
 											}

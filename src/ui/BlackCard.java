@@ -47,9 +47,17 @@ public class BlackCard extends JPanel
 		
 		JTextPane textArea = new JTextPane();
 		textArea.setContentType("text/html");
-		textArea.setText("<html><body style=\"font-family: Arial Black; font-size:15; font-color: WHITE\">" + str + "</body></html>");
 		textArea.setDisabledTextColor(Color.WHITE);
-		textArea.setFont(new Font("Arial Black", Font.PLAIN, 15));
+		if(str.length() > 130)
+		{
+			textArea.setText("<html><body style=\"font-family: Arial Black; font-size:14; font-color: WHITE\">" + str + "</body></html>");
+			textArea.setFont(new Font("Arial Black", Font.PLAIN, 14));
+		}
+		else
+		{
+			textArea.setText("<html><body style=\"font-family: Arial Black; font-size:15; font-color: WHITE\">" + str + "</body></html>");
+			textArea.setFont(new Font("Arial Black", Font.PLAIN, 15));
+		}
 		textArea.setAutoscrolls(false);
 		textArea.setEnabled(false);
 		textArea.setEditable(false);
