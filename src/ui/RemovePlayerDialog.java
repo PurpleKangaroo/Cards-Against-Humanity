@@ -37,10 +37,10 @@ public class RemovePlayerDialog extends JDialog
 			JTextPane txtpnAreYouSure = new JTextPane();
 			txtpnAreYouSure.setEnabled(false);
 			txtpnAreYouSure.setEditable(false);
-			txtpnAreYouSure.setDisabledTextColor(Color.BLACK);
+			txtpnAreYouSure.setContentType("text/html");
 			txtpnAreYouSure.setOpaque(false);
 			txtpnAreYouSure.setBounds(10, 11, 140, 67);
-			txtpnAreYouSure.setText("Are you sure you want to remove " + username + " from the game?");
+			txtpnAreYouSure.setText("<html style=\"color:black\">Are you sure you want to remove <span style=\"color:red\">" + username + "</span> from the game?</html>");
 			contentPanel.add(txtpnAreYouSure);
 		}
 		{

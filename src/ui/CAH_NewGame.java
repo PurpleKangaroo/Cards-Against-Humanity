@@ -36,6 +36,8 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.plaf.ColorUIResource;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
@@ -479,6 +481,28 @@ public class CAH_NewGame extends JLayeredPane {
 			}
 		});
 		
+		chckbxrandoCardrissian.addChangeListener(new ChangeListener(){
+
+			private boolean onList = false;
+			
+			@Override
+			public void stateChanged(ChangeEvent arg0)
+			{
+				if(chckbxrandoCardrissian.isSelected() && !onList)
+				{
+					PlayerList.addPlayer("Rando_cardrissian", "Rando Cardrissian", "Computer");
+					onList = true;
+				}
+				else if(!chckbxrandoCardrissian.isSelected() && onList)
+				{
+					PlayerList.removeRandoCardrissian();
+					onList = false;
+				}
+				
+			}
+			
+		});
+		
 	}
 	
 	/**
@@ -634,6 +658,33 @@ public class CAH_NewGame extends JLayeredPane {
 				{
 					
 				}
+			}
+		}
+		
+		/**
+		 * Removes Rando Cardrissian from the list.
+		 * @since CAH1.0
+		 */ 
+		private void removeRandoCardrissian()
+		{
+			int index = -1;
+			if(model.size() > 0)
+			{
+				boolean found = false;
+				for(int i = 0; i < model.size() && !found; i++)
+				{
+					String[] check = (String[]) model.get(i);
+					if(check[0].equals("Rando_cardrissian"))
+					{
+						found = true;
+						index = i;
+					}
+				}
+				
+			}
+			if(index >= 0)
+			{
+				removePlayer(index);
 			}
 		}
 		
