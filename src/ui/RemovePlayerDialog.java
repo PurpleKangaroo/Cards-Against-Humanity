@@ -7,6 +7,11 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextPane;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class RemovePlayerDialog extends JDialog
 {
@@ -14,48 +19,58 @@ public class RemovePlayerDialog extends JDialog
 	private final JPanel contentPanel = new JPanel();
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args)
-	{
-		try
-		{
-			RemovePlayerDialog dialog = new RemovePlayerDialog();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
-
-	/**
 	 * Create the dialog.
 	 */
-	public RemovePlayerDialog()
+	public RemovePlayerDialog(String username)
 	{
+		setAlwaysOnTop(true);
 		//TODO: "are you sure you want to remove ___player?" (Options Yes, No)
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 160, 110);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setLayout(new FlowLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
+		setUndecorated(true);
+		setVisible(true);
+		setOpacity(0.95f);
+		{
+			JTextPane txtpnAreYouSure = new JTextPane();
+			txtpnAreYouSure.setEnabled(false);
+			txtpnAreYouSure.setEditable(false);
+			txtpnAreYouSure.setDisabledTextColor(Color.BLACK);
+			txtpnAreYouSure.setOpaque(false);
+			txtpnAreYouSure.setBounds(10, 11, 140, 67);
+			txtpnAreYouSure.setText("Are you sure you want to remove " + username + " from the game?");
+			contentPanel.add(txtpnAreYouSure);
+		}
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
+				JButton okButton = new JButton("Yes");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						firePropertyChange("remove", false, true);
+						setVisible(false);
+					}
+				});
+				okButton.setFocusPainted(false);
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
+				JButton noButton = new JButton("No");
+				noButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						setVisible(false);
+					}
+				});
+				noButton.setFocusPainted(false);
+				buttonPane.add(noButton);
 			}
 		}
+		
 	}
 
 }
