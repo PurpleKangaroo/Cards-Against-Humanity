@@ -1,3 +1,3 @@
 $(document).ready(function(){
-  ('.slideRight')slideDown('slow');
+  ('.slideDown')slideDown('slow');
   });
