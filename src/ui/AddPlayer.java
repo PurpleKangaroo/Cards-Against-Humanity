@@ -8,12 +8,19 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextPane;
+
 import java.awt.Color;
+
 import javax.swing.UIManager;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
 
 /**
  * A class of object that represents a dialog that askes the user which type of player they would like to add to a game of Cards Against Humanity.
@@ -61,6 +68,7 @@ public class AddPlayer extends JDialog
 	 */
 	public AddPlayer()
 	{
+		setAlwaysOnTop(true);
 		setUndecorated(true);
 		setResizable(false);
 		setBounds(100, 100, 247, 162);
@@ -91,13 +99,14 @@ public class AddPlayer extends JDialog
 			rdbtnComputerPlayer.setSelected(true);
 			buttonGroup.add(rdbtnComputerPlayer);
 			panel.add(rdbtnComputerPlayer);
-			{
-				JRadioButton rdbtnHumanPlayer = new JRadioButton("Human Player");
-				rdbtnHumanPlayer.setFocusTraversalKeysEnabled(false);
-				rdbtnHumanPlayer.setFocusPainted(false);
-				buttonGroup.add(rdbtnHumanPlayer);
-				panel.add(rdbtnHumanPlayer);
-			}
+			final JRadioButton rdbtnHumanPlayer = new JRadioButton("Human Player");
+			rdbtnHumanPlayer.setFocusTraversalKeysEnabled(false);
+			rdbtnHumanPlayer.setFocusPainted(false);
+			buttonGroup.add(rdbtnHumanPlayer);
+			panel.add(rdbtnHumanPlayer);
+			rdbtnComputerPlayer.setFocusable(false);
+			rdbtnHumanPlayer.setFocusable(false);
+
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -125,6 +134,7 @@ public class AddPlayer extends JDialog
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
+				okButton.setFocusable(false);
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
@@ -141,9 +151,48 @@ public class AddPlayer extends JDialog
 				cancelButton.setFocusTraversalKeysEnabled(false);
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
+				cancelButton.setFocusable(false);
 			}
 		}
+		addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyPressed(KeyEvent arg0)
+			{
+				if((arg0.getKeyCode() == KeyEvent.VK_DOWN || arg0.getKeyCode() == KeyEvent.VK_UP || arg0.getKeyCode() == KeyEvent.VK_LEFT || arg0.getKeyCode() == KeyEvent.VK_RIGHT) && isVisible())
+				{
+					if(rdbtnComputerPlayer.isSelected())
+					{
+						rdbtnHumanPlayer.setSelected(true);
+					}
+					else if(isVisible())
+					{
+						rdbtnComputerPlayer.setSelected(true);
+					}
+					else
+					{
+						
+					}
+				}
+			}
+
+			@Override
+			public void keyReleased(KeyEvent arg0)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyTyped(KeyEvent arg0)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		setOpacity(0.95f);
+		setFocusable(true);
 	}
 	
 	/**
