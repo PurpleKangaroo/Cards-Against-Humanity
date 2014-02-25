@@ -1,3 +1,3 @@
 $(document).ready(function(){
-  ('.slideRight').show("slide", {direction: "right"}, 'slow');
+  ('.slideRight').toggle("slide", {direction: "right"}, 'slow');
   });
