@@ -253,6 +253,42 @@ public class CAH_NewGame extends JLayeredPane {
 		PlayerScrollLayout.setConstraints(scrollPane, PlayerScrollConstraints);
 		
 		JButton button = new JButton("<html><h2 style=\"color:RED\">-</h2></html>");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try
+				{	
+					String username = ((String[]) PlayerList.getSelectedValue())[0];
+					final RemovePlayerDialog remove = new RemovePlayerDialog(username);
+					remove.setLocation(getCenterOfMenu(new Dimension(remove.getWidth(), remove.getHeight())));
+					remove.setAlwaysOnTop(true);
+					remove.addNotify();
+					remove.addPropertyChangeListener(new PropertyChangeListener() {
+
+						@Override
+						public void propertyChange(PropertyChangeEvent arg0)
+						{
+							if(arg0.getSource().equals(remove) && arg0.getPropertyName().equals("remove"))
+							{
+								//TODO Change add human player so that it doesnt close itsself, this closes it
+								//TODO Then add if statement that will only close it if the username is unused, and neither username nore name are blank
+								//TODO In the else statemment have a lable fade in then fade out that says that is not a valid username. Or "You must fill all fields".
+								PlayerList.removePlayer(PlayerList.getSelectedIndex());
+								PlayerList.validate();
+							}
+							
+						}
+						
+					});
+					
+					
+				}
+				catch(Exception except)
+				{
+					except.printStackTrace();
+				}
+				
+			}
+		});
 		button.setBorder(new LineBorder(Color.WHITE, 1, true));
 		button.setContentAreaFilled(false);
 		button.setOpaque(false);
@@ -575,6 +611,39 @@ public class CAH_NewGame extends JLayeredPane {
 			//TODO: finish.
 		}
 		
+		/**
+		 * Removes a player at a given index from the list of players in the game.
+		 * @param index the given index that the player being removed is at on the list.
+		 * @since CAH1.0
+		 */
+		private void removePlayer(int index)
+		{
+			model.remove(index);
+			this.setModel(model);
+			try
+			{
+				this.setSelectedIndex(index - 1);
+			}
+			catch(ArrayIndexOutOfBoundsException e)
+			{
+				try
+				{
+					this.setSelectedIndex(index + 1);
+				}
+				catch(Exception except)
+				{
+					
+				}
+			}
+		}
+		
+		/**
+		 * Adds a player to the list of players in a game.
+		 * @param username the username of the player being added.
+		 * @param name the name of the player being added.
+		 * @param type the type of player being added.
+		 * @since CAH1.0
+		 */
 		private void addPlayer(String username, String name, String type)
 		{
 			String[] newData = new String[3];
