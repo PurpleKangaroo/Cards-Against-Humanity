@@ -75,6 +75,7 @@ public class CAH_NewGame extends JLayeredPane {
 		expansion1.setVisible(false);
 		
 		UIManager.put("TitledBorder.border", new LineBorder(new Color(250,250,250), 1, true));
+		UIManager.put("ToolTip.background", new ColorUIResource(253, 255, 166));
 		
 		setBounds(new Rectangle(0, 0, 1450, 700));
 		setMaximumSize(new Dimension(1450, 700));
@@ -457,8 +458,6 @@ public class CAH_NewGame extends JLayeredPane {
 		NewGameBackground.setBounds(0, 0, 1450, 722);
 		add(NewGameBackground);
 		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{HouseRulesPanel, Rules, StartGameMenus, NewGameBackground, chckbxhappyEnding, chckbxrebootingTheUniverse, chckbxpackingHeat, chckbxrandoCardrissian, chckbxsurvivalOfThe, chckbxseriousBuisness, chckbxneverHaveI, chckbxgodIsDead, gamblingPanel, rdbtnOn, rdbtnoff, DecksPanel, chckbxOriginal, chckbxExpansion1, chckbxExpansion2, chckbxExpansion3, chckbxExpansion4, chckbxHolidayExpansion, AddPlayerPanel}));
-		
-		UIManager.put("ToolTip.background", new ColorUIResource(253, 255, 166));
 		
 		chckbxExpansion1.addActionListener(new ActionListener()
 		{
