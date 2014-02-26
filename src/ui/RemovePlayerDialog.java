@@ -27,7 +27,7 @@ public class RemovePlayerDialog extends JDialog
 		setUndecorated(true);
 		setAlwaysOnTop(true);
 		//TODO: "are you sure you want to remove ___player?" (Options Yes, No)
-		setBounds(100, 100, 203, 131);
+		setBounds(100, 100, 203, 121);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -41,8 +41,8 @@ public class RemovePlayerDialog extends JDialog
 			txtpnAreYouSure.setEditable(false);
 			txtpnAreYouSure.setContentType("text/html");
 			txtpnAreYouSure.setOpaque(false);
-			txtpnAreYouSure.setBounds(10, 11, 183, 77);
-			txtpnAreYouSure.setText("<html><body style=\"font-family: Tahoma; font-size:12; font-color: black\"><strong>Are you sure you want to remove <span style=\"font-family: Tahoma; font-size:12; color:red\">" + username + "</span> from the game?</strong></body></html>");
+			txtpnAreYouSure.setBounds(10, 11, 183, 67);
+			txtpnAreYouSure.setText("<html><body style =\"font-size:12; font-family: Dialog; font-style:bold\"><span style=\"font-color: black\"><strong>Are you sure you want to remove <span style=\"color:red\">" + username + "</span><span style=\" font-color: black\"> from the game?</strong></body></html>");
 			txtpnAreYouSure.setFont(new Font("Arial Black", Font.PLAIN, 11));
 			contentPanel.add(txtpnAreYouSure);
 			
