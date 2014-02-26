@@ -12,6 +12,7 @@ import javax.swing.JTextPane;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class RemovePlayerDialog extends JDialog
 {
@@ -23,25 +24,28 @@ public class RemovePlayerDialog extends JDialog
 	 */
 	public RemovePlayerDialog(String username)
 	{
+		setUndecorated(true);
 		setAlwaysOnTop(true);
 		//TODO: "are you sure you want to remove ___player?" (Options Yes, No)
-		setBounds(100, 100, 160, 110);
+		setBounds(100, 100, 203, 131);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
-		setUndecorated(true);
 		setVisible(true);
 		setOpacity(0.95f);
 		{
 			JTextPane txtpnAreYouSure = new JTextPane();
-			txtpnAreYouSure.setEnabled(false);
+			txtpnAreYouSure.setAutoscrolls(false);
+			txtpnAreYouSure.setRequestFocusEnabled(false);
 			txtpnAreYouSure.setEditable(false);
 			txtpnAreYouSure.setContentType("text/html");
 			txtpnAreYouSure.setOpaque(false);
-			txtpnAreYouSure.setBounds(10, 11, 140, 67);
-			txtpnAreYouSure.setText("<html style=\"color:black\">Are you sure you want to remove <span style=\"color:red\">" + username + "</span> from the game?</html>");
+			txtpnAreYouSure.setBounds(10, 11, 183, 77);
+			txtpnAreYouSure.setText("<html><body style=\"font-family: Tahoma; font-size:12; font-color: black\"><strong>Are you sure you want to remove <span style=\"font-family: Tahoma; font-size:12; color:red\">" + username + "</span> from the game?</strong></body></html>");
+			txtpnAreYouSure.setFont(new Font("Arial Black", Font.PLAIN, 11));
 			contentPanel.add(txtpnAreYouSure);
+			
 		}
 		{
 			JPanel buttonPane = new JPanel();
