@@ -36,6 +36,8 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.plaf.ColorUIResource;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
@@ -53,10 +55,12 @@ import cards.Decks;
 public class CAH_NewGame extends JLayeredPane {
 	
 	private JComponent StartGameMenus;
+	private boolean onList = false;
 	
 	/**
 	 * The list of all the information about the players.
 	 */
+	@SuppressWarnings("rawtypes")
 	private DefaultListModel players;
 //TODO: Create examples applet in the left area.
 	/**
@@ -284,7 +288,7 @@ public class CAH_NewGame extends JLayeredPane {
 				}
 				catch(Exception except)
 				{
-					except.printStackTrace();
+					
 				}
 				
 			}
@@ -479,6 +483,37 @@ public class CAH_NewGame extends JLayeredPane {
 			}
 		});
 		
+		chckbxrandoCardrissian.addChangeListener(new ChangeListener(){
+			
+			@Override
+			public void stateChanged(ChangeEvent arg0)
+			{
+				if(chckbxrandoCardrissian.isSelected() && !onList)
+				{
+					PlayerList.addPlayer("Rando_cardrissian", "Rando Cardrissian", "Computer");
+					onList = true;
+				}
+				else if(!chckbxrandoCardrissian.isSelected() && onList)
+				{
+					PlayerList.removeRandoCardrissian();
+					onList = false;
+				}
+				
+			}
+			
+		});
+		
+		PlayerList.addPropertyChangeListener("Rando", new PropertyChangeListener() {
+
+			@Override
+			public void propertyChange(PropertyChangeEvent arg0)
+			{
+				chckbxrandoCardrissian.setSelected(false);
+				onList = false;
+			}
+			
+		});
+		
 	}
 	
 	/**
@@ -616,8 +651,11 @@ public class CAH_NewGame extends JLayeredPane {
 		 * @param index the given index that the player being removed is at on the list.
 		 * @since CAH1.0
 		 */
+		@SuppressWarnings("unchecked")
 		private void removePlayer(int index)
 		{
+			String username = ((String[]) model.get(index))[0];
+			
 			model.remove(index);
 			this.setModel(model);
 			try
@@ -635,6 +673,37 @@ public class CAH_NewGame extends JLayeredPane {
 					
 				}
 			}
+			if(username.replaceAll(" ", "").equals("Rando_cardrissian"))
+			{
+				firePropertyChange("Rando", true, false);
+			}
+		}
+		
+		/**
+		 * Removes Rando Cardrissian from the list.
+		 * @since CAH1.0
+		 */ 
+		private void removeRandoCardrissian()
+		{
+			int index = -1;
+			if(model.size() > 0)
+			{
+				boolean found = false;
+				for(int i = 0; i < model.size() && !found; i++)
+				{
+					String[] check = (String[]) model.get(i);
+					if(check[0].equals("Rando_cardrissian"))
+					{
+						found = true;
+						index = i;
+					}
+				}
+				
+			}
+			if(index >= 0)
+			{
+				removePlayer(index);
+			}
 		}
 		
 		/**
@@ -644,6 +713,7 @@ public class CAH_NewGame extends JLayeredPane {
 		 * @param type the type of player being added.
 		 * @since CAH1.0
 		 */
+		@SuppressWarnings("unchecked")
 		private void addPlayer(String username, String name, String type)
 		{
 			String[] newData = new String[3];
@@ -652,7 +722,7 @@ public class CAH_NewGame extends JLayeredPane {
 			newData[1] = name;
 			newData[2] = type;
 			
-			if(!checkUsername(username))
+			if(!checkValidity(username, name, type))
 			{
 				//TODO create dialog saying that there is already a player with that name
 			}
@@ -664,19 +734,21 @@ public class CAH_NewGame extends JLayeredPane {
 		}
 		
 		/**
-		 * Checks to make sure there is not a user with the same username in the game.
+		 * Checks to make sure the user being added is valid.
 		 * @param username the username being checked.
-		 * @return valid - whether or not the username is valid.
+		 * @return valid - whether or not the user being added is valid.
 		 */
-		private boolean checkUsername(String username)
+		private boolean checkValidity(String username, String name, String type)
 		{
+			String[] rando = {"Rando_cardrissian", "Rando Cardrissian", "Computer"};
 			if(model.size() > 0)
 			{
 				boolean found = false;
 				for(int i = 0; i < model.size() && !found; i++)
 				{
 					String[] check = (String[]) model.get(i);
-					if(check[0].equals(username))
+					
+					if(check[0].equalsIgnoreCase(username) || (rando[0].equalsIgnoreCase(username) && !rando[2].equals(type)) || (rando[1].equalsIgnoreCase(name) && !rando[2].equals(type)))
 					{
 						found = true;
 						return false;
@@ -684,6 +756,10 @@ public class CAH_NewGame extends JLayeredPane {
 				}
 				return true;
 				
+			}
+			else if((rando[0].equalsIgnoreCase(username) && !rando[2].equals(type)) || (rando[1].equalsIgnoreCase(name) && !rando[2].equals(type)))
+			{
+				return false;
 			}
 			else
 			{
