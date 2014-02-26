@@ -10,19 +10,19 @@ package ui;
 public interface Growable extends Animated {
 	/**
 	 * Grows the object to a new size.
-	 * @param newX - the new X size.
-	 * @param newY - the new Y size.
-	 * @param sec - The number of seconds it takes to grow the object.
+	 * @param newWidth the new width.
+	 * @param newHeight the new height.
+	 * @param sec The number of seconds it takes to grow the object.
 	 * @since CAH1.0
 	 * @version CAH1.0
 	 * @author Holt Maki
 	 */
-	public void grow(int newX, int newY, int sec);
+	public void grow(int newWidth, int newHeight, int sec);
 	
 	/**
 	 * Grows the object by a certain percent.
-	 * @param pct - the percentage by which the object grows. If it is negative, the object shrinks.
-	 * @param sec - the number of seconds it takes to grow the object.
+	 * @param pct the percentage by which the object grows. If it is negative, the object shrinks.
+	 * @param sec the number of seconds it takes to grow the object.
 	 * @since CAH1.0
 	 * @version CAH1.0
 	 * @author Holt Maki
