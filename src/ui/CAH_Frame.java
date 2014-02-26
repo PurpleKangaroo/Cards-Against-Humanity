@@ -239,20 +239,6 @@ public class CAH_Frame extends JFrame {
 		btnStats.setContentAreaFilled(false);
 		btnStats.setBorderPainted(false);
 		btnStats.setFocusPainted(false);
-		btnStats.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				//TODO:fill
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				//TODO:fill
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				//TODO:fill
-			}
-		});
 		btnStats.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnStats.setHorizontalTextPosition(SwingConstants.RIGHT);
 		btnStats.setAlignmentX(Component.RIGHT_ALIGNMENT);
@@ -264,20 +250,6 @@ public class CAH_Frame extends JFrame {
 		btnUsers.setContentAreaFilled(false);
 		btnUsers.setBorderPainted(false);
 		btnUsers.setFocusPainted(false);
-		btnUsers.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				//TODO:fill
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				//TODO:fill
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				//TODO:fill
-			}
-		});
 		btnUsers.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnUsers.setForeground(Color.WHITE);
 		btnUsers.setFont(new Font("Arial Black", Font.BOLD, 35));
@@ -419,6 +391,40 @@ public class CAH_Frame extends JFrame {
 					CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{CAH_Layers}));
 				}
 				
+			});
+			
+			btnUsers.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) 
+				{
+					final CAH_Users users = new CAH_Users();
+					
+					JButton mainMenu = new JButton("Main Menu");
+					mainMenu.setFocusPainted(false);
+					mainMenu.setOpaque(false);
+					mainMenu.setBounds(675, 630, 100, 23);
+					mainMenu.setFocusTraversalKeysEnabled(false);
+					mainMenu.setBorderPainted(false);
+					users.add(mainMenu);
+					
+					mainMenu.addActionListener(new ActionListener(){
+
+						@Override
+						public void actionPerformed(ActionEvent arg0)
+						{
+							CAH_Layers.remove(users);
+							CAH_Layers.add(Start);
+							CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{Start, StartPanel, btnStats, btnLoadGame, btnUsers, btnCards, btnRules, btnNewGame, lblCardsAgainstHumanity, StartBackground}));
+							CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{CAH_Layers}));
+							setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, mnFile, mntmNewGame, mntmExit, mnNetplay, mnHelp, mntmAbout, mntmRules, CAH_Panel}));
+						}
+						
+					});
+					
+					CAH_Layers.remove(Start);
+					CAH_Layers.add(users);
+					CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{users}));
+					CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{CAH_Layers}));
+				}
 			});
 			
 			btnCards.addActionListener(new ActionListener() {
