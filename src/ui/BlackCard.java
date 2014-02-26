@@ -21,7 +21,7 @@ import cards.QuestionCard;
  * @see cards.QuestionCard
  *
  */
-public class BlackCard extends JPanel
+public class BlackCard extends JPanel implements Moveable
 {
 
 	/**
@@ -100,6 +100,13 @@ public class BlackCard extends JPanel
 		{
 			p2.setVisible(false);
 		}
+		
+	}
+
+	@Override
+	public void move(int newX, int newY, int sec)
+	{
+		// TODO Auto-generated method stub
 		
 	}
 

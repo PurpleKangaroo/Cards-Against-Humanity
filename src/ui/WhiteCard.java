@@ -24,7 +24,7 @@ import cards.AnswerCard;
  * @see cards.AnswerCard
  *
  */
-public class WhiteCard extends JPanel
+public class WhiteCard extends JPanel implements Moveable
 {
 	
 	/**
@@ -73,5 +73,12 @@ public class WhiteCard extends JPanel
 		add(lblCard);
 		
 		answerCard = card;
+	}
+
+	@Override
+	public void move(int newX, int newY, int sec)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 }
