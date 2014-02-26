@@ -2,26 +2,20 @@ package ui;
 
 import game.CAH_Game;
 
+import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Rectangle;
 
+import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-
-import java.awt.Color;
-
-import javax.swing.border.MatteBorder;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.JList;
-import javax.swing.DropMode;
+import javax.swing.border.MatteBorder;
 
 import users.Player;
-
-import javax.swing.JTextPane;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
 
 /**
  * The layered pane that contains the game.

@@ -2,18 +2,23 @@ package ui;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import javax.swing.JTextPane;
-import java.awt.Color;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Font;
+import javax.swing.border.EmptyBorder;
 
+/**
+ * A dialog that warns people when they remove a player and asks them to confirm the players removal.
+ * @author Holt Maki
+ * @since CAH1.0
+ * @version CAH1.0
+ *
+ */
 public class RemovePlayerDialog extends JDialog
 {
 
