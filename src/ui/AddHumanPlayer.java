@@ -13,8 +13,20 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * A class of object that represents a JDialog that adds a human player to a game of cards against humanity.
+ * @author Holt Maki
+ * @since CAH1.0
+ * @version CAH1.0
+ *
+ */
 public class AddHumanPlayer extends JDialog
 {
+	/**
+	 * Serial Version UID.
+	 */
+	private static final long serialVersionUID = -6452759447783707265L;
+	
 	/**
 	 * The name of the player being added.
 	 */
@@ -23,22 +35,6 @@ public class AddHumanPlayer extends JDialog
 	private JTextField textField;
 	private JTextField usernameTextField;
 	private String username;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args)
-	{
-		try
-		{
-			AddHumanPlayer dialog = new AddHumanPlayer();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * Create the dialog.

@@ -13,6 +13,13 @@ import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 import javax.swing.plaf.ColorUIResource;
 
+/**
+ * The panel that allows people to register as a user.
+ * @author Holt Maki
+ * @since CAH1.0
+ * @version CAH1.0
+ *
+ */
 public class CAH_Users extends JPanel
 {
 

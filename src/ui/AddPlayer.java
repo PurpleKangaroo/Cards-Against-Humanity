@@ -1,26 +1,21 @@
 package ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextPane;
-
-import java.awt.Color;
-
-import javax.swing.UIManager;
 import javax.swing.JRadioButton;
-import javax.swing.ButtonGroup;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowFocusListener;
+import javax.swing.JTextPane;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 
 /**
  * A class of object that represents a dialog that askes the user which type of player they would like to add to a game of Cards Against Humanity.
@@ -36,8 +31,17 @@ public class AddPlayer extends JDialog
 	 * The generated serialVersionUID.
 	 */
 	private static final long serialVersionUID = 3687045392398171342L;
+	
+	/**
+	 * The Panel that contains the main part of the dialog.
+	 */
 	private final JPanel contentPanel = new JPanel();
+	
+	/**
+	 * The button that contains the buttons for the dialog.
+	 */
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	
 	/**
 	 * Tells weather or not the user chose a human player to be added.
 	 */
@@ -46,22 +50,6 @@ public class AddPlayer extends JDialog
 	 * Tells weather or not the user chose a computer player to be added.
 	 */
 	private boolean computer;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args)
-	{
-		try
-		{
-			AddPlayer dialog = new AddPlayer();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * Create the dialog.
