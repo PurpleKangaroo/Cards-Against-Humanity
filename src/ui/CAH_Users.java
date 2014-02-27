@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 import javax.swing.plaf.ColorUIResource;
+import javax.swing.border.TitledBorder;
 
 /**
  * The panel that allows people to register as a user.
@@ -22,6 +23,11 @@ import javax.swing.plaf.ColorUIResource;
  */
 public class CAH_Users extends JPanel
 {
+
+	/**
+	 * Generated Serial Version UID.
+	 */
+	private static final long serialVersionUID = -3565226841744890603L;
 
 	/**
 	 * Create the panel.
@@ -35,6 +41,12 @@ public class CAH_Users extends JPanel
 		setMaximumSize(new Dimension(1450, 700));
 		setLayout(null);
 		
+		JPanel mainPanel = new JPanel();
+		mainPanel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		mainPanel.setOpaque(false);
+		mainPanel.setBounds(599, 230, 336, 255);
+		add(mainPanel);
+		
 		JLabel lblCardsAgainstHumanity = new JLabel("Cards Against Humanity");
 		lblCardsAgainstHumanity.setBounds(84, 43, 1024, 139);
 		add(lblCardsAgainstHumanity);
@@ -47,5 +59,4 @@ public class CAH_Users extends JPanel
 		UsersBackground.setBounds(0, 0, 1450, 722);
 		add(UsersBackground);
 	}
-
 }
