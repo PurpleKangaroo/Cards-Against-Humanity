@@ -994,7 +994,7 @@ public class CAH_Cards extends JLayeredPane
 	
 	/**
 	 * Makes a the card bounce into view.
-	 * @since CAH1.0
+	 * @since CAH1.0 
 	 */
 	protected void bounceIn()
 	{
@@ -1004,11 +1004,11 @@ public class CAH_Cards extends JLayeredPane
 		(card).setBounds(1106, -260, 188, 270);
 		
 		this.add(card);
-		card.move(targetX, targetY - 2, .25);
+		card.move(targetX, targetY - 4, .2);
 		
 		count = 0;
 		
-		final Timer t = new Timer(250, new ActionListener()
+		final Timer t = new Timer(200, new ActionListener()
 		{
 			
 			@Override
@@ -1017,11 +1017,11 @@ public class CAH_Cards extends JLayeredPane
 				if(count == 0)
 				{
 					count++;
-					card.move(targetX, targetY + 9, .25);
+					card.move(targetX, targetY + 9, .2);
 				}
 				else if(count == 1)
 				{
-					card.move(targetX, targetY, .2);
+					card.move(targetX, targetY, .15);
 				}
 				else
 				{
