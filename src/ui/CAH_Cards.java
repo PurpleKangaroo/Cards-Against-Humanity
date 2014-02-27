@@ -243,7 +243,7 @@ public class CAH_Cards extends JLayeredPane
 		add(lblCardsAgainstHumanity);
 		
 		decksTabbed = new JTabbedPane(JTabbedPane.TOP);
-		decksTabbed.setBounds(84, 195, 883, 494);
+		decksTabbed.setBounds(84, 190, 883, 494);
 		add(decksTabbed);
 		
 		originalDeck = new JTabbedPane(JTabbedPane.TOP);
