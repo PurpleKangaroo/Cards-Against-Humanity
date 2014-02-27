@@ -14,13 +14,44 @@ import cards.Hand;
  */
 
 public abstract class Player {
-	protected boolean Card_Czar;
-	protected int AwesomePoints = 0;
+	
+	/**
+	 * The boolean that tells whether or not the player is the Card_Czar.
+	 * True if the player is the Card_Czar. False if the player isn't.
+	 */
+	private boolean Card_Czar;
+	
+	/**
+	 * The number of awesome points that the player has.
+	 */
+	private int AwesomePoints = 0;
+	
+	/**
+	 * The boolean that tells whether or not the player is RandoCardrissian.
+	 * True if the player is the RandoCardrissian. False if the player isn't.
+	 */
 	private boolean RandoCard;
-	protected boolean realPerson;
-	protected Hand cardsInHand;
-	protected String name;
-	protected String userName;
+	
+	/**
+	 * The boolean that tells whether or not the player is a human.
+	 * True if the player is a human, false if the player isn't.
+	 */
+	private boolean realPerson;
+	
+	/**
+	 * The hand that the player is holding.
+	 */
+	private Hand cardsInHand;
+	
+	/**
+	 * The player's name.
+	 */
+	private String name;
+	
+	/**
+	 * The player's username.
+	 */
+	private String userName;
 
 	/**
 	 * Creates an object that represents a player.
@@ -167,8 +198,46 @@ public abstract class Player {
 	/**
 	 * Gets the player's name.
 	 * @return the player's name.
+	 * @since CAH1.0
 	 */
 	public abstract String getName();
+	
+	/**
+	 * Gets the player's username.
+	 * @return the players username.
+	 * @since CAH1.0
+	 */
 	public abstract String getUserName();
+	
+	/**
+	 * Sets the boolean that tells whether or not the player is a real person.
+	 * @param realPerson The boolean that tells whether or not the player is a real person.
+	 * @since CAH1.0
+	 */
+	protected void setRealPerson(boolean realPerson)
+	{
+		this.realPerson = realPerson;
+	}
+	
+	/**
+	 * Sets the player's hand of cards.
+	 * @param cardsInHand The hand of cards that is being set to the player.
+	 * @since CAH1.0
+	 */
+	protected void setHand(Hand cardsInHand)
+	{
+		this.cardsInHand = cardsInHand;
+	}
+	
+	/**
+	 * Sets the boolean that tells whether or not the player is the Card Czar.
+	 * Used in initializing the player as not the Card Czar.
+	 * @param cardCzar The boolean that tells whether or not the player is the 
+	 * @since CAH1.0
+	 */
+	protected void setCardCzar(boolean Card_Czar)
+	{
+		this.Card_Czar = Card_Czar;
+	}
 	
 }

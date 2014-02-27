@@ -17,10 +17,11 @@ public class HumanPlayer extends NonRandoPlayer{
 	 * @since CAH1.0
 	 * @author Holt Maki
 	 */
-	public HumanPlayer(int numberOfCards, String userName) 
+	public HumanPlayer(int numberOfCards, User person) 
 	{
 		super(numberOfCards);
-		realPerson = true;
+		super.setRealPerson(true);
+		this.person = person;
 		/*
 		 * fill with
 		 * username

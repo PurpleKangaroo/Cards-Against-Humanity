@@ -21,9 +21,9 @@ public abstract class NonRandoPlayer extends Player
 	 */
 	public NonRandoPlayer(int numberOfCards)
 	{
-		cardsInHand = new Hand(numberOfCards);
-		Card_Czar = false;
-		setRandoCard(false);
+		super.setHand(new Hand(numberOfCards));
+		super.setCardCzar(false);
+		super.setRandoCard(false);
 	}
 	
 }

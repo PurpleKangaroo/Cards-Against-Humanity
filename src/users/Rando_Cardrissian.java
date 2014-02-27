@@ -1,6 +1,5 @@
 package users;
 
-import cards.Deck;
 import cards.Hand;
 
 /**
@@ -13,8 +12,17 @@ import cards.Hand;
  *
  */
 
-public class Rando_Cardrissian extends Player{
+public final class Rando_Cardrissian extends Player{
 	
+	/**
+	 * Rando Cardrissian's name.
+	 */
+	private final String NAME = "Rando Cardrissian";
+	
+	/**
+	 * Rando Cardrissian's username.
+	 */
+	private final String USERNAME = "Rando_cardrissian";
 	/**
 	 * Creates an object that represents Rando Cardrissian, a fake person who plays a random card every turn when the rules are set to "Rando Cardrissian".
 	 * Rando Cardrissian can still score points. If he wins, all of the players are supposed "go home in a state of everlasting shame"
@@ -24,34 +32,32 @@ public class Rando_Cardrissian extends Player{
 	public Rando_Cardrissian() 
 	{
 		super();
-		cardsInHand = new Hand(1);
-		Card_Czar = false;
-		realPerson = false;
-		setRandoCard(true);
-		name = "Rando Cardrissian";
-		userName = "Rando_Card";
+		super.setHand(new Hand(1));
+		super.setRealPerson(false);
+		super.setCardCzar(false);
+		super.setRandoCard(true);
 	}
 	
 	/**
 	 * Gets the players name.
-	 * In this case it is always Rando Cardrissian.
-	 * @return "Rando Cardrissian" the player's name.
+	 * In this case it is always "Rando Cardrissian".
+	 * @return NAME - Rando Cardrissian's name the player's name.
 	 * @since CAH1.0
 	 */
 	public String getName()
 	{
-		return "Rando Cardrissian";
+		return NAME;
 	}
 	
 	/**
 	 * Gets the player's user name.
-	 * @return "RandoCardrissian" - the username.
+	 * @return USERNAME - the Rando Cardrissian's username.
 	 * @since CAH1.0
 	 * @author Holt Maki
 	 */
 	public String getUserName()
 	{
-		return "RandoCardrissian";
+		return USERNAME;
 	}
 
 }
