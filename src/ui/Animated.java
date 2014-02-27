@@ -12,7 +12,7 @@ public interface Animated
 	/**
 	 * The time in between each timer event.
 	 */
-	public static final int DELAY = 25;
+	public static final int DELAY = 5;
 	
 	/**
 	 * An enumeration of different animation speeds.
