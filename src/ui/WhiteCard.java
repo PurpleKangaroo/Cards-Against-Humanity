@@ -122,7 +122,6 @@ public class WhiteCard extends UICard implements Movable
 				
 				boolean xDone = (((xDif > 0) && (trueX >= newX)) || ((xDif < 0) && (trueX <= newX)) || xDif == 0) ? true: false;
 				boolean yDone = (((yDif > 0) && (trueY >= newY)) || ((yDif < 0) && (trueY <= newY)) || yDif == 0) ? true: false;
-				System.out.println(xDone + "," + yDone);
 				if(xDone && yDone)
 				{
 					firePropertyChange("movementTimerDone", false, true);

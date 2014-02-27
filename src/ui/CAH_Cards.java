@@ -1000,16 +1000,15 @@ public class CAH_Cards extends JLayeredPane
 	 */
 	protected void bounceIn()
 	{
-		final int targetX = 1043;
+		final int targetX = 1106;
 		final int targetY = 210;
 		
-		(card).setBounds(1043, -260, 188, 270);
+		(card).setBounds(1106, -260, 188, 270);
 		
 		this.add(card);
+		card.move(targetX, targetY - 6, .25);
 		
-		card.move(targetX, targetY - 6, .5);
-		
-		count = -1;
+		count = 0;
 		
 		final Timer t = new Timer(250, new ActionListener()
 		{
@@ -1017,18 +1016,14 @@ public class CAH_Cards extends JLayeredPane
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{
-				if(count == -1)
+				if(count == 0)
 				{
 					count++;
-				}
-				else if(count == 0)
-				{
-					count++;
-					card.move(targetX, targetY + 3, .25);
+					card.move(targetX, targetY + 5, .25);
 				}
 				else if(count == 1)
 				{
-					card.move(targetX, targetY, .25);
+					card.move(targetX, targetY, .14);
 				}
 				else
 				{
