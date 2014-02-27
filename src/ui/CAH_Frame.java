@@ -391,15 +391,14 @@ public class CAH_Frame extends JFrame {
 				public void actionPerformed(ActionEvent arg0) 
 				{
 					final CAH_Users users = new CAH_Users();
-					
+					users.setVisible(true);
 					JButton mainMenu = new JButton("Main Menu");
-					mainMenu.setFocusPainted(false);
 					mainMenu.setOpaque(false);
-					mainMenu.setBounds(675, 630, 100, 23);
 					mainMenu.setFocusTraversalKeysEnabled(false);
+					mainMenu.setFocusPainted(false);
 					mainMenu.setBorderPainted(false);
-					users.add(mainMenu);
-					
+					mainMenu.setBounds(362, 422, 102, 17);
+					users.add(mainMenu);//TODO make this added properly
 					mainMenu.addActionListener(new ActionListener(){
 
 						@Override
@@ -414,9 +413,10 @@ public class CAH_Frame extends JFrame {
 						
 					});
 					
+					users.setName("users");
 					CAH_Layers.remove(Start);
 					CAH_Layers.add(users);
-					CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{users}));
+					CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{mainMenu, users}));
 					CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{CAH_Layers}));
 				}
 			});
@@ -441,7 +441,7 @@ public class CAH_Frame extends JFrame {
 					JButton mainMenu = new JButton("Main Menu");
 					mainMenu.setFocusPainted(false);
 					mainMenu.setOpaque(false);
-					mainMenu.setBounds(1097, 666, 100, 23);
+					mainMenu.setBounds(1150, 660, 100, 23);
 					mainMenu.setFocusTraversalKeysEnabled(false);
 					mainMenu.setBorderPainted(false);
 					cards.add(mainMenu);
