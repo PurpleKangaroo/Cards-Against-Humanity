@@ -7,7 +7,7 @@ package ui;
  * @version CAH1.0
  *
  */
-public interface Moveable extends Animated
+public interface Movable extends Animated
 {
 	/**
 	 * The 
@@ -16,5 +16,5 @@ public interface Moveable extends Animated
 	 * @param newY the new y coordinate that the object is being moved to.
 	 * @param sec the number of seconds it will take to complete the animation.
 	 */
-	public void move(int newX, int newY, int sec);
+	public void move(int newX, int newY, double sec);
 }

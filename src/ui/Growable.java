@@ -17,7 +17,7 @@ public interface Growable extends Animated {
 	 * @version CAH1.0
 	 * @author Holt Maki
 	 */
-	public void grow(int newWidth, int newHeight, int sec);
+	public void grow(int newWidth, int newHeight, double sec);
 	
 	/**
 	 * Grows the object by a certain percent.
@@ -27,5 +27,5 @@ public interface Growable extends Animated {
 	 * @version CAH1.0
 	 * @author Holt Maki
 	 */
-	public void grow(int pct, int sec);
+	public void grow(int pct, double sec);
 }
