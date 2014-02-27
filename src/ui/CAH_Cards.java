@@ -259,9 +259,9 @@ public class CAH_Cards extends JLayeredPane
 		Expansion1ScrA = new JScrollPane();
 		Expansion1ScrA.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		Expansion1.addTab("White Cards", null, Expansion1ScrA, null);
-		Exp1QList = new QColumnedList(Decks.EXPANSION1);//TODO Find a way of dealing with 1.0 and 1.2
+		Exp1QList = new QColumnedList(Decks.EXPANSION1);
 		Expansion1ScrQ.setViewportView(Exp1QList);
-		Exp1AList = new AList(Decks.EXPANSION1);//TODO Find a way of dealing with 1.0 and 1.2
+		Exp1AList = new AList(Decks.EXPANSION1);
 		Expansion1ScrA.setViewportView(Exp1AList);
 		
 		Expansion2 = new JTabbedPane(JTabbedPane.TOP);
@@ -274,9 +274,9 @@ public class CAH_Cards extends JLayeredPane
 		Expansion2ScrA = new JScrollPane();
 		Expansion2ScrA.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		Expansion2.addTab("White Cards", null, Expansion2ScrA, null);
-		Exp2QList = new QColumnedList(Decks.EXPANSION2);//TODO Find a way of dealing with 1.0 and 1.2
+		Exp2QList = new QColumnedList(Decks.EXPANSION2);
 		Expansion2ScrQ.setViewportView(Exp2QList);
-		Exp2AList = new AList(Decks.EXPANSION2);//TODO Find a way of dealing with 1.0 and 1.2
+		Exp2AList = new AList(Decks.EXPANSION2);
 		Expansion2ScrA.setViewportView(Exp2AList);
 		
 		Expansion3 = new JTabbedPane(JTabbedPane.TOP);
@@ -287,9 +287,9 @@ public class CAH_Cards extends JLayeredPane
 		Expansion3ScrA = new JScrollPane();
 		Expansion3ScrA.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		Expansion3.addTab("White Cards", null, Expansion3ScrA, null);
-		Exp3QList = new QColumnedList(Decks.EXPANSION3);//TODO Find a way of dealing with 1.0 and 1.2
+		Exp3QList = new QColumnedList(Decks.EXPANSION3);
 		Expansion3ScrQ.setViewportView(Exp3QList);
-		Exp3AList = new AList(Decks.EXPANSION3);//TODO Find a way of dealing with 1.0 and 1.2
+		Exp3AList = new AList(Decks.EXPANSION3);
 		Expansion3ScrA.setViewportView(Exp3AList);
 		
 		Expansion4 = new JTabbedPane(JTabbedPane.TOP);
@@ -300,9 +300,9 @@ public class CAH_Cards extends JLayeredPane
 		Expansion4ScrA = new JScrollPane();
 		Expansion4ScrA.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		Expansion4.addTab("White Cards", null, Expansion4ScrA, null);
-		Exp4QList = new QColumnedList(Decks.EXPANSION4);//TODO Find a way of dealing with 1.0 and 1.2
+		Exp4QList = new QColumnedList(Decks.EXPANSION4);
 		Expansion4ScrQ.setViewportView(Exp4QList);
-		Exp4AList = new AList(Decks.EXPANSION4);//TODO Find a way of dealing with 1.0 and 1.2
+		Exp4AList = new AList(Decks.EXPANSION4);
 		Expansion4ScrA.setViewportView(Exp4AList);
 		
 		HolidayExpansion = new JTabbedPane(JTabbedPane.TOP);
@@ -313,12 +313,10 @@ public class CAH_Cards extends JLayeredPane
 		ExpansionHScrA = new JScrollPane();
 		ExpansionHScrA.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		HolidayExpansion.addTab("White Cards", null, ExpansionHScrA, null);
-		ExpHQList = new QColumnedList(Decks.HOLIDAYEXPANSION);//TODO Find a way of dealing with 1.0 and 1.2
+		ExpHQList = new QColumnedList(Decks.HOLIDAYEXPANSION);
 		ExpansionHScrQ.setViewportView(ExpHQList);
-		ExpHAList = new AList(Decks.HOLIDAYEXPANSION);//TODO Find a way of dealing with 1.0 and 1.2
+		ExpHAList = new AList(Decks.HOLIDAYEXPANSION);
 		ExpansionHScrA.setViewportView(ExpHAList);
-		
-		//TODO: Create deck and get cards for expansions
 		
 		GridBagLayout qScrollLayout = new GridBagLayout();
 		GridBagConstraints qScrollConstraints = new ListScrConstraints();
@@ -1006,7 +1004,7 @@ public class CAH_Cards extends JLayeredPane
 		(card).setBounds(1106, -260, 188, 270);
 		
 		this.add(card);
-		card.move(targetX, targetY - 6, .25);
+		card.move(targetX, targetY - 2, .25);
 		
 		count = 0;
 		
@@ -1019,11 +1017,11 @@ public class CAH_Cards extends JLayeredPane
 				if(count == 0)
 				{
 					count++;
-					card.move(targetX, targetY + 5, .25);
+					card.move(targetX, targetY + 9, .25);
 				}
 				else if(count == 1)
 				{
-					card.move(targetX, targetY, .14);
+					card.move(targetX, targetY, .2);
 				}
 				else
 				{
