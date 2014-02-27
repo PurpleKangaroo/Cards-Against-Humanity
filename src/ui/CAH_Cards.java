@@ -8,6 +8,10 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -22,6 +26,7 @@ import javax.swing.ListCellRenderer;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
@@ -51,7 +56,7 @@ public class CAH_Cards extends JLayeredPane
 	/**
 	 * The card being displayed.
 	 */
-	private JPanel card;
+	private UICard card;
 	
 	/**
 	 * The tabbed pane with all the decks tabs.
@@ -207,6 +212,11 @@ public class CAH_Cards extends JLayeredPane
 	 * The QColumned List for the 2012 CAH Holiday Expansion.
 	 */
 	private QColumnedList ExpHQList;
+	
+	/**
+	 * A number that needs to be included as a field for the bounce ActionListner to access it and change it.
+	 */
+	private int count;
 	
 	/**
 	 * Creates the pane.
@@ -757,6 +767,15 @@ public class CAH_Cards extends JLayeredPane
 	 */
 	public void setCard()
 	{
+		try
+		{
+			remove(card);
+			card.setLocation(-10000, - 1000000);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 		if(decksTabbed.getSelectedComponent().equals(originalDeck))
 		{
 			if(originalDeck.getSelectedComponent().equals(originalQscr))
@@ -773,9 +792,8 @@ public class CAH_Cards extends JLayeredPane
 				{
 					e.printStackTrace();
 				}
-				((Component) card).setBounds(1043, 210, 188, 270);
-				this.add((Component) card);
-				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+				bounceIn();
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{card}));
 			}
 			else if(originalDeck.getSelectedComponent().equals(originalAnsScr))
 			{
@@ -791,10 +809,8 @@ public class CAH_Cards extends JLayeredPane
 				{
 					e.printStackTrace();
 				}
-				((Component) card).setBounds(1043, 210, 188, 270);
-				this.remove((Component)card);
-				this.add((Component) card);
-				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+				bounceIn();
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{card}));
 			}
 		}
 		else if(decksTabbed.getSelectedComponent().equals(Expansion1))
@@ -813,9 +829,8 @@ public class CAH_Cards extends JLayeredPane
 				{
 					e.printStackTrace();
 				}
-				((Component) card).setBounds(1043, 210, 188, 270);
-				this.add((Component) card);
-				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+				bounceIn();
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{card}));
 			}
 			else if(Expansion1.getSelectedComponent().equals(Expansion1ScrA))
 			{
@@ -831,10 +846,8 @@ public class CAH_Cards extends JLayeredPane
 				{
 					e.printStackTrace();
 				}
-				((Component) card).setBounds(1043, 210, 188, 270);
-				this.remove((Component)card);
-				this.add((Component) card);
-				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+				bounceIn();
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{card}));
 			}
 		}
 		else if(decksTabbed.getSelectedComponent().equals(Expansion2))
@@ -853,9 +866,8 @@ public class CAH_Cards extends JLayeredPane
 				{
 					e.printStackTrace();
 				}
-				((Component) card).setBounds(1043, 210, 188, 270);
-				this.add((Component) card);
-				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+				bounceIn();
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{card}));
 			}
 			else if(Expansion2.getSelectedComponent().equals(Expansion2ScrA))
 			{
@@ -871,10 +883,8 @@ public class CAH_Cards extends JLayeredPane
 				{
 					e.printStackTrace();
 				}
-				((Component) card).setBounds(1043, 210, 188, 270);
-				this.remove((Component)card);
-				this.add((Component) card);
-				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+				bounceIn();
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{card}));
 			}
 		}
 		else if(decksTabbed.getSelectedComponent().equals(Expansion3))
@@ -893,9 +903,8 @@ public class CAH_Cards extends JLayeredPane
 				{
 					e.printStackTrace();
 				}
-				((Component) card).setBounds(1043, 210, 188, 270);
-				this.add((Component) card);
-				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+				bounceIn();
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{card}));
 			}
 			else if(Expansion3.getSelectedComponent().equals(Expansion3ScrA))
 			{
@@ -911,10 +920,8 @@ public class CAH_Cards extends JLayeredPane
 				{
 					e.printStackTrace();
 				}
-				((Component) card).setBounds(1043, 210, 188, 270);
-				this.remove((Component)card);
-				this.add((Component) card);
-				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+				bounceIn();
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{card}));
 			}
 		}
 		else if(decksTabbed.getSelectedComponent().equals(Expansion4))
@@ -933,9 +940,8 @@ public class CAH_Cards extends JLayeredPane
 				{
 					e.printStackTrace();
 				}
-				((Component) card).setBounds(1043, 210, 188, 270);
-				this.add((Component) card);
-				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+				bounceIn();
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{card}));
 			}
 			else if(Expansion4.getSelectedComponent().equals(Expansion4ScrA))
 			{
@@ -949,10 +955,8 @@ public class CAH_Cards extends JLayeredPane
 				{
 					e.printStackTrace();
 				}
-				((Component) card).setBounds(1043, 210, 188, 270);
-				this.remove((Component)card);
-				this.add((Component) card);
-				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+				bounceIn();
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{card}));
 			}
 		}
 		else if(decksTabbed.getSelectedComponent().equals(HolidayExpansion))
@@ -969,9 +973,8 @@ public class CAH_Cards extends JLayeredPane
 				{
 					e.printStackTrace();
 				}
-				((Component) card).setBounds(1043, 210, 188, 270);
-				this.add((Component) card);
-				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+				bounceIn();
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{card}));
 			}
 			else if(HolidayExpansion.getSelectedComponent().equals(ExpansionHScrA))
 			{
@@ -985,12 +988,67 @@ public class CAH_Cards extends JLayeredPane
 				{
 					e.printStackTrace();
 				}
-				((Component) card).setBounds(1043, 210, 188, 270);
-				this.remove((Component)card);
-				this.add((Component) card);
-				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{(Component) card}));
+				bounceIn();
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{card}));
 			}
 		}
 	}
 	
+	/**
+	 * Makes a the card bounce into view.
+	 * @since CAH1.0
+	 */
+	protected void bounceIn()
+	{
+		final int targetX = 1043;
+		final int targetY = 210;
+		
+		(card).setBounds(1043, -260, 188, 270);
+		
+		this.add(card);
+		
+		card.move(targetX, targetY - 6, .5);
+		
+		count = -1;
+		
+		final Timer t = new Timer(250, new ActionListener()
+		{
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0)
+			{
+				if(count == -1)
+				{
+					count++;
+				}
+				else if(count == 0)
+				{
+					count++;
+					card.move(targetX, targetY + 3, .25);
+				}
+				else if(count == 1)
+				{
+					card.move(targetX, targetY, .25);
+				}
+				else
+				{
+					firePropertyChange("STOPT", false, true);
+				}
+			}
+		});
+		t.start();
+		
+		this.addPropertyChangeListener("STOPT", new PropertyChangeListener() {
+
+			@Override
+			public void propertyChange(PropertyChangeEvent arg0)
+			{
+				if(!((boolean) arg0.getOldValue()) && ((boolean) arg0.getNewValue()))
+				{
+					t.stop();
+				}
+			}
+			
+		});
+	}
 }

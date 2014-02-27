@@ -4,11 +4,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextPane;
+import javax.swing.Timer;
 
 import cards.QuestionCard;
 
@@ -21,7 +24,7 @@ import cards.QuestionCard;
  * @see cards.QuestionCard
  *
  */
-public class BlackCard extends JPanel implements Moveable
+public class BlackCard extends UICard implements Movable
 {
 
 	/**
@@ -29,6 +32,20 @@ public class BlackCard extends JPanel implements Moveable
 	 */
 	private static final long serialVersionUID = 1241238135562778563L;
 
+	/**
+	 * Where the X would be during an animation if it were a double.
+	 * In each step of the animation, the X value is set to a rounded version of trueX,
+	 * but trueX is kept the same so that over time the animation gets the object to its intended target.
+	 */
+	private double trueX;
+	
+	/**
+	 * Where the Y would be during an animation if it were a double.
+	 * In each step of the animation, the Y value is set to a rounded version of trueY,
+	 * but trueY is kept the same so that over time the animation gets the object to its intended target.
+	 */
+	private double trueY;
+	
 	/**
 	 * Create the panel.
 	 * @since CAH1.0
@@ -101,13 +118,60 @@ public class BlackCard extends JPanel implements Moveable
 			p2.setVisible(false);
 		}
 		
+		trueX = this.getX();
+		trueY = this.getY();
 	}
 
 	@Override
-	public void move(int newX, int newY, int sec)
+	public void move(final int newX, final int newY, double sec)
 	{
-		// TODO Auto-generated method stub
+		final double xInterval = (newX - this.getX()) / (((double) sec) / (((double) Animated.DELAY) / 1000.0));
+		final double yInterval = (newY - this.getY()) / (((double) sec) / (((double) Animated.DELAY) / 1000.0));
 		
+		trueX = this.getX();
+		trueY = this.getY();
+		
+		final int xDif = newX - this.getX();
+		final int yDif = newY - this.getY();
+		
+		final Timer t = new Timer(Animated.DELAY, new MTimerListener(xInterval, yInterval) {
+
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				trueX = trueX + xInterval;
+				trueY = trueY + yInterval;
+				
+				setLocation((int) trueX, (int) trueY);
+				
+				repaint();
+				
+				boolean xDone = (((xDif > 0) && (trueX >= newX)) || ((xDif < 0) && (trueX <= newX)) || xDif == 0) ? true: false;
+				boolean yDone = (((yDif > 0) && (trueY >= newY)) || ((yDif < 0) && (trueY <= newY)) || yDif == 0) ? true: false;
+				if(xDone && yDone)
+				{
+					firePropertyChange("movementTimerDone", false, true);
+				}
+			}
+			
+		});
+		
+		t.start();
+		
+		//Checks for if the timer is over the limit.
+		this.addPropertyChangeListener("movementTimerDone", new PropertyChangeListener() {
+
+			@Override
+			public void propertyChange(PropertyChangeEvent arg0)
+			{
+				if( !((boolean) arg0.getOldValue()) && ((boolean) arg0.getNewValue()))
+				{
+					t.stop();
+					firePropertyChange("cardStop", true, false);
+				}
+			}
+			
+		});
 	}
 
 }
