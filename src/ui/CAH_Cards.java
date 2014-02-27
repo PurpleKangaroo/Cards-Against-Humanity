@@ -994,7 +994,7 @@ public class CAH_Cards extends JLayeredPane
 	
 	/**
 	 * Makes a the card bounce into view.
-	 * @since CAH1.0
+	 * @since CAH1.0 
 	 */
 	protected void bounceIn()
 	{
