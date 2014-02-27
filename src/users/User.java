@@ -4,78 +4,60 @@ import java.io.File;
 import java.util.GregorianCalendar;
 
 /**
- * An object that represents a user
+ * A class of object that represents a user.
  * @author Holt Maki
  * @since CAH1.0
  * @version CAH1.0
  *
  */
-public class User {
+public abstract class User {
+	/**
+	 * The user's profile.
+	 */
 	private UserProfile profile;
-	private UserActionLog log;
-	private UserBehavior behaviorStats;
-	private UserGameHistory history;
-	private Player player; //TODO ??? SHOULD USER CONTAIN PLAYER, PLAYER CONTAIN USER, OR EACH CONTAINS THE OTHER?
-	//TODO Make CAH have a static UserID list that contains all userIDs
-	//TODO Make each user have a userID number
-	private File userInfoFile;//TODO Do work on this part! make it so that it supports both new users and old users and saves user info.
-	//Password protection???
 	
 	/**
-	 * Creates an object that represents a user.
-	 * @param first - First Name.
-	 * @param last - Last Name.
-	 * @param userName - Username
-	 * @param gender - Gender (m or f)
-	 * @param bDateMonth - the month that the player was born in.
-	 * @param bDateDay - the day of the month the player was born in.
-	 * @param bDateYear - the year that the player was born in.
-	 * @see {@linkplain userProfile}
+	 * Whether or not the user is a {@linkplain GuestUser}.
+	 */
+	private boolean guest;
+	
+	/**
+	 * Sets the user's {@linkplain UserProfile}.
+	 * @param profile The user's new user {@linkplain UserProfile}.
 	 * @since CAH1.0
 	 */
-	public User(String first, String last, String userName, char gender, int bDateMonth, int bDateDay, int bDateYear)
+	public void setUserProfile(UserProfile profile)
 	{
-		GregorianCalendar birthDate = new GregorianCalendar(bDateYear, bDateMonth, bDateDay);
-		profile = new UserProfile(first, last, userName, gender, birthDate);
+		this.profile = profile;
 	}
 	
 	/**
-	 * Gets the user's user profile.
-	 * @return profile - the user's profile
+	 * Gets the user's {@linkplain UserProfile}.
+	 * @return profile - The user's {@linkplain UserProfile}
 	 * @since CAH1.0
 	 */
 	public UserProfile getUserProfile()
 	{
 		return profile;
 	}
-
+	
 	/**
-	 * Gets the user's behavior stats.
-	 * @return behaviorStats - the User's UserBehavior.
+	 * Sets the boolean that tells whether or not the player is a guest.
 	 * @since CAH1.0
+	 * @param guest The boolean that tells whether or not the player is a guest.
 	 */
-	public UserBehavior getBehaviorStats() {
-		return behaviorStats;
+	public void setGuest(boolean guest)
+	{
+		this.guest = guest;
 	}
 	
 	/**
-	 * Gets the users game history stats.
-	 * @return history - the use's game history stats.
+	 * Tells whether or not the user is a guest user.
+	 * @return guest - The boolean that tells whether or not the player is a guest.
 	 * @since CAH1.0
 	 */
-	public UserGameHistory getUserGameHistory()
+	public boolean isGuest()
 	{
-		return history;
+		return guest;
 	}
-	
-	/**
-	 * Gets the user's action log.
-	 * @return log - the user's action log.
-	 * @since CAH1.0
-	 */
-	public UserActionLog getLog()
-	{
-		return log;
-	}
-
 }

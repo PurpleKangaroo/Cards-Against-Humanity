@@ -51,7 +51,15 @@ public class HumanPlayer extends NonRandoPlayer{
 	 */
 	public String getName()
 	{
-		return person.getUserProfile().getFirstName() + person.getUserProfile().getLastName();
+		if(!person.isGuest())
+		{
+			return ((NonGuestUserProfile) (person.getUserProfile())).getFirstName() +  ((NonGuestUserProfile) (person.getUserProfile())).getLastName();
+		}
+		else
+		{
+			return ((GuestUserProfile) (person.getUserProfile())).getName();
+		}
+		
 	}
 
 	/**
