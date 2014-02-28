@@ -32,6 +32,7 @@ public class CAH_Users extends JPanel
 
 	/**
 	 * Create the panel.
+	 * @since CAH1.0
 	 */
 	public CAH_Users()
 	{
@@ -55,6 +56,10 @@ public class CAH_Users extends JPanel
 		lblCardsAgainstHumanity.setFont(new Font("Arial Black", Font.BOLD, 70));
 	}
 	
+	/**
+	 * Adds the main menu button in front of the background.
+	 * @param component The main menu button.
+	 */
 	protected void addMainMenuButton(JComponent component)
 	{
 		add(component);
