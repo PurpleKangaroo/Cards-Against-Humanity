@@ -9,6 +9,7 @@ import java.util.ArrayList;
  * @version CAH1.0
  */
 public final class Rules {
+	//TODO add javadoc to fields.
 	private final int NUMBER_OF_CARDS = 10;
 	private boolean basic = true;
 	private boolean cCzarExists = true;
@@ -20,12 +21,14 @@ public final class Rules {
 	private boolean RebootingTheUniverse = false;
 	private boolean SeriousBuisness = false;
 	private boolean SurviavalOfTheFittest = false;
+	private boolean gambling;
 	private ArrayList<HouseRules> houseRules;
 	
 	/**
 	 * Constructs an object that represents a  set of rules for a non-basic rules CAH game or a basic rules CAH game.
 	 * This constructor also checks for rule conflicts.
-	 * @param rules - the list of house rules that will be used.
+	 * @param rules the list of house rules that will be used.
+	 * @param gambling The boolean that tells whether or not the gambling rule is being used.
 	 * @throws RuleConflictException Thrown if some rules are not compatable.
 	 * <ul>
 	 * Later make this exception caught in a UI Class that makes a small little box
@@ -35,8 +38,9 @@ public final class Rules {
 	 * @since CAH1.0
 	 * @version CAH1.0
 	 */
-	public Rules(ArrayList<HouseRules> rules) throws RuleConflictException
+	public Rules(ArrayList<HouseRules> rules, boolean gambling) throws RuleConflictException
 	{
+		this.gambling = gambling;
 		try
 		{
 			if (rules != null)
@@ -243,11 +247,20 @@ public final class Rules {
 	 * Gets the arrayList of House Rules used in the game.
 	 * @return houseRules - The arrayList of House Rules used in the game.
 	 * @since CAH1.0
-	 * @version CAH1.0
 	 */
 	protected ArrayList<HouseRules> houseRules()
 	{
 		return houseRules;
+	}
+	
+	/**
+	 * Gets gambling, the boolean that tells whether or not the gambling rule is in effect.
+	 * @return gambling - The boolean that tells whether or not the gambling rule is in effect.
+	 * @since CAH1.0
+	 */
+	protected boolean getGambling()
+	{
+		return gambling;
 	}
 	
 }
