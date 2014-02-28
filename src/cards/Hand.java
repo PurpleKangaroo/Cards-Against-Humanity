@@ -31,30 +31,13 @@ public class Hand {
 	}
 	
 	/**
-	 * Deals cards at the begining of a game and draws cards at the end of each turn.
-	 * @since CAH1.0
-	 * @param a the Deck that the cards are dealt from
-	 * @return a - the Deck that the cardes are dealt from after the cards have been removed from it
-	 */
-	
-	public Deck deal_draw(Deck a)
-	{
-		while (cards.size() < max)
-		{
-			cards.add(a.drawAnswerCard());
-		}
-		return a;
-	}
-	
-	
-	/**
-	 * Draws more cards than the limit in the middle of a turn.
+	 * Draws cards, allowing for more cards than the defult number of cards to be drawn.
 	 * @since CAH1.0
 	 * @param a the Deck that the cards are dealt from
 	 * @param numberOfCardsOverLimit the number of cards over the limit that will be drawn
 	 * @return a - the Deck that the cardes are dealt from after the cards have been removed from it
 	 */
-	public Deck exceedLimitDraw(Deck a, int numberOfCardsOverLimit)
+	public Deck deal_draw(Deck a, int numberOfCardsOverLimit)
 	{
 		int newLimit = cards.size() + numberOfCardsOverLimit;
 		while (cards.size() < newLimit)

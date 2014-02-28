@@ -116,29 +116,18 @@ public abstract class Player {
 	}
 	
 	/**
-	 * Deals cards to the player and allows the player to draw cards.
-	 * @param a - the deck.
+	 * Deals cards to the player and allows the player to draw more cards than the default limit allows.
+	 * @param a the deck.
+	 * @param noOfCardsOverLimit the number of cards over the limit that will be drawn
 	 * @return a - the deck after the user has drawn cards from it.
 	 * @since CAH1.0
 	 */
-	public Deck deal_draw(Deck a)
+	public Deck deal_draw(Deck a, int noOfCardsOverLimit)
 	{
-		a = cardsInHand.deal_draw(a);
+		a = cardsInHand.deal_draw(a, noOfCardsOverLimit);
 		return a;
 	}
 	
-	/**
-	 * Deals cards to the player and allows the player to draw cards.
-	 * @param a - the deck.
-	 * @param noOfCardsOverLimit - the number of cards over the limit that will be drawn
-	 * @return a - the deck after the user has drawn cards from it.
-	 * @since CAH1.0
-	 */
-	public Deck draw_Extra(Deck a, int noOfCardsOverLimit)
-	{
-		a = cardsInHand.exceedLimitDraw(a, noOfCardsOverLimit);
-		return a;
-	}
 	/**
 	 * Makes the player the Card Czar. {@link #Card_Czar} becomes true.
 	 * @throws Card_Czar_Exception When the new Card Czar is already Card Czar

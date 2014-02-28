@@ -34,23 +34,18 @@ public class CAH_Game implements Runnable {
 	private int roundCount;
 	/**Says if its the first time through*/
 	private boolean first;
-	
-	/*
-	 * Add a draw extra method that allows the hand to contain an extra card during a draw 2 pick 3.
+	/**
+	 * The current question card being used.
 	 */
-	
-	/*
-	 * Add a drawPackingHeat method that allows the players to draw an extra card if the Packing heat rule is in effect.
-	 */
-
+	private QuestionCard currentQCard;
 	
 	/**
 	 * Creates an object that represents a Cards Against Humanity game.
-	 * @param rules - the set of rules that the game uses.
-	 * @param a - the deck builder used to build the deck
+	 * @param rules the set of rules that the game uses.
+	 * @param a the deck builder used to build the deck
 	 * right now the deck builder can't change, but eventually will be different
-	 *  depending on what expansion decks are used.
-	 *  @param players - the players that are playing the game
+	 * depending on what expansion decks are used.
+	 * @param players the players that are playing the game
 	 * @since CAH1.0
 	 * @version CAH1.0
 	 */
@@ -63,29 +58,9 @@ public class CAH_Game implements Runnable {
 		roundCount = 0;
 		for(int i = 0; i < players.size(); i++)
 		{
-			gameDeck = players.get(i).deal_draw(gameDeck);//Now every player has their hand of cards and these cards have beem taken from the deck.
+			gameDeck = players.get(i).deal_draw(gameDeck, 0);//Now every player has their hand of cards and these cards have been taken from the deck.
 		}
-	}
-	
-	/**
-	 * Adds Rando Cardrissian to the game if the game is being played with the Rule Rando Cardrissian.
-	 * @since CAH1.0
-	 * @version CAH1.0
-	 * 
-	 */
-	public void addRando()
-	{
-		if(ruleSet.RandoCardrissianExists())
-		{
-			//Creats Rando
-			Rando_Cardrissian Rando = new Rando_Cardrissian();
-			
-			//Add Rando Cardrissian to the list
-			if (!players.contains(Rando))
-			{
-				players.add(Rando);
-			}
-		}
+		//TODO remove "make a haiku card" if happy ending rule in effect
 	}
 	
 	/**
@@ -112,6 +87,17 @@ public class CAH_Game implements Runnable {
 		//add playerSaving stuff.
 	}
 	
+	/**
+	 * Carries out the draw phase of a Cards Against Humanity game.
+	 * @since CAH1.0
+	 */
+	public void drawPhase()
+	{
+		roundCount++;
+		drawQCard();
+		deal_Draw();
+	}
+	
 	/*Add public void playerResume(player resumingPlayer){} a method that will allow players who have left to get
 	their hand back and points back
 	Add public void replacePlayerWithImpersonator(player leavingPlayer) that allows the player to be replaced by a computer impersonator*/
@@ -120,55 +106,34 @@ public class CAH_Game implements Runnable {
 	 * Deals AnswerCards to all the players.
 	 * @since CAH1.0
 	 */
-	public void deal_Draw()
+	private void deal_Draw()
 	{
+		int draw = ruleSet.PackingHeat() ? currentQCard.getDraw() + 1: currentQCard.getDraw();
+		
 		for (int i = 0; i<players.size(); i++)
 		{
-			gameDeck = players.get(i).deal_draw(gameDeck);//Not Sure if this will actually change the player?
+			gameDeck = players.get(i).deal_draw(gameDeck, draw);
 		}
 	}
 	
 	/**
-	 * Deals AnswerCards to all the players. In this method the players are allowed to temporararily to have more cards in their hand than the limit.
-	 * This method may be used in every round as it checks for draw to see if the number of cards to be drawn over the limit.
-	 * @since CAH1.0
-	 * @param qCard - The {@linkplain QuestionCard} that is being checked for the variable draw. This should be the current question card.
-	 */
-	public void draw_Extra(QuestionCard qCard)
-	{
-		int draw = qCard.getDraw();
-		if (ruleSet.PackingHeat() && qCard.getDraw()>0)
-		{
-			draw++;
-			for (int i = 0; i<players.size(); i++)
-			{
-				gameDeck = players.get(i).draw_Extra(gameDeck, draw);//Not Sure if this will actually change the player?
-			}
-		}
-		else if (qCard.getPick()>1)
-		{
-			for (int i = 0; i<players.size(); i++)
-			{
-				gameDeck = players.get(i).draw_Extra(gameDeck, draw);//Not Sure if this will actually change the player?
-			}
-		}
-		else
-		{
-			
-		}
-			
-	}
-	
-	/**
-	 * Gets the question card that the players will be playing answer cards for.
+	 * Draws the question card that the players will be playing answer cards for.
 	 * @since CAH1.0
 	 * @return currentQuestionCard - The question card that players will be answering.
 	 */
-	public QuestionCard getQCard()
+	private void drawQCard()
 	{
-		roundCount++;
-		QuestionCard currentQuestionCard = gameDeck.drawQuestionCard();
-		return currentQuestionCard;
+		currentQCard = gameDeck.drawQuestionCard();
+	}
+	
+	/**
+	 * Gets the current question card.
+	 * @return currentQCard - the current question card.
+	 * @since CAH1.0
+	 */
+	public QuestionCard getCurrentQuestionCard()
+	{
+		return currentQCard;
 	}
 	
 	/**
@@ -176,7 +141,7 @@ public class CAH_Game implements Runnable {
 	 * Scrambles the cards so that the Card Czar doesn't know who played what.
 	 * Saves the cards in {@linkplain #answers} so that we know  who played what card.
 	 * (Doesnt exist needs to be made)
-	 * @param playerCards - the array of arrays containing players card choices
+	 * @param playerCards the array of arrays containing players card choices
 	 * @return scrPlayerCards - the answer cards that are played by each player.
 	 * @since CAH1.0
 	 */
