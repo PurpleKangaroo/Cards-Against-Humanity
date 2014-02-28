@@ -43,6 +43,11 @@ import cards.QuestionCard;
 
 /**
  * A class of object that represents the layered pane that contains information about a players statistics.
+ * <html><p><img src="https://raw.github.com/PurpleKangaroo/Cards-Against-Humanity/master/Screenshots/CardsViewer.png" height="300px" width="562px"/>
+ * </p>
+ * <p>
+ * A picture of the card viewer's screen.
+ * </html>
  * @author Holt Maki
  * @since CAH1.0
  * @version CAH1.0
