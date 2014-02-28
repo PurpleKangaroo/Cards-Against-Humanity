@@ -98,7 +98,7 @@ public enum HouseRules {
 	 *  {@linkplain #SERIOUS_BUSINESS}, {@linkplain #GOD_IS_DEAD}
 	 * @since CAH1.0
 	 */
-	SURVIVAL_OF_THE_FITTEST("\"Play without a Card Czar. After everyone has answered the question, players take turns eliminating one card each. The last remaining card is declared the funniest."),
+	SURVIVAL_OF_THE_FITTEST("\"Play without a Card Czar. After everyone has answered the question, players take turns eliminating one card each. The last remaining card is declared the funniest.\""),
 	
 	/**
 	 * "Instead of picking a favorite card

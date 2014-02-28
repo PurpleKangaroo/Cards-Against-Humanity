@@ -65,6 +65,7 @@ public class WhiteCard extends UICard implements Movable
 		setBackground(new Color(Color.TRANSLUCENT));
 		setSize(new Dimension(188, 270));
 		setLayout(null);
+		setOpaque(false);
 		
 		String str = new String();
 		str = card.getCardString();		

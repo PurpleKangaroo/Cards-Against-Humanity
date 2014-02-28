@@ -102,7 +102,7 @@ public class CAH_NewGame extends JLayeredPane {
 		
 		final JCheckBox chckbxhappyEnding = new JCheckBox("<html><body style=\"color:WHITE\">Happy Ending</body></html>");
 		chckbxhappyEnding.setFocusPainted(false);
-		chckbxhappyEnding.setToolTipText(wrap(HouseRules.HAPPY_ENDING.getDescription()));
+		chckbxhappyEnding.setToolTipText(wrap(HouseRules.HAPPY_ENDING.getDescription() + " This rule cannot be used in a game that doesn't use the Original Cards Against Humanity Deck."));
 		chckbxhappyEnding.setOpaque(false);
 		HouseRulesPanel.add(chckbxhappyEnding);
 		
@@ -127,7 +127,7 @@ public class CAH_NewGame extends JLayeredPane {
 		final JCheckBox chckbxgodIsDead = new JCheckBox("<html><body style=\"color:WHITE\">God Is Dead</body></html>");
 		chckbxgodIsDead.setFocusPainted(false);
 		chckbxgodIsDead.setOpaque(false);
-		chckbxgodIsDead.setToolTipText(wrap(HouseRules.GOD_IS_DEAD.getDescription()));
+		chckbxgodIsDead.setToolTipText(wrap(HouseRules.GOD_IS_DEAD.getDescription()));//TODO point out incapatibilities.
 		HouseRulesPanel.add(chckbxgodIsDead);
 		
 		final JCheckBox chckbxsurvivalOfThe = new JCheckBox("<html><body style=\"color:WHITE\">Survival of the Fittest</body></html>");
@@ -498,6 +498,32 @@ public class CAH_NewGame extends JLayeredPane {
 					onList = false;
 				}
 				
+			}
+			
+		});
+		
+		chckbxOriginal.addChangeListener(new ChangeListener(){
+			
+			@Override
+			public void stateChanged(ChangeEvent arg0)
+			{
+				if(!chckbxOriginal.isSelected() && chckbxhappyEnding.isSelected())
+				{
+					chckbxhappyEnding.setSelected(false);
+				}
+			}
+			
+		});
+		
+		chckbxhappyEnding.addChangeListener(new ChangeListener(){
+			
+			@Override
+			public void stateChanged(ChangeEvent arg0)
+			{
+				if(!chckbxOriginal.isSelected() && chckbxhappyEnding.isSelected())
+				{
+					chckbxhappyEnding.setSelected(false);
+				}
 			}
 			
 		});

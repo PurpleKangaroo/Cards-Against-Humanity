@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JList;
@@ -1047,5 +1049,19 @@ public class CAH_Cards extends JLayeredPane
 			}
 			
 		});
+	}
+	
+	/**
+	 * Adds the main menu button and the background.
+	 * @param button - the button being added.
+	 * @since CAH1.0
+	 */
+	protected void addMainMenu(JComponent button)
+	{
+		this.add(button);
+		final JLabel CardsBackground = new JLabel("");
+		CardsBackground.setBounds(0, 0, 1450, 752);
+		CardsBackground.setIcon(new ImageIcon(CAH_Frame.class.getResource("/graphics/bg.jpg")));
+		add(CardsBackground);
 	}
 }
