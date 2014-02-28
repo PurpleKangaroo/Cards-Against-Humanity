@@ -574,7 +574,7 @@ public class CAH_Cards extends JLayeredPane
 			super.setSelectionBackground(new Color(0, 153, 255));
 			super.setSelectionForeground(Color.WHITE);
 			
-			super.setBackground(Color.BLACK);
+			super.setBackground(new Color(3,3,3));
 			super.setAutoscrolls(false);
 			super.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			
@@ -1007,6 +1007,7 @@ public class CAH_Cards extends JLayeredPane
 		(card).setBounds(1106, -260, 188, 270);
 		
 		this.add(card);
+		this.moveToFront(card);
 		card.move(targetX, targetY - 2, .1);
 		
 		count = 0;
@@ -1020,7 +1021,7 @@ public class CAH_Cards extends JLayeredPane
 				if(count == 0)
 				{
 					count++;
-					card.move(targetX, targetY + 9, .1);
+					card.move(targetX, targetY + 12, .1);
 				}
 				else if(count == 1)
 				{

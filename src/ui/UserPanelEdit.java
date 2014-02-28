@@ -1,22 +1,34 @@
 package ui;
 
-import javax.swing.JPanel;
 import java.awt.Dimension;
-import javax.swing.JLabel;
-import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import javax.swing.SwingConstants;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
+import javax.swing.SwingConstants;
 
-public class userPanelEdit extends JPanel
+/**
+ * A panel that allows editing of user information.
+ * @author Holt Maki
+ * @sicne CAH1.0
+ * @version CAH1.0
+ *
+ */
+public class UserPanelEdit extends JPanel
 {
+	/**
+	 * Generated Serial Version UID.
+	 */
+	private static final long serialVersionUID = 5867800601067696778L;
+	
 	private JTextField textField;
 
 	/**
 	 * Create the panel with no old information.
 	 */
-	public userPanelEdit()
+	public UserPanelEdit()
 	{
 		setSize(new Dimension(336, 255));
 		setLayout(new GridLayout(2, 1, 0, 0));
