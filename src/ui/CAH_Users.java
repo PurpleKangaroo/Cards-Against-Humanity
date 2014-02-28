@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
@@ -52,11 +53,16 @@ public class CAH_Users extends JPanel
 		add(lblCardsAgainstHumanity);
 		lblCardsAgainstHumanity.setForeground(Color.WHITE);
 		lblCardsAgainstHumanity.setFont(new Font("Arial Black", Font.BOLD, 70));
-		
+	}
+	
+	protected void addMainMenuButton(JComponent component)
+	{
+		add(component);
 		final JLabel UsersBackground = new JLabel("");
 		UsersBackground.setIcon(new ImageIcon(CAH_NewGame.class.getResource("/graphics/signupbackground.jpg")));
 		UsersBackground.setAlignmentX(Component.CENTER_ALIGNMENT);
 		UsersBackground.setBounds(0, 0, 1450, 722);
 		add(UsersBackground);
 	}
+	
 }

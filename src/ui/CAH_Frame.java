@@ -397,8 +397,8 @@ public class CAH_Frame extends JFrame {
 					mainMenu.setFocusTraversalKeysEnabled(false);
 					mainMenu.setFocusPainted(false);
 					mainMenu.setBorderPainted(false);
-					mainMenu.setBounds(362, 422, 102, 17);
-					users.add(mainMenu);//TODO make this added properly
+					mainMenu.setBounds(716, 490, 102, 17);
+					users.addMainMenuButton(mainMenu);//TODO make this added properly
 					mainMenu.addActionListener(new ActionListener(){
 
 						@Override

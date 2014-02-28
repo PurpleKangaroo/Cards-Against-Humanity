@@ -83,7 +83,7 @@ public class WhiteCard extends UICard implements Movable
 		add(textArea);
 		
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setBounds(91, 233, 87, 15);
+		lblLogo.setBounds(15, 230, 87, 15);
 		lblLogo.setIcon(new ImageIcon(WhiteCard.class.getResource("/graphics/icon_w.png")));
 		add(lblLogo);
 		
