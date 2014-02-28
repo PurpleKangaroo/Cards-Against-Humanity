@@ -8,17 +8,16 @@ import cards.DeckBuilder;
 import cards.QuestionCard;
 import users.Card_Czar_Exception;
 import users.Player;
-import users.Rando_Cardrissian;
 import cards.AnswerCard;
 
 /**
  * A class of object that represents a Cards Against Humanity game.
- * @since CAH1.0(incomplete)
- * @version CAH1.0(Incomplete)
+ * @since CAH1.0
+ * @version CAH1.0
  * @author Holt Maki
  *
  */
-public class CAH_Game implements Runnable {
+public class CAH_Game {
 	/**The set of rules that the game will use */
 	private Rules ruleSet;
 	/**The list of players playing the game */
@@ -123,7 +122,14 @@ public class CAH_Game implements Runnable {
 	 */
 	private void drawQCard()
 	{
-		currentQCard = gameDeck.drawQuestionCard();
+		if(ruleSet.HappyEnding())
+		{
+			currentQCard = gameDeck.drawQuestionCardHappyEnding();
+		}
+		else
+		{
+			currentQCard = gameDeck.drawQuestionCard();
+		}
 	}
 	
 	/**
@@ -316,8 +322,8 @@ public class CAH_Game implements Runnable {
 	
 	/**
 	 * Gets the current cardCzar
-	 * @return
-	 * @throws PlayerNotFoundException
+	 * @return {@code currentQCard = gameDeck.drawQuestionCard()} - The player who is the current card czar.
+	 * @throws PlayerNotFoundException If the player is not found.
 	 */
 	public Player getCurrentCardCzar() throws PlayerNotFoundException
 	{
@@ -338,7 +344,6 @@ public class CAH_Game implements Runnable {
 		}
 		else
 		{
-			
 			return players.get(cardCzarIndex);
 		}
 				
@@ -369,20 +374,14 @@ public class CAH_Game implements Runnable {
 		return awesomePointArray;
 	}
 	
+	/**
+	 * Gets the list of players involved in a game of CAH.
+	 * @return players - The list of players involved in a game of CAH.
+	 * @since CAH1.0
+	 */
 	public ArrayList<Player> getPlayers()
 	{
 		return players;
-	}
-
-	@Override
-	public void run() 
-	{
-		
-		
-	}
-	
-	
-	
-	
+	}	
 	
 }
