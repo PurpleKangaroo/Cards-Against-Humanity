@@ -4,15 +4,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.IOException;
-import java.net.URISyntaxException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.Timer;
 
@@ -31,6 +28,11 @@ import cards.AnswerCard;
 public class WhiteCard extends UICard implements Movable
 {
 	
+	/**
+	 * Serial version UID.
+	 */
+	private static final long serialVersionUID = -6324681620681730411L;
+
 	/**
 	 * Where the X would be during an animation if it were a double.
 	 * In each step of the animation, the X value is set to a rounded version of trueX,
@@ -108,7 +110,7 @@ public class WhiteCard extends UICard implements Movable
 		final int xDif = newX - this.getX();
 		final int yDif = newY - this.getY();
 		
-		final Timer t = new Timer(Animated.DELAY, new MTimerListener(xInterval, yInterval) {
+		final ActionListener timerlistener =  (new MTimerListener(xInterval, yInterval) {
 
 			@Override
 			public void actionPerformed(ActionEvent e)
@@ -130,6 +132,8 @@ public class WhiteCard extends UICard implements Movable
 			
 		});
 		
+		final Timer t = new Timer(Animated.DELAY, timerlistener);
+		
 		t.start();
 		
 		//Checks for if the timer is over the limit.
@@ -141,6 +145,7 @@ public class WhiteCard extends UICard implements Movable
 				if( !((boolean) arg0.getOldValue()) && ((boolean) arg0.getNewValue()))
 				{
 					t.stop();
+					t.removeActionListener(timerlistener);
 					firePropertyChange("cardStop", true, false);
 				}
 			}

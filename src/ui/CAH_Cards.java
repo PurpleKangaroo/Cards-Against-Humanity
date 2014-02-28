@@ -768,7 +768,7 @@ public class CAH_Cards extends JLayeredPane
 		try
 		{
 			remove(card);
-			card.setLocation(-10000, - 1000000);
+			repaint();
 		}
 		catch (Exception e)
 		{
@@ -998,17 +998,18 @@ public class CAH_Cards extends JLayeredPane
 	 */
 	protected void bounceIn()
 	{
+		firePropertyChange("STOPT", false, true);
 		final int targetX = 1106;
 		final int targetY = 210;
 		
 		(card).setBounds(1106, -260, 188, 270);
 		
 		this.add(card);
-		card.move(targetX, targetY - 4, .2);
+		card.move(targetX, targetY - 2, .1);
 		
 		count = 0;
 		
-		final Timer t = new Timer(200, new ActionListener()
+		final ActionListener timerlistener = (new ActionListener()
 		{
 			
 			@Override
@@ -1017,11 +1018,11 @@ public class CAH_Cards extends JLayeredPane
 				if(count == 0)
 				{
 					count++;
-					card.move(targetX, targetY + 9, .2);
+					card.move(targetX, targetY + 9, .1);
 				}
 				else if(count == 1)
 				{
-					card.move(targetX, targetY, .15);
+					card.move(targetX, targetY, .1);
 				}
 				else
 				{
@@ -1029,6 +1030,8 @@ public class CAH_Cards extends JLayeredPane
 				}
 			}
 		});
+		
+		final Timer t = new Timer(100, timerlistener);
 		t.start();
 		
 		this.addPropertyChangeListener("STOPT", new PropertyChangeListener() {
@@ -1039,6 +1042,7 @@ public class CAH_Cards extends JLayeredPane
 				if(!((boolean) arg0.getOldValue()) && ((boolean) arg0.getNewValue()))
 				{
 					t.stop();
+					t.removeActionListener(timerlistener);
 				}
 			}
 			
