@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -134,7 +135,7 @@ public class BlackCard extends UICard implements Movable
 		final int xDif = newX - this.getX();
 		final int yDif = newY - this.getY();
 		
-		final Timer t = new Timer(Animated.DELAY, new MTimerListener(xInterval, yInterval) {
+		final ActionListener timerlistener =  (new MTimerListener(xInterval, yInterval) {
 
 			@Override
 			public void actionPerformed(ActionEvent e)
@@ -156,6 +157,8 @@ public class BlackCard extends UICard implements Movable
 			
 		});
 		
+		final Timer t = new Timer(Animated.DELAY, timerlistener);
+		
 		t.start();
 		
 		//Checks for if the timer is over the limit.
@@ -167,6 +170,7 @@ public class BlackCard extends UICard implements Movable
 				if( !((boolean) arg0.getOldValue()) && ((boolean) arg0.getNewValue()))
 				{
 					t.stop();
+					t.removeActionListener(timerlistener);
 					firePropertyChange("cardStop", true, false);
 				}
 			}
