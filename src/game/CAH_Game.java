@@ -89,12 +89,29 @@ public class CAH_Game {
 	/**
 	 * Carries out the draw phase of a Cards Against Humanity game.
 	 * @since CAH1.0
+	 * @see CAH_Game#drawQCard()
+	 * @see CAH_Game#deal_Draw()
 	 */
 	public void drawPhase()
 	{
 		roundCount++;
 		drawQCard();
 		deal_Draw();
+	}
+	
+	/**
+	 * Carries out the answer phase of a Cards Against Humanity game, where all players,
+	 * except the card czar answer the {@linkplain CAH_Game#currentQCard}.
+	 * @since CAH1.0
+	 */
+	public void answerPhase()
+	{
+		//TODO: fill
+	}
+	
+	public void choosePhase()
+	{
+		//TODO: fill
 	}
 	
 	/*Add public void playerResume(player resumingPlayer){} a method that will allow players who have left to get
