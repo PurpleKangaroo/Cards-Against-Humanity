@@ -89,12 +89,40 @@ public class CAH_Game {
 	/**
 	 * Carries out the draw phase of a Cards Against Humanity game.
 	 * @since CAH1.0
+	 * @see CAH_Game#drawQCard()
+	 * @see CAH_Game#deal_Draw()
 	 */
 	public void drawPhase()
 	{
 		roundCount++;
 		drawQCard();
 		deal_Draw();
+	}
+	
+	/**
+	 * Carries out the answer phase of a Cards Against Humanity game, where all players,
+	 * except the card czar answer the {@linkplain CAH_Game#currentQCard}.
+	 * @since CAH1.0
+	 */
+	public void answerPhase()
+	{
+		//TODO: fill
+	}
+	
+	/**
+	 * Carries out the choose phase of a Cards Against Humanity game, where the Card Czar chooses their favorite card, unless if
+	 * {@linkplain HouseRules#GOD_IS_DEAD}, {@linkplain HouseRules#SERIOUS_BUSINESS}, or {@linkplain HouseRules#SURVIVAL_OF_THE_FITTEST} is in effect.
+	 * <p>
+	 * <ul>
+	 * <li><em>If </em> {@linkplain HouseRules#GOD_IS_DEAD} is in effect: Each player picks his or her favorite card each round, and the card with the most votes will win the round.</li>
+	 * <li><em>If </em> {@linkplain HouseRules#SERIOUS_BUSINESS} is in effect: The card Czar will rank the top three cards. The best one will receive the 3 Awesome Points, the second best will receive 2, and the third best will receive 1 Awesome Point.</li>
+	 * <li><em>If </em> {@linkplain HouseRules#SURVIVAL_OF_THE_FITTEST} is in effect: After everyone has answered the question, players take turns eliminating one card each. The last remaining card is declared the funniest.</li>
+	 * </ul>
+	 * </p>
+	 */
+	public void choosePhase()
+	{
+		//TODO: fill
 	}
 	
 	/*Add public void playerResume(player resumingPlayer){} a method that will allow players who have left to get
@@ -107,7 +135,7 @@ public class CAH_Game {
 	 */
 	private void deal_Draw()
 	{
-		int draw = ruleSet.PackingHeat() ? currentQCard.getDraw() + 1: currentQCard.getDraw();
+		int draw = ruleSet.PackingHeat() && currentQCard.getDraw() != 1 ? currentQCard.getDraw() + 1: currentQCard.getDraw();
 		
 		for (int i = 0; i<players.size(); i++)
 		{
