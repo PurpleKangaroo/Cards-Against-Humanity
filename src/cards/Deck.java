@@ -72,6 +72,31 @@ public class Deck {
 	}
 	
 	/**
+	 * Draws a question card, but will avoid drawing "Make a Haiku" until it is the last card remaining.
+	 * Removes the card that is drawn from the deck
+	 * @return card - The question card that is drawn
+	 * @since CAH1.0
+	 * @version CAH1.0
+	 * @author Holt Maki
+	 * @see drawAnswerCard()
+	 * @see drawQuestionCard()
+	 */
+
+	public QuestionCard drawQuestionCardHappyEnding()
+	{
+		Random randomNumbers = new Random();
+		int index = randomNumbers.nextInt(qDeck.size());
+		QuestionCard card = qDeck.get(index);
+		while(card.getCardString().equals("Make a haiku.") && qDeck.size() > 1)
+		{
+			index = randomNumbers.nextInt(qDeck.size());
+			card = qDeck.get(index);
+		}
+		qDeck.remove(index);
+		return card;
+	}
+	
+	/**
 	 * Checks wether or not the answer deck is empty
 	 * @since CAH1.0
 	 * @version CAH1.0
