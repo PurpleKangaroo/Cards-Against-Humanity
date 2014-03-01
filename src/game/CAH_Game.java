@@ -135,7 +135,7 @@ public class CAH_Game {
 	 */
 	private void deal_Draw()
 	{
-		int draw = ruleSet.PackingHeat() && currentQCard.getDraw() != 1 ? currentQCard.getDraw() + 1: currentQCard.getDraw();
+		int draw = ruleSet.PackingHeat() && currentQCard.getDraw() != 1 ? currentQCard.getDraw() + 1: 0;
 		
 		for (int i = 0; i<players.size(); i++)
 		{
