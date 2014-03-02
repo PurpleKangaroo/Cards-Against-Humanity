@@ -416,7 +416,7 @@ public class CAH_Game {
 	/**
 	 * Gets the rules for a game of Cards Against Humanity.
 	 * @since CAH1.0
-	 * @return {@linkplain #ruleSet}ruleSet - The set of rules for a game of CAH.
+	 * @return {@linkplain #ruleSet} - The set of rules for a game of CAH.
 	 */
 	public Rules getGameRules()
 	{

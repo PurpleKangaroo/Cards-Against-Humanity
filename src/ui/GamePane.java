@@ -33,7 +33,7 @@ public class GamePane extends JLayeredPane {
 	/**
 	 * The player who is playing the game through this pane.
 	 */
-	private Player player;
+	private String username;
 	private JTextField chatEntry;
 
 	/**
@@ -44,10 +44,10 @@ public class GamePane extends JLayeredPane {
 	 * @param player - the player who is playing the game on the computer that is showing the pane.
 	 * 
 	 */
-	public GamePane(/*CAH_Game game, Player player*/) 
+	public GamePane(/*CAH_Game game, String username*/) 
 	{
+		this.username = username;
 		this.game = game;
-		this.player = player;
 		
 		setBounds(new Rectangle(0, 0, 1450, 700));
 		setLayout(null);
