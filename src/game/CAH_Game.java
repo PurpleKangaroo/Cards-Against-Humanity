@@ -107,6 +107,7 @@ public class CAH_Game {
 	public void answerPhase()
 	{
 		//TODO: fill
+		//TODO: May be un nessescery?
 	}
 	
 	/**
@@ -410,6 +411,16 @@ public class CAH_Game {
 	public ArrayList<Player> getPlayers()
 	{
 		return players;
-	}	
+	}
+	
+	/**
+	 * Gets the rules for a game of Cards Against Humanity.
+	 * @since CAH1.0
+	 * @return {@linkplain #ruleSet}ruleSet - The set of rules for a game of CAH.
+	 */
+	public Rules getGameRules()
+	{
+		return ruleSet;
+	}
 	
 }
