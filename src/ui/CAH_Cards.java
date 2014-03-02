@@ -1013,7 +1013,7 @@ public class CAH_Cards extends JLayeredPane
 		
 		this.add(card);
 		this.moveToFront(card);
-		card.move(targetX, targetY + 16, .1);
+		card.move(targetX, targetY + 8, .1);
 		
 		count = 0;
 		
@@ -1026,7 +1026,7 @@ public class CAH_Cards extends JLayeredPane
 				if(count == 0)
 				{
 					count++;
-					card.move(targetX, targetY - 8, .1);
+					card.move(targetX, targetY - 16, .1);
 				}
 				else if(count == 1)
 				{

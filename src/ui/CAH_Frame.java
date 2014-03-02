@@ -365,6 +365,15 @@ public class CAH_Frame extends JFrame {
 					mainMenu.setBounds(362, 422, 102, 17);
 					newGame.startGameMenuAdd(mainMenu);
 					
+					JButton btnStartGame = new JButton("Start Game");
+					btnStartGame.setBorderPainted(false);
+					btnStartGame.setFocusTraversalKeysEnabled(false);
+					btnStartGame.setFocusPainted(false);
+					btnStartGame.setOpaque(false);
+					btnStartGame.setBounds(250, 422, 102, 17);
+					newGame.startGameMenuAdd(btnStartGame);
+					
+					
 					mainMenu.addActionListener(new ActionListener(){
 
 						@Override

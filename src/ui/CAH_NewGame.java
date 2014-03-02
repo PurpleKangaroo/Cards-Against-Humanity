@@ -332,14 +332,6 @@ public class CAH_NewGame extends JLayeredPane {
 		lblPlayers.setForeground(Color.WHITE);
 		panel.add(lblPlayers);
 		
-		JButton btnStartGame = new JButton("Start Game");
-		btnStartGame.setBorderPainted(false);
-		btnStartGame.setFocusTraversalKeysEnabled(false);
-		btnStartGame.setFocusPainted(false);
-		btnStartGame.setOpaque(false);
-		btnStartGame.setBounds(250, 422, 102, 17);
-		StartGameMenus.add(btnStartGame);
-		
 		JPanel GameType = new JPanel();
 		GameType.setOpaque(false);
 		GameType.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Game Type", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
@@ -476,12 +468,6 @@ public class CAH_NewGame extends JLayeredPane {
 			
 		});
 		
-		btnStartGame.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				//TODO fill.
-			}
-		});
-		
 		chckbxrandoCardrissian.addChangeListener(new ChangeListener(){
 			
 			@Override
@@ -542,7 +528,7 @@ public class CAH_NewGame extends JLayeredPane {
 	}
 	
 	/**
-	 * Allows StartGameMenus to add a component. This is important for allowing the program to add the main menu button which will return the user to the main menu.
+	 * Allows StartGameMenus to add a component. This is important for allowing the program to add the main menu button which will return the user to the main menu as well as the start game button which will be used to start a game.
 	 * @author Holt Maki
 	 * @since CAH1.0
 	 * @param component the JComponent being added.
