@@ -2,16 +2,15 @@ package ui;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Panel;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.Panel;
-import java.awt.Canvas;
 
 /**
  * A panel that allows editing of user information.

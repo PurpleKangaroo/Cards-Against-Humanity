@@ -8,29 +8,29 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * A JDialog that warns people before they exit the application.
+ * @author Holt Maki
+ * @since CAH1.0
+ * @version CAH1.0 
+ *
+ */
 public class ExitDialog extends JDialog
 {
 
+	/**
+	 * The Generated Serial Version UID.
+	 */
+	private static final long serialVersionUID = -6917485848768464833L;
+	
+	/**
+	 * The panel that contains the warning.
+	 */
 	private final JPanel contentPanel = new JPanel();
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args)
-	{
-		try
-		{
-			ExitDialog dialog = new ExitDialog();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
-
-	/**
 	 * Create the dialog.
+	 * @since CAH1.0
 	 */
 	public ExitDialog()
 	{

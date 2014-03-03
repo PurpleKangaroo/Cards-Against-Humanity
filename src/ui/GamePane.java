@@ -34,6 +34,10 @@ public class GamePane extends JLayeredPane {
 	 * The player who is playing the game through this pane.
 	 */
 	private String username;
+	
+	/**
+	 * The text field where people can enter their chat messages.
+	 */
 	private JTextField chatEntry;
 
 	/**

@@ -11,5 +11,10 @@ import javax.swing.JLayeredPane;
  */
 public class CAH_Stats extends JLayeredPane
 {
+
+	/**
+	 * Generated Serial Version UID.
+	 */
+	private static final long serialVersionUID = -2979274747685567965L;
 	
 }

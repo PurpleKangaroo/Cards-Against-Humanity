@@ -13,6 +13,11 @@ public class CAH_Netplay extends JPanel
 {
 
 	/**
+	 * Generated Serial Version UID.
+	 */
+	private static final long serialVersionUID = -8317819384838582033L;
+
+	/**
 	 * Create the panel.
 	 */
 	public CAH_Netplay()
