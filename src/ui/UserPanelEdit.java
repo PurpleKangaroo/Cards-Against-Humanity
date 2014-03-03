@@ -162,6 +162,7 @@ public class UserPanelEdit extends JPanel
 		sl_panel_12.putConstraint(SpringLayout.SOUTH, comboBox_2, -3, SpringLayout.SOUTH, panel_12);
 		sl_panel_12.putConstraint(SpringLayout.EAST, comboBox_2, 158, SpringLayout.WEST, panel_12);
 		panel_12.add(comboBox_2);
+		//TODO make day combo box depend on year and month selected
 		
 	}
 }
