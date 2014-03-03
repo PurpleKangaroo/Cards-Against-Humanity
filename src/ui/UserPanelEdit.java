@@ -26,9 +26,30 @@ public class UserPanelEdit extends JPanel
 	 */
 	private static final long serialVersionUID = 5867800601067696778L;
 	
+	/**
+	 * The text field where the username is entered.
+	 */
 	private JTextField usernameField;
+	
+	/**
+	 * The text field where the user's first name is entered.
+	 */
 	private JTextField firstNameTextField;
-	private JTextField textField;
+	
+	/**
+	 * The text field where the user's last name is entered.
+	 */
+	private JTextField lastNameTextField;
+	
+	/**
+	 * The JComboBox where people enter their gender.
+	 */
+	private JComboBox genderComboBox;
+	
+	/**
+	 * The JCombo box where the user enters their birthdate's month
+	 */
+	private JComboBox monthComboBox;
 
 	/**
 	 * Create the panel with no old information.
@@ -83,12 +104,12 @@ public class UserPanelEdit extends JPanel
 		SpringLayout sl_panel_3 = new SpringLayout();
 		panel_3.setLayout(sl_panel_3);
 		
-		textField = new JTextField();
-		sl_panel_3.putConstraint(SpringLayout.NORTH, textField, 5, SpringLayout.NORTH, panel_3);
-		sl_panel_3.putConstraint(SpringLayout.WEST, textField, 10, SpringLayout.WEST, panel_3);
-		sl_panel_3.putConstraint(SpringLayout.EAST, textField, 158, SpringLayout.WEST, panel_3);
-		panel_3.add(textField);
-		textField.setColumns(10);
+		lastNameTextField = new JTextField();
+		sl_panel_3.putConstraint(SpringLayout.NORTH, lastNameTextField, 5, SpringLayout.NORTH, panel_3);
+		sl_panel_3.putConstraint(SpringLayout.WEST, lastNameTextField, 10, SpringLayout.WEST, panel_3);
+		sl_panel_3.putConstraint(SpringLayout.EAST, lastNameTextField, 158, SpringLayout.WEST, panel_3);
+		panel_3.add(lastNameTextField);
+		lastNameTextField.setColumns(10);
 		
 		JLabel lblGender = new JLabel("Gender:    ");
 		panel.add(lblGender);
@@ -99,13 +120,13 @@ public class UserPanelEdit extends JPanel
 		SpringLayout sl_panel_4 = new SpringLayout();
 		panel_4.setLayout(sl_panel_4);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setToolTipText("Select Your Gender");
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Male", "Female"}));
-		sl_panel_4.putConstraint(SpringLayout.NORTH, comboBox, 5, SpringLayout.NORTH, panel_4);
-		sl_panel_4.putConstraint(SpringLayout.WEST, comboBox, 10, SpringLayout.WEST, panel_4);
-		sl_panel_4.putConstraint(SpringLayout.EAST, comboBox, 158, SpringLayout.WEST, panel_4);
-		panel_4.add(comboBox);
+		genderComboBox = new JComboBox();
+		genderComboBox.setToolTipText("Select Your Gender");
+		genderComboBox.setModel(new DefaultComboBoxModel(new String[] {"Male", "Female"}));
+		sl_panel_4.putConstraint(SpringLayout.NORTH, genderComboBox, 5, SpringLayout.NORTH, panel_4);
+		sl_panel_4.putConstraint(SpringLayout.WEST, genderComboBox, 10, SpringLayout.WEST, panel_4);
+		sl_panel_4.putConstraint(SpringLayout.EAST, genderComboBox, 158, SpringLayout.WEST, panel_4);
+		panel_4.add(genderComboBox);
 		
 		Panel panel_5 = new Panel();
 		add(panel_5);
@@ -129,13 +150,13 @@ public class UserPanelEdit extends JPanel
 		SpringLayout sl_panel_10 = new SpringLayout();
 		panel_10.setLayout(sl_panel_10);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}));
-		sl_panel_10.putConstraint(SpringLayout.NORTH, comboBox_1, 5, SpringLayout.NORTH, panel_10);
-		sl_panel_10.putConstraint(SpringLayout.WEST, comboBox_1, 10, SpringLayout.WEST, panel_10);
-		sl_panel_10.putConstraint(SpringLayout.SOUTH, comboBox_1, -3, SpringLayout.SOUTH, panel_10);
-		sl_panel_10.putConstraint(SpringLayout.EAST, comboBox_1, 158, SpringLayout.WEST, panel_10);
-		panel_10.add(comboBox_1);
+		monthComboBox = new JComboBox();
+		monthComboBox.setModel(new DefaultComboBoxModel(new String[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}));
+		sl_panel_10.putConstraint(SpringLayout.NORTH, monthComboBox, 5, SpringLayout.NORTH, panel_10);
+		sl_panel_10.putConstraint(SpringLayout.WEST, monthComboBox, 10, SpringLayout.WEST, panel_10);
+		sl_panel_10.putConstraint(SpringLayout.SOUTH, monthComboBox, -3, SpringLayout.SOUTH, panel_10);
+		sl_panel_10.putConstraint(SpringLayout.EAST, monthComboBox, 158, SpringLayout.WEST, panel_10);
+		panel_10.add(monthComboBox);
 		
 		JLabel lblDay = new JLabel("Day:    ");
 		lblDay.setHorizontalAlignment(SwingConstants.TRAILING);
