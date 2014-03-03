@@ -72,9 +72,19 @@ public class WhiteCard extends UICard implements Movable
 		
 		JTextPane textArea = new JTextPane();
 		textArea.setContentType("text/html");
-		textArea.setText("<html><body style=\"font-family: Arial Black; font-size:15; font-color: BLACK\">" + str + "</body></html>");
-		textArea.setDisabledTextColor(Color.BLACK);
-		textArea.setFont(new Font("Arial Black", Font.PLAIN, 15));
+		if(str.length() < 85)
+		{
+			textArea.setText("<html><body style=\"font-family: Arial Black; font-size:15; font-color: BLACK\">" + str + "</body></html>");
+			textArea.setDisabledTextColor(Color.BLACK);
+			textArea.setFont(new Font("Arial Black", Font.PLAIN, 15));
+		}
+		else
+		{
+			textArea.setText("<html><body style=\"font-family: Arial Black; font-size:14; font-color: BLACK\">" + str + "</body></html>");
+			textArea.setDisabledTextColor(Color.BLACK);
+			textArea.setFont(new Font("Arial Black", Font.PLAIN, 14));
+		}
+		
 		textArea.setAutoscrolls(false);
 		textArea.setEnabled(false);
 		textArea.setEditable(false);
