@@ -69,40 +69,45 @@ public class BlackCard extends UICard implements Movable
 		textArea.setDisabledTextColor(Color.WHITE);
 		if(str.length() > 130)
 		{
-			textArea.setText("<html><body style=\"font-family: Arial Black; font-size:14; font-color: WHITE\">" + str + "</body></html>");
+			textArea.setText("<html><body style=\"font-family: Arial Black; font-size:13; font-color: WHITE\">" + str + "</body></html>");
+			textArea.setFont(new Font("Arial Black", Font.PLAIN, 12));
+		}
+		else if(str.length() < 60)
+		{
+			textArea.setText("<html><body style=\"font-family: Arial Black; font-size:15; font-color: WHITE\">" + str + "</body></html>");
 			textArea.setFont(new Font("Arial Black", Font.PLAIN, 14));
 		}
 		else
 		{
-			textArea.setText("<html><body style=\"font-family: Arial Black; font-size:15; font-color: WHITE\">" + str + "</body></html>");
-			textArea.setFont(new Font("Arial Black", Font.PLAIN, 15));
+			textArea.setText("<html><body style=\"font-family: Arial Black; font-size:14; font-color: WHITE\">" + str + "</body></html>");
+			textArea.setFont(new Font("Arial Black", Font.PLAIN, 13));
 		}
 		textArea.setAutoscrolls(false);
 		textArea.setEnabled(false);
 		textArea.setEditable(false);
 		textArea.setForeground(Color.WHITE);
 		textArea.setOpaque(false);
-		textArea.setBounds(10, 11, 168, 192);
+		textArea.setBounds(16, 12, 156, 180);
 		add(textArea);
 		
 		
 		JLabel d2p3 = new JLabel("");
 		d2p3.setBounds(new Rectangle(0, 0, 522, 37));
 		d2p3.setIcon(new ImageIcon(BlackCard.class.getResource("/graphics/draw2pick3.png")));
-		d2p3.setBounds(123, 206, 51, 40);
+		d2p3.setBounds(115, 200, 51, 40);
 		add(d2p3);
 		
 		JLabel p2 = new JLabel("");
 		p2.setBounds(new Rectangle(0, 0, 51, 21));
 		p2.setSize(new Dimension(51, 21));
 		p2.setIcon(new ImageIcon(BlackCard.class.getResource("/graphics/pick2.png")));
-		p2.setBounds(123, 227, 51, 21);
+		p2.setBounds(118, 220, 51, 21);
 		add(p2);
 		
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setSize(new Dimension(87, 15));
 		lblLogo.setIcon(new ImageIcon(BlackCard.class.getResource("/graphics/icon_b.png")));
-		lblLogo.setBounds(15, 230, 87, 15);
+		lblLogo.setBounds(20, 224, 87, 15);
 		add(lblLogo);
 		
 		JLabel lblCard = new JLabel("");
