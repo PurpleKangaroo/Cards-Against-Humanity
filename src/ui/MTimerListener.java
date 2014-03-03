@@ -30,4 +30,22 @@ public abstract class MTimerListener extends TimerListener
 		this.xInterval = xInterval;
 		this.yInterval = yInterval;
 	}
+	
+	/**
+	 * Gets the xInterval of movement.
+	 * @return xInterval - the xInterval of movement.
+	 */
+	public double getXInterval()
+	{
+		return xInterval;
+	}
+	
+	/**
+	 * Gets the yInterval of movement.
+	 * @return yInterval - the yInterval of movement.
+	 */
+	public double getYInterval()
+	{
+		return yInterval;
+	}
 }

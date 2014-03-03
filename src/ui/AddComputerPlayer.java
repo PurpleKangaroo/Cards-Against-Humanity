@@ -14,26 +14,25 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * A JDialog that allows users to add computer players to a game of Cards Against Humanity.
+ * @author Holt Maki
+ * @since CAH1.0
+ * @version CAH1.0
+ *
+ */
 public class AddComputerPlayer extends JDialog
 {
 
-	private final JPanel contentPanel = new JPanel();
-
 	/**
-	 * Launch the application.
+	 * Generated Serial Version UID.
 	 */
-	public static void main(String[] args)
-	{
-		try
-		{
-			AddComputerPlayer dialog = new AddComputerPlayer();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
+	private static final long serialVersionUID = 1008090860627237990L;
+	
+	/**
+	 * The panel that contains everything but the "OK" and "Cancel" buttons.
+	 */
+	private final JPanel contentPanel = new JPanel();
 
 	/**
 	 * Create the dialog.

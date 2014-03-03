@@ -80,11 +80,11 @@ public class WhiteCard extends UICard implements Movable
 		textArea.setEditable(false);
 		textArea.setForeground(Color.BLACK);
 		textArea.setOpaque(false);
-		textArea.setBounds(10, 11, 168, 192);
+		textArea.setBounds(16, 12, 156, 180);
 		add(textArea);
 		
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setBounds(15, 230, 87, 15);
+		lblLogo.setBounds(20, 224, 87, 15);
 		lblLogo.setIcon(new ImageIcon(WhiteCard.class.getResource("/graphics/icon_w.png")));
 		add(lblLogo);
 		
