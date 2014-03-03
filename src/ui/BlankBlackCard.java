@@ -12,18 +12,18 @@ import javax.swing.JLabel;
 import javax.swing.Timer;
 
 /**
- * A UICard that shows a blank white card to represent the back of a white card.
+ * A UICard that represents a blank black card that represents the back of a black card.
  * @author Holt Maki
  * @since CAH1.0
  * @version CAH1.0
  *
  */
-public final class BlankWhiteCard extends UICard
+public class BlankBlackCard extends UICard
 {
 	/**
 	 * Generated Serial Version UID.
 	 */
-	private static final long serialVersionUID = -8930263492361175453L;
+	private static final long serialVersionUID = -6790591203342941729L;
 
 	/**
 	 * Where the X would be during an animation if it were a double.
@@ -43,8 +43,9 @@ public final class BlankWhiteCard extends UICard
 	 * Create the panel.
 	 * @since CAH1.0
 	 * @author Holt Maki
+	 * @wbp.parser.constructor
 	 */
-	public BlankWhiteCard()
+	public BlankBlackCard()
 	{
 		setFocusTraversalPolicyProvider(true);
 		setBackground(new Color(Color.TRANSLUCENT));
@@ -54,7 +55,7 @@ public final class BlankWhiteCard extends UICard
 		
 		JLabel lblCard = new JLabel("");
 		lblCard.setBounds(0, 5, 188, 270);
-		lblCard.setIcon(new ImageIcon(WhiteCard.class.getResource("/graphics/wc.png")));
+		lblCard.setIcon(new ImageIcon(WhiteCard.class.getResource("/graphics/bc.png")));
 		add(lblCard);
 		
 		trueX = this.getX();
