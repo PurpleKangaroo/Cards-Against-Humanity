@@ -48,7 +48,7 @@ public class GamePane extends JLayeredPane {
 	 * @param player - the player who is playing the game on the computer that is showing the pane.
 	 * 
 	 */
-	public GamePane(/*CAH_Game game, String username*/) 
+	public GamePane(CAH_Game game, String username) 
 	{
 		this.username = username;
 		this.game = game;
@@ -99,6 +99,7 @@ public class GamePane extends JLayeredPane {
 		playersPanel.setBorder(new CompoundBorder(new LineBorder(new Color(0, 0, 0)), new MatteBorder(5, 5, 5, 5, (Color) new Color(255, 255, 255))));
 		playersPanel.setBackground(Color.BLACK);
 		playersPanel.setBounds(0, 0, 1284, 140);
+		playersPanel.setLayout(null);
 		add(playersPanel);
 		
 		JPanel historyPanel = new JPanel();
@@ -117,5 +118,13 @@ public class GamePane extends JLayeredPane {
 		historyTextPane.setBounds(10, 11, 264, 234);
 		historyPanel.add(historyTextPane);
 
+	}
+	
+	/**
+	 * Sets the players panel with all the players.
+	 */
+	private void setPlayers()
+	{
+		
 	}
 }

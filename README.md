@@ -21,8 +21,6 @@ Holt Maki ([@HoltMaki](https://github.com/HoltMaki)) - Lead Developer
 
 Devon Grove ([@devongrove](https://github.com/devongrove)) - Senior Developer, Lead Tester, Public Relations
 
-Nick Walker ([@oswin5656](https://github.com/oswin5656)) - Senior Developer
-
 ### Support or Contact
 purplekangs@gmail.com
 ####Follow us on Twitter [@PurpleKangs_Dev](https://twitter.com/PurpleKangs_Dev)
