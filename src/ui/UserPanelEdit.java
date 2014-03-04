@@ -3,6 +3,9 @@ package ui;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Panel;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.GregorianCalendar;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -26,9 +29,40 @@ public class UserPanelEdit extends JPanel
 	 */
 	private static final long serialVersionUID = 5867800601067696778L;
 	
+	/**
+	 * The text field where the username is entered.
+	 */
 	private JTextField usernameField;
+	
+	/**
+	 * The text field where the user's first name is entered.
+	 */
 	private JTextField firstNameTextField;
-	private JTextField textField;
+	
+	/**
+	 * The text field where the user's last name is entered.
+	 */
+	private JTextField lastNameTextField;
+	
+	/**
+	 * The JComboBox where people enter their gender.
+	 */
+	private JComboBox genderComboBox;
+	
+	/**
+	 * The JCombo box where the user enters their birthdate's month.
+	 */
+	private JComboBox monthComboBox;
+	
+	/**
+	 * The JCombo box where the user enters their birthdate's year.
+	 */
+	private JComboBox yearComboBox;
+	
+	/**
+	 * The JCombo box where the user enters their birthdate's day.
+	 */
+	private JComboBox dayComboBox;
 
 	/**
 	 * Create the panel with no old information.
@@ -83,12 +117,12 @@ public class UserPanelEdit extends JPanel
 		SpringLayout sl_panel_3 = new SpringLayout();
 		panel_3.setLayout(sl_panel_3);
 		
-		textField = new JTextField();
-		sl_panel_3.putConstraint(SpringLayout.NORTH, textField, 5, SpringLayout.NORTH, panel_3);
-		sl_panel_3.putConstraint(SpringLayout.WEST, textField, 10, SpringLayout.WEST, panel_3);
-		sl_panel_3.putConstraint(SpringLayout.EAST, textField, 158, SpringLayout.WEST, panel_3);
-		panel_3.add(textField);
-		textField.setColumns(10);
+		lastNameTextField = new JTextField();
+		sl_panel_3.putConstraint(SpringLayout.NORTH, lastNameTextField, 5, SpringLayout.NORTH, panel_3);
+		sl_panel_3.putConstraint(SpringLayout.WEST, lastNameTextField, 10, SpringLayout.WEST, panel_3);
+		sl_panel_3.putConstraint(SpringLayout.EAST, lastNameTextField, 158, SpringLayout.WEST, panel_3);
+		panel_3.add(lastNameTextField);
+		lastNameTextField.setColumns(10);
 		
 		JLabel lblGender = new JLabel("Gender:    ");
 		panel.add(lblGender);
@@ -99,13 +133,13 @@ public class UserPanelEdit extends JPanel
 		SpringLayout sl_panel_4 = new SpringLayout();
 		panel_4.setLayout(sl_panel_4);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setToolTipText("Select Your Gender");
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Male", "Female"}));
-		sl_panel_4.putConstraint(SpringLayout.NORTH, comboBox, 5, SpringLayout.NORTH, panel_4);
-		sl_panel_4.putConstraint(SpringLayout.WEST, comboBox, 10, SpringLayout.WEST, panel_4);
-		sl_panel_4.putConstraint(SpringLayout.EAST, comboBox, 158, SpringLayout.WEST, panel_4);
-		panel_4.add(comboBox);
+		genderComboBox = new JComboBox();
+		genderComboBox.setToolTipText("Select Your Gender");
+		genderComboBox.setModel(new DefaultComboBoxModel(new String[] {"Male", "Female"}));
+		sl_panel_4.putConstraint(SpringLayout.NORTH, genderComboBox, 5, SpringLayout.NORTH, panel_4);
+		sl_panel_4.putConstraint(SpringLayout.WEST, genderComboBox, 10, SpringLayout.WEST, panel_4);
+		sl_panel_4.putConstraint(SpringLayout.EAST, genderComboBox, 158, SpringLayout.WEST, panel_4);
+		panel_4.add(genderComboBox);
 		
 		Panel panel_5 = new Panel();
 		add(panel_5);
@@ -129,13 +163,12 @@ public class UserPanelEdit extends JPanel
 		SpringLayout sl_panel_10 = new SpringLayout();
 		panel_10.setLayout(sl_panel_10);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}));
-		sl_panel_10.putConstraint(SpringLayout.NORTH, comboBox_1, 5, SpringLayout.NORTH, panel_10);
-		sl_panel_10.putConstraint(SpringLayout.WEST, comboBox_1, 10, SpringLayout.WEST, panel_10);
-		sl_panel_10.putConstraint(SpringLayout.SOUTH, comboBox_1, -3, SpringLayout.SOUTH, panel_10);
-		sl_panel_10.putConstraint(SpringLayout.EAST, comboBox_1, 158, SpringLayout.WEST, panel_10);
-		panel_10.add(comboBox_1);
+		monthComboBox = new JComboBox();
+		monthComboBox.setModel(new DefaultComboBoxModel(new String[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}));
+		sl_panel_10.putConstraint(SpringLayout.NORTH, monthComboBox, 5, SpringLayout.NORTH, panel_10);
+		sl_panel_10.putConstraint(SpringLayout.WEST, monthComboBox, 10, SpringLayout.WEST, panel_10);
+		sl_panel_10.putConstraint(SpringLayout.EAST, monthComboBox, 158, SpringLayout.WEST, panel_10);
+		panel_10.add(monthComboBox);
 		
 		JLabel lblDay = new JLabel("Day:    ");
 		lblDay.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -143,7 +176,8 @@ public class UserPanelEdit extends JPanel
 		
 		JPanel panel_9 = new JPanel();
 		panel_6.add(panel_9);
-		panel_9.setLayout(new SpringLayout());
+		SpringLayout sl_panel_9 = new SpringLayout();
+		panel_9.setLayout(sl_panel_9);
 		
 		JLabel lblYear = new JLabel("Year:    ");
 		lblYear.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -154,14 +188,123 @@ public class UserPanelEdit extends JPanel
 		SpringLayout sl_panel_12 = new SpringLayout();
 		panel_12.setLayout(sl_panel_12);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981", "1980", "1979", "1978", "1977", "1976", "1975", "1974", "1973", "1972", "1971", "1970", "1969", "1968", "1967", "1966", "1965", "1964", "1963", "1962", "1961", "1960", "1959", "1958", "1957", "1956", "1955", "1954", "1953", "1952", "1951", "1950", "1949", "1948", "1947", "1946", "1945", "1944", "1943", "1942", "1941", "1940", "1939", "1938", "1937", "1936", "1935", "1934", "1933", "1932", "1931", "1930", "1929", "1928", "1927", "1926", "1925", "1924", "1923", "1922", "1921", "1920", "1919", "1918", "1917", "1916", "1915", "1914", "1913", "1912"}));
-		sl_panel_12.putConstraint(SpringLayout.NORTH, comboBox_2, 5, SpringLayout.NORTH, panel_12);
-		sl_panel_12.putConstraint(SpringLayout.WEST, comboBox_2, 10, SpringLayout.WEST, panel_12);
-		sl_panel_12.putConstraint(SpringLayout.SOUTH, comboBox_2, -3, SpringLayout.SOUTH, panel_12);
-		sl_panel_12.putConstraint(SpringLayout.EAST, comboBox_2, 158, SpringLayout.WEST, panel_12);
-		panel_12.add(comboBox_2);
+		yearComboBox = new JComboBox();
+		String[] years = new String[120];
+		GregorianCalendar cal = new GregorianCalendar();
+		for(int i = 0; i < 120; i++)
+		{
+			years[i] = (cal.YEAR - i) + "";
+		}
+		yearComboBox.setModel(new DefaultComboBoxModel(years));
+		sl_panel_12.putConstraint(SpringLayout.NORTH, yearComboBox, 5, SpringLayout.NORTH, panel_12);
+		sl_panel_12.putConstraint(SpringLayout.WEST, yearComboBox, 10, SpringLayout.WEST, panel_12);
+		sl_panel_12.putConstraint(SpringLayout.EAST, yearComboBox, 158, SpringLayout.WEST, panel_12);
+		panel_12.add(yearComboBox);
+		
+		dayComboBox = new JComboBox();
+		setDayComboBoxModel();
+		sl_panel_9.putConstraint(SpringLayout.NORTH, dayComboBox, 5, SpringLayout.NORTH, panel_9);
+		sl_panel_9.putConstraint(SpringLayout.WEST, dayComboBox, 10, SpringLayout.WEST, panel_9);
+		sl_panel_9.putConstraint(SpringLayout.EAST, dayComboBox, 158, SpringLayout.WEST, panel_9);
+		panel_9.add(dayComboBox);
+		
+		yearComboBox.addItemListener(new ItemListener()
+		{
+
+			@Override
+			public void itemStateChanged(ItemEvent arg0)
+			{
+				setDayComboBoxModel();
+				
+			}
+			
+		});
+		
+		monthComboBox.addItemListener(new ItemListener()
+		{
+
+			@Override
+			public void itemStateChanged(ItemEvent arg0)
+			{
+				setDayComboBoxModel();
+				
+			}
+			
+		});
 		//TODO make day combo box depend on year and month selected
 		
+	}
+	
+	/**
+	 * Sets the day combo box's model to have the number of days of the currently selected month and year.
+	 * @since CAH1.0
+	 */
+	private void setDayComboBoxModel()
+	{
+		int oldDay = 1;
+		try
+		{
+			oldDay = Integer.parseInt((String) dayComboBox.getModel().getSelectedItem());
+		}
+		catch(Exception e)
+		{
+			
+		}
+		
+		int Year = Integer.parseInt((String) yearComboBox.getModel().getSelectedItem());
+		GregorianCalendar leapYearTest = new GregorianCalendar();
+		
+		int days = 0;
+		switch((String) monthComboBox.getModel().getSelectedItem())
+		{
+			case "January":
+				days = 31;
+				break;
+			case "February":
+				days = leapYearTest.isLeapYear(Year) ? 29 : 28;
+				break;
+			case "March":
+				days = 31;
+				break;
+			case "April":
+				days = 30;
+				break;
+			case "May":
+				days = 31;
+				break;
+			case "June":
+				days = 30;
+				break;
+			case "July":
+				days = 31;
+				break;
+			case "August":
+				days = 31;
+				break;
+			case "September":
+				days = 30;
+				break;
+			case "October":
+				days = 31;
+				break;
+			case "November":
+				days = 30;
+				break;
+			case "December":
+				days = 31;
+				break;
+		}
+		
+		String[] dayArr = new String[days];
+		
+		for(int i = 1; i <= days; i++)
+		{
+			dayArr[i - 1] = i + "";
+		}
+		
+		oldDay = oldDay > days ? days : oldDay;
+		
+		dayComboBox.setModel(new DefaultComboBoxModel(dayArr));
+		dayComboBox.setSelectedIndex(oldDay);
 	}
 }
