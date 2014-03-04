@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
+import java.awt.Color;
 
 /**
  * A panel that allows editing of user information.
@@ -69,18 +70,22 @@ public class UserPanelEdit extends JPanel
 	 */
 	public UserPanelEdit()
 	{
+		setOpaque(false);
 		setSize(new Dimension(336, 255));
 		setLayout(new GridLayout(2, 1, 0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		add(panel);
 		panel.setLayout(new GridLayout(4, 2, 0, 0));
 		
 		JLabel lblUsername = new JLabel("Username:    ");
+		lblUsername.setForeground(Color.WHITE);
 		panel.add(lblUsername);
 		lblUsername.setHorizontalAlignment(SwingConstants.TRAILING);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		panel.add(panel_1);
 		SpringLayout sl_panel_1 = new SpringLayout();
 		panel_1.setLayout(sl_panel_1);
@@ -93,10 +98,12 @@ public class UserPanelEdit extends JPanel
 		usernameField.setColumns(10);
 		
 		JLabel lblFirstName = new JLabel("First Name:    ");
+		lblFirstName.setForeground(Color.WHITE);
 		panel.add(lblFirstName);
 		lblFirstName.setHorizontalAlignment(SwingConstants.TRAILING);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setOpaque(false);
 		panel.add(panel_2);
 		SpringLayout sl_panel_2 = new SpringLayout();
 		panel_2.setLayout(sl_panel_2);
@@ -109,10 +116,12 @@ public class UserPanelEdit extends JPanel
 		panel_2.add(firstNameTextField);
 		
 		JLabel lblLastName = new JLabel("Last Name:    ");
+		lblLastName.setForeground(Color.WHITE);
 		panel.add(lblLastName);
 		lblLastName.setHorizontalAlignment(SwingConstants.TRAILING);
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setOpaque(false);
 		panel.add(panel_3);
 		SpringLayout sl_panel_3 = new SpringLayout();
 		panel_3.setLayout(sl_panel_3);
@@ -125,15 +134,18 @@ public class UserPanelEdit extends JPanel
 		lastNameTextField.setColumns(10);
 		
 		JLabel lblGender = new JLabel("Gender:    ");
+		lblGender.setForeground(Color.WHITE);
 		panel.add(lblGender);
 		lblGender.setHorizontalAlignment(SwingConstants.TRAILING);
 		
 		JPanel panel_4 = new JPanel();
+		panel_4.setOpaque(false);
 		panel.add(panel_4);
 		SpringLayout sl_panel_4 = new SpringLayout();
 		panel_4.setLayout(sl_panel_4);
 		
 		genderComboBox = new JComboBox();
+		genderComboBox.setOpaque(false);
 		genderComboBox.setToolTipText("Select Your Gender");
 		genderComboBox.setModel(new DefaultComboBoxModel(new String[] {"Male", "Female"}));
 		sl_panel_4.putConstraint(SpringLayout.NORTH, genderComboBox, 5, SpringLayout.NORTH, panel_4);
@@ -141,29 +153,35 @@ public class UserPanelEdit extends JPanel
 		sl_panel_4.putConstraint(SpringLayout.EAST, genderComboBox, 158, SpringLayout.WEST, panel_4);
 		panel_4.add(genderComboBox);
 		
-		Panel panel_5 = new Panel();
+		JPanel panel_5 = new JPanel();
+		panel_5.setOpaque(false);
 		add(panel_5);
 		panel_5.setLayout(null);
 		
 		JLabel lblBirthdate = new JLabel("Birthdate");
+		lblBirthdate.setForeground(Color.WHITE);
 		lblBirthdate.setBounds(146, 6, 44, 14);
 		panel_5.add(lblBirthdate);
 		
 		JPanel panel_6 = new JPanel();
+		panel_6.setOpaque(false);
 		panel_6.setBounds(0, 27, 336, 100);
 		panel_5.add(panel_6);
 		panel_6.setLayout(new GridLayout(3, 2, 0, 0));
 		
 		JLabel lblMonth = new JLabel("Month:    ");
+		lblMonth.setForeground(Color.WHITE);
 		lblMonth.setHorizontalAlignment(SwingConstants.TRAILING);
 		panel_6.add(lblMonth);
 		
 		JPanel panel_10 = new JPanel();
+		panel_10.setOpaque(false);
 		panel_6.add(panel_10);
 		SpringLayout sl_panel_10 = new SpringLayout();
 		panel_10.setLayout(sl_panel_10);
 		
 		monthComboBox = new JComboBox();
+		monthComboBox.setOpaque(false);
 		monthComboBox.setModel(new DefaultComboBoxModel(new String[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}));
 		sl_panel_10.putConstraint(SpringLayout.NORTH, monthComboBox, 5, SpringLayout.NORTH, panel_10);
 		sl_panel_10.putConstraint(SpringLayout.WEST, monthComboBox, 10, SpringLayout.WEST, panel_10);
@@ -171,24 +189,29 @@ public class UserPanelEdit extends JPanel
 		panel_10.add(monthComboBox);
 		
 		JLabel lblDay = new JLabel("Day:    ");
+		lblDay.setForeground(Color.WHITE);
 		lblDay.setHorizontalAlignment(SwingConstants.TRAILING);
 		panel_6.add(lblDay);
 		
 		JPanel panel_9 = new JPanel();
+		panel_9.setOpaque(false);
 		panel_6.add(panel_9);
 		SpringLayout sl_panel_9 = new SpringLayout();
 		panel_9.setLayout(sl_panel_9);
 		
 		JLabel lblYear = new JLabel("Year:    ");
+		lblYear.setForeground(Color.WHITE);
 		lblYear.setHorizontalAlignment(SwingConstants.TRAILING);
 		panel_6.add(lblYear);
 		
 		JPanel panel_12 = new JPanel();
+		panel_12.setOpaque(false);
 		panel_6.add(panel_12);
 		SpringLayout sl_panel_12 = new SpringLayout();
 		panel_12.setLayout(sl_panel_12);
 		
 		yearComboBox = new JComboBox();
+		yearComboBox.setOpaque(false);
 		String[] years = new String[120];
 		GregorianCalendar cal = new GregorianCalendar();
 		for(int i = 0; i < 120; i++)
@@ -202,6 +225,7 @@ public class UserPanelEdit extends JPanel
 		panel_12.add(yearComboBox);
 		
 		dayComboBox = new JComboBox();
+		dayComboBox.setOpaque(false);
 		setDayComboBoxModel();
 		sl_panel_9.putConstraint(SpringLayout.NORTH, dayComboBox, 5, SpringLayout.NORTH, panel_9);
 		sl_panel_9.putConstraint(SpringLayout.WEST, dayComboBox, 10, SpringLayout.WEST, panel_9);
