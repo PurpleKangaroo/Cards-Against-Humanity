@@ -15,8 +15,9 @@ public class NonGuestUserProfile extends UserProfile
 	private String lastName;
 	private Gender gender;
 	private GregorianCalendar bDate;
+	//TODO: add IP adress here?
 	
-	//TODO password.
+	//TODO password?
 	
 	/**
 	 * Creates an object that represents  {@linkplain NonGuestPlayer}'s user profile.
