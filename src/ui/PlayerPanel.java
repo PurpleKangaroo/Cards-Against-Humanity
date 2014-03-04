@@ -10,6 +10,7 @@ import javax.swing.border.MatteBorder;
 import java.awt.Dimension;
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.BoxLayout;
 
 /**
  * A class of object that represents the panel where a players information is displayed
@@ -51,6 +52,21 @@ public class PlayerPanel extends JPanel implements Runnable
 		JLabel Name = new JLabel("<html><body style=\"color:WHITE\">" + player.getName() + "</body></html>");
 		Name.setBounds(10, 22, 116, 14);
 		add(Name);
+		
+		JPanel awesomePtsPanel = new JPanel();
+		awesomePtsPanel.setBounds(68, 47, 58, 72);
+		add(awesomePtsPanel);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(10, 47, 58, 72);
+		add(panel);
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+		
+		JPanel panel_1 = new JPanel();
+		panel.add(panel_1);
+		
+		JPanel panel_2 = new JPanel();
+		panel.add(panel_2);
 
 	}
 
