@@ -10,7 +10,7 @@ package ui;
 public interface Movable extends Animated
 {
 	/**
-	 * The 
+	 * Moves an object to a NewX and NewY coordinate in a set number of seconds.
 	 * @since CAH1.0
 	 * @param newX the new x coordinate that the object is being moved to.
 	 * @param newY the new y coordinate that the object is being moved to.
