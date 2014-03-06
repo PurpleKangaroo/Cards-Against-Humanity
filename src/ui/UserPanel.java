@@ -1,5 +1,7 @@
 package ui;
 
+import import_export.UserData;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -18,6 +20,7 @@ import javax.swing.SwingConstants;
  */
 public class UserPanel extends JPanel
 {
+	private UserData data;
 
 	/**
 	 * Create the panel.
@@ -46,7 +49,7 @@ public class UserPanel extends JPanel
 		SpringLayout sl_panel_1 = new SpringLayout();
 		panel_1.setLayout(sl_panel_1);
 		
-		JLabel usernameLabel = new JLabel("New label");
+		JLabel usernameLabel = new JLabel("New label");//data.getUsername();
 		usernameLabel.setForeground(Color.WHITE);
 		sl_panel_1.putConstraint(SpringLayout.NORTH, usernameLabel, 5, SpringLayout.NORTH, panel_1);
 		sl_panel_1.putConstraint(SpringLayout.WEST, usernameLabel, 10, SpringLayout.WEST, panel_1);
@@ -65,7 +68,7 @@ public class UserPanel extends JPanel
 		SpringLayout sl_panel_2 = new SpringLayout();
 		panel_2.setLayout(sl_panel_2);
 		
-		JLabel FirstName = new JLabel("New label");
+		JLabel FirstName = new JLabel("New label");//data.getFirstname();
 		sl_panel_2.putConstraint(SpringLayout.NORTH, FirstName, 5, SpringLayout.NORTH, panel_2);
 		sl_panel_2.putConstraint(SpringLayout.WEST, FirstName, 10, SpringLayout.WEST, panel_2);
 		sl_panel_2.putConstraint(SpringLayout.SOUTH, FirstName, -5, SpringLayout.SOUTH, panel_2);
@@ -84,7 +87,7 @@ public class UserPanel extends JPanel
 		SpringLayout sl_panel_3 = new SpringLayout();
 		panel_3.setLayout(sl_panel_3);
 		
-		JLabel LastName = new JLabel("New label");
+		JLabel LastName = new JLabel("New label");//data.getLastname();
 		sl_panel_3.putConstraint(SpringLayout.NORTH, LastName, 5, SpringLayout.NORTH, panel_3);
 		sl_panel_3.putConstraint(SpringLayout.WEST, LastName, 10, SpringLayout.WEST, panel_3);
 		sl_panel_3.putConstraint(SpringLayout.SOUTH, LastName, -5, SpringLayout.SOUTH, panel_3);
@@ -103,7 +106,7 @@ public class UserPanel extends JPanel
 		SpringLayout sl_panel_4 = new SpringLayout();
 		panel_4.setLayout(sl_panel_4);
 		
-		JLabel genderLabel = new JLabel("New label");
+		JLabel genderLabel = new JLabel("New label");//data.getGender();
 		sl_panel_4.putConstraint(SpringLayout.NORTH, genderLabel, 5, SpringLayout.NORTH, panel_4);
 		sl_panel_4.putConstraint(SpringLayout.WEST, genderLabel, 10, SpringLayout.WEST, panel_4);
 		sl_panel_4.putConstraint(SpringLayout.SOUTH, genderLabel, -5, SpringLayout.SOUTH, panel_4);
@@ -138,7 +141,7 @@ public class UserPanel extends JPanel
 		SpringLayout sl_panel_7 = new SpringLayout();
 		panel_7.setLayout(sl_panel_7);
 		
-		JLabel label_8 = new JLabel("New label");
+		JLabel label_8 = new JLabel("New label");//data.getBirthdate().MONTH;
 		sl_panel_7.putConstraint(SpringLayout.NORTH, label_8, 5, SpringLayout.NORTH, panel_7);
 		sl_panel_7.putConstraint(SpringLayout.WEST, label_8, 10, SpringLayout.WEST, panel_7);
 		sl_panel_7.putConstraint(SpringLayout.SOUTH, label_8, -5, SpringLayout.SOUTH, panel_7);
@@ -151,7 +154,7 @@ public class UserPanel extends JPanel
 		label_6.setForeground(Color.WHITE);
 		panel_6.add(label_6);
 		
-		JPanel panel_8 = new JPanel();
+		JPanel panel_8 = new JPanel();//data.getBirthdate().DAY;
 		panel_8.setOpaque(false);
 		panel_6.add(panel_8);
 		SpringLayout sl_panel_8 = new SpringLayout();
@@ -170,7 +173,7 @@ public class UserPanel extends JPanel
 		label_7.setForeground(Color.WHITE);
 		panel_6.add(label_7);
 		
-		JPanel panel_9 = new JPanel();
+		JPanel panel_9 = new JPanel();//data.getBirthdate().YEAR;
 		panel_9.setOpaque(false);
 		panel_6.add(panel_9);
 		SpringLayout sl_panel_9 = new SpringLayout();
