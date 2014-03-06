@@ -145,7 +145,6 @@ public class UserPanelEdit extends JPanel
 		panel_4.setLayout(sl_panel_4);
 		
 		genderComboBox = new JComboBox();
-		genderComboBox.setOpaque(false);
 		genderComboBox.setToolTipText("Select Your Gender");
 		genderComboBox.setModel(new DefaultComboBoxModel(new String[] {"Male", "Female"}));
 		sl_panel_4.putConstraint(SpringLayout.NORTH, genderComboBox, 5, SpringLayout.NORTH, panel_4);
@@ -160,7 +159,7 @@ public class UserPanelEdit extends JPanel
 		
 		JLabel lblBirthdate = new JLabel("Birthdate");
 		lblBirthdate.setForeground(Color.WHITE);
-		lblBirthdate.setBounds(146, 6, 44, 14);
+		lblBirthdate.setBounds(140, 6, 56, 14);
 		panel_5.add(lblBirthdate);
 		
 		JPanel panel_6 = new JPanel();
@@ -181,7 +180,6 @@ public class UserPanelEdit extends JPanel
 		panel_10.setLayout(sl_panel_10);
 		
 		monthComboBox = new JComboBox();
-		monthComboBox.setOpaque(false);
 		monthComboBox.setModel(new DefaultComboBoxModel(new String[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}));
 		sl_panel_10.putConstraint(SpringLayout.NORTH, monthComboBox, 5, SpringLayout.NORTH, panel_10);
 		sl_panel_10.putConstraint(SpringLayout.WEST, monthComboBox, 10, SpringLayout.WEST, panel_10);
@@ -211,12 +209,12 @@ public class UserPanelEdit extends JPanel
 		panel_12.setLayout(sl_panel_12);
 		
 		yearComboBox = new JComboBox();
-		yearComboBox.setOpaque(false);
 		String[] years = new String[120];
 		GregorianCalendar cal = new GregorianCalendar();
-		for(int i = 0; i < 120; i++)
+		
+		for(int i = 0; i < 110; i++)
 		{
-			years[i] = (cal.YEAR - i) + "";
+			years[i] = ((cal.get(cal.YEAR)) - i) + "";
 		}
 		yearComboBox.setModel(new DefaultComboBoxModel(years));
 		sl_panel_12.putConstraint(SpringLayout.NORTH, yearComboBox, 5, SpringLayout.NORTH, panel_12);
@@ -225,7 +223,6 @@ public class UserPanelEdit extends JPanel
 		panel_12.add(yearComboBox);
 		
 		dayComboBox = new JComboBox();
-		dayComboBox.setOpaque(false);
 		setDayComboBoxModel();
 		sl_panel_9.putConstraint(SpringLayout.NORTH, dayComboBox, 5, SpringLayout.NORTH, panel_9);
 		sl_panel_9.putConstraint(SpringLayout.WEST, dayComboBox, 10, SpringLayout.WEST, panel_9);
@@ -329,6 +326,6 @@ public class UserPanelEdit extends JPanel
 		oldDay = oldDay > days ? days : oldDay;
 		
 		dayComboBox.setModel(new DefaultComboBoxModel(dayArr));
-		dayComboBox.setSelectedIndex(oldDay);
+		dayComboBox.setSelectedIndex(oldDay - 1);
 	}
 }

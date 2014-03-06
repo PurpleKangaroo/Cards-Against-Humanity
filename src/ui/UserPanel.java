@@ -5,6 +5,7 @@ import import_export.UserData;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.io.FileNotFoundException;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,14 +21,20 @@ import javax.swing.SwingConstants;
  */
 public class UserPanel extends JPanel
 {
-	private UserData data;
+	/**
+	 * Generated Serial Version UID.
+	 */
+	private static final long serialVersionUID = 9186461916885273441L;
 
 	/**
 	 * Create the panel.
+	 * @throws FileNotFoundException If UserData cannot find the RandomAccessFile userSave.dat.
 	 * @since CAH1.0
 	 */
-	public UserPanel()
+	public UserPanel() throws FileNotFoundException
 	{
+		UserData data = new UserData();
+		
 		setOpaque(false);
 		setBackground(Color.BLACK);
 		setSize(new Dimension(336, 255));
