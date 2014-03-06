@@ -47,6 +47,9 @@ public class CAH_Users extends JPanel
 		mainPanel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		mainPanel.setOpaque(false);
 		mainPanel.setBounds(599, 230, 336, 255);
+		mainPanel.setLayout(null);
+		UserPanelEdit edit = new UserPanelEdit();
+		mainPanel.add(edit);
 		add(mainPanel);
 		
 		JLabel lblCardsAgainstHumanity = new JLabel("Cards Against Humanity");
