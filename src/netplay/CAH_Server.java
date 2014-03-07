@@ -3,6 +3,8 @@ package netplay;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
@@ -71,12 +73,18 @@ public class CAH_Server implements Runnable {
 					
 					if(clientSocketChannel != null)
 					{
+						clientSocketChannel.configureBlocking(false);
 						
+						SelectionKey clientKey = clientSocketChannel.register(selector, SelectionKey.OP_READ, SelectionKey.OP_WRITE);
+						
+						Map<String, String> clientProperties = new HashMap<String, String>();
+						clientProperties.put(channelType, clientChannel);
+						
+						clientKey.attach(clientProperties);
 					}
 				}
 			}
 		}
-		
 	}
 
 	@Override
