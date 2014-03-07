@@ -8,38 +8,28 @@ import java.net.*;
  * @author Holt Maki
  * @since CAH1.0
  * @version CAH1.0
- * <dt></dt>
- * <b>Extends:</b> <dl> {@linkplain Thread} </dl>
  */
 public class CAH_Server extends Thread {
+	/**
+	 * The port that is used for the connection.
+	 */
 	private static int port = 2000;
+	
+	/**
+	 * The socket that is used for the server.
+	 */
 	private ServerSocket serverSocket;
 	
 	/**
 	 * Creates an object that represents a Cards Against Humanity Server
 	 * @since CAH1.0
 	 * @version CAH1.0
+	 * @throws IOException 
 	 */
-	public CAH_Server()
-	{		
-		boolean socketCreated = false;
-		
-		while(!socketCreated)
-		{
-			
-			port++;
-			
-			try
-			{
-				serverSocket = new ServerSocket(port);
-			}
-			
-			catch(IOException e)
-			{
-				
-			}
-			
-		}
+	public CAH_Server() throws IOException
+	{
+		serverSocket = new ServerSocket(port);
+		serverSocket.setSoTimeout(10000);
 	}
 	
 	public void run()
@@ -56,7 +46,7 @@ public class CAH_Server extends Thread {
 				ObjectInputStream objIn = new ObjectInputStream(server.getInputStream());
 				ObjectOutputStream objOut = new ObjectOutputStream(server.getOutputStream());
 				
-				//FIXME The input and output stream need to actually do stuff.	
+				//FIXME The input and output stream need to actually do stuff.
 			}
 			
 			catch(SocketTimeoutException t)
