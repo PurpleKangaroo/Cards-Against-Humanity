@@ -1,5 +1,7 @@
 package ui;
 
+import java.net.InetAddress;
+
 import javax.swing.JPanel;
 
 /**
@@ -22,7 +24,7 @@ public class CAH_Netplay extends JPanel
 	 */
 	public CAH_Netplay()
 	{
-
+		// How to get IP adress of your computer: InetAddress.getLocalHost().getHostAddress()
 	}
 
 }
