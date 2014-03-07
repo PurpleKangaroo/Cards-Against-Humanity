@@ -34,6 +34,10 @@ public class CAH_Game {
 	/**Says if its the first time through*/
 	private boolean first;
 	/**
+	 * The phase that the game is in.
+	 */
+	private Phases currentPhase;
+	/**
 	 * The current question card being used.
 	 */
 	private QuestionCard currentQCard;
@@ -59,6 +63,7 @@ public class CAH_Game {
 		{
 			gameDeck = players.get(i).deal_draw(gameDeck, 0);//Now every player has their hand of cards and these cards have been taken from the deck.
 		}
+		currentPhase = Phases.DRAW;
 		//TODO remove "make a haiku card" if happy ending rule in effect
 	}
 	
@@ -100,14 +105,23 @@ public class CAH_Game {
 	}
 	
 	/**
+	 * The current phase of the CAH game.
+	 * @return {@link #currentPhase} - The current Phase that the game is in.
+	 * @since CAH1.0
+	 */
+	public Phases getCurrentPhase()
+	{
+		return currentPhase;
+	}
+	
+	/**
 	 * Carries out the answer phase of a Cards Against Humanity game, where all players,
 	 * except the card czar answer the {@linkplain CAH_Game#currentQCard}.
 	 * @since CAH1.0
 	 */
-	public void answerPhase()
+	public void playPhase()
 	{
-		//TODO: fill
-		//TODO: May be un nessescery?
+		currentPhase = Phases.ANSWER;
 	}
 	
 	/**
@@ -123,7 +137,7 @@ public class CAH_Game {
 	 */
 	public void choosePhase()
 	{
-		//TODO: fill
+		currentPhase = Phases.CHOOSE;
 	}
 	
 	/*Add public void playerResume(player resumingPlayer){} a method that will allow players who have left to get
@@ -421,6 +435,31 @@ public class CAH_Game {
 	public Rules getGameRules()
 	{
 		return ruleSet;
+	}
+	
+	/**
+	 * A list of different phases that a game of CAH can be in.
+	 * @author Holt Maki
+	 * @since CAH1.0
+	 * @version CAH1.0
+	 *
+	 */
+	public enum Phases
+	{
+		/**
+		 * The phase that is used when the game is in the draw phase.
+		 */
+		DRAW,
+		
+		/**
+		 * The phase that is used when the game is in the phase of players playing their cards.
+		 */
+		ANSWER,
+		
+		/**
+		 * The phase that is used when the game is in the phase of the winning card being choosen.
+		 */
+		CHOOSE;
 	}
 	
 }
