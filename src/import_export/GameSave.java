@@ -4,7 +4,11 @@ import game.CAH_Game;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -18,6 +22,11 @@ import java.util.ArrayList;
 public class GameSave implements Serializable
 {
 	/**
+	 * The Generated Serial Version UID.
+	 */
+	private static final long serialVersionUID = 6890804304166475593L;
+
+	/**
 	 * The list of saved games that GameSaveBank contains.
 	 */
 	private ArrayList<CAH_Game> saves;
@@ -25,7 +34,7 @@ public class GameSave implements Serializable
 	/**
 	 * The file that the games are saved to.
 	 */
-	private File gameSaves = new File("gameSaves.dat");
+	private File gameSaves = new File(GameSave.class.getResource("gameSaves.dat").getFile());
 	
 	/**
 	 * Creates an object that saves and loads {@linkplain CAH_Game}s.
@@ -41,6 +50,7 @@ public class GameSave implements Serializable
 		{
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream(gameSaves));
 			saves = ((GameSave) in.readObject()).getSaves();
+			in.close();
 			if(saves == null)
 			{
 				NoSavesException e = new NoSavesException();
@@ -57,20 +67,48 @@ public class GameSave implements Serializable
 	/**
 	 * Saves a game.
 	 * @param game The game being saved.
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 * @since CAH1.0
 	 */
-	public void saveGame(CAH_Game game)
+	public void saveGame(CAH_Game game) throws FileNotFoundException, IOException
 	{
 		saves.add(game);
+		save();
+	}
+	
+	/**
+	 * Deletes a game.
+	 * @param game The game being deleted.
+	 * @throws IOException 
+	 * @since CAH1.0
+	 */
+	public void deleteGame(CAH_Game game) throws IOException
+	{
+		saves.remove(game);
+		save();
 	}
 	
 	/**
 	 * Gets an array list of CAH_Games that were saved to gameSaves.dat inside T
-	 * @return saves - The array list of saves t
+	 * @return saves - The array list of saves that GameSave contains.
+	 * @since CAH1.0
 	 */
 	public ArrayList<CAH_Game> getSaves()
 	{
 		return saves;
+	}
+	
+	/**
+	 * Saves the GameSave to the file gameSaves.dat.
+	 * @throws IOException
+	 * @since CAH1.0
+	 */
+	private void save() throws IOException
+	{
+		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(gameSaves));
+		out.writeObject(this);
+		out.close();
 	}
 	
 	/**
