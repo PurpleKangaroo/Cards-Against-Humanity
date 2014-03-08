@@ -59,7 +59,7 @@ public class QuestionCard extends Card{
 			card1 = card.substring(0,card.indexOf("{"));
 		}
 		card1 = card1.replaceAll("<LINE>", "\n"); //TODO encoder
-		super.setCardString(encode.encode(card1).replaceAll("_", "_____"));
+		super.setCardString(encode.encode(card1).replaceAll("_", "<u>______</u>"));
 		
 	}
 	/**
