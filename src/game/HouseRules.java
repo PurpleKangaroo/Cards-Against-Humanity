@@ -59,7 +59,7 @@ public enum HouseRules {
 	 *  card before playing the hand to open up more options."
 	 * @since CAH1.0
 	 */
-	PACKING_HEAT("\"Every round, pick one random White Card from the pile and place it into play. This card belongs to an Imaginary player named Rando Cardrissian and if he wins the game, all players go home in a state of everlasting shame.\""),
+	PACKING_HEAT("\"For Pick 2s, all players draw an extra card before playing the hand to open up more options.\""),
 	
 	/**
 	 * "Every round, pick one random
