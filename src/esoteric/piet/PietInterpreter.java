@@ -34,6 +34,7 @@ public class PietInterpreter
 			{
 				incrementLocation();
 				Command command = getCommand();
+				int numberOfCodels = getNumberOfCodels();
 				switch(command)
 				{
 				case PUSH:
@@ -99,6 +100,12 @@ public class PietInterpreter
 		Command a = getCommand();
 	}
 	
+	private int getNumberOfCodels()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	private Command getCommand()
 	{
 		return Command.getCommand(this.lastColor, getPietColor());
