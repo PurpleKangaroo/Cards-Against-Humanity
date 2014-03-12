@@ -1,21 +1,13 @@
 package cards;
 
-import import_export.PathFinder;
-
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import esoteric.brainfuck.Brainfuck;
-import esoteric.brainfuck.BrainfuckInterpreter;
-import esoteric.brainfuck.TextToBrainfuck;
 
 /**
  * An object that creates decks.

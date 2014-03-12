@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
  * @author Holt Maki
  * @since CAH1.0
  * @version CAH1.0
+ * @deprecated CAH1.0
  */
 public class ImageLoad
 {
