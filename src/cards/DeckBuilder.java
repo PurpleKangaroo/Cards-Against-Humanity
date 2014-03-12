@@ -1,8 +1,11 @@
 package cards;
 
+import import_export.PathFinder;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -87,22 +90,6 @@ public class DeckBuilder {
 	public Deck getDeck()
 	{
 		return deck;
-	}
-	
-	public static void main(String[] args)
-	{
-		try
-		{
-			DeckBuilder a = new DeckBuilder(new Decks[]{Decks.HOLIDAYEXPANSION});
-		} catch (URISyntaxException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 }
