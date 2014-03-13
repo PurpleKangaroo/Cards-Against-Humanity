@@ -63,6 +63,11 @@ public class GamePane extends JLayeredPane {
 		MainGamePanel.setBackground(Color.BLACK);
 		MainGamePanel.setBounds(0, 140, 1000, 560);
 		add(MainGamePanel);
+		MainGamePanel.setLayout(null);
+		
+		BlankBlackCard blankBlackCard = new BlankBlackCard();
+		blankBlackCard.setLocation(32, 145);
+		MainGamePanel.add(blankBlackCard);
 		
 		JPanel chatPanel = new JPanel();
 		chatPanel.setBorder(new CompoundBorder(new LineBorder(new Color(0, 0, 0)), new MatteBorder(5, 5, 5, 5, (Color) new Color(255, 255, 255))));
