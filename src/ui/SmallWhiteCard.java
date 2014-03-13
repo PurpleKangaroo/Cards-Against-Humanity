@@ -8,7 +8,6 @@ import java.awt.Font;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
 
