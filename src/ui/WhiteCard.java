@@ -105,6 +105,11 @@ public class WhiteCard extends UICard implements Movable
 		
 		answerCard = card;
 		
+		setTrueLocation();
+	}
+	
+	protected void setTrueLocation()
+	{
 		trueX = this.getX();
 		trueY = this.getY();
 	}
