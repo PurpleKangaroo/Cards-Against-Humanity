@@ -45,34 +45,4 @@ public enum DirectionPointer
 			return null;
 		}
 	}
-	
-	public static Point incrementLocation(Point loc, DirectionPointer dir)
-	{
-		return dir.incrementLocation(loc);
-	}
-	
-	public Point incrementLocation(Point loc)
-	{
-		if(this.equals(RIGHT))
-		{
-			return new Point((int) loc.getX() + 1, (int) loc.getY());
-		}
-		
-		else if(this.equals(DOWN))
-		{
-			return new Point((int) loc.getX(), (int) loc.getY() + 1);
-		}
-		
-		else if(this.equals(LEFT))
-		{
-			return new Point((int) loc.getX() - 1, (int) loc.getY());
-		}
-		
-		else if(this.equals(UP))
-		{
-			return new Point((int) loc.getX(), (int) loc.getY() - 1);
-		}
-		
-		else return null;
-	}
 }
