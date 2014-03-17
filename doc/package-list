@@ -3,6 +3,9 @@ ai.data_mining
 ai.nlp
 cards
 cards.cardpedia
+esoteric
+esoteric.brainfuck
+esoteric.piet
 game
 graphics
 import_export
