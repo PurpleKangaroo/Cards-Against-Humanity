@@ -3,12 +3,12 @@ package netplay;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
-import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -20,7 +20,7 @@ import java.util.Set;
  * @since CAH1.0
  * @version CAH1.0
  */
-public class CAH_Server implements Runnable {
+public class CAH_Server {
 	private static String channelType = "channelType";
 	private static String clientChannel = "clientChannel";
 	private static String serverChannel = "serverChannel";
@@ -81,16 +81,20 @@ public class CAH_Server implements Runnable {
 						clientProperties.put(channelType, clientChannel);
 						
 						clientKey.attach(clientProperties);
+						CharBuffer buffer = CharBuffer.wrap("Cards Against Humanity Testing");
+						while(buffer.hasRemaining())
+						{
+							clientSocketChannel.write(Charset.defaultCharset().encode(buffer));
+						}
 					}
 				}
 			}
 		}
 	}
-
-	@Override
-	public void run()
+	
+	public static void main(String[] args) throws IOException
 	{
-		// TODO Auto-generated method stub
-		
+		System.out.println(InetAddress.getLocalHost());
+		CAH_Server a = new CAH_Server();
 	}
 }
