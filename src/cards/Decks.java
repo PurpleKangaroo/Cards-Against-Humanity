@@ -65,8 +65,13 @@ public enum Decks
 	 * @since CAH1.0
 	 */
 	
-	HOLIDAYEXPANSION("The 2012 Cards Against Humanity Holiday Expansion- Have fun with cards such as \"Elf cum\", \"Whatever Kwanza is supposed to be about\", and \"Taking down Santa with a surface-to-air missile\".", new String[]{"Holiday Expansion Answers"}, new String[]{"Holiday Expansion Questions"});
+	HOLIDAYEXPANSION("The 2012 Cards Against Humanity Holiday Expansion- Have fun with cards such as \"Elf cum\", \"Whatever Kwanza is supposed to be about\", and \"Taking down Santa with a surface-to-air missile\".", new String[]{"Holiday Expansion Answers"}, new String[]{"Holiday Expansion Questions"}),
 	
+	/**
+	 * The CAH PAX East Expansion (2013).
+	 * @since CAH1.0
+	 */
+	PAXEXPANSION("The CAH PAX East Expansion from 2013.", new String[]{"PAX East Expansion (2013) Answers"}, new String[]{"PAX East Expansion (2013) Questions"});
 	String description;
 	String[] answerPaths;
 	String[] questionPaths;

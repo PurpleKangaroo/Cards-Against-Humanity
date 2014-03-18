@@ -221,6 +221,31 @@ public class CAH_Cards extends JLayeredPane
 	private QColumnedList ExpHQList;
 	
 	/**
+	 * The JTabbedPane for the pax expansion.
+	 */
+	private JTabbedPane PAX_Expansion;
+	
+	/**
+	 * The JScrollPane for the 2013 CAH Pax East Expansion Answers.
+	 */
+	private JScrollPane PAXScrA;
+	
+	/**
+	 * The JScrollPane for the 2013 CAH Pax East Expansion Questions.
+	 */
+	private JScrollPane PAXScrQ;
+	/**
+	 * The AList for the for the 2013 CAH PAX Expansion.
+	 */
+	private AList ExpPAXAList;
+
+	/**
+	 * The QColumned List for the 2012 CAH PAX Expansion.
+	 */
+	private QColumnedList ExpPAXQList;
+	
+	
+	/**
 	 * A number that needs to be included as a field for the bounce ActionListner to access it and change it.
 	 */
 	private int count;
@@ -325,6 +350,19 @@ public class CAH_Cards extends JLayeredPane
 		ExpHAList = new AList(Decks.HOLIDAYEXPANSION);
 		ExpansionHScrA.setViewportView(ExpHAList);
 		
+		PAX_Expansion = new JTabbedPane(JTabbedPane.TOP);
+		decksTabbed.addTab("PAX East Expansion", null, PAX_Expansion, null);
+		PAXScrQ = new JScrollPane();
+		PAXScrQ.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		PAX_Expansion.addTab("Black Cards", null, PAXScrQ, null);
+		PAXScrA = new JScrollPane();
+		PAXScrA.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		PAX_Expansion.addTab("White Cards", null,PAXScrA, null);
+		ExpPAXQList = new QColumnedList(Decks.PAXEXPANSION);
+		PAXScrQ.setViewportView(ExpPAXQList);
+		ExpPAXAList = new AList(Decks.PAXEXPANSION);
+		PAXScrA.setViewportView(ExpPAXAList);
+		
 		GridBagLayout qScrollLayout = new GridBagLayout();
 		GridBagConstraints qScrollConstraints = new ListScrConstraints();
 		
@@ -367,6 +405,10 @@ public class CAH_Cards extends JLayeredPane
 				"Draw" + "          " + "Pick"));
 		
 		ExpansionHScrQ.setColumnHeaderView(new JLabel("Card Text" +
+				"                                                                                                                         " + 
+				"                                                                                                                   " +
+				"Draw" + "          " + "Pick"));
+		PAXScrQ.setColumnHeaderView(new JLabel("Card Text" +
 				"                                                                                                                         " + 
 				"                                                                                                                   " +
 				"Draw" + "          " + "Pick"));
@@ -465,6 +507,16 @@ public class CAH_Cards extends JLayeredPane
 		HolidayExpansion.addChangeListener(new ChangeListener()
 		{
 
+			@Override
+			public void stateChanged(ChangeEvent arg0)
+			{
+				setCard();
+			}
+			
+		});
+		
+		PAX_Expansion.addChangeListener(new ChangeListener()
+		{
 			@Override
 			public void stateChanged(ChangeEvent arg0)
 			{
@@ -986,6 +1038,39 @@ public class CAH_Cards extends JLayeredPane
 				try
 				{
 					card = new WhiteCard((new DeckBuilder(new Decks[] {Decks.HOLIDAYEXPANSION}).getDeck().getAnswerCardList()).get(ExpHAList.getSelectedIndex()));
+				} catch (URISyntaxException e)
+				{
+					e.printStackTrace();
+				} catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+				bounceIn();
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{card}));
+			}
+		}
+		else if(decksTabbed.getSelectedComponent().equals(PAX_Expansion))
+		{
+			if(PAX_Expansion.getSelectedComponent().equals(PAXScrQ))
+			{
+				try
+				{
+					card = new BlackCard((new DeckBuilder(new Decks[] {Decks.PAXEXPANSION}).getDeck().getQuestionCardList()).get(ExpPAXQList.getSelectedIndex()));
+				} catch (URISyntaxException e)
+				{
+					e.printStackTrace();
+				} catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+				bounceIn();
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{card}));
+			}
+			else if(PAX_Expansion.getSelectedComponent().equals(PAXScrA))
+			{
+				try
+				{
+					card = new WhiteCard((new DeckBuilder(new Decks[] {Decks.PAXEXPANSION}).getDeck().getAnswerCardList()).get(ExpPAXAList.getSelectedIndex()));
 				} catch (URISyntaxException e)
 				{
 					e.printStackTrace();
