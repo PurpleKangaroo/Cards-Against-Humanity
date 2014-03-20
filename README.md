@@ -38,7 +38,7 @@ Use good documentation. (<em>See also: </em>
 
 [Creating a Jar File](https://github.com/PurpleKangaroo/Cards-Against-Humanity#creating-a-jar-file-in-eclipse)
 
-[Java Chronicle Library Info](https://github.com/PurpleKangaroo/Cards-Against-Humanity#java-chronical-library-info)
+[Java Chronicle Library Info](https://github.com/PurpleKangaroo/Cards-Against-Humanity#java-chronicle-library-info)
 
 ##Creating a JAR File in Eclipse
 1. File > Export
