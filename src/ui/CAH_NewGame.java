@@ -219,6 +219,12 @@ public class CAH_NewGame extends JLayeredPane {
 		chckbxHolidayExpansion.setToolTipText(wrap(Decks.HOLIDAYEXPANSION.getDescription()).replaceAll("-", " -").replaceAll("surface -to -air", "surface-to-air"));
 		DecksPanel.add(chckbxHolidayExpansion);
 		
+		final JCheckBox chckbxPaxEastExpansion = new JCheckBox("<html><body style=\"color:WHITE\">PAX East Expansion</body></html>");
+		chckbxPaxEastExpansion.setFocusPainted(false);
+		chckbxPaxEastExpansion.setOpaque(false);
+		chckbxPaxEastExpansion.setToolTipText(wrap(Decks.PAXEXPANSION.getDescription()).replaceAll("-", " -").replaceAll("surface -to -air", "surface-to-air"));
+		DecksPanel.add(chckbxPaxEastExpansion);
+		
 		final JPanel AddPlayerPanel = new JPanel();
 		AddPlayerPanel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(255, 255, 255)));
 		AddPlayerPanel.setOpaque(false);
