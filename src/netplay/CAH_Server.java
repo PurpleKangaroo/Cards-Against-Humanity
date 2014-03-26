@@ -9,6 +9,8 @@ import java.net.Socket;
 
 import javax.swing.Timer;
 
+import com.esotericsoftware.kryonet.Connection;
+import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
 
 /**
@@ -65,14 +67,32 @@ public class CAH_Server implements Runnable
 					e.printStackTrace();
 				}
 			}
-			
 		});
 		
+		gameServer.getKryo().register(ChatMessage.class);
+		gameServer.getKryo().register(GameCommandMessage.class);
 	}
 
 	@Override
 	public void run()
 	{
+		gameServer.addListener(new Listener(){
+			public void disconnected(Connection connection)
+			{
+				super.disconnected(connection);
+				//TODO remove the now disconnected player from the game.
+			}
+			public void connected(Connection connection)
+			{
+				super.connected(connection);
+				//TODO add the connected player.
+			}
+			public void received(Connection connection, Object object)
+			{
+				//TODO use if statement for udp/tcp.
+			}
+		});
+		updateTimer.start();
 		boolean running = true;
 		while(running)
 		{
