@@ -3,6 +3,7 @@ package game;
 import java.util.ArrayList;
 import java.util.Random;
 
+import netplay.GameCommandMessage;
 import cards.Deck;
 import cards.DeckBuilder;
 import cards.QuestionCard;
@@ -88,6 +89,18 @@ public class CAH_Game {
 	public void removePlayer(Player leavingPlayer)
 	{
 		players.remove(leavingPlayer);
+		//add playerSaving stuff.
+	}
+	
+	public void removePlayer(String leavingPlayerUsername)
+	{
+		for(Player p: players)
+		{
+			if(leavingPlayerUsername.equals(p.getUserName()))
+			{
+				removePlayer(p);
+			}
+		}
 		//add playerSaving stuff.
 	}
 	
@@ -435,6 +448,12 @@ public class CAH_Game {
 	public Rules getGameRules()
 	{
 		return ruleSet;
+	}
+	
+	public GameCommandMessage processCommand(GameCommandMessage message)
+	{
+		//TODO fill
+		return null;
 	}
 	
 	/**

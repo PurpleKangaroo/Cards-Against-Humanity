@@ -117,63 +117,22 @@ public class GameCommandMessage implements Message
 	}
 	
 	/**
-	 * An interface used to place all of the GameCommands in one category, while allowing the ServerGameCommand and ClientGameCommand to remain seperate.
-	 * @see ServerGameCommand
-	 * @see ClientGameCommand
+	 * A list of all the different types of game commands.
+	 * @author Holt Maki
 	 * @since CAH1.0
 	 * @version CAH1.0
-	 * @author Holt Maki
 	 *
 	 */
-	protected abstract interface GameCommand
+	public enum GameCommand
 	{
-		
+		DRAW;
 	}
-	
-	/**
-	 * A list of {@linkplain GameCommand}s that the server can send on its own.
-	 * These game commands are sent after processing of game logic.
-	 * @author Holt Maki
-	 * @since CAH1.0
-	 * @version CAH1.0
-	 *
-	 */
-	protected enum ServerGameCommand implements GameCommand
+
+	@Override
+	public int getPriority()
 	{
-		//TODO fill
-		/**
-		 * The {@linkplain GameCommand} sent by the server that indicates that the server is sending the player their hand.
-		 */
-		HAND,
-		/**
-		 * The {@linkplain GameCommand} sent by the server 
-		 */
-		QUESTION_CARD,
-		PLAYERS,
-		CARD_CZAR,
-		SELECTION_OPTIONS,
-		VOTE_PROMPT,
-		PLAYER_VOTED,
-		VOTE_RESULT,
-		CARDELIMINATION_PROMPT,
-		CARD_ELIMINATED,
-		CARDELIMINATION_RESULT,
-		CARD_PLAYED,
-		;
-		
-	}
-	
-	/**
-	 * A list of {@linkplain GameCommand}s that the client can send to the server.
-	 * These game commands are sent after the user interacts with the UI in a way that causes a GameCommandMessage to be sent.
-	 * @author Holt Maki
-	 * @since CAH1.0
-	 * @version CAH1.0
-	 *
-	 */
-	protected enum ClientGameCommand implements GameCommand
-	{
-		//TODO fill
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

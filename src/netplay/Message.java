@@ -21,4 +21,11 @@ public interface Message
 	 * @since CAH1.0
 	 */
 	public String getSender();
+	
+	/**
+	 * Gets the priority of the message.
+	 * @return priority - the priority of the message.
+	 * @since CAH1.0
+	 */
+	public int getPriority();
 }

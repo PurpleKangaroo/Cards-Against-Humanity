@@ -5,9 +5,14 @@ import game.CAH_Game;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.Timer;
+
+import users.Player;
 
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
@@ -22,6 +27,10 @@ import com.esotericsoftware.kryonet.Server;
  */
 public class CAH_Server implements Runnable
 {
+	/**
+	 * A map that contains the usernames and InetSocketAddresses of all of the players of the game.
+	 */
+	private Map<InetSocketAddress, String> socketMap;
 	/**
 	 * The {@linkplain Server} used to communicate with a game's clients.
 	 */
@@ -52,6 +61,7 @@ public class CAH_Server implements Runnable
 	{
 		gameServer = new Server();
 		this.connectionType = connectionType;
+		this.socketMap = new HashMap<InetSocketAddress, String>();
 		this.game = game;
 		updateTimer = new Timer(100, new ActionListener(){
 
@@ -70,6 +80,8 @@ public class CAH_Server implements Runnable
 		});
 		
 		gameServer.getKryo().register(ChatMessage.class);
+		gameServer.getKryo().register(Message.class);
+		gameServer.getKryo().register(Player.class);
 		gameServer.getKryo().register(GameCommandMessage.class);
 	}
 
@@ -80,16 +92,56 @@ public class CAH_Server implements Runnable
 			public void disconnected(Connection connection)
 			{
 				super.disconnected(connection);
-				//TODO remove the now disconnected player from the game.
+				if(connectionType.equals(ConnectionType.UDP))
+				{
+					InetSocketAddress disconnected = connection.getRemoteAddressUDP();
+					game.removePlayer(socketMap.get(disconnected));
+					socketMap.remove(disconnected);
+				}
+				else
+				{
+					InetSocketAddress disconnected = connection.getRemoteAddressTCP();
+					game.removePlayer(socketMap.get(disconnected));
+					socketMap.remove(disconnected);
+				}
+				//TODO Send to clients
 			}
 			public void connected(Connection connection)
 			{
 				super.connected(connection);
-				//TODO add the connected player.
 			}
 			public void received(Connection connection, Object object)
 			{
-				//TODO use if statement for udp/tcp.
+				super.received(connection, object);
+				if(object instanceof GameCommandMessage)
+				{
+					if(connectionType.equals(ConnectionType.UDP))
+					{
+						gameServer.sendToAllUDP(game.processCommand((GameCommandMessage) object));
+					}
+					else
+					{
+						gameServer.sendToAllTCP(game.processCommand((GameCommandMessage) object));
+					}
+				}
+				if(object instanceof ChatMessage)
+				{
+					if(connectionType.equals(ConnectionType.UDP))
+					{
+						gameServer.sendToAllUDP(object);
+					}
+					else
+					{
+						gameServer.sendToAllTCP(object);
+					}
+				}
+				if(object instanceof Player)
+				{
+					if(connectionType.equals(ConnectionType.UDP))
+					socketMap.put(connection.getRemoteAddressUDP(), ((Player) object).getUserName());
+					game.addPlayer((Player) object);
+					//TODO send to clients...
+				}
 			}
 		});
 		updateTimer.start();
