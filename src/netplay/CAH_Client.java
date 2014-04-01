@@ -10,6 +10,14 @@ import javax.swing.Timer;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Server;
 
+/**
+ * A class of object that represents the client side of a connection in Cards Against Humanity.
+ * CAH_Client will communicate with the UI through a priority queue of the messages that it recieves, which the UI will poll from and then act based on the messages.
+ * @author Holt Maki
+ * @since CAH1.0
+ * @version CAH1.0
+ *
+ */
 public class CAH_Client
 {
 	private Client client;
