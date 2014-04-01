@@ -4,7 +4,7 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ChatMessage
+public class ChatMessage implements Message
 {
 	private GregorianCalendar date;
 	private String username;
@@ -49,5 +49,25 @@ public class ChatMessage
 		USER,
 		HASHTAG,
 		CARD;
+	}
+
+	@Override
+	public boolean isPublic()
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public String getSender()
+	{
+		return username;
+	}
+
+	@Override
+	public int getPriority()
+	{
+		int priority = -1;
+		return priority;
 	}
 }
