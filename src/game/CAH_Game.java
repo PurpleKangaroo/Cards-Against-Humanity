@@ -8,7 +8,9 @@ import cards.Deck;
 import cards.DeckBuilder;
 import cards.QuestionCard;
 import users.Card_Czar_Exception;
+import users.HumanPlayer;
 import users.Player;
+import users.User;
 import cards.AnswerCard;
 
 /**
@@ -79,6 +81,16 @@ public class CAH_Game {
 	}
 	
 	/**
+	 * Adds a human player from the user information provided.
+	 * @param user The user who is having a player added for them.
+	 * @since CAH1.0 
+	 */
+	public void addPlayer(User user)
+	{
+		players.add(new HumanPlayer(ruleSet.NUMBER_OF_CARDS(), user));
+	}
+	
+	/**
 	 * Removes a player from the game.
 	 * <ul>
 	 * NOTE: The game needs to store the points of the player so that if the player wants to join again they get back their points
@@ -92,6 +104,11 @@ public class CAH_Game {
 		//add playerSaving stuff.
 	}
 	
+	/**
+	 * Removes a player from the CAH_Game based on their username.
+	 * @param leavingPlayerUsername The username of the leaving player.
+	 * @since CAH1.0
+	 */
 	public void removePlayer(String leavingPlayerUsername)
 	{
 		for(Player p: players)
