@@ -3,13 +3,11 @@ package netplay;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.util.PriorityQueue;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import javax.swing.Timer;
 
-import users.HumanPlayer;
-import users.Player;
 import users.User;
 
 import com.esotericsoftware.kryonet.Client;
@@ -48,9 +46,9 @@ public class CAH_Client implements Runnable
 	private ConnectionType connectionType;
 	
 	/**
-	 * The PriorityQueue used by the CAH_Client.
+	 * The Queue used by the CAH_Client.
 	 */
-	private PriorityQueue<Message> messageQueue;
+	private Queue<Message> messageQueue;
 	
 	/**
 	 * The username of the person who is using the CAH_Client.
@@ -73,7 +71,7 @@ public class CAH_Client implements Runnable
 	{
 		this.connectionType = type;
 		this.user = user;
-		messageQueue = new PriorityQueue<Message>();
+		messageQueue = new LinkedList<Message>();
 		
 		client = new Client();
 		
@@ -105,8 +103,8 @@ public class CAH_Client implements Runnable
 	}
 	
 	/**
-	 * Gets the message of highest priority in {@linkplain #messageQueue}.
-	 * @return {@code messageQueue.poll()} - The message that is at the top of the the PriorityQueue {@linkplain #messageQueue}.
+	 * Gets the message added first to {@linkplain #messageQueue}.
+	 * @return {@code messageQueue.poll()} - The message that is at the top of the the LinkedList {@linkplain #messageQueue}.
 	 * @since CAH1.0
 	 */
 	public Message pollQueue()
@@ -137,22 +135,12 @@ public class CAH_Client implements Runnable
 			public void received(Connection connection, Object object)
 			{
 				super.received(connection, object);
-				if(object instanceof GameCommandMessage)
+				if(object instanceof GameCommandMessage || object instanceof GameCommandMessage)
 				{
-					// UI processing it (TODO)
-				}
-				if(object instanceof ChatMessage)
-				{
-					// UI processing it (TODO)
+					messageQueue.add((Message) object);
 				}
 			}
 		});
-		updateTimer.start();
-		boolean running = true;
-		while(running)
-		{
-			
-		}
-		
+		updateTimer.start();		
 	}
 }

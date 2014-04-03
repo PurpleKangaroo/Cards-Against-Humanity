@@ -450,7 +450,14 @@ public class CAH_Frame extends JFrame {
 					mainMenu.setFocusPainted(false);
 					mainMenu.setBorderPainted(false);
 					mainMenu.setBounds(650, 490, 102, 17);//-15
-					users.addMainMenuButton(mainMenu);//TODO make this added properly
+					
+					final JButton save  = new JButton("Save");
+					save.setOpaque(false);
+					save.setFocusTraversalKeysEnabled(false);
+					save.setFocusPainted(false);
+					save.setBorderPainted(false);
+					save.setBounds(782, 490, 102, 17);
+					users.addMainMenuButtonAndSaveButton(mainMenu, save);//TODO make this added properly
 					mainMenu.addActionListener(new ActionListener(){
 
 						@Override
@@ -462,6 +469,18 @@ public class CAH_Frame extends JFrame {
 							CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{CAH_Layers}));
 							setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, mnFile, mntmNewGame, mntmExit, mnNetplay, mnHelp, mntmAbout, mntmRules, CAH_Panel}));
 							btnUsers.setForeground(Color.WHITE);
+						}
+						
+					});
+					
+					save.addActionListener(new ActionListener(){
+
+						@Override
+						public void actionPerformed(ActionEvent e)
+						{
+							// TODO Fill
+							save.setText(save.getText().equals("Save") ? "Edit" : "Save");
+							
 						}
 						
 					});
