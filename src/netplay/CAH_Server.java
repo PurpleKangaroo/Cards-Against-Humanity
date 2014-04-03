@@ -13,6 +13,7 @@ import java.util.Map;
 import javax.swing.Timer;
 
 import users.Player;
+import users.User;
 
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
@@ -81,7 +82,7 @@ public class CAH_Server implements Runnable
 		
 		gameServer.getKryo().register(ChatMessage.class);
 		gameServer.getKryo().register(Message.class);
-		gameServer.getKryo().register(Player.class);
+		gameServer.getKryo().register(User.class);
 		gameServer.getKryo().register(GameCommandMessage.class);
 	}
 
@@ -135,11 +136,11 @@ public class CAH_Server implements Runnable
 						gameServer.sendToAllTCP(object);
 					}
 				}
-				if(object instanceof Player)
+				if(object instanceof User)
 				{
 					if(connectionType.equals(ConnectionType.UDP))
-					socketMap.put(connection.getRemoteAddressUDP(), ((Player) object).getUserName());
-					game.addPlayer((Player) object);
+					socketMap.put(connection.getRemoteAddressUDP(), ((User) object).getUserProfile().getUserName());
+					game.addPlayer((User) object);
 					//TODO send to clients...
 				}
 			}
