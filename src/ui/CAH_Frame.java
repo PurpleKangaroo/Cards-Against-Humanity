@@ -200,6 +200,16 @@ public class CAH_Frame extends JFrame {
 		btnNewGame.setFocusPainted(false);
 		btnNewGame.setBorderPainted(false);
 		btnNewGame.setOpaque(false);
+		btnNewGame.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnNewGame.setForeground(Color.LIGHT_GRAY);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnNewGame.setForeground(Color.WHITE);
+			}
+		});
 		
 		btnNewGame.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnNewGame.setForeground(Color.WHITE);
@@ -212,16 +222,12 @@ public class CAH_Frame extends JFrame {
 		btnLoadGame.setBorderPainted(false);
 		btnLoadGame.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				//TODO:fill
-			}
-			@Override
 			public void mouseEntered(MouseEvent e) {
-				//TODO:fill
+				btnLoadGame.setForeground(Color.LIGHT_GRAY);
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				//TODO:fill
+				btnLoadGame.setForeground(Color.WHITE);
 			}
 		});
 		btnLoadGame.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -238,6 +244,16 @@ public class CAH_Frame extends JFrame {
 		btnStats.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		btnStats.setForeground(Color.WHITE);
 		btnStats.setFont(new Font("Arial Black", Font.BOLD, 35));
+		btnStats.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnStats.setForeground(Color.LIGHT_GRAY);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnStats.setForeground(Color.WHITE);
+			}
+		});
 		
 		final JButton btnUsers = new JButton("Users");
 		btnUsers.setOpaque(false);
@@ -247,6 +263,16 @@ public class CAH_Frame extends JFrame {
 		btnUsers.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnUsers.setForeground(Color.WHITE);
 		btnUsers.setFont(new Font("Arial Black", Font.BOLD, 35));
+		btnUsers.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnUsers.setForeground(Color.LIGHT_GRAY);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnUsers.setForeground(Color.WHITE);
+			}
+		});
 		
 		final JButton btnCards = new JButton("<html><body align=\"left\">Cards</body></html>");
 		btnCards.setHorizontalTextPosition(SwingConstants.RIGHT);
@@ -255,6 +281,16 @@ public class CAH_Frame extends JFrame {
 		btnCards.setFocusPainted(false);
 		btnCards.setBorderPainted(false);
 		btnCards.setOpaque(false);
+		btnCards.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnCards.setForeground(Color.LIGHT_GRAY);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnCards.setForeground(Color.WHITE);
+			}
+		});
 		
 		btnCards.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnCards.setForeground(Color.WHITE);
@@ -267,16 +303,12 @@ public class CAH_Frame extends JFrame {
 		btnRules.setFocusPainted(false);
 		btnRules.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				//TODO:fill
-			}
-			@Override
 			public void mouseEntered(MouseEvent e) {
-				//TODO:fill
+				btnRules.setForeground(Color.LIGHT_GRAY);
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				//TODO:fill
+				btnRules.setForeground(Color.WHITE);
 			}
 		});
 		
@@ -284,7 +316,7 @@ public class CAH_Frame extends JFrame {
 		btnRules.setForeground(Color.WHITE);
 		btnRules.setFont(new Font("Arial Black", Font.BOLD, 35));
 		
-		JButton netplay = new JButton("Netplay");
+		final JButton netplay = new JButton("Netplay");
 		netplay.setOpaque(false);
 		netplay.setHorizontalAlignment(SwingConstants.RIGHT);
 		netplay.setForeground(Color.WHITE);
@@ -292,6 +324,16 @@ public class CAH_Frame extends JFrame {
 		netplay.setFocusPainted(false);
 		netplay.setContentAreaFilled(false);
 		netplay.setBorderPainted(false);
+		netplay.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				netplay.setForeground(Color.LIGHT_GRAY);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				netplay.setForeground(Color.WHITE);
+			}
+		});
 		
 		GroupLayout gl_StartPanel = new GroupLayout(StartPanel);
 		gl_StartPanel.setHorizontalGroup(
@@ -380,6 +422,7 @@ public class CAH_Frame extends JFrame {
 						public void actionPerformed(ActionEvent arg0)
 						{
 							CAH_Layers.remove(newGame);
+							btnNewGame.setForeground(Color.WHITE);
 							CAH_Layers.add(Start);
 							CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{Start, StartPanel, btnStats, btnLoadGame, btnUsers, btnCards, btnRules, btnNewGame, lblCardsAgainstHumanity, StartBackground}));
 							CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{CAH_Layers}));
@@ -418,6 +461,7 @@ public class CAH_Frame extends JFrame {
 							CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{Start, StartPanel, btnStats, btnLoadGame, btnUsers, btnCards, btnRules, btnNewGame, lblCardsAgainstHumanity, StartBackground}));
 							CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{CAH_Layers}));
 							setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, mnFile, mntmNewGame, mntmExit, mnNetplay, mnHelp, mntmAbout, mntmRules, CAH_Panel}));
+							btnUsers.setForeground(Color.WHITE);
 						}
 						
 					});
@@ -465,6 +509,7 @@ public class CAH_Frame extends JFrame {
 							CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{Start, StartPanel, btnStats, btnLoadGame, btnUsers, btnCards, btnRules, btnNewGame, lblCardsAgainstHumanity, StartBackground}));
 							CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{CAH_Layers}));
 							setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, mnFile, mntmNewGame, mntmExit, mnNetplay, mnHelp, mntmAbout, mntmRules, CAH_Panel}));
+							btnCards.setForeground(Color.WHITE);
 						}
 						
 					});
