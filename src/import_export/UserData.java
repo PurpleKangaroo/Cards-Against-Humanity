@@ -13,9 +13,14 @@ import java.io.RandomAccessFile;
 public class UserData
 {
 	/**
-	 * The RandomAccessFile that the user's data is saved to.
+	 * The RandomAccessFile that the user's profile data is saved to.
 	 */
-	private RandomAccessFile file;
+	private RandomAccessFile proFile;
+	
+	/**
+	 * The RandomAccessFile that the user's stats data is saved to.
+	 */
+	private RandomAccessFile statsFile;
 	
 	/**
 	 * Creates a new UserData.
@@ -24,6 +29,7 @@ public class UserData
 	 */
 	public UserData() throws FileNotFoundException
 	{
-		file = new RandomAccessFile((UserData.class.getResource("userSave.dat")).getFile(), "rw");
+		proFile = new RandomAccessFile((UserData.class.getResource("userSave.dat")).getFile(), "rw");
+		statsFile = new RandomAccessFile((UserData.class.getResource("statsFile.dat")).getFile(), "rw");
 	}
 }

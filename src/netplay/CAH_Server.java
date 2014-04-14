@@ -12,7 +12,6 @@ import java.util.Map;
 
 import javax.swing.Timer;
 
-import users.Player;
 import users.User;
 
 import com.esotericsoftware.kryonet.Connection;

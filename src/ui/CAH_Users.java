@@ -62,10 +62,12 @@ public class CAH_Users extends JPanel
 	/**
 	 * Adds the main menu button in front of the background.
 	 * @param component The main menu button.
+	 * @since CAH1.0
 	 */
-	protected void addMainMenuButton(JComponent component)
+	protected void addMainMenuButtonAndSaveButton(JComponent mainMenu, JComponent save)
 	{
-		add(component);
+		add(mainMenu);
+		add(save);
 		final JLabel UsersBackground = new JLabel("");
 		UsersBackground.setIcon(new ImageIcon(CAH_NewGame.class.getResource("/graphics/signupbackground.jpg")));
 		UsersBackground.setAlignmentX(Component.CENTER_ALIGNMENT);

@@ -38,8 +38,6 @@ Use good documentation. (<em>See also: </em>
 
 [Creating a Jar File](https://github.com/PurpleKangaroo/Cards-Against-Humanity#creating-a-jar-file-in-eclipse)
 
-[Java Chronicle Library Info](https://github.com/PurpleKangaroo/Cards-Against-Humanity#java-chronicle-library-info)
-
 ##Creating a JAR File in Eclipse
 1. File > Export
 2. Java > Runnable JAR File
@@ -108,8 +106,4 @@ This makes it easy to go back later to find how the program used to work if we r
 		 * (only if necessary) @see
 		 * @see DO NOT USE {@link} or {@linkplain} in see tags
 		 */
-		 
-##Java Chronicle Library Info
-
-[Java Chronicle](https://github.com/peter-lawrey/Java-Chronicle)
 		
