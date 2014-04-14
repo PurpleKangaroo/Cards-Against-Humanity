@@ -3,8 +3,6 @@ package import_export;
 import java.io.FileNotFoundException;
 import java.io.RandomAccessFile;
 
-import users.User;
-
 /**
  * A class of object that represents data about the main user.
  * @author Holt Maki

@@ -1,8 +1,8 @@
 package ui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Panel;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.GregorianCalendar;
@@ -14,12 +14,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
-import java.awt.Color;
 
 /**
  * A panel that allows editing of user information.
  * @author Holt Maki
- * @sicne CAH1.0
+ * @since CAH1.0
  * @version CAH1.0
  *
  */
@@ -91,6 +90,7 @@ public class UserPanelEdit extends JPanel
 		panel_1.setLayout(sl_panel_1);
 		
 		usernameField = new JTextField();
+		
 		sl_panel_1.putConstraint(SpringLayout.NORTH, usernameField, 5, SpringLayout.NORTH, panel_1);
 		sl_panel_1.putConstraint(SpringLayout.WEST, usernameField, 10, SpringLayout.WEST, panel_1);
 		sl_panel_1.putConstraint(SpringLayout.EAST, usernameField, 158, SpringLayout.WEST, panel_1);
