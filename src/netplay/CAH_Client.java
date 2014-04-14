@@ -63,14 +63,16 @@ public class CAH_Client implements Runnable
 	/**
 	 * Creates a new object that represents the client side of a connection in a Netplay game of Cards Against Humanity.
 	 * CAH_Client will communicate with the UI through a priority queue of the messages that it recieves, which the UI will poll from and then act based on the messages.
-	 * @param username The username of person using the CAH_Client.
+	 * @param user The user using the CAH_Client.
 	 * @param host The boolean that tells weather or not the CAH_Client is being used by the host of a game of Cards Against Humanity.
+	 * @param type The type of connection that the CAH_Client is using.
 	 * @since CAH1.0
 	 */
 	public CAH_Client(User user, boolean host, ConnectionType type)
 	{
 		this.connectionType = type;
 		this.user = user;
+		this.username = user.getUserProfile().getUserName();
 		messageQueue = new LinkedList<Message>();
 		
 		client = new Client();
