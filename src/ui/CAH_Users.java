@@ -60,8 +60,9 @@ public class CAH_Users extends JPanel
 	}
 	
 	/**
-	 * Adds the main menu button in front of the background.
-	 * @param component The main menu button.
+	 * Adds the main menu button and the save button in front of the background.
+	 * @param mainMenu The main menu button.
+	 * @param save The save button.
 	 * @since CAH1.0
 	 */
 	protected void addMainMenuButtonAndSaveButton(JComponent mainMenu, JComponent save)
