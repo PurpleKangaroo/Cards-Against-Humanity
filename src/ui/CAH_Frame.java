@@ -334,6 +334,42 @@ public class CAH_Frame extends JFrame {
 				netplay.setForeground(Color.WHITE);
 			}
 		});
+		netplay.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent arg0)
+			{
+				final CAH_Netplay netplaySetup = new CAH_Netplay();
+				JButton mainMenu = new JButton("Main Menu");
+				mainMenu.setOpaque(false);
+				mainMenu.setFocusTraversalKeysEnabled(false);
+				mainMenu.setFocusPainted(false);
+				mainMenu.setBorderPainted(false);
+				mainMenu.addActionListener(new ActionListener(){
+
+					@Override
+					public void actionPerformed(ActionEvent arg0)
+					{
+						CAH_Layers.remove(netplaySetup);
+						btnNewGame.setForeground(Color.WHITE);
+						CAH_Layers.add(Start);
+						CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{Start, StartPanel, btnStats, btnLoadGame, btnUsers, btnCards, btnRules, btnNewGame}));
+						CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{CAH_Layers}));
+						setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, mnFile, mntmNewGame, mntmExit, mnNetplay, mnHelp, mntmAbout, mntmRules, CAH_Panel}));
+						netplay.setForeground(Color.WHITE);
+					}
+					
+				});
+				mainMenu.setBounds(200, 157, 100, 23);
+				netplaySetup.addMainMenuButton(mainMenu);
+				
+				CAH_Layers.remove(Start);
+				CAH_Layers.add(netplaySetup);
+				CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{netplaySetup}));
+				CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{CAH_Layers}));
+			}
+			
+		});
 		
 		GroupLayout gl_StartPanel = new GroupLayout(StartPanel);
 		gl_StartPanel.setHorizontalGroup(

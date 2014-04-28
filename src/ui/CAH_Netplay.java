@@ -35,6 +35,7 @@ public class CAH_Netplay extends JPanel
 	 * Generated Serial Version UID.
 	 */
 	private static final long serialVersionUID = -8317819384838582033L;
+	private JComponent panel;
 
 	/**
 	 * Create the panel.
@@ -54,7 +55,7 @@ public class CAH_Netplay extends JPanel
 		lblNetplay.setBounds(681, 220, 114, 33);
 		add(lblNetplay);
 		
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		panel.setOpaque(false);
 		panel.setBorder(new LineBorder(Color.WHITE, 1, true));
 		panel.setBounds(557, 264, 369, 189);
@@ -126,18 +127,12 @@ public class CAH_Netplay extends JPanel
 		btnStart.setRequestFocusEnabled(false);
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//TODO fill...
 			}
 		});
 		btnStart.setOpaque(false);
 		btnStart.setBounds(90, 157, 100, 23);
 		panel.add(btnStart);
-		
-		JButton btnMainMenu = new JButton("Main Menu");
-		btnMainMenu.setRolloverEnabled(false);
-		btnMainMenu.setRequestFocusEnabled(false);
-		btnMainMenu.setOpaque(false);
-		btnMainMenu.setBounds(200, 157, 100, 23);
-		panel.add(btnMainMenu);
 		
 		JLabel lblCardsAgainstHumanity = new JLabel("Cards Against Humanity");
 		lblCardsAgainstHumanity.setBounds(84, 43, 1024, 139);
@@ -156,7 +151,7 @@ public class CAH_Netplay extends JPanel
 	protected void addMainMenuButton(JComponent mainMenu)
 	{
 		mainMenu.setBounds(200, 157, 100, 23);
-		add(mainMenu);
+		panel.add(mainMenu);
 		final JLabel StartBackground = new JLabel("");
 		StartBackground.setRequestFocusEnabled(false);
 		StartBackground.setForeground(SystemColor.text);
