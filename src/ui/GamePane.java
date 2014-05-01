@@ -16,9 +16,14 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
 import netplay.ChatMessage;
+import netplay.GameCommandMessage;
+import netplay.Message;
 import users.Player;
 
 import java.awt.FlowLayout;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.util.Queue;
 
 /**
  * The layered pane that contains the game.
@@ -28,6 +33,11 @@ import java.awt.FlowLayout;
  *
  */
 public class GamePane extends JLayeredPane {
+	/**
+	 * The Queue used by the GamePane.
+	 * Holds the Messages that have not been sent yet.
+	 */
+	private Queue<Message> messageQueue;
 	/**
 	 * The game of Cards Against Humanity being shown in the pane.
 	 */
@@ -78,31 +88,6 @@ public class GamePane extends JLayeredPane {
 		panel.setLayout(null);
 		MainGamePanel.add(panel);
 		
-		BlankWhiteCard blankWhiteCard_3 = new BlankWhiteCard();
-		blankWhiteCard_3.setBounds(150, 0, 188, 270);
-		panel.add(blankWhiteCard_3);
-		
-		BlankWhiteCard blankWhiteCard_4 = new BlankWhiteCard();
-		blankWhiteCard_4.setBounds(100, 0, 188, 270);
-		panel.add(blankWhiteCard_4);
-		
-		BlankWhiteCard blankWhiteCard_2 = new BlankWhiteCard();
-		blankWhiteCard_2.setBounds(50, 0, 188, 270);
-		panel.add(blankWhiteCard_2);
-		
-		BlankWhiteCard blankWhiteCard = new BlankWhiteCard();
-		blankWhiteCard.setLocation(0,0);
-		panel.add(blankWhiteCard);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setLayout(null);
-		panel_1.setBounds(230, 11, 760, 270);
-		MainGamePanel.add(panel_1);
-		
-		BlankWhiteCard blankWhiteCard_1 = new BlankWhiteCard();
-		blankWhiteCard_1.setBounds(0, 0, 188, 270);
-		panel_1.add(blankWhiteCard_1);
-		
 		JPanel chatPanel = new JPanel();
 		chatPanel.setBorder(new CompoundBorder(new LineBorder(new Color(0, 0, 0)), new MatteBorder(5, 5, 5, 5, (Color) new Color(255, 255, 255))));
 		chatPanel.setBackground(Color.BLACK);
@@ -123,6 +108,17 @@ public class GamePane extends JLayeredPane {
 		chatPanel.add(chatTextPane);
 		
 		chatEntry = new JTextField();
+		chatEntry.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				chatEntry.getCaret().install(chatEntry);
+			}
+			
+			@Override
+			public void focusLost(FocusEvent e) {
+				chatEntry.getCaret().deinstall(chatEntry);
+			}
+		});
 		chatEntry.setFocusTraversalKeysEnabled(false);
 		chatEntry.setRequestFocusEnabled(false);
 		chatEntry.setBounds(10, 25, 264, 20);
@@ -166,9 +162,31 @@ public class GamePane extends JLayeredPane {
 	
 	/**
 	 * Sets the players panel with all the players.
+	 * @since CAH1.0
 	 */
 	private void setPlayers()
 	{
 		
+	}
+	
+	/**
+	 * Processes a GameCommandMessage from the Client.
+	 * @param m The GameCommandMessage recieved by the client from the server.
+	 * @since CAH1.0
+	 */
+	public void processGameCommand(GameCommandMessage m)
+	{
+		
+	}
+	
+	/**
+	 * Polls the {@link #messageQueue} and returns the bottom element.
+	 * @return {@code messageQueue.poll()} - The bottom element of {@linkplain #messageQueue}. (If {@code !messageQueue.isEmpty()})
+	 * <nl> Else returns {@code null}.</nl>
+	 * @since CAH1.0
+	 */
+	public Message pollQueue()
+	{
+		return messageQueue.isEmpty() ? null : messageQueue.poll();
 	}
 }
