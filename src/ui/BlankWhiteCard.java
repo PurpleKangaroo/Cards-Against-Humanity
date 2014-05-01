@@ -54,7 +54,7 @@ public final class BlankWhiteCard extends UICard
 		
 		JLabel lblCard = new JLabel("");
 		lblCard.setBounds(0, 5, 188, 270);
-		lblCard.setIcon(new ImageIcon(WhiteCard.class.getResource("/graphics/wc.png")));
+		lblCard.setIcon(new ImageIcon(WhiteCard.class.getResource("/graphics/wc_outlined.png")));
 		add(lblCard);
 		
 		trueX = this.getX();

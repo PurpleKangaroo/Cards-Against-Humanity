@@ -48,6 +48,11 @@ public class WhiteCard extends UICard implements Movable
 	private double trueY;
 	
 	/**
+	 * The card picture in the background.
+	 */
+	private JLabel lblCard;
+	
+	/**
 	 * The card represented by the WhiteCard.
 	 */
 	private AnswerCard answerCard;
@@ -98,7 +103,7 @@ public class WhiteCard extends UICard implements Movable
 		lblLogo.setIcon(new ImageIcon(WhiteCard.class.getResource("/graphics/icon_w.png")));
 		add(lblLogo);
 		
-		JLabel lblCard = new JLabel("");
+		lblCard = new JLabel("");
 		lblCard.setBounds(0, 5, 188, 270);
 		lblCard.setIcon(new ImageIcon(WhiteCard.class.getResource("/graphics/wc.png")));
 		add(lblCard);
@@ -106,6 +111,32 @@ public class WhiteCard extends UICard implements Movable
 		answerCard = card;
 		
 		setTrueLocation();
+	}
+	
+	/**
+	 * Illuminates or de-illuminates the card depending on its paramater illuminated.
+	 * @param illuminated Whether or not to illuminate the card. If it is true, the card will be illuminated. If it is false the card will be deluminated.
+	 * @since CAH1.0
+	 */
+	public void illuminate(boolean illuminated)
+	{
+		if(illuminated)
+		{
+			remove(lblCard);
+			lblCard = new JLabel("");
+			lblCard.setBounds(0, 5, 188, 270);
+			lblCard.setIcon(new ImageIcon(WhiteCard.class.getResource("/graphics/wc_illuminatedyellow.png")));
+			add(lblCard);
+		}
+		else
+		{
+			remove(lblCard);
+			lblCard = new JLabel("");
+			lblCard.setBounds(0, 5, 188, 270);
+			lblCard.setIcon(new ImageIcon(WhiteCard.class.getResource("/graphics/wc.png")));
+			add(lblCard);
+		}
+		
 	}
 	
 	protected void setTrueLocation()
