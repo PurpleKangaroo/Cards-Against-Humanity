@@ -218,6 +218,11 @@ public abstract class Player {
 		this.cardsInHand = cardsInHand;
 	}
 	
+	public Hand getHand()
+	{
+		return this.cardsInHand;
+	}
+	
 	/**
 	 * Sets the boolean that tells whether or not the player is the Card Czar.
 	 * Used in initializing the player as not the Card Czar.

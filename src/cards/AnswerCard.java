@@ -19,6 +19,7 @@ import java.net.URISyntaxException;
 
 public class AnswerCard extends Card
 {
+	private String username;
 
 	/**
 	 * Creates an answer card
@@ -35,6 +36,15 @@ public class AnswerCard extends Card
 		card1 = card1.replaceAll("<LINE>", "\n\n"); //TODO encoder
 		Encoder encode = new Encoder();
 		setCardString(encode.encode(card1));
+	}
+	
+	public String getUsername(){
+		return username;
+	}
+	
+	public void setUsername(String a)
+	{
+		username = a;
 	}
 
 }
