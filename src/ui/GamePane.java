@@ -15,7 +15,10 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
+import netplay.ChatMessage;
 import users.Player;
+
+import java.awt.FlowLayout;
 
 /**
  * The layered pane that contains the game.
@@ -68,6 +71,37 @@ public class GamePane extends JLayeredPane {
 		BlankBlackCard blankBlackCard = new BlankBlackCard();
 		blankBlackCard.setLocation(32, 145);
 		MainGamePanel.add(blankBlackCard);
+		
+		JPanel panel = new JPanel();
+		panel.setOpaque(false);
+		panel.setBounds(230, 279, 760, 270);
+		panel.setLayout(null);
+		MainGamePanel.add(panel);
+		
+		BlankWhiteCard blankWhiteCard_3 = new BlankWhiteCard();
+		blankWhiteCard_3.setBounds(150, 0, 188, 270);
+		panel.add(blankWhiteCard_3);
+		
+		BlankWhiteCard blankWhiteCard_4 = new BlankWhiteCard();
+		blankWhiteCard_4.setBounds(100, 0, 188, 270);
+		panel.add(blankWhiteCard_4);
+		
+		BlankWhiteCard blankWhiteCard_2 = new BlankWhiteCard();
+		blankWhiteCard_2.setBounds(50, 0, 188, 270);
+		panel.add(blankWhiteCard_2);
+		
+		BlankWhiteCard blankWhiteCard = new BlankWhiteCard();
+		blankWhiteCard.setLocation(0,0);
+		panel.add(blankWhiteCard);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setLayout(null);
+		panel_1.setBounds(230, 11, 760, 270);
+		MainGamePanel.add(panel_1);
+		
+		BlankWhiteCard blankWhiteCard_1 = new BlankWhiteCard();
+		blankWhiteCard_1.setBounds(0, 0, 188, 270);
+		panel_1.add(blankWhiteCard_1);
 		
 		JPanel chatPanel = new JPanel();
 		chatPanel.setBorder(new CompoundBorder(new LineBorder(new Color(0, 0, 0)), new MatteBorder(5, 5, 5, 5, (Color) new Color(255, 255, 255))));
@@ -123,6 +157,11 @@ public class GamePane extends JLayeredPane {
 		historyTextPane.setBounds(10, 11, 264, 234);
 		historyPanel.add(historyTextPane);
 
+	}
+	
+	public void printChat(ChatMessage message)
+	{
+		//TODO Fill
 	}
 	
 	/**
