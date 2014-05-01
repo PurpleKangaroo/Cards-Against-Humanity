@@ -145,4 +145,21 @@ public class CAH_Client implements Runnable
 		});
 		updateTimer.start();		
 	}
+	
+	/**
+	 * Sends an object to the server.
+	 * @param o The object to be sent to the server.
+	 * @since CAH1.0
+	 */
+	public void send(Object o)
+	{
+		if(connectionType.equals(ConnectionType.UDP))
+		{
+			client.sendUDP(o);
+		}
+		else
+		{
+			client.sendTCP(o);
+		}
+	}
 }
