@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import netplay.GameCommandMessage;
+import netplay.GameCommandMessage.GameCommand;
 import cards.Deck;
 import cards.DeckBuilder;
 import cards.QuestionCard;
@@ -131,6 +132,7 @@ public class CAH_Game {
 	{
 		roundCount++;
 		drawQCard();
+		answers = new AnswerCard[1][getCurrentQuestionCard().getPick()];
 		deal_Draw();
 	}
 	
@@ -224,18 +226,33 @@ public class CAH_Game {
 	 * @return scrPlayerCards - the answer cards that are played by each player.
 	 * @since CAH1.0
 	 */
-	public AnswerCard[][] getAnswerCards(int[][] playerCards)
+	public AnswerCard[][] getAnswerCards(AnswerCard[][] playerCards)
 	{
-		AnswerCard[][] scrPlayerCards = new AnswerCard[players.size()][];
-		AnswerCard[][] unscrPlayerCards = new AnswerCard[players.size()][];
+		AnswerCard[][] scrPlayerCards = new AnswerCard[playerCards.length][this.getCurrentQuestionCard().getPick()];
+		AnswerCard[][] unscrPlayerCards = new AnswerCard[playerCards.length][this.getCurrentQuestionCard().getPick()];
 		ArrayList<AnswerCard[]> Scramble = new ArrayList<AnswerCard[]>();
+		int pl = 0;
+		for(AnswerCard[] a: playerCards)
+		{
+			for(Player p: players)
+			{
+				int c = 0;
+				for(AnswerCard b: a)
+				{
+					for(int i = 0; i < p.getHand().getSize(); i++)
+					{
+						if(p.getHand().get(i).getCardString().equals(b))
+						{
+							unscrPlayerCards[pl][c] = p.playCard(i);
+						}
+					}
+					c++;
+				}
+			}
+			pl++;
+		}
 		for(int i = 0; i<players.size(); i++)
 		{
-			for (int n = 0; n<playerCards[i].length; n++)
-			{
-				answers[i][n] = players.get(i).playCard(playerCards[i][n]);
-				unscrPlayerCards[i][n] = players.get(i).playCard(playerCards[i][n]);
-			}
 			Scramble.add(unscrPlayerCards[i]);
 		}
 		for(int i = 0; i<Scramble.size();)//There is no counter because Scramble.size-- automatically each time by having an element removed
@@ -246,6 +263,21 @@ public class CAH_Game {
 			Scramble.remove(index);
 		}
 		return scrPlayerCards;
+	}
+	
+	public void playCards(AnswerCard[] cards, String username)
+	{
+		AnswerCard[][] answersCopy = answers.clone();
+		answers = new AnswerCard[answersCopy.length + 1][answersCopy[0].length];
+		for(int i = 0; i < answersCopy.length; i++)
+		{
+			answers[i] = answersCopy[i];
+		}
+		for(int i = 0; i < cards.length; i++)
+		{
+			cards[i].setUsername(username);
+		}
+		answers[answersCopy.length] = cards;
 	}
 	
 	/**
@@ -469,8 +501,36 @@ public class CAH_Game {
 	
 	public GameCommandMessage processCommand(GameCommandMessage message)
 	{
-		//TODO fill
-		return null;
+		switch(message.getGameCommand())
+		{
+		case ADD_PLAYER:
+			this.addPlayer(message.getUser());
+			return new GameCommandMessage(this.getPlayers());
+		case REMOVE_PLAYER:
+			this.removePlayer(message.getSender());
+			return new GameCommandMessage(this.getPlayers());
+		case DRAW_PHASE:
+			this.drawPhase();
+			return new GameCommandMessage(GameCommand.DRAW_PHASE, this);
+		case GET_ANSWER_CARDS:
+			return new GameCommandMessage(true, GameCommand.GET_ANSWER_CARDS, "Server", this.getAnswerCards(this.answers));
+		case SCORE_POINTS:
+			break;
+		case SERIOUS_BUISNESS_POINTS:
+			break;
+		case NEXT_CARD_CZAR:
+			break;
+		case GET_CURRENT_CARD_CZAR:
+			break;
+		case GET_ROUND_COUNT:
+			break;
+		case GET_AWESOME_POINTS:
+			break;
+		case GET_PLAYERS:
+			break;
+		case GET_GAME_RULES:
+			break;
+		}
 	}
 	
 	/**

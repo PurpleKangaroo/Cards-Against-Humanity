@@ -69,4 +69,9 @@ public class Hand {
 	{
 		return cards.get(index);
 	}
+	
+	public int getSize()
+	{
+		return cards.size();
+	}
 }
