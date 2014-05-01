@@ -132,7 +132,7 @@ public class GamePane extends JLayeredPane {
 		JLabel lblChat = new JLabel("Chat");
 		lblChat.setForeground(new Color(255, 255, 255));
 		lblChat.setBounds(10, 9, 46, 14);
-		chatPanel.add(lblChat);
+		chatPanel.add(lblChat); 
 		
 		JPanel playersPanel = new JPanel();
 		playersPanel.setBorder(new CompoundBorder(new LineBorder(new Color(0, 0, 0)), new MatteBorder(5, 5, 5, 5, (Color) new Color(255, 255, 255))));
