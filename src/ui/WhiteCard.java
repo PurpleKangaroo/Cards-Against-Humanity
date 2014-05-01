@@ -113,6 +113,11 @@ public class WhiteCard extends UICard implements Movable
 		setTrueLocation();
 	}
 	
+	/**
+	 * Illuminates or de-illuminates the card depending on its paramater illuminated.
+	 * @param illuminated Whether or not to illuminate the card. If it is true, the card will be illuminated. If it is false the card will be deluminated.
+	 * @since CAH1.0
+	 */
 	public void illuminate(boolean illuminated)
 	{
 		if(illuminated)
