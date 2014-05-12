@@ -51,6 +51,7 @@ public class Brainfuck
 		return (new BrainfuckInterpreter()).interpret(brainfuck);
 	}
 	
+	@SuppressWarnings({ "unused", "deprecation" })
 	private void createBrainfuckFile(String filename1, String filename2) throws FileNotFoundException, URISyntaxException
 	{
 		Scanner in = new Scanner(new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(filename1))));
@@ -62,7 +63,7 @@ public class Brainfuck
 		}
 		
 		out.close();
-		
+		in.close();
 	}
 	
 	protected Brainfuck()

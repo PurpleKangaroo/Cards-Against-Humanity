@@ -96,7 +96,7 @@ public class CAH_Game {
 	 * <ul>
 	 * NOTE: The game needs to store the points of the player so that if the player wants to join again they get back their points
 	 * </ul>
-	 * @since CAH1.0(Incomplete method) - see coments
+	 * @since CAH1.0(Incomplete method) - see comments
 	 * @param leavingPlayer - The player that is leaving the game.
 	 */
 	public void removePlayer(Player leavingPlayer)

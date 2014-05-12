@@ -221,17 +221,17 @@ public class CAH_Cards extends JLayeredPane
 	private QColumnedList ExpHQList;
 	
 	/**
-	 * The JTabbedPane for the pax expansion.
+	 * The JTabbedPane for the 2013 CAH PAX East expansion.
 	 */
 	private JTabbedPane PAX_Expansion;
 	
 	/**
-	 * The JScrollPane for the 2013 CAH Pax East Expansion Answers.
+	 * The JScrollPane for the 2013 CAH PAX East Expansion Answers.
 	 */
 	private JScrollPane PAXScrA;
 	
 	/**
-	 * The JScrollPane for the 2013 CAH Pax East Expansion Questions.
+	 * The JScrollPane for the 2013 CAH PAX East Expansion Questions.
 	 */
 	private JScrollPane PAXScrQ;
 	/**
@@ -240,9 +240,32 @@ public class CAH_Cards extends JLayeredPane
 	private AList ExpPAXAList;
 
 	/**
-	 * The QColumned List for the 2012 CAH PAX Expansion.
+	 * The QColumned List for the 2013 CAH PAX Expansion.
 	 */
 	private QColumnedList ExpPAXQList;
+	/**
+	 * The JTabbedPane for the LW Expansion.
+	 */
+	private JTabbedPane LW_Expansion;
+	
+	/**
+	 * The JScrollPane for the LW Expansion Answers.
+	 */
+	private JScrollPane LWScrA;
+	
+	/**
+	 * The JScrollPane for the LW Expansion Questions.
+	 */
+	private JScrollPane LWScrQ;
+	/**
+	 * The AList for the for the LW Expansion.
+	 */
+	private AList ExpLWAList;
+
+	/**
+	 * The QColumned List for the LW Expansion.
+	 */
+	private QColumnedList ExpLWQList;
 	
 	
 	/**
@@ -363,6 +386,19 @@ public class CAH_Cards extends JLayeredPane
 		ExpPAXAList = new AList(Decks.PAXEXPANSION);
 		PAXScrA.setViewportView(ExpPAXAList);
 		
+		LW_Expansion = new JTabbedPane(JTabbedPane.TOP);
+		decksTabbed.addTab("LW East Expansion", null, LW_Expansion, null);
+		LWScrQ = new JScrollPane();
+		LWScrQ.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		LW_Expansion.addTab("Black Cards", null, LWScrQ, null);
+		LWScrA = new JScrollPane();
+		LWScrA.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		LW_Expansion.addTab("White Cards", null,LWScrA, null);
+		ExpLWQList = new QColumnedList(Decks.LWEXPANSION);
+		LWScrQ.setViewportView(ExpLWQList);
+		ExpLWAList = new AList(Decks.LWEXPANSION);
+		LWScrA.setViewportView(ExpLWAList);
+		
 		GridBagLayout qScrollLayout = new GridBagLayout();
 		GridBagConstraints qScrollConstraints = new ListScrConstraints();
 		
@@ -409,6 +445,10 @@ public class CAH_Cards extends JLayeredPane
 				"                                                                                                                   " +
 				"Draw" + "          " + "Pick"));
 		PAXScrQ.setColumnHeaderView(new JLabel("Card Text" +
+				"                                                                                                                         " + 
+				"                                                                                                                   " +
+				"Draw" + "          " + "Pick"));
+		LWScrQ.setColumnHeaderView(new JLabel("Card Text" +
 				"                                                                                                                         " + 
 				"                                                                                                                   " +
 				"Draw" + "          " + "Pick"));
@@ -516,6 +556,16 @@ public class CAH_Cards extends JLayeredPane
 		});
 		
 		PAX_Expansion.addChangeListener(new ChangeListener()
+		{
+			@Override
+			public void stateChanged(ChangeEvent arg0)
+			{
+				setCard();
+			}
+			
+		});
+		
+		LW_Expansion.addChangeListener(new ChangeListener()
 		{
 			@Override
 			public void stateChanged(ChangeEvent arg0)
@@ -1071,6 +1121,39 @@ public class CAH_Cards extends JLayeredPane
 				try
 				{
 					card = new WhiteCard((new DeckBuilder(new Decks[] {Decks.PAXEXPANSION}).getDeck().getAnswerCardList()).get(ExpPAXAList.getSelectedIndex()));
+				} catch (URISyntaxException e)
+				{
+					e.printStackTrace();
+				} catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+				bounceIn();
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{card}));
+			}
+		}
+		else if(decksTabbed.getSelectedComponent().equals(LW_Expansion))
+		{
+			if(LW_Expansion.getSelectedComponent().equals(LWScrQ))
+			{
+				try
+				{
+					card = new BlackCard((new DeckBuilder(new Decks[] {Decks.LWEXPANSION}).getDeck().getQuestionCardList()).get(ExpLWQList.getSelectedIndex()));
+				} catch (URISyntaxException e)
+				{
+					e.printStackTrace();
+				} catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+				bounceIn();
+				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{card}));
+			}
+			else if(LW_Expansion.getSelectedComponent().equals(LWScrA))
+			{
+				try
+				{
+					card = new WhiteCard((new DeckBuilder(new Decks[] {Decks.LWEXPANSION}).getDeck().getAnswerCardList()).get(ExpLWAList.getSelectedIndex()));
 				} catch (URISyntaxException e)
 				{
 					e.printStackTrace();
