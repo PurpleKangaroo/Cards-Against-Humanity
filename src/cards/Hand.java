@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class Hand {
 	private ArrayList<AnswerCard> cards;
-	/**The number of cards that will normaly be in the players hand */
+	/**The number of cards that will normally be in the players hand */
 	private int max;
 	
 	/**
