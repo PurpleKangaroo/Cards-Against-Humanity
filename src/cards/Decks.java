@@ -68,10 +68,19 @@ public enum Decks
 	HOLIDAYEXPANSION("The 2012 Cards Against Humanity Holiday Expansion- Have fun with cards such as \"Elf cum\", \"Whatever Kwanza is supposed to be about\", and \"Taking down Santa with a surface-to-air missile\".", new String[]{"Holiday Expansion Answers"}, new String[]{"Holiday Expansion Questions"}),
 	
 	/**
-	 * The CAH PAX East Expansion (2013).
+	 * The CAH holiday expansion from 2012.
 	 * @since CAH1.0
 	 */
-	PAXEXPANSION("The CAH PAX East Expansion from 2013.", new String[]{"PAX East Expansion (2013) Answers"}, new String[]{"PAX East Expansion (2013) Questions"});
+	
+	PAXEXPANSION("The CAH PAX East Expansion from 2013.", new String[]{"PAX East Expansion (2013) Answers"}, new String[]{"PAX East Expansion (2013) Questions"}),
+
+	/**
+	 * The LW Expansion pack. A PKDev Exclusive!
+	 * @since CAH1.0
+	 */
+	LWEXPANSION("The 2014 LW expansion! This is exlusive to Purple Kangaroo Dev!", new String[]{"LW Expansion Answers"}, new String[]{"LW Expansion Questions"});
+	
+	
 	String description;
 	String[] answerPaths;
 	String[] questionPaths;
