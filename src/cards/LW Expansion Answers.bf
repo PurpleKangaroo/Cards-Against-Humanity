@@ -22,4 +22,6 @@ Wearing a fake Louis Vuitton shirt that still cost $60.
 When that girl with the yoga pants bends over.
 Running into one of the admins in the Costco parking lot.
 Cops breaking up the party at 9:30 PM.
-
+Not giving a shit about whatever the assembly is about.
+Forgetting where your homeroom is.
+Sen~oritis.
