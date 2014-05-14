@@ -1,14 +1,25 @@
-Actually going 25 mph in The Highlands.
-Hitting up turnitin.com at 11:58 PM.
-A random middle aged guy chilling at Houghton Beach.
-Waking up on other people's lawns.
-The poopetrator.
-Edna Mode.
+12 year olds looking to slay at Club K-Town.
 A Mount Si fan yelling racist things at opposing basketball players.
+A random middle aged guy chilling at Houghton Beach.
+Actually going 25 mph in The Highlands.
+Edna Mode.
 Entitled Eastside children.
+Gym class dickheads.
+Hitting up turnitin.com at 11:58 PM.
+Northface vest, Jordans, and shorts.
+Pre-gaming before going to a high school baseball game.
 Shitting yourself in class while wearing True Religion(R) jeans.
 Some laptop you don't want the responsibility for.
-Unused TV monitors that could have paid a teacher's salary.
-TRYING TO MAKE A GODDAMN LEFT TURN WITH NO ARROW.
+That asshole who never opens his backpack and still has an A.
+The guy who brings a banjo to 4th period.
+The poopetrator.
 Thinking your 1820 SAT will get you into the Ivys.
-Club K-Town in its final year.
+TRYING TO MAKE A GODDAMN LEFT TURN INTO THE PARKING LOT IN THE MORNING.
+Twitter beef.
+Unused TV monitors that could have funded a teacher's salary.
+Waking up on other people's lawns.
+Wearing a fake Louis Vuitton shirt that still cost $60.
+When that girl with the yoga pants bends over.
+Running into one of the admins in the Costco parking lot.
+Cops breaking up the party at 9:30 PM.
+
