@@ -80,7 +80,7 @@ public class CAH_Frame extends JFrame {
 	 * Launch the application.
 	 * @since CAH1.0
 	 * @version CAH1.0
-	 * @author Holt Maki
+	 * @author Holt Maki, Devon Grove
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -88,6 +88,10 @@ public class CAH_Frame extends JFrame {
 				try {
 					CAH_Frame frame = new CAH_Frame();
 					frame.setVisible(true);
+					String appdata = System.getenv("Cards-Against-Humanity");
+					String iconPath = appdata + "\\cah.ico";
+					ImageIcon cahIcon = new ImageIcon(iconPath);
+					frame.setIconImage(cahIcon.getImage());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
