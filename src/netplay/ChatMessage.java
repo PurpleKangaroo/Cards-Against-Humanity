@@ -13,6 +13,8 @@ public class ChatMessage implements Message
 	public ChatMessage(String username, String message)
 	{
 		this.date = new GregorianCalendar();
+		this.username = username;
+		this.message = message;
 	}
 	
 	/**
