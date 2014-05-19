@@ -4,6 +4,13 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A Message that contains information about something that someone wrote in chat.
+ * @author Holt Maki
+ * @since CAH1.0
+ * @version CAH1.0
+ *
+ */
 public class ChatMessage implements Message
 {
 	private GregorianCalendar date;
@@ -12,8 +19,8 @@ public class ChatMessage implements Message
 	
 	/**
 	 * A ChatMessage object containing a message supplied by a particular user.
-	 * @param username - the username of the user making a chat message.
-	 * @param message - the text of the user's message.
+	 * @param username the username of the user making a chat message.
+	 * @param message the text of the user's message.
 	 */
 	public ChatMessage(String username, String message)
 	{
