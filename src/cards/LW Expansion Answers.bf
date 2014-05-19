@@ -13,7 +13,7 @@ Northface vest, Jordans, and shorts.
 Not giving a shit about whatever the assembly is about.
 Pre-gaming before going to a high school baseball game.
 Running into one of the admins in the Costco parking lot.
-Se(~n)oritis.
+Se\u00F1oritis.
 Shitting yourself in class while wearing True Religion(R) jeans.
 Some laptop you don't want the responsibility for.
 That asshole who never opens his backpack and still has an A.
