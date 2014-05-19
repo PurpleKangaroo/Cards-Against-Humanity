@@ -54,7 +54,7 @@ public class AboutDialog extends JDialog {
 			{
 				JTextArea txtAbout = new JTextArea();
 				txtAbout.setFont(new Font("Tahoma", Font.PLAIN, 11));
-				txtAbout.setText("Software Developed by PurpleKangaroo Development\r\nLead Developer - Holt Maki\r\nLead User Interface Designer - Nick Walker\r\nDevon Grove\r\nThe phrase \"Cards Against Humanity\" belongs to Cards Against Humanity under a creative commons liscence.....\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n");
+				txtAbout.setText("Software Developed by PurpleKangaroo Development\r\nLead Developer - Holt Maki\r\nLead Tester and Senior Developer - Devon Grove\r\nThe phrase \"Cards Against Humanity\" belongs to Cards Against Humanity under a creative commons liscence.....\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n");
 				scrollPane.setViewportView(txtAbout);
 			}
 		}

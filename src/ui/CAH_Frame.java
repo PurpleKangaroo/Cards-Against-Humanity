@@ -1,3 +1,4 @@
+
 package ui;
 
 import java.awt.Color;
@@ -88,10 +89,6 @@ public class CAH_Frame extends JFrame {
 				try {
 					CAH_Frame frame = new CAH_Frame();
 					frame.setVisible(true);
-					String appdata = System.getenv("Cards-Against-Humanity");
-					String iconPath = appdata + "\\cah.ico";
-					ImageIcon cahIcon = new ImageIcon(iconPath);
-					frame.setIconImage(cahIcon.getImage());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -585,6 +582,8 @@ public class CAH_Frame extends JFrame {
 		CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{Start, StartPanel, btnStats, btnLoadGame, btnUsers, btnCards, btnRules, btnNewGame, lblCardsAgainstHumanity, StartBackground}));
 		CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{CAH_Layers}));
 		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, mnFile, mntmNewGame, mntmExit, mnNetplay, mnHelp, mntmAbout, mntmRules, CAH_Panel}));
+		ImageIcon cahIcon = new ImageIcon(CAH_Frame.class.getResource("/graphics/CAH.png"));
+		setIconImage(cahIcon.getImage());
 	}
 	
 	/**
