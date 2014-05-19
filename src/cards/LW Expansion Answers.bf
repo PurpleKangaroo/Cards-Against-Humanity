@@ -18,7 +18,7 @@ Shitting yourself in class while wearing True Religion(R) jeans.
 Some laptop you don't want the responsibility for.
 That asshole who never opens his backpack and still has an A.
 The guy who brings a banjo to 4th period.
-The next bigtime LW rapper on Soundcloud.
+The next bigtime LW rapper on Datpiff.
 The poopetrator.
 Thinking your 1820 SAT will get you into the Ivys.
 TRYING TO MAKE A GODDAMN LEFT TURN INTO THE PARKING LOT IN THE MORNING.
