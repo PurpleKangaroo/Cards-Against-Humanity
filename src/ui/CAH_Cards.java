@@ -386,7 +386,7 @@ public class CAH_Cards extends JLayeredPane
 		ExpPAXAList = new AList(Decks.PAXEXPANSION);
 		PAXScrA.setViewportView(ExpPAXAList);
 		
-		LW_Expansion = new JTabbedPane(JTabbedPane.TOP);
+		/*LW_Expansion = new JTabbedPane(JTabbedPane.TOP);
 		decksTabbed.addTab("LW East Expansion", null, LW_Expansion, null);
 		LWScrQ = new JScrollPane();
 		LWScrQ.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -398,7 +398,7 @@ public class CAH_Cards extends JLayeredPane
 		LWScrQ.setViewportView(ExpLWQList);
 		ExpLWAList = new AList(Decks.LWEXPANSION);
 		LWScrA.setViewportView(ExpLWAList);
-		
+		*/
 		GridBagLayout qScrollLayout = new GridBagLayout();
 		GridBagConstraints qScrollConstraints = new ListScrConstraints();
 		
@@ -448,10 +448,10 @@ public class CAH_Cards extends JLayeredPane
 				"                                                                                                                         " + 
 				"                                                                                                                   " +
 				"Draw" + "          " + "Pick"));
-		LWScrQ.setColumnHeaderView(new JLabel("Card Text" +
+		/*LWScrQ.setColumnHeaderView(new JLabel("Card Text" +
 				"                                                                                                                         " + 
 				"                                                                                                                   " +
-				"Draw" + "          " + "Pick"));
+				"Draw" + "          " + "Pick"));*/
 		
 		originalAnsScr = new JScrollPane();
 		originalAnsScr.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -565,7 +565,7 @@ public class CAH_Cards extends JLayeredPane
 			
 		});
 		
-		LW_Expansion.addChangeListener(new ChangeListener()
+		/*LW_Expansion.addChangeListener(new ChangeListener()
 		{
 			@Override
 			public void stateChanged(ChangeEvent arg0)
@@ -573,7 +573,7 @@ public class CAH_Cards extends JLayeredPane
 				setCard();
 			}
 			
-		});
+		});*/
 	}
 	
 	/**
@@ -1132,7 +1132,7 @@ public class CAH_Cards extends JLayeredPane
 				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{card}));
 			}
 		}
-		else if(decksTabbed.getSelectedComponent().equals(LW_Expansion))
+		/*else if(decksTabbed.getSelectedComponent().equals(LW_Expansion))
 		{
 			if(LW_Expansion.getSelectedComponent().equals(LWScrQ))
 			{
@@ -1164,7 +1164,7 @@ public class CAH_Cards extends JLayeredPane
 				bounceIn();
 				this.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{card}));
 			}
-		}
+		}*/
 	}
 	
 	/**
