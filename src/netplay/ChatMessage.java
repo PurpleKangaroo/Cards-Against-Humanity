@@ -10,9 +10,16 @@ public class ChatMessage implements Message
 	private String username;
 	private String message;
 	
+	/**
+	 * A ChatMessage object containing a message supplied by a particular user.
+	 * @param username - the username of the user making a chat message.
+	 * @param message - the text of the user's message.
+	 */
 	public ChatMessage(String username, String message)
 	{
 		this.date = new GregorianCalendar();
+		this.username = username;
+		this.message = message;
 	}
 	
 	/**
