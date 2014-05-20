@@ -2,8 +2,8 @@
 ###"A Party Game for Horrible People" in Java
 ![Picture][CAHbox]
 [CAHbox]: https://github.com/PurpleKangaroo/Cards-Against-Humanity/blob/master/src/graphics/CAHbox.png?raw=true
-### Coming Out By May 2014
-We may be able to release this game earlier, but we hope to have the game out by May so that High School Seniors with Senioritis may play it after they have taken their AP tests.
+### Coming Out Summer 2014
+We may be able to release this game earlier, but we hope to have the game out by the end of the school year so that High School Seniors with Senioritis may play it after they're done with the important stuff.
 
 ###[PurpleKangaroo](https://github.com/PurpleKangaroo)
 [@PurpleKangaroo](https://github.com/PurpleKangaroo) is a small organization of [Lake Washington High School](http://www.lwsd.org/school/lwhs/Pages/default.aspx) students who are interested in programing, many of whom are in the school's AP Computer Science class.
