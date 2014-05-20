@@ -2,7 +2,7 @@
 ###"A Party Game for Horrible People" in Java
 ![Picture][CAHbox]
 [CAHbox]: https://github.com/PurpleKangaroo/Cards-Against-Humanity/blob/master/src/graphics/CAHbox.png?raw=true
-### Coming Out By May 2014
+### Coming Out Summer 2014
 We may be able to release this game earlier, but we hope to have the game out by May so that High School Seniors with Senioritis may play it after they have taken their AP tests.
 
 ###[PurpleKangaroo](https://github.com/PurpleKangaroo)
