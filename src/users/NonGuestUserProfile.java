@@ -135,4 +135,14 @@ public class NonGuestUserProfile extends UserProfile
 	{
 		bDate = newBirthDate;
 	}
+	
+	/**
+	 * Gets the players birth date, as a String value.
+	 * @return the player's birthdate.
+	 * @since CAH1.0
+	 */
+	public String getBirthDate()
+	{
+		return (bDate.MONTH + 1) + "/" + bDate.DATE + "/" + bDate.YEAR;
+	}
 }

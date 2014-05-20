@@ -80,14 +80,19 @@ public class UserData
 		NonGuestUserProfile user = new NonGuestUserProfile(username, first, last, gender.charAt(0), new GregorianCalendar(year, month, day));
 		return user;
 	}
-/*	
+
 	/**
 	 * Reads a saved user profile from the profile data RandomAccessFile.
 	 * @param user the user profile to be written/edited.
+	 * @throws IOException 
 	 * @since CAH1.0
-
-	public void writeProfile(NonGuestUserProfile user)
+	 */
+	public void writeProfile(NonGuestUserProfile user) throws IOException
 	{
-		
-	}	 */
+		proFile.writeChars(user.getUserName() + "\n");
+		proFile.writeChars(user.getFirstName() + "\n");
+		proFile.writeChars(user.getLastName() + "\n");
+		proFile.writeChars(user.getGender().equals(Gender.MALE) ? "m\n" : "f\n");
+		proFile.writeChars(user.getBirthDate() + "\n");
+	}
 }
