@@ -531,6 +531,7 @@ public class CAH_Game {
 		case GET_GAME_RULES:
 			break;
 		}
+		return message; //TODO: confirm this is correct.
 	}
 	
 	/**
