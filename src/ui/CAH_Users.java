@@ -1,12 +1,18 @@
 package ui;
 
+import import_export.UserData;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,6 +30,7 @@ import javax.swing.border.TitledBorder;
  */
 public class CAH_Users extends JPanel
 {
+	private UserPanelEdit edit;
 
 	/**
 	 * Generated Serial Version UID.
@@ -48,7 +55,7 @@ public class CAH_Users extends JPanel
 		mainPanel.setOpaque(false);
 		mainPanel.setBounds(599, 230, 336, 255);
 		mainPanel.setLayout(null);
-		UserPanelEdit edit = new UserPanelEdit();
+		edit = new UserPanelEdit();
 		mainPanel.add(edit);
 		add(mainPanel);
 		
@@ -65,8 +72,32 @@ public class CAH_Users extends JPanel
 	 * @param save The save button.
 	 * @since CAH1.0
 	 */
-	protected void addMainMenuButtonAndSaveButton(JComponent mainMenu, JComponent save)
+	protected void addMainMenuButtonAndSaveButton(JComponent mainMenu, final JButton save)
 	{
+		save.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				if(save.getText().equals("Save"))
+				{
+					try
+					{
+						UserData data = new UserData();
+						data.writeProfile(edit.getUser());
+						data.close();
+					} catch (Exception e1)
+					{
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+				}
+				save.setText(save.getText().equals("Save") ? "Edit" : "Save");
+				
+			}
+			
+		});
 		add(mainMenu);
 		add(save);
 		final JLabel UsersBackground = new JLabel("");

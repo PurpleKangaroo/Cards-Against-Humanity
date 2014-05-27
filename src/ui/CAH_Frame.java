@@ -510,18 +510,6 @@ public class CAH_Frame extends JFrame {
 						
 					});
 					
-					save.addActionListener(new ActionListener(){
-
-						@Override
-						public void actionPerformed(ActionEvent e)
-						{
-							// TODO Fill
-							save.setText(save.getText().equals("Save") ? "Edit" : "Save");
-							
-						}
-						
-					});
-					
 					users.setName("users");
 					CAH_Layers.remove(Start);
 					CAH_Layers.add(users);

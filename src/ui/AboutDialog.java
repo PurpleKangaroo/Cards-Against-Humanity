@@ -48,6 +48,7 @@ public class AboutDialog extends JDialog {
 				txtAboutTitle = new JTextField();
 				txtAboutTitle.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 				txtAboutTitle.setText("Cards Against Humanity - CAH1.0");
+				txtAboutTitle.setEditable(false);
 				scrollPane.setColumnHeaderView(txtAboutTitle);
 				txtAboutTitle.setColumns(10);
 			}
@@ -55,6 +56,7 @@ public class AboutDialog extends JDialog {
 				JTextArea txtAbout = new JTextArea();
 				txtAbout.setFont(new Font("Tahoma", Font.PLAIN, 11));
 				txtAbout.setText("Software Developed by PurpleKangaroo Development\r\nLead Developer - Holt Maki\r\nLead Tester and Senior Developer - Devon Grove\r\nThe phrase \"Cards Against Humanity\" belongs to Cards Against Humanity under a creative commons liscence.....\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n[a bunch of other legal or liscence crap]\r\n");
+				txtAbout.setEditable(false);
 				scrollPane.setViewportView(txtAbout);
 			}
 		}

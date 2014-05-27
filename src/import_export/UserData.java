@@ -1,9 +1,20 @@
 package import_export;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.RandomAccessFile;
+import java.net.URISyntaxException;
 import java.util.GregorianCalendar;
+import java.util.Scanner;
 
 import users.Gender;
 import users.NonGuestUserProfile;
@@ -28,15 +39,23 @@ public class UserData
 	 */
 	private RandomAccessFile statsFile;
 	
+	private Scanner proFileIn;
+	
+	private PrintWriter proFileOut;
+	
 	/**
 	 * Creates a new UserData.
-	 * @throws FileNotFoundException 
+	 * @throws IOException 
+	 * @throws URISyntaxException 
 	 * @since CAH1.0
 	 */
-	public UserData() throws FileNotFoundException
+	public UserData() throws IOException, URISyntaxException
 	{
-		proFile = new RandomAccessFile((UserData.class.getResource("userSave.dat")).getFile(), "rw");
-		statsFile = new RandomAccessFile((UserData.class.getResource("statsFile.dat")).getFile(), "rw");
+		System.out.println(getClass().getResource("userSave.txt").toURI());
+		proFileIn = new Scanner(new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("userSave.txt"))));
+		proFileOut = new PrintWriter(new FileOutputStream(new File(getClass().getResource("userSave.txt").toURI())));
+		proFileOut.write("AAAAA");
+		proFileOut.close();
 	}
 	
 	/**
@@ -66,11 +85,11 @@ public class UserData
 	 */
 	public NonGuestUserProfile readProfile() throws IOException
 	{
-		String username = proFile.readLine();
-		String first = proFile.readLine();
-		String last = proFile.readLine();
-		String gender = proFile.readLine();
-		String birthDate = proFile.readLine();
+		String username = proFileIn.nextLine();
+		String first = proFileIn.nextLine();
+		String last = proFileIn.nextLine();
+		String gender =proFileIn.nextLine();
+		String birthDate = proFileIn.nextLine();
 		int month = Integer.parseInt(birthDate.substring(0, birthDate.indexOf("/")));
 		birthDate = birthDate.substring(birthDate.indexOf("/") + 1);
 		int day = Integer.parseInt(birthDate.substring(0, birthDate.indexOf("/")));
@@ -89,10 +108,11 @@ public class UserData
 	 */
 	public void writeProfile(NonGuestUserProfile user) throws IOException
 	{
-		proFile.writeChars(user.getUserName() + "\n");
-		proFile.writeChars(user.getFirstName() + "\n");
-		proFile.writeChars(user.getLastName() + "\n");
-		proFile.writeChars(user.getGender().equals(Gender.MALE) ? "m\n" : "f\n");
-		proFile.writeChars(user.getBirthDate() + "\n");
+		proFileOut.println(user.getUserName());
+		proFileOut.println(user.getFirstName());
+		proFileOut.println(user.getLastName());
+		proFileOut.println(user.getGender().equals(Gender.MALE) ? "m" : "f");
+		proFileOut.println(user.getBirthDate());
+		proFileOut.close();
 	}
 }
