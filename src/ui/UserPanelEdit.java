@@ -15,6 +15,9 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 
+import users.GuestUserProfile;
+import users.NonGuestUserProfile;
+
 /**
  * A panel that allows editing of user information.
  * @author Holt Maki
@@ -327,5 +330,10 @@ public class UserPanelEdit extends JPanel
 		
 		dayComboBox.setModel(new DefaultComboBoxModel(dayArr));
 		dayComboBox.setSelectedIndex(oldDay - 1);
+	}
+	
+	public NonGuestUserProfile getUser()
+	{
+		return new NonGuestUserProfile(usernameField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), genderComboBox.getSelectedIndex() == 0 ? 'm' : 'f', new GregorianCalendar(Integer.parseInt((String) yearComboBox.getSelectedItem()),monthComboBox.getSelectedIndex(),dayComboBox.getSelectedIndex() + 1));
 	}
 }
