@@ -499,7 +499,7 @@ public class CAH_Game {
 		return ruleSet;
 	}
 	
-	public GameCommandMessage processCommand(GameCommandMessage message)
+	public GameCommandMessage processCommand(GameCommandMessage message) throws Card_Czar_Exception, PlayerNotFoundException
 	{
 		switch(message.getGameCommand())
 		{
@@ -515,22 +515,39 @@ public class CAH_Game {
 		case GET_ANSWER_CARDS:
 			return new GameCommandMessage(true, GameCommand.GET_ANSWER_CARDS, "Server", this.getAnswerCards(this.answers));
 		case SCORE_POINTS:
+			//this.scorePoints(message.getCard()); TODO: Fix.
 			break;
+			//return new GameCommandMessage();
 		case SERIOUS_BUISNESS_POINTS:
+			//this.seriousBuisnessPoints(first, second, third); TODO: Fix
 			break;
+			//return new GameCommandMessage();
 		case NEXT_CARD_CZAR:
+			this.nextCardCzar();
 			break;
+			//return new GameCommandMessage();
 		case GET_CURRENT_CARD_CZAR:
+			this.getCurrentCardCzar();
 			break;
+			//return new GameCommandMessage();
 		case GET_ROUND_COUNT:
+			this.getRoundCount();
 			break;
+			//return new GameCommandMessage();
 		case GET_AWESOME_POINTS:
+			this.getAwesomePoints();
 			break;
+			//return new GameCommandMessage();
 		case GET_PLAYERS:
+			this.getPlayers();
 			break;
+			//return new GameCommandMessage();
 		case GET_GAME_RULES:
+			this.getGameRules();
 			break;
+			//return new GameCommandMessage();
 		}
+		return message; //TODO: confirm this is correct.
 	}
 	
 	/**
