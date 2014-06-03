@@ -33,6 +33,7 @@ public class RulesPanel extends JPanel
 		setMaximumSize(new Dimension(1450, 700));
 		setLayout(null);
 		
+		
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
 		panel.setBounds(225, 218, 696, 434);
