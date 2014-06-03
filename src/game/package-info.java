@@ -4,6 +4,7 @@
  * @version CAH1.0
  * @since CAH1.0
  * @author Holt Maki
- * @see {@linkplain HouseRules}, {@linkplain CAH_Game}, {@linkplain CAH_GameComponents}, {@linkplain RulesMaker}
+ * @see HouseRules
+ * @see CAH_Game
  */
 package game;
