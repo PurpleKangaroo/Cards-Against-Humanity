@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.BoxLayout;
 import javax.swing.JTextPane;
 import java.awt.Cursor;
+import javax.swing.border.LineBorder;
 
 /**
  * A class of object that represents the panel that contains information about Cards Against Humanity's rules.
@@ -35,25 +36,31 @@ public class RulesPanel extends JPanel
 		
 		
 		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(Color.WHITE, 1, true));
 		panel.setOpaque(false);
-		panel.setBounds(225, 218, 696, 434);
+		panel.setBounds(225, 218, 696, 471);
 		add(panel);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 		
 		JTextPane txtpnbasicRules = new JTextPane();
-		txtpnbasicRules.setBounds(154, 5, 77, 25);
+		txtpnbasicRules.setOpaque(false);
+		txtpnbasicRules.setDisabledTextColor(Color.WHITE);
+		txtpnbasicRules.setBounds(10, 11, 323, 447);
 		txtpnbasicRules.setEnabled(false);
 		txtpnbasicRules.setEditable(false);
 		txtpnbasicRules.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		txtpnbasicRules.setContentType("text/html");
-		txtpnbasicRules.setText("<html><b>Basic Rules</b>\r\n<p>\r\nTo start the game each player draws ten White Cards.\r\n</p>\r\n</html>");
+		txtpnbasicRules.setText("<html><body style=\"font-family: Arial; font-size:13; font-color: WHITE\"><b>Basic Rules</b>\r\n<p>\r\nTo start the game each player draws ten White Cards.</p><p>A player will be chosen at random to be the first Card Czar, and a black card is automatically drawn.</p>\r\n<p>Everyone else answers the question or fills in the blank by selecting one White Card.</p>\r\n<p>The cards are placed in a random order and each combination is displayed to everyone. The Card Czar then picks the funniest play, and whoever submitted it gets one Awesome Point.\r\n</p>\r\n<p><b>PICK </b><span style=\"font-color: BLACK\">\u2777</span></p>\r\n<p>Some cards say PICK <span style=\"font-color: BLACK\">\u2777 </span> on the bottom.</p>\r\n<p>To answer these cards each player plays two white cards in a combination. Select them in the order that you want them displayed - the order matters.</p>\r\n<p><b>Gambling</b></p>\r\n</body>\r\n</html>");
+		//TODO add lines between sections (see CAH's rules).
 		panel_1.add(txtpnbasicRules);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setOpaque(false);
 		panel.add(panel_2);
 		
 		JLabel lblCardsAgainstHumanity = new JLabel("Cards Against Humanity");
