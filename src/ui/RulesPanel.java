@@ -50,12 +50,12 @@ public class RulesPanel extends JPanel
 		JTextPane txtpnbasicRules = new JTextPane();
 		txtpnbasicRules.setOpaque(false);
 		txtpnbasicRules.setDisabledTextColor(Color.WHITE);
-		txtpnbasicRules.setBounds(10, 11, 323, 447);
+		txtpnbasicRules.setBounds(10, 11, 323, 458);
 		txtpnbasicRules.setEnabled(false);
 		txtpnbasicRules.setEditable(false);
 		txtpnbasicRules.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		txtpnbasicRules.setContentType("text/html");
-		txtpnbasicRules.setText("<html><body style=\"font-family: Arial; font-size:13; font-color: WHITE\"><b>Basic Rules</b>\r\n<p>\r\nTo start the game each player draws ten White Cards.</p><p>A player will be chosen at random to be the first Card Czar, and a black card is automatically drawn.</p>\r\n<p>Everyone else answers the question or fills in the blank by selecting one White Card.</p>\r\n<p>The cards are placed in a random order and each combination is displayed to everyone. The Card Czar then picks the funniest play, and whoever submitted it gets one Awesome Point.\r\n</p>\r\n<p><b>PICK </b><span style=\"font-color: BLACK\">\u2777</span></p>\r\n<p>Some cards say PICK <span style=\"font-color: BLACK\">\u2777 </span> on the bottom.</p>\r\n<p>To answer these cards each player plays two white cards in a combination. Select them in the order that you want them displayed - the order matters.</p>\r\n<p><b>Gambling</b></p>\r\n</body>\r\n</html>");
+		txtpnbasicRules.setText("<html><body style=\"font-family: Arial; font-size:12; font-color: WHITE\"><b>Basic Rules</b>\r\n<p>\r\nTo start the game each player draws ten White Cards.</p><p>A player will be chosen at random to be the first Card Czar, and a black card is automatically drawn.</p>\r\n<p>Everyone else answers the question or fills in the blank by selecting one White Card.</p>\r\n<p>The cards are placed in a random order and each combination is displayed to everyone. The Card Czar then picks the funniest play, and whoever submitted it gets one Awesome Point.\r\n</p>\r\n<p><b>PICK </b><span style=\"font-color: BLACK\">\u2777</span></p>\r\n<p>Some Black Cards say PICK <span style=\"font-color: BLACK\">\u2777 </span> on the bottom.</p>\r\n<p>To answer these cards each player plays two White Cards in a combination. Select them in the order that you want them displayed - the order matters.</p>\r\n<p><b>Gambling</b></p>\r\n<p>You may choose to play a game with the gambling rule if you wish to. If a Black Card is played and you have more than one White Card that you think it went, you can bet one of your awesome points to plan additional White Card.</p>\r\n<p>If you won, you keep your point. If you lose, whoever won the round gets the point you wagered.</p>\r\n</body>\r\n</html>");
 		//TODO add lines between sections (see CAH's rules).
 		panel_1.add(txtpnbasicRules);
 		
