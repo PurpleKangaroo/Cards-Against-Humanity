@@ -62,6 +62,24 @@ public class RulesPanel extends JPanel
 		JPanel panel_2 = new JPanel();
 		panel_2.setOpaque(false);
 		panel.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JTextPane txtpnhouseRules = new JTextPane();
+		txtpnhouseRules.setOpaque(false);
+		txtpnhouseRules.setDisabledTextColor(Color.WHITE);
+		txtpnhouseRules.setBounds(10, 11, 323, 66);
+		txtpnhouseRules.setEnabled(false);
+		txtpnhouseRules.setEditable(false);
+		txtpnhouseRules.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+		txtpnhouseRules.setContentType("text/html");
+		txtpnhouseRules.setText("<html><body style=\"font-family: Arial; font-size:12; font-color: WHITE\"><b>House Rules</b>\r\n<p>\r\nCards Against Humanity is meant to be remixed. Here are some awesome ways to pimp out the rules.</p>\r\n</body></html>");
+		//TODO add lines between sections (see CAH's rules).
+		panel_2.add(txtpnhouseRules);
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBounds(10, 88, 323, 370);
+		panel_2.add(panel_3);
+		//TODO make the HouseRulePanel class and put them inside panel_3.
 		
 		JLabel lblCardsAgainstHumanity = new JLabel("Cards Against Humanity");
 		lblCardsAgainstHumanity.setBounds(84, 43, 1024, 139);
