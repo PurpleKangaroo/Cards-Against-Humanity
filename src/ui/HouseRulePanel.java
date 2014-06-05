@@ -4,6 +4,10 @@ import java.awt.Rectangle;
 
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
+import java.awt.Color;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.BoxLayout;
 
 /**
  * A class of object that makes a panel that displays the house rules on it that will, when click have the description of the house rules drop down.
@@ -25,6 +29,8 @@ public class HouseRulePanel extends JPanel
 	 */
 	private String rulename;
 	
+	private boolean selected;
+	
 	/**
 	 * The JTextPane that contains the description of the House Rule that the HouseRulePanel represents.
 	 */
@@ -38,8 +44,17 @@ public class HouseRulePanel extends JPanel
 	 */
 	public HouseRulePanel(String rulename, JTextPane description)
 	{
+		setBackground(Color.BLACK);
 		this.rulename = rulename;
 		this.description = description;
+		setLayout(null);
+		
+		JLabel nameLabel = new JLabel("");
+		nameLabel.setBounds(0, 0, 0, 0);
+		nameLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		add(nameLabel);
+		
+		selected = false;
 	}
 	
 	/**
