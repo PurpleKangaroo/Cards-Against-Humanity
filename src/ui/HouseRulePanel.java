@@ -36,9 +36,9 @@ public class HouseRulePanel extends JPanel implements Slidable
 	
 	/**
 	 * The JTextPane that contains the description of the House Rule that the HouseRulePanel represents.
-	 */
-	
+	 */	
 	private JTextPane description;
+	
 	/**
 	 * Creates a new HouseRulePanel
 	 * @param rulename The name of the House Rule.
@@ -89,6 +89,7 @@ public class HouseRulePanel extends JPanel implements Slidable
 	 * Call this method when the HouseRulesPanel is clicked.
 	 * It should cause the description of the HouseRule to drop down in a sliding motion.
 	 * Sets selected as false.
+	 * Calls {@linkplain #slide(double)} with a parameter of 1.2 to have {@linkplain #description} slide down.
 	 * @since CAH1.0
 	 */
 	public void clicked()
@@ -96,13 +97,13 @@ public class HouseRulePanel extends JPanel implements Slidable
 		selected = false;
 		this.setBounds(this.getX(), this.getY(), (int) this.getWidth(), (int) (this.getHeight() + description.getHeight()));
 		
-		slide();
+		slide(1.2);
 	}
 
 	@Override
-	public void slide()
+	public void slide(double sec, int dir)
 	{
-		// TODO Auto-generated method stub
+		
 		
 	}
 }
