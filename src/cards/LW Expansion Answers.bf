@@ -31,3 +31,4 @@ Unused TV monitors that could have funded a teacher's salary.
 Waking up on other people's lawns.
 Wearing a "fake" Burberry shirt that still cost $70.
 When that girl with the yoga pants bends over.
+"That shit's expensive."

@@ -97,13 +97,32 @@ public class HouseRulePanel extends JPanel implements Slidable
 		selected = false;
 		this.setBounds(this.getX(), this.getY(), (int) this.getWidth(), (int) (this.getHeight() + description.getHeight()));
 		
-		slide(1.2);
+		try
+		{
+			slide(1.2, Slidable.DOWN);
+		}
+		catch (InvalidDirectionException e)
+		{
+			
+		}
 	}
 
 	@Override
-	public void slide(double sec, int dir)
+	public void slide(double sec, int dir) throws InvalidDirectionException
 	{
+		if(dir != Slidable.DOWN && dir != Slidable.UP)
+		{
+			throw new InvalidDirectionException();
+		}
 		
+		if(dir == Slidable.DOWN)
+		{
+			//TODO fill
+		}
 		
+		if(dir == Slidable.UP)
+		{
+			//TODO fill
+		}
 	}
 }
