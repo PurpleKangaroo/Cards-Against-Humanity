@@ -15,7 +15,7 @@ public interface Slidable extends Animated
 	public static final int DOWN = 0;
 	
 	/**
-	 * The integer that represents sliding up.
+	 * The integer that represents sliding up. 
 	 */
 	public static final int UP = 1;
 	
