@@ -22,6 +22,7 @@ public class GameCommandMessage implements Message
 	private String sender;
 	private Card card;
 	private Card[][] cards;
+	private Card[] winner;
 	private User user;
 	private Rules rules;
 	private CAH_Game game;
@@ -109,6 +110,23 @@ public class GameCommandMessage implements Message
 		this.cards = cards;
 	}
 	
+	/**
+	 * Creates a GameCommandMessage that contains a single dimension array of cards in order to send the winning array of cards..
+	 * @param isPublic The boolean that tells weather or not the message is intended for everyone.
+	 * @param command The byte that represents the command being used.
+	 * @param sender The person who sent the GameCommandMessage.
+	 * @author Holt Maki
+	 * @param winner The array of cards that won.
+	 * @since CAH1.0
+	 */
+	public GameCommandMessage(boolean isPublic, GameCommand command, String sender, Card[] winner)
+	{
+		this.isPublic = isPublic;
+		this.command = command;
+		this.sender = sender;
+		this.winner = winner;
+	}
+	
 	@Override
 	public boolean isPublic()
 	{
@@ -144,6 +162,15 @@ public class GameCommandMessage implements Message
 	{
 		if(card == null) throw new CardNumberException();
 		else return card;
+	}
+	
+	/**
+	 * Gets the winning card array.
+	 * @return winner The array of cards that won.
+	 */
+	public Card[] getWinner()
+	{
+		return winner;
 	}
 	
 	/**
@@ -203,7 +230,8 @@ public class GameCommandMessage implements Message
 		GET_ROUND_COUNT,
 		GET_AWESOME_POINTS,
 		GET_PLAYERS,
-		GET_GAME_RULES;
+		GET_GAME_RULES,
+		GAME_UPDATE;
 	}
 
 	@Override
