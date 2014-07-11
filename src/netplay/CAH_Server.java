@@ -1,6 +1,8 @@
 package netplay;
 
 import game.CAH_Game;
+import game.CardNotFoundException;
+import game.PlayerNotFoundException;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +14,8 @@ import java.util.Map;
 
 import javax.swing.Timer;
 
+import netplay.GameCommandMessage.CardNumberException;
+import users.Card_Czar_Exception;
 import users.User;
 
 import com.esotericsoftware.kryonet.Connection;
@@ -117,11 +121,49 @@ public class CAH_Server implements Runnable
 				{
 					if(connectionType.equals(ConnectionType.UDP))
 					{
-						gameServer.sendToAllUDP(game.processCommand((GameCommandMessage) object));
+						try
+						{
+							gameServer.sendToAllUDP(game.processCommand((GameCommandMessage) object));
+						} catch (Card_Czar_Exception e)
+						{
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (PlayerNotFoundException e)
+						{
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (CardNotFoundException e)
+						{
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (CardNumberException e)
+						{
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 					else
 					{
-						gameServer.sendToAllTCP(game.processCommand((GameCommandMessage) object));
+						try
+						{
+							gameServer.sendToAllTCP(game.processCommand((GameCommandMessage) object));
+						} catch (Card_Czar_Exception e)
+						{
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (PlayerNotFoundException e)
+						{
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (CardNotFoundException e)
+						{
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (CardNumberException e)
+						{
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 				}
 				if(object instanceof ChatMessage)
