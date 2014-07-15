@@ -187,11 +187,6 @@ public class CAH_Server implements Runnable
 			}
 		});
 		updateTimer.start();
-		boolean running = true;
-		while(running)
-		{
-			
-		}
 		/*
 		 * TODO have timer go off at a certain interval, then when it does call gameServer.update();
 		 * TODO then send everything from the server to "localhost" client, as well as all of the clients that aren't connected.
