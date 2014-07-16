@@ -15,9 +15,14 @@ import javax.swing.BoxLayout;
 import javax.swing.JTextPane;
 
 import java.awt.Cursor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.border.LineBorder;
 import javax.swing.SpringLayout;
+
+import ui.Slidable.InvalidDirectionException;
 
 /**
  * A class of object that represents the panel that contains information about Cards Against Humanity's rules.
@@ -81,20 +86,46 @@ public class RulesPanel extends JPanel
 		//TODO add lines between sections (see CAH's rules).
 		panel_2.add(txtpnhouseRules);
 		
-		JPanel houseRulesArea = new JPanel();
+		final JPanel houseRulesArea = new JPanel();
 		houseRulesArea.setOpaque(false);
 		houseRulesArea.setBounds(10, 88, 323, 370);
 		panel_2.add(houseRulesArea);
-		SpringLayout sl_houseRulesArea = new SpringLayout();
+		final SpringLayout sl_houseRulesArea = new SpringLayout();
 		houseRulesArea.setLayout(sl_houseRulesArea);
 		
-		HouseRulePanel happyEnding = new HouseRulePanel("Happy Ending", HouseRules.HAPPY_ENDING.getDescription());
+		final HouseRulePanel happyEnding = new HouseRulePanel("Happy Ending", HouseRules.HAPPY_ENDING.getDescription());
 		sl_houseRulesArea.putConstraint(SpringLayout.NORTH, happyEnding, 0, SpringLayout.NORTH, houseRulesArea);
 		sl_houseRulesArea.putConstraint(SpringLayout.WEST, happyEnding, 0, SpringLayout.WEST, houseRulesArea);
 		sl_houseRulesArea.putConstraint(SpringLayout.SOUTH, happyEnding, 20, SpringLayout.NORTH, houseRulesArea);
 		sl_houseRulesArea.putConstraint(SpringLayout.EAST, happyEnding, 323, SpringLayout.WEST, houseRulesArea);
 		houseRulesArea.add(happyEnding);
 		
+		happyEnding.addMouseListener(new MouseAdapter()
+		{
+
+			@Override
+			public void mouseClicked(MouseEvent e)
+			{
+				try
+				{
+					sl_houseRulesArea.removeLayoutComponent(happyEnding);
+					sl_houseRulesArea.putConstraint(SpringLayout.NORTH, happyEnding, 0, SpringLayout.NORTH, houseRulesArea);
+					sl_houseRulesArea.putConstraint(SpringLayout.WEST, happyEnding, 0, SpringLayout.WEST, houseRulesArea);
+					sl_houseRulesArea.putConstraint(SpringLayout.SOUTH, happyEnding, 10, SpringLayout.NORTH, houseRulesArea);
+					sl_houseRulesArea.putConstraint(SpringLayout.EAST, happyEnding, 323, SpringLayout.WEST, houseRulesArea);
+					happyEnding.slide(10, Slidable.DOWN);
+					
+
+				} catch (InvalidDirectionException e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+
+		});
+		/*
 		HouseRulePanel rebooting = new HouseRulePanel("Rebooting the Universe", HouseRules.REBOOTING_THE_UNIVERSE.getDescription());
 		sl_houseRulesArea.putConstraint(SpringLayout.NORTH, rebooting, 0, SpringLayout.SOUTH, happyEnding);
 		sl_houseRulesArea.putConstraint(SpringLayout.WEST, rebooting, 0, SpringLayout.WEST, houseRulesArea);
@@ -142,7 +173,7 @@ public class RulesPanel extends JPanel
 		sl_houseRulesArea.putConstraint(SpringLayout.WEST, never, 0, SpringLayout.WEST, houseRulesArea);
 		sl_houseRulesArea.putConstraint(SpringLayout.SOUTH, never, 20, SpringLayout.SOUTH, serious);
 		sl_houseRulesArea.putConstraint(SpringLayout.EAST, never, 323, SpringLayout.WEST, houseRulesArea);
-		houseRulesArea.add(never);
+		houseRulesArea.add(never);*/
 		
 		//TODO make the HouseRulePanel class and put them inside panel_3.
 		

@@ -41,6 +41,7 @@ import cards.DeckBuilder;
 import cards.Decks;
 import cards.QuestionCard;
 
+//TODO Accomodate long card strings in the table. See expansion 4 "shes looking for ____" and original "mexican government spent pesos on ___" cards
 /**
  * A class of object that represents the layered pane that contains information about a players statistics.
  * <html><p><img src="https://raw.github.com/PurpleKangaroo/Cards-Against-Humanity/master/Screenshots/CardsViewer.png" height="300px" width="562px"/>
@@ -677,7 +678,7 @@ public class CAH_Cards extends JLayeredPane
 			for(int i = 0; i < qCards.size(); i++)
 			{
 				data[i][0] = "<html><body style=\"color:WHITE\">" + qCards.get(i).getCardString() + "</body></html>";
-				data[i][1] = "<html>"+ (qCards.get(i).getPick()==2 ? "<span style=\"font-color: BLACK\">\u2777</span>" : qCards.get(i).getPick() == 3 ? "<span style=\"font-color: BLACK\">\u2778</span>" : "") + (qCards.get(i).getDraw()==2 ? "   <span style=\"font-color: BLACK\">\u2777</span>" : "" + "</html>");
+				data[i][1] = "<html>"+ (qCards.get(i).getDraw()==2 ? "<span style=\"font-color: BLACK\">\u2777</span>" : "<span style=\"font-color: BLACK\">\u2004\u2004\u2006</span>") + (qCards.get(i).getPick()==2 ? "   <span style=\"font-color: BLACK\">\u2777</span>" : qCards.get(i).getPick() == 3 ? "   <span style=\"font-color: BLACK\">\u2778</span>" : "") + "</html>";
 			}
 		}
 	}

@@ -214,7 +214,7 @@ public class CAH_NewGame extends JLayeredPane {
 		final JPanel AddPlayerPanel = new JPanel();
 		AddPlayerPanel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(255, 255, 255)));
 		AddPlayerPanel.setOpaque(false);
-		AddPlayerPanel.setBounds(6, 235, 679, 205);
+		AddPlayerPanel.setBounds(6, 233, 679, 205);
 		StartGameMenus.add(AddPlayerPanel);
 		AddPlayerPanel.setLayout(null);
 		
@@ -324,6 +324,36 @@ public class CAH_NewGame extends JLayeredPane {
 		btnAddPlayer.setFocusTraversalKeysEnabled(false);
 		btnAddPlayer.setToolTipText("Add Player");
 		
+		JPanel GameType = new JPanel();
+		GameType.setOpaque(false);
+		GameType.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Game Type", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
+		GameType.setBounds(449, 128, 236, 98);
+		StartGameMenus.add(GameType);
+		
+		final JRadioButton rdbtnSinglePlayer = new JRadioButton("<html><body style=\"color:WHITE\">Single Player</body></html>");
+		rdbtnSinglePlayer.setSelected(true);
+		rdbtnSinglePlayer.setFocusPainted(false);
+		rdbtnSinglePlayer.setToolTipText(wrap("Play on your own against a computer player!"));
+		rdbtnSinglePlayer.setOpaque(false);
+		GameType.add(rdbtnSinglePlayer);
+		
+		final JRadioButton rdbtnmultiplayer = new JRadioButton("<html><body style=\"color:WHITE\">Multiplayer</body></html>");
+		rdbtnmultiplayer.setFocusPainted(false);
+		rdbtnmultiplayer.setToolTipText(wrap("Gather around one computer with your friends to play a multiplayer game!"));
+		rdbtnmultiplayer.setOpaque(false);
+		GameType.add(rdbtnmultiplayer);
+		
+		JRadioButton rdbtnNetplayMultiplayer = new JRadioButton("<html><body style=\"color:WHITE\">Netplay Multiplayer</body></html>");
+		rdbtnNetplayMultiplayer.setFocusPainted(false);
+		rdbtnNetplayMultiplayer.setToolTipText(wrap("Play over a local internet connection."));
+		rdbtnNetplayMultiplayer.setOpaque(false);
+		GameType.add(rdbtnNetplayMultiplayer);
+		
+		ButtonGroup gameTypeGroup = new ButtonGroup();
+		gameTypeGroup.add(rdbtnSinglePlayer);
+		gameTypeGroup.add(rdbtnmultiplayer);
+		gameTypeGroup.add(rdbtnNetplayMultiplayer);
+		
 		btnAddPlayer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(rdbtnSinglePlayer.isSelected())
@@ -393,36 +423,6 @@ public class CAH_NewGame extends JLayeredPane {
 				}
 			}
 		});
-		
-		JPanel GameType = new JPanel();
-		GameType.setOpaque(false);
-		GameType.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Game Type", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
-		GameType.setBounds(449, 128, 236, 98);
-		StartGameMenus.add(GameType);
-		
-		final JRadioButton rdbtnSinglePlayer = new JRadioButton("<html><body style=\"color:WHITE\">Single Player</body></html>");
-		rdbtnSinglePlayer.setSelected(true);
-		rdbtnSinglePlayer.setFocusPainted(false);
-		rdbtnSinglePlayer.setToolTipText(wrap("Play on your own against a computer player!"));
-		rdbtnSinglePlayer.setOpaque(false);
-		GameType.add(rdbtnSinglePlayer);
-		
-		final JRadioButton rdbtnmultiplayer = new JRadioButton("<html><body style=\"color:WHITE\">Multiplayer</body></html>");
-		rdbtnmultiplayer.setFocusPainted(false);
-		rdbtnmultiplayer.setToolTipText(wrap("Gather around one computer with your friends to play a multiplayer game!"));
-		rdbtnmultiplayer.setOpaque(false);
-		GameType.add(rdbtnmultiplayer);
-		
-		JRadioButton rdbtnNetplayMultiplayer = new JRadioButton("<html><body style=\"color:WHITE\">Netplay Multiplayer</body></html>");
-		rdbtnNetplayMultiplayer.setFocusPainted(false);
-		rdbtnNetplayMultiplayer.setToolTipText(wrap("Play over a local internet connection."));
-		rdbtnNetplayMultiplayer.setOpaque(false);
-		GameType.add(rdbtnNetplayMultiplayer);
-		
-		ButtonGroup gameTypeGroup = new ButtonGroup();
-		gameTypeGroup.add(rdbtnSinglePlayer);
-		gameTypeGroup.add(rdbtnmultiplayer);
-		gameTypeGroup.add(rdbtnNetplayMultiplayer);
 		
 		JLabel lblNewGame = new JLabel("New Game");
 		lblNewGame.setFont(new Font("Arial Black", Font.PLAIN, 25));

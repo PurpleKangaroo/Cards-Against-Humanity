@@ -62,6 +62,11 @@ public class CAH_Frame extends JFrame {
 	private CAH_Cards cards;
 	
 	/**
+	 * The panel that deals with rules.
+	 */
+	private RulesPanel rules;
+	
+	/**
 	 * The layered pane that contains CAH.
 	 */
 	@SuppressWarnings("unused")
@@ -132,17 +137,28 @@ public class CAH_Frame extends JFrame {
 		});
 		mnFile.add(mntmNewGame);
 		
+		JMenuItem mntmNetplay = new JMenuItem("Netplay");
+		mntmNetplay.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		mnFile.add(mntmNetplay);
+		
 		final JMenuItem mntmExit = new JMenuItem("Exit");
+		mnFile.add(mntmExit);
 		mntmExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//TODO have some kind of warning come up before exiting
 				System.exit(1);
 			}
 		});
-		mnFile.add(mntmExit);
-		
-		final JMenu mnNetplay = new JMenu("Netplay");
-		menuBar.add(mnNetplay);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, mnFile, mntmNewGame, mntmExit, CAH_Panel}));
 		
 		final JMenu mnHelp = new JMenu("Help");
 		menuBar.add(mnHelp);
@@ -195,9 +211,10 @@ public class CAH_Frame extends JFrame {
 		StartPanel.setBounds(632, 227, 331, 427);
 		Start.add(StartPanel);
 		
-		final JButton btnNewGame = new JButton("<html><body align=\"left\">New Game</body></html>");
-		btnNewGame.setHorizontalTextPosition(SwingConstants.RIGHT);
+		final JButton btnNewGame = new JButton("<html>New Game</html>");
 		btnNewGame.setContentAreaFilled(false);
+		btnNewGame.setBounds(72, 6, 251, 58);
+		btnNewGame.setHorizontalTextPosition(SwingConstants.RIGHT);
 		btnNewGame.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		btnNewGame.setFocusPainted(false);
 		btnNewGame.setBorderPainted(false);
@@ -218,6 +235,7 @@ public class CAH_Frame extends JFrame {
 		btnNewGame.setFont(new Font("Arial Black", Font.BOLD, 35));
 		
 		final JButton btnLoadGame = new JButton("Load Game");
+		btnLoadGame.setBounds(65, 70, 258, 50);
 		btnLoadGame.setFocusPainted(false);
 		btnLoadGame.setOpaque(false);
 		btnLoadGame.setContentAreaFilled(false);
@@ -237,6 +255,7 @@ public class CAH_Frame extends JFrame {
 		btnLoadGame.setFont(new Font("Arial Black", Font.BOLD, 35));
 		
 		final JButton btnStats = new JButton("Stats");
+		btnStats.setBounds(174, 182, 151, 50);
 		btnStats.setOpaque(false);
 		btnStats.setContentAreaFilled(false);
 		btnStats.setBorderPainted(false);
@@ -258,6 +277,7 @@ public class CAH_Frame extends JFrame {
 		});
 		
 		final JButton btnUsers = new JButton("Users");
+		btnUsers.setBounds(162, 238, 163, 50);
 		btnUsers.setOpaque(false);
 		btnUsers.setContentAreaFilled(false);
 		btnUsers.setBorderPainted(false);
@@ -277,6 +297,7 @@ public class CAH_Frame extends JFrame {
 		});
 		
 		final JButton btnCards = new JButton("<html><body align=\"left\">Cards</body></html>");
+		btnCards.setBounds(162, 294, 163, 50);
 		btnCards.setHorizontalTextPosition(SwingConstants.RIGHT);
 		btnCards.setContentAreaFilled(false);
 		btnCards.setAlignmentX(Component.RIGHT_ALIGNMENT);
@@ -299,6 +320,7 @@ public class CAH_Frame extends JFrame {
 		btnCards.setFont(new Font("Arial Black", Font.BOLD, 35));
 		
 		final JButton btnRules = new JButton("Rules");
+		btnRules.setBounds(172, 350, 153, 50);
 		btnRules.setOpaque(false);
 		btnRules.setContentAreaFilled(false);
 		btnRules.setBorderPainted(false);
@@ -319,6 +341,7 @@ public class CAH_Frame extends JFrame {
 		btnRules.setFont(new Font("Arial Black", Font.BOLD, 35));
 		
 		final JButton netplay = new JButton("Netplay");
+		netplay.setBounds(119, 126, 206, 50);
 		netplay.setOpaque(false);
 		netplay.setHorizontalAlignment(SwingConstants.RIGHT);
 		netplay.setForeground(Color.WHITE);
@@ -343,10 +366,10 @@ public class CAH_Frame extends JFrame {
 			{
 				final CAH_Netplay netplaySetup = new CAH_Netplay();
 				JButton mainMenu = new JButton("Main Menu");
-				mainMenu.setOpaque(false);
+				mainMenu.setOpaque(true);
 				mainMenu.setFocusTraversalKeysEnabled(false);
-				mainMenu.setFocusPainted(false);
-				mainMenu.setBorderPainted(false);
+				mainMenu.setFocusPainted(true);
+				mainMenu.setBorderPainted(true);
 				mainMenu.addActionListener(new ActionListener(){
 
 					@Override
@@ -357,12 +380,12 @@ public class CAH_Frame extends JFrame {
 						CAH_Layers.add(Start);
 						CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{Start, StartPanel, btnStats, btnLoadGame, btnUsers, btnCards, btnRules, btnNewGame}));
 						CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{CAH_Layers}));
-						setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, mnFile, mntmNewGame, mntmExit, mnNetplay, mnHelp, mntmAbout, mntmRules, CAH_Panel}));
+						setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, mnFile, mntmNewGame, mntmExit, mnHelp, mntmAbout, mntmRules, CAH_Panel}));
 						netplay.setForeground(Color.WHITE);
 					}
 					
 				});
-				mainMenu.setBounds(200, 157, 100, 23);
+				mainMenu.setBounds(200, 157, 100, 17);
 				netplaySetup.addMainMenuButton(mainMenu);
 				
 				CAH_Layers.remove(Start);
@@ -372,47 +395,14 @@ public class CAH_Frame extends JFrame {
 			}
 			
 		});
-		
-		GroupLayout gl_StartPanel = new GroupLayout(StartPanel);
-		gl_StartPanel.setHorizontalGroup(
-			gl_StartPanel.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_StartPanel.createSequentialGroup()
-					.addContainerGap(25, Short.MAX_VALUE)
-					.addGroup(gl_StartPanel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_StartPanel.createParallelGroup(Alignment.LEADING)
-							.addGroup(gl_StartPanel.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnLoadGame, GroupLayout.PREFERRED_SIZE, 296, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnNewGame, Alignment.TRAILING))
-							.addComponent(netplay, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 296, GroupLayout.PREFERRED_SIZE))
-						.addGroup(Alignment.TRAILING, gl_StartPanel.createParallelGroup(Alignment.LEADING)
-							.addGroup(gl_StartPanel.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_StartPanel.createParallelGroup(Alignment.LEADING)
-									.addComponent(btnStats, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
-									.addComponent(btnUsers, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE))
-								.addComponent(btnCards, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE))
-							.addComponent(btnRules, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap())
-		);
-		gl_StartPanel.setVerticalGroup(
-			gl_StartPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_StartPanel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(btnNewGame)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnLoadGame, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(netplay, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnStats, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnUsers, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnCards, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnRules, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(22, Short.MAX_VALUE))
-		);
-		StartPanel.setLayout(gl_StartPanel);
+		StartPanel.setLayout(null);
+		StartPanel.add(btnLoadGame);
+		StartPanel.add(btnNewGame);
+		StartPanel.add(netplay);
+		StartPanel.add(btnStats);
+		StartPanel.add(btnUsers);
+		StartPanel.add(btnCards);
+		StartPanel.add(btnRules);
 		
 		final JLabel lblCardsAgainstHumanity = new JLabel("Cards Against Humanity");
 		lblCardsAgainstHumanity.setFont(new Font("Arial Black", Font.BOLD, 70));
@@ -464,7 +454,7 @@ public class CAH_Frame extends JFrame {
 							CAH_Layers.add(Start);
 							CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{Start, StartPanel, btnStats, btnLoadGame, btnUsers, btnCards, btnRules, btnNewGame, lblCardsAgainstHumanity, StartBackground}));
 							CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{CAH_Layers}));
-							setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, mnFile, mntmNewGame, mntmExit, mnNetplay, mnHelp, mntmAbout, mntmRules, CAH_Panel}));
+							setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, mnFile, mntmNewGame, mntmExit, mnHelp, mntmAbout, mntmRules, CAH_Panel}));
 						}
 						
 					});
@@ -483,17 +473,17 @@ public class CAH_Frame extends JFrame {
 					final CAH_Users users = new CAH_Users();
 					users.setVisible(true);
 					JButton mainMenu = new JButton("Main Menu");
-					mainMenu.setOpaque(false);
+					mainMenu.setOpaque(true);
 					mainMenu.setFocusTraversalKeysEnabled(false);
-					mainMenu.setFocusPainted(false);
-					mainMenu.setBorderPainted(false);
+					mainMenu.setFocusPainted(true);
+					mainMenu.setBorderPainted(true);
 					mainMenu.setBounds(650, 490, 102, 17);//-15
 					
 					final JButton save  = new JButton("Save");
-					save.setOpaque(false);
+					save.setOpaque(true);
 					save.setFocusTraversalKeysEnabled(false);
-					save.setFocusPainted(false);
-					save.setBorderPainted(false);
+					save.setFocusPainted(true);
+					save.setBorderPainted(true);
 					save.setBounds(782, 490, 102, 17);
 					users.addMainMenuButtonAndSaveButton(mainMenu, save);//TODO make this added properly
 					mainMenu.addActionListener(new ActionListener(){
@@ -505,7 +495,7 @@ public class CAH_Frame extends JFrame {
 							CAH_Layers.add(Start);
 							CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{Start, StartPanel, btnStats, btnLoadGame, btnUsers, btnCards, btnRules, btnNewGame, lblCardsAgainstHumanity, StartBackground}));
 							CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{CAH_Layers}));
-							setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, mnFile, mntmNewGame, mntmExit, mnNetplay, mnHelp, mntmAbout, mntmRules, CAH_Panel}));
+							setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, mnFile, mntmNewGame, mntmExit, mnHelp, mntmAbout, mntmRules, CAH_Panel}));
 							btnUsers.setForeground(Color.WHITE);
 						}
 						
@@ -537,11 +527,11 @@ public class CAH_Frame extends JFrame {
 					cards.setVisible(true);
 					
 					JButton mainMenu = new JButton("Main Menu");
-					mainMenu.setFocusPainted(false);
-					mainMenu.setOpaque(false);
-					mainMenu.setBounds(1150, 660, 100, 23);
+					mainMenu.setFocusPainted(true);
+					mainMenu.setOpaque(true);
+					mainMenu.setBounds(1094, 660, 100, 17);
 					mainMenu.setFocusTraversalKeysEnabled(false);
-					mainMenu.setBorderPainted(false);
+					mainMenu.setBorderPainted(true);
 					cards.addMainMenu(mainMenu);
 					
 					mainMenu.addActionListener(new ActionListener(){
@@ -553,7 +543,7 @@ public class CAH_Frame extends JFrame {
 							CAH_Layers.add(Start);
 							CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{Start, StartPanel, btnStats, btnLoadGame, btnUsers, btnCards, btnRules, btnNewGame, lblCardsAgainstHumanity, StartBackground}));
 							CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{CAH_Layers}));
-							setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, mnFile, mntmNewGame, mntmExit, mnNetplay, mnHelp, mntmAbout, mntmRules, CAH_Panel}));
+							setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, mnFile, mntmNewGame, mntmExit, mnHelp, mntmAbout, mntmRules, CAH_Panel}));
 							btnCards.setForeground(Color.WHITE);
 						}
 						
@@ -568,9 +558,23 @@ public class CAH_Frame extends JFrame {
 				
 			});
 			
+			btnRules.addActionListener(new ActionListener()
+			{
+
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					RulesPanel rules = new RulesPanel();
+					CAH_Layers.remove(Start);
+					CAH_Layers.add(rules);
+					CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{rules}));
+					CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{CAH_Layers}));
+				}
+				
+			});
+			
 		CAH_Layers.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{Start, StartPanel, btnStats, btnLoadGame, btnUsers, btnCards, btnRules, btnNewGame, lblCardsAgainstHumanity, StartBackground}));
 		CAH_Panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{CAH_Layers}));
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{menuBar, mnFile, mntmNewGame, mntmExit, mnNetplay, mnHelp, mntmAbout, mntmRules, CAH_Panel}));
 		ImageIcon cahIcon = new ImageIcon(CAH_Frame.class.getResource("/graphics/CAH.png"));
 		setIconImage(cahIcon.getImage());
 	}

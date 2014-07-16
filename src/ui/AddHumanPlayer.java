@@ -44,14 +44,14 @@ public class AddHumanPlayer extends JDialog
 	public AddHumanPlayer()
 	{
 		setUndecorated(true);
-		setBounds(100, 150, 220, 127);
+		setBounds(100, 150, 254, 136);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
 			JPanel namePanel = new JPanel();
-			namePanel.setBounds(32, 11, 178, 30);
+			namePanel.setBounds(35, 6, 213, 38);
 			contentPanel.add(namePanel);
 			{
 				JLabel lblName = new JLabel("Name:");
@@ -65,7 +65,7 @@ public class AddHumanPlayer extends JDialog
 		}
 		{
 			JPanel panel = new JPanel();
-			panel.setBounds(10, 45, 200, 30);
+			panel.setBounds(10, 45, 238, 38);
 			contentPanel.add(panel);
 			{
 				JLabel labelUsername = new JLabel("Username:");
