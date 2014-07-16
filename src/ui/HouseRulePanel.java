@@ -7,6 +7,7 @@ import javax.swing.JTextPane;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.SpringLayout;
 
 /**
  * A class of object that makes a panel that displays the house rules on it that will, when click have the description of the house rules drop down.
@@ -45,16 +46,23 @@ public class HouseRulePanel extends JPanel implements Slidable
 	 * @param description A description of the House Rule.
 	 * @since CAH1.0
 	 */
-	public HouseRulePanel(String rulename, JTextPane description)
+	public HouseRulePanel(String rulename, String description)
 	{
-		setBackground(Color.BLACK);
+		setOpaque(false);
 		this.rulename = rulename;
-		this.description = description;
-		setLayout(null);
+		this.description = new JTextPane();
+		this.add(this.description);
 		
-		JLabel nameLabel = new JLabel("");
-		nameLabel.setBounds(0, 0, 0, 0);
-		nameLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		HouseRulesBar nameLabel = new HouseRulesBar(rulename);
+		SpringLayout springLayout = new SpringLayout();
+		springLayout.putConstraint(SpringLayout.NORTH, this.description, 0, SpringLayout.SOUTH, nameLabel);
+		springLayout.putConstraint(SpringLayout.SOUTH, this.description, 0, SpringLayout.SOUTH, this);
+		springLayout.putConstraint(SpringLayout.NORTH, this.description, 1, SpringLayout.SOUTH, nameLabel);
+		springLayout.putConstraint(SpringLayout.NORTH, nameLabel, 0, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, nameLabel, 0, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, nameLabel, 20, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.EAST, nameLabel, 0, SpringLayout.EAST, this);
+		setLayout(springLayout);
 		add(nameLabel);
 		
 		selected = false;
@@ -88,18 +96,33 @@ public class HouseRulePanel extends JPanel implements Slidable
 	/**
 	 * Call this method when the HouseRulesPanel is clicked.
 	 * It should cause the description of the HouseRule to drop down in a sliding motion.
-	 * Sets selected as false.
+	 * Sets selected as true.
 	 * Calls {@linkplain #slide(double)} with a parameter of 1.2 to have {@linkplain #description} slide down.
 	 * @since CAH1.0
 	 */
 	public void clicked()
+	{
+		selected = true;
+		this.setBounds(this.getX(), this.getY(), (int) this.getWidth(), (int) (this.getHeight() + description.getHeight()));
+		
+		try
+		{
+			slide(1.2, Slidable.DOWN);
+		}
+		catch (InvalidDirectionException e)
+		{
+			
+		}
+	}
+	
+	public void shrink()
 	{
 		selected = false;
 		this.setBounds(this.getX(), this.getY(), (int) this.getWidth(), (int) (this.getHeight() + description.getHeight()));
 		
 		try
 		{
-			slide(1.2, Slidable.DOWN);
+			slide(1.2, Slidable.UP);
 		}
 		catch (InvalidDirectionException e)
 		{

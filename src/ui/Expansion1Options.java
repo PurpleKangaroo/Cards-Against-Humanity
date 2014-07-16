@@ -92,7 +92,7 @@ public class Expansion1Options extends JDialog
 		buttonGroup.add(rdbtnExpansionAnd);
 		
 		JButton button = new JButton("OK");
-		button.setBounds(82, 130, 52, 22);
+		button.setBounds(82, 124, 64, 25);
 		button.setFocusPainted(false);
 		button.setFocusable(false);
 		button.setBorderPainted(false);

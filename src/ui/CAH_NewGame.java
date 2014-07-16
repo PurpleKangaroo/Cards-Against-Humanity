@@ -43,6 +43,7 @@ import javax.swing.plaf.ColorUIResource;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import cards.Decks;
+import javax.swing.JToggleButton;
 
 /**
  * The panel that creates the menu for a new CAH game.
@@ -83,19 +84,19 @@ public class CAH_NewGame extends JLayeredPane {
 		StartGameMenus = new JPanel();
 		StartGameMenus.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		StartGameMenus.setOpaque(false);
-		StartGameMenus.setBounds(240, 230, 695, 447);
+		StartGameMenus.setBounds(240, 215, 695, 462);
 		add(StartGameMenus);
 		StartGameMenus.setLayout(null);
 		
 		final JPanel Rules = new JPanel();
-		Rules.setBounds(13, 0, 672, 106);
+		Rules.setBounds(6, 0, 679, 127);
 		Rules.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Rules", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		Rules.setOpaque(false);
 		StartGameMenus.add(Rules);
 		Rules.setLayout(null);
 		
 		final JPanel HouseRulesPanel = new JPanel();
-		HouseRulesPanel.setBounds(10, 16, 561, 81);
+		HouseRulesPanel.setBounds(6, 16, 667, 79);
 		HouseRulesPanel.setBorder(new TitledBorder(null, "House Rules", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		HouseRulesPanel.setOpaque(false);
 		Rules.add(HouseRulesPanel);
@@ -153,32 +154,17 @@ public class CAH_NewGame extends JLayeredPane {
 		conflictingRules.add(chckbxsurvivalOfThe);
 		conflictingRules.add(chckbxseriousBuisness);
 		
-		final JPanel gamblingPanel = new JPanel();
-		gamblingPanel.setBorder(new TitledBorder(null, "Gambling", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
-		gamblingPanel.setOpaque(false);
-		gamblingPanel.setBounds(581, 16, 81, 81);
-		gamblingPanel.setToolTipText(wrap("If a Black Card is played and you have more than one White Card that you think could win, you can bet one of your Awesome Points to play an additional White Card. If you win, keep the point. If you lose, whoever won the round gets the point you wagered."));
-		Rules.add(gamblingPanel);
+		JToggleButton tglbtnGambling = new JToggleButton("Gambling");
+		tglbtnGambling.setBounds(259, 96, 161, 25);
+		tglbtnGambling.setToolTipText(wrap("If a Black Card is played and you have more than one White Card that you think could win, you can bet one of your Awesome Points to play an additional White Card. If you win, keep the point. If you lose, whoever won the round gets the point you wagered."));
+		Rules.add(tglbtnGambling);
 		
 		ButtonGroup gamblingButtons = new ButtonGroup();
-		
-		final JRadioButton rdbtnOn = new JRadioButton("<html><body style=\"color:WHITE\">On</body></html>");
-		rdbtnOn.setFocusPainted(false);
-		rdbtnOn.setOpaque(false);
-		gamblingButtons.add(rdbtnOn);
-		gamblingPanel.add(rdbtnOn);
-		
-		final JRadioButton rdbtnoff = new JRadioButton("<html><body style=\"color:WHITE\">Off</body></html>");
-		rdbtnoff.setSelected(true);
-		rdbtnoff.setFocusPainted(false);
-		rdbtnoff.setOpaque(false);
-		gamblingButtons.add(rdbtnoff);
-		gamblingPanel.add(rdbtnoff);
 		
 		final JPanel DecksPanel = new JPanel();
 		DecksPanel.setBorder(new TitledBorder(null, "Decks", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
 		DecksPanel.setOpaque(false);
-		DecksPanel.setBounds(13, 117, 397, 82);
+		DecksPanel.setBounds(6, 128, 444, 98);
 		StartGameMenus.add(DecksPanel);
 		
 		final JCheckBox chckbxOriginal = new JCheckBox("<html><body style=\"color:WHITE\">Original</body></html>");
@@ -228,25 +214,13 @@ public class CAH_NewGame extends JLayeredPane {
 		final JPanel AddPlayerPanel = new JPanel();
 		AddPlayerPanel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(255, 255, 255)));
 		AddPlayerPanel.setOpaque(false);
-		AddPlayerPanel.setBounds(13, 207, 672, 213);
+		AddPlayerPanel.setBounds(6, 235, 679, 205);
 		StartGameMenus.add(AddPlayerPanel);
 		AddPlayerPanel.setLayout(null);
 		
-		JButton btnAddPlayer = new JButton("<html><h2 style=\"color:GREEN\">+</h2></html>");
-		btnAddPlayer.setContentAreaFilled(false);
-		btnAddPlayer.setOpaque(false);
-		btnAddPlayer.setAlignmentY(Component.TOP_ALIGNMENT);
-		btnAddPlayer.setBorder(new LineBorder(Color.WHITE, 1, true));
-		btnAddPlayer.setMargin(new Insets(2, 1, 2, 1));
-		btnAddPlayer.setFocusPainted(false);
-		btnAddPlayer.setFocusTraversalKeysEnabled(false);
-		btnAddPlayer.setToolTipText("Add Player");
-		btnAddPlayer.setBounds(549, 7, 25, 25);
-		AddPlayerPanel.add(btnAddPlayer);
-		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBackground(Color.BLACK);
-		scrollPane.setBounds(10, 45, 652, 157);
+		scrollPane.setBounds(10, 45, 663, 157);
 		AddPlayerPanel.add(scrollPane);
 		
 		players = new DefaultListModel();
@@ -263,7 +237,36 @@ public class CAH_NewGame extends JLayeredPane {
 		
 		PlayerScrollLayout.setConstraints(scrollPane, PlayerScrollConstraints);
 		
+		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(new Color(255, 255, 255), 1, true));
+		panel.setOpaque(false);
+		panel.setBounds(0, 0, 679, 39);
+		AddPlayerPanel.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblPlayers = new JLabel("Players");
+		lblPlayers.setBounds(10, 9, 75, 21);
+		lblPlayers.setHorizontalTextPosition(SwingConstants.LEADING);
+		lblPlayers.setHorizontalAlignment(SwingConstants.LEFT);
+		lblPlayers.setFont(new Font("Arial Black", Font.PLAIN, 16));
+		lblPlayers.setForeground(Color.WHITE);
+		panel.add(lblPlayers);
+		
+		JButton btnAuto = new JButton("<html><body style =\"color:WHITE\">Auto</body></html>");
+		btnAuto.setBounds(631, 7, 42, 25);
+		panel.add(btnAuto);
+		btnAuto.setBorder(new LineBorder(Color.WHITE, 1, true));
+		btnAuto.setContentAreaFilled(false);
+		btnAuto.setOpaque(false);
+		btnAuto.setToolTipText("Automatically add all netplay players connected to the game.");
+		btnAuto.setMargin(new Insets(2, 1, 2, 1));
+		btnAuto.setFocusTraversalKeysEnabled(false);
+		btnAuto.setFocusPainted(false);
+		btnAuto.setAlignmentY(0.0f);
+		
 		JButton button = new JButton("<html><h2 style=\"color:RED\">-</h2></html>");
+		button.setBounds(602, 7, 25, 25);
+		panel.add(button);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try
@@ -308,65 +311,18 @@ public class CAH_NewGame extends JLayeredPane {
 		button.setFocusPainted(false);
 		button.setFocusTraversalKeysEnabled(false);
 		button.setToolTipText("Remove Player");
-		button.setBounds(578, 7, 25, 25);
-		AddPlayerPanel.add(button);
 		
-		JButton btnAuto = new JButton("<html><body style =\"color:WHITE\">Auto</body></html>");
-		btnAuto.setBorder(new LineBorder(Color.WHITE, 1, true));
-		btnAuto.setContentAreaFilled(false);
-		btnAuto.setOpaque(false);
-		btnAuto.setToolTipText("Automatically add all netplay players connected to the game.");
-		btnAuto.setMargin(new Insets(2, 1, 2, 1));
-		btnAuto.setFocusTraversalKeysEnabled(false);
-		btnAuto.setFocusPainted(false);
-		btnAuto.setAlignmentY(0.0f);
-		btnAuto.setBounds(607, 7, 42, 25);
-		AddPlayerPanel.add(btnAuto);
-		
-		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(255, 255, 255), 1, true));
-		panel.setOpaque(false);
-		panel.setBounds(0, 0, 672, 39);
-		AddPlayerPanel.add(panel);
-		panel.setLayout(null);
-		
-		JLabel lblPlayers = new JLabel("Players");
-		lblPlayers.setBounds(10, 9, 75, 21);
-		lblPlayers.setHorizontalTextPosition(SwingConstants.LEADING);
-		lblPlayers.setHorizontalAlignment(SwingConstants.LEFT);
-		lblPlayers.setFont(new Font("Arial Black", Font.PLAIN, 16));
-		lblPlayers.setForeground(Color.WHITE);
-		panel.add(lblPlayers);
-		
-		JPanel GameType = new JPanel();
-		GameType.setOpaque(false);
-		GameType.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Game Type", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
-		GameType.setBounds(420, 117, 265, 82);
-		StartGameMenus.add(GameType);
-		
-		final JRadioButton rdbtnSinglePlayer = new JRadioButton("<html><body style=\"color:WHITE\">Single Player</body></html>");
-		rdbtnSinglePlayer.setSelected(true);
-		rdbtnSinglePlayer.setFocusPainted(false);
-		rdbtnSinglePlayer.setToolTipText(wrap("Play on your own against a computer player!"));
-		rdbtnSinglePlayer.setOpaque(false);
-		GameType.add(rdbtnSinglePlayer);
-		
-		final JRadioButton rdbtnmultiplayer = new JRadioButton("<html><body style=\"color:WHITE\">Multiplayer</body></html>");
-		rdbtnmultiplayer.setFocusPainted(false);
-		rdbtnmultiplayer.setToolTipText(wrap("Gather around one computer with your friends to play a multiplayer game!"));
-		rdbtnmultiplayer.setOpaque(false);
-		GameType.add(rdbtnmultiplayer);
-		
-		JRadioButton rdbtnNetplayMultiplayer = new JRadioButton("<html><body style=\"color:WHITE\">Netplay Multiplayer</body></html>");
-		rdbtnNetplayMultiplayer.setFocusPainted(false);
-		rdbtnNetplayMultiplayer.setToolTipText(wrap("Play over a local internet connection."));
-		rdbtnNetplayMultiplayer.setOpaque(false);
-		GameType.add(rdbtnNetplayMultiplayer);
-		
-		ButtonGroup gameTypeGroup = new ButtonGroup();
-		gameTypeGroup.add(rdbtnSinglePlayer);
-		gameTypeGroup.add(rdbtnmultiplayer);
-		gameTypeGroup.add(rdbtnNetplayMultiplayer);
+		JButton btnAddPlayer = new JButton("<html><h2 style=\"color:GREEN\">+</h2></html>");
+		btnAddPlayer.setBounds(572, 7, 25, 25);
+		panel.add(btnAddPlayer);
+		btnAddPlayer.setContentAreaFilled(false);
+		btnAddPlayer.setOpaque(false);
+		btnAddPlayer.setAlignmentY(Component.TOP_ALIGNMENT);
+		btnAddPlayer.setBorder(new LineBorder(Color.WHITE, 1, true));
+		btnAddPlayer.setMargin(new Insets(2, 1, 2, 1));
+		btnAddPlayer.setFocusPainted(false);
+		btnAddPlayer.setFocusTraversalKeysEnabled(false);
+		btnAddPlayer.setToolTipText("Add Player");
 		
 		btnAddPlayer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -438,6 +394,36 @@ public class CAH_NewGame extends JLayeredPane {
 			}
 		});
 		
+		JPanel GameType = new JPanel();
+		GameType.setOpaque(false);
+		GameType.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Game Type", TitledBorder.LEADING, TitledBorder.TOP, null, Color.WHITE));
+		GameType.setBounds(449, 128, 236, 98);
+		StartGameMenus.add(GameType);
+		
+		final JRadioButton rdbtnSinglePlayer = new JRadioButton("<html><body style=\"color:WHITE\">Single Player</body></html>");
+		rdbtnSinglePlayer.setSelected(true);
+		rdbtnSinglePlayer.setFocusPainted(false);
+		rdbtnSinglePlayer.setToolTipText(wrap("Play on your own against a computer player!"));
+		rdbtnSinglePlayer.setOpaque(false);
+		GameType.add(rdbtnSinglePlayer);
+		
+		final JRadioButton rdbtnmultiplayer = new JRadioButton("<html><body style=\"color:WHITE\">Multiplayer</body></html>");
+		rdbtnmultiplayer.setFocusPainted(false);
+		rdbtnmultiplayer.setToolTipText(wrap("Gather around one computer with your friends to play a multiplayer game!"));
+		rdbtnmultiplayer.setOpaque(false);
+		GameType.add(rdbtnmultiplayer);
+		
+		JRadioButton rdbtnNetplayMultiplayer = new JRadioButton("<html><body style=\"color:WHITE\">Netplay Multiplayer</body></html>");
+		rdbtnNetplayMultiplayer.setFocusPainted(false);
+		rdbtnNetplayMultiplayer.setToolTipText(wrap("Play over a local internet connection."));
+		rdbtnNetplayMultiplayer.setOpaque(false);
+		GameType.add(rdbtnNetplayMultiplayer);
+		
+		ButtonGroup gameTypeGroup = new ButtonGroup();
+		gameTypeGroup.add(rdbtnSinglePlayer);
+		gameTypeGroup.add(rdbtnmultiplayer);
+		gameTypeGroup.add(rdbtnNetplayMultiplayer);
+		
 		JLabel lblNewGame = new JLabel("New Game");
 		lblNewGame.setFont(new Font("Arial Black", Font.PLAIN, 25));
 		lblNewGame.setForeground(Color.WHITE);
@@ -455,7 +441,7 @@ public class CAH_NewGame extends JLayeredPane {
 		NewGameBackground.setAlignmentX(Component.CENTER_ALIGNMENT);
 		NewGameBackground.setBounds(0, 0, 1450, 722);
 		add(NewGameBackground);
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{HouseRulesPanel, Rules, StartGameMenus, NewGameBackground, chckbxhappyEnding, chckbxrebootingTheUniverse, chckbxpackingHeat, chckbxrandoCardrissian, chckbxsurvivalOfThe, chckbxseriousBuisness, chckbxneverHaveI, chckbxgodIsDead, gamblingPanel, rdbtnOn, rdbtnoff, DecksPanel, chckbxOriginal, chckbxExpansion1, chckbxExpansion2, chckbxExpansion3, chckbxExpansion4, chckbxHolidayExpansion, AddPlayerPanel}));
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{HouseRulesPanel, Rules, StartGameMenus, NewGameBackground, chckbxhappyEnding, chckbxrebootingTheUniverse, chckbxpackingHeat, chckbxrandoCardrissian, chckbxsurvivalOfThe, chckbxseriousBuisness, chckbxneverHaveI, chckbxgodIsDead, DecksPanel, chckbxOriginal, chckbxExpansion1, chckbxExpansion2, chckbxExpansion3, chckbxExpansion4, chckbxHolidayExpansion, AddPlayerPanel}));
 		
 		chckbxExpansion1.addActionListener(new ActionListener()
 		{
@@ -468,7 +454,7 @@ public class CAH_NewGame extends JLayeredPane {
 					expansion1.setVisible(true);
 					expansion1.setLocation(getCenterOfMenu(new Dimension(expansion1.getWidth(), expansion1.getHeight())));//Centered in StartGameMenus
 					add(expansion1);
-					setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{expansion1, HouseRulesPanel, Rules, StartGameMenus, NewGameBackground, chckbxhappyEnding, chckbxrebootingTheUniverse, chckbxpackingHeat, chckbxrandoCardrissian, chckbxsurvivalOfThe, chckbxseriousBuisness, chckbxneverHaveI,chckbxgodIsDead, gamblingPanel, rdbtnOn, rdbtnoff, DecksPanel, chckbxOriginal, chckbxExpansion1, chckbxExpansion2, chckbxExpansion3, chckbxExpansion4, chckbxHolidayExpansion, AddPlayerPanel}));
+					setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{expansion1, HouseRulesPanel, Rules, StartGameMenus, NewGameBackground, chckbxhappyEnding, chckbxrebootingTheUniverse, chckbxpackingHeat, chckbxrandoCardrissian, chckbxsurvivalOfThe, chckbxseriousBuisness, chckbxneverHaveI,chckbxgodIsDead, DecksPanel, chckbxOriginal, chckbxExpansion1, chckbxExpansion2, chckbxExpansion3, chckbxExpansion4, chckbxHolidayExpansion, AddPlayerPanel}));
 				}	
 			}
 			
@@ -541,6 +527,7 @@ public class CAH_NewGame extends JLayeredPane {
 	 */
 	protected void startGameMenuAdd(JComponent component)
 	{
+		component.setOpaque(true);
 		StartGameMenus.add(component);
 	}
 	

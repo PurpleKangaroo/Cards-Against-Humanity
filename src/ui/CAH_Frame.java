@@ -103,6 +103,7 @@ public class CAH_Frame extends JFrame {
 	 * @author Holt Maki
 	 */
 	public CAH_Frame() {
+		setFocusTraversalPolicyProvider(true);
 		setSize(new Dimension(1450, 752));
 		setPreferredSize(new Dimension(1450, 752));
 		setName("CAH");
@@ -439,17 +440,17 @@ public class CAH_Frame extends JFrame {
 					JButton mainMenu = new JButton("Main Menu");
 					mainMenu.setOpaque(false);
 					mainMenu.setFocusTraversalKeysEnabled(false);
-					mainMenu.setFocusPainted(false);
-					mainMenu.setBorderPainted(false);
-					mainMenu.setBounds(362, 422, 102, 17);
+					mainMenu.setFocusPainted(true);
+					mainMenu.setBorderPainted(true);
+					mainMenu.setBounds(362, 442, 115, 17);
 					newGame.startGameMenuAdd(mainMenu);
 					
 					JButton btnStartGame = new JButton("Start Game");
-					btnStartGame.setBorderPainted(false);
+					btnStartGame.setBorderPainted(true);
 					btnStartGame.setFocusTraversalKeysEnabled(false);
-					btnStartGame.setFocusPainted(false);
-					btnStartGame.setOpaque(false);
-					btnStartGame.setBounds(250, 422, 102, 17);
+					btnStartGame.setFocusPainted(true);
+					btnStartGame.setOpaque(true);
+					btnStartGame.setBounds(237, 442, 115, 17);
 					newGame.startGameMenuAdd(btnStartGame);
 					
 					
