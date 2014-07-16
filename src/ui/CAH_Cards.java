@@ -294,11 +294,11 @@ public class CAH_Cards extends JLayeredPane
 		final JLabel lblCardsAgainstHumanity = new JLabel("Cards Against Humanity");
 		lblCardsAgainstHumanity.setFont(new Font("Arial Black", Font.BOLD, 70));
 		lblCardsAgainstHumanity.setForeground(Color.WHITE);
-		lblCardsAgainstHumanity.setBounds(84, 43, 1024, 139);
+		lblCardsAgainstHumanity.setBounds(45, 43, 1024, 139);
 		add(lblCardsAgainstHumanity);
 		
 		decksTabbed = new JTabbedPane(JTabbedPane.TOP);
-		decksTabbed.setBounds(84, 190, 883, 494);
+		decksTabbed.setBounds(45, 190, 953, 494);
 		add(decksTabbed);
 		
 		originalDeck = new JTabbedPane(JTabbedPane.TOP);
@@ -414,44 +414,7 @@ public class CAH_Cards extends JLayeredPane
 		
 		originalQscr.setViewportView(qList);
 		
-		JLabel lblCardText = new JLabel("Card Text" +
-										"                                                                                                                         " + 
-										"                                                                                                                   " +
-										"Draw" + "          " + "Pick");
-		lblCardText.setHorizontalTextPosition(SwingConstants.LEFT);
-		originalQscr.setColumnHeaderView(lblCardText);
-		Expansion1ScrQ.setColumnHeaderView(new JLabel("Card Text" +
-				"                                                                                                                         " + 
-				"                                                                                                                   " +
-				"Draw" + "          " + "Pick"));
 		
-		Expansion2ScrQ.setColumnHeaderView(new JLabel("Card Text" +
-				"                                                                                                                         " + 
-				"                                                                                                                   " +
-				"Draw" + "          " + "Pick"));
-		
-		Expansion3ScrQ.setColumnHeaderView(new JLabel("Card Text" +
-				"                                                                                                                         " + 
-				"                                                                                                                   " +
-				"Draw" + "          " + "Pick"));
-		
-		Expansion4ScrQ.setColumnHeaderView(new JLabel("Card Text" +
-				"                                                                                                                         " + 
-				"                                                                                                                   " +
-				"Draw" + "          " + "Pick"));
-		
-		ExpansionHScrQ.setColumnHeaderView(new JLabel("Card Text" +
-				"                                                                                                                         " + 
-				"                                                                                                                   " +
-				"Draw" + "          " + "Pick"));
-		PAXScrQ.setColumnHeaderView(new JLabel("Card Text" +
-				"                                                                                                                         " + 
-				"                                                                                                                   " +
-				"Draw" + "          " + "Pick"));
-		/*LWScrQ.setColumnHeaderView(new JLabel("Card Text" +
-				"                                                                                                                         " + 
-				"                                                                                                                   " +
-				"Draw" + "          " + "Pick"));*/
 		
 		originalAnsScr = new JScrollPane();
 		originalAnsScr.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -685,7 +648,7 @@ public class CAH_Cards extends JLayeredPane
 			super.setAutoscrolls(false);
 			super.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			
-			setFixedCellWidth(1532);
+			setFixedCellWidth(1730);
 			setSelectedIndex(0);
 			
 			addListSelectionListener(new ListSelectionListener(){
@@ -714,7 +677,7 @@ public class CAH_Cards extends JLayeredPane
 			for(int i = 0; i < qCards.size(); i++)
 			{
 				data[i][0] = "<html><body style=\"color:WHITE\">" + qCards.get(i).getCardString() + "</body></html>";
-				data[i][1] = "    "+ qCards.get(i).getDraw() + "               " + qCards.get(i).getPick() + "";
+				data[i][1] = "<html>"+ (qCards.get(i).getPick()==2 ? "<span style=\"font-color: BLACK\">\u2777</span>" : qCards.get(i).getPick() == 3 ? "<span style=\"font-color: BLACK\">\u2778</span>" : "") + (qCards.get(i).getDraw()==2 ? "   <span style=\"font-color: BLACK\">\u2777</span>" : "" + "</html>");
 			}
 		}
 	}
@@ -751,7 +714,7 @@ public class CAH_Cards extends JLayeredPane
 		 */
 		private QListCellRenderer()
 		{
-			setLayout(new GridLayout(1,3));
+			setLayout(new GridLayout(1,1));
 			
 			cardStr = new JLabel();
 			drawpick = new JLabel();
@@ -773,7 +736,7 @@ public class CAH_Cards extends JLayeredPane
 			cardStr.setText(cardStrData);
 			drawpick.setText(drawpickData + "");
 			
-			drawpick.setBounds(drawpick.getX(), drawpick.getY(), 5, drawpick.getHeight());
+			drawpick.setBounds(drawpick.getX(), drawpick.getY(), 0, drawpick.getHeight());
 			
 			if(isSelected)
 			{
@@ -1174,10 +1137,10 @@ public class CAH_Cards extends JLayeredPane
 	protected void bounceIn()
 	{
 		firePropertyChange("STOPT", false, true);
-		final int targetX = 1106;
+		final int targetX = 1050;
 		final int targetY = 210;
 		
-		(card).setBounds(1106, -260, 188, 270);
+		(card).setBounds(1050, -260, 188, 270);
 		
 		this.add(card);
 		this.moveToFront(card);

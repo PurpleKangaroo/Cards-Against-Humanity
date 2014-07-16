@@ -1,5 +1,7 @@
 package ui;
 
+import game.HouseRules;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -11,8 +13,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.BoxLayout;
 import javax.swing.JTextPane;
+
 import java.awt.Cursor;
+
 import javax.swing.border.LineBorder;
+import javax.swing.SpringLayout;
 
 /**
  * A class of object that represents the panel that contains information about Cards Against Humanity's rules.
@@ -50,7 +55,7 @@ public class RulesPanel extends JPanel
 		JTextPane txtpnbasicRules = new JTextPane();
 		txtpnbasicRules.setOpaque(false);
 		txtpnbasicRules.setDisabledTextColor(Color.WHITE);
-		txtpnbasicRules.setBounds(10, 11, 323, 458);
+		txtpnbasicRules.setBounds(6, 6, 323, 458);
 		txtpnbasicRules.setEnabled(false);
 		txtpnbasicRules.setEditable(false);
 		txtpnbasicRules.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
@@ -67,7 +72,7 @@ public class RulesPanel extends JPanel
 		JTextPane txtpnhouseRules = new JTextPane();
 		txtpnhouseRules.setOpaque(false);
 		txtpnhouseRules.setDisabledTextColor(Color.WHITE);
-		txtpnhouseRules.setBounds(10, 11, 323, 66);
+		txtpnhouseRules.setBounds(10, 6, 323, 66);
 		txtpnhouseRules.setEnabled(false);
 		txtpnhouseRules.setEditable(false);
 		txtpnhouseRules.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
@@ -76,9 +81,69 @@ public class RulesPanel extends JPanel
 		//TODO add lines between sections (see CAH's rules).
 		panel_2.add(txtpnhouseRules);
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(10, 88, 323, 370);
-		panel_2.add(panel_3);
+		JPanel houseRulesArea = new JPanel();
+		houseRulesArea.setOpaque(false);
+		houseRulesArea.setBounds(10, 88, 323, 370);
+		panel_2.add(houseRulesArea);
+		SpringLayout sl_houseRulesArea = new SpringLayout();
+		houseRulesArea.setLayout(sl_houseRulesArea);
+		
+		HouseRulePanel happyEnding = new HouseRulePanel("Happy Ending", HouseRules.HAPPY_ENDING.getDescription());
+		sl_houseRulesArea.putConstraint(SpringLayout.NORTH, happyEnding, 0, SpringLayout.NORTH, houseRulesArea);
+		sl_houseRulesArea.putConstraint(SpringLayout.WEST, happyEnding, 0, SpringLayout.WEST, houseRulesArea);
+		sl_houseRulesArea.putConstraint(SpringLayout.SOUTH, happyEnding, 20, SpringLayout.NORTH, houseRulesArea);
+		sl_houseRulesArea.putConstraint(SpringLayout.EAST, happyEnding, 323, SpringLayout.WEST, houseRulesArea);
+		houseRulesArea.add(happyEnding);
+		
+		HouseRulePanel rebooting = new HouseRulePanel("Rebooting the Universe", HouseRules.REBOOTING_THE_UNIVERSE.getDescription());
+		sl_houseRulesArea.putConstraint(SpringLayout.NORTH, rebooting, 0, SpringLayout.SOUTH, happyEnding);
+		sl_houseRulesArea.putConstraint(SpringLayout.WEST, rebooting, 0, SpringLayout.WEST, houseRulesArea);
+		sl_houseRulesArea.putConstraint(SpringLayout.SOUTH, rebooting, 20, SpringLayout.SOUTH, happyEnding);
+		sl_houseRulesArea.putConstraint(SpringLayout.EAST, rebooting, 323, SpringLayout.WEST, houseRulesArea);
+		houseRulesArea.add(rebooting);
+		
+		HouseRulePanel packing = new HouseRulePanel("Packing Heat", HouseRules.PACKING_HEAT.getDescription());
+		sl_houseRulesArea.putConstraint(SpringLayout.NORTH, packing, 0, SpringLayout.SOUTH, rebooting);
+		sl_houseRulesArea.putConstraint(SpringLayout.WEST, packing, 0, SpringLayout.WEST, houseRulesArea);
+		sl_houseRulesArea.putConstraint(SpringLayout.SOUTH, packing, 20, SpringLayout.SOUTH, rebooting);
+		sl_houseRulesArea.putConstraint(SpringLayout.EAST, packing, 323, SpringLayout.WEST, houseRulesArea);
+		houseRulesArea.add(packing);
+		
+		HouseRulePanel rando = new HouseRulePanel("Rando Cardrissian", HouseRules.RANDO_CARDRISSIAN.getDescription());
+		sl_houseRulesArea.putConstraint(SpringLayout.NORTH, rando, 0, SpringLayout.SOUTH, packing);
+		sl_houseRulesArea.putConstraint(SpringLayout.WEST, rando, 0, SpringLayout.WEST, houseRulesArea);
+		sl_houseRulesArea.putConstraint(SpringLayout.SOUTH, rando, 20, SpringLayout.SOUTH, packing);
+		sl_houseRulesArea.putConstraint(SpringLayout.EAST, rando, 323, SpringLayout.WEST, houseRulesArea);
+		houseRulesArea.add(rando);
+		
+		HouseRulePanel god = new HouseRulePanel("God Is Dead", HouseRules.GOD_IS_DEAD.getDescription());
+		sl_houseRulesArea.putConstraint(SpringLayout.NORTH, god, 0, SpringLayout.SOUTH, rando);
+		sl_houseRulesArea.putConstraint(SpringLayout.WEST, god, 0, SpringLayout.WEST, houseRulesArea);
+		sl_houseRulesArea.putConstraint(SpringLayout.SOUTH, god, 20, SpringLayout.SOUTH, rando);
+		sl_houseRulesArea.putConstraint(SpringLayout.EAST, god, 323, SpringLayout.WEST, houseRulesArea);
+		houseRulesArea.add(god);
+		
+		HouseRulePanel survival = new HouseRulePanel("Survival of the Fittest", HouseRules.SURVIVAL_OF_THE_FITTEST.getDescription());
+		sl_houseRulesArea.putConstraint(SpringLayout.NORTH, survival, 0, SpringLayout.SOUTH, god);
+		sl_houseRulesArea.putConstraint(SpringLayout.WEST, survival, 0, SpringLayout.WEST, houseRulesArea);
+		sl_houseRulesArea.putConstraint(SpringLayout.SOUTH, survival, 20, SpringLayout.SOUTH, god);
+		sl_houseRulesArea.putConstraint(SpringLayout.EAST, survival, 323, SpringLayout.WEST, houseRulesArea);
+		houseRulesArea.add(survival);
+		
+		HouseRulePanel serious = new HouseRulePanel("Serious Buisiness", HouseRules.SERIOUS_BUSINESS.getDescription());
+		sl_houseRulesArea.putConstraint(SpringLayout.NORTH, serious, 0, SpringLayout.SOUTH, survival);
+		sl_houseRulesArea.putConstraint(SpringLayout.WEST, serious, 0, SpringLayout.WEST, houseRulesArea);
+		sl_houseRulesArea.putConstraint(SpringLayout.SOUTH, serious, 20, SpringLayout.SOUTH, survival);
+		sl_houseRulesArea.putConstraint(SpringLayout.EAST, serious, 323, SpringLayout.WEST, houseRulesArea);
+		houseRulesArea.add(serious);
+		
+		HouseRulePanel never = new HouseRulePanel("Never Have I Ever", HouseRules.NEVER_HAVE_I_EVER.getDescription());
+		sl_houseRulesArea.putConstraint(SpringLayout.NORTH, never, 0, SpringLayout.SOUTH, serious);
+		sl_houseRulesArea.putConstraint(SpringLayout.WEST, never, 0, SpringLayout.WEST, houseRulesArea);
+		sl_houseRulesArea.putConstraint(SpringLayout.SOUTH, never, 20, SpringLayout.SOUTH, serious);
+		sl_houseRulesArea.putConstraint(SpringLayout.EAST, never, 323, SpringLayout.WEST, houseRulesArea);
+		houseRulesArea.add(never);
+		
 		//TODO make the HouseRulePanel class and put them inside panel_3.
 		
 		JLabel lblCardsAgainstHumanity = new JLabel("Cards Against Humanity");
