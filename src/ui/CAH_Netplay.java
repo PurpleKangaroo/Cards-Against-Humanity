@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -14,12 +15,16 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.BoxLayout;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+import javax.swing.JTextField;
 
 /**
  * A class of object that represents the panel that will come up to allow a player to start up netplay.
@@ -36,6 +41,7 @@ public class CAH_Netplay extends JPanel
 	 */
 	private static final long serialVersionUID = -8317819384838582033L;
 	private JComponent panel;
+	private JTextField textField;
 
 	/**
 	 * Create the panel.
@@ -73,10 +79,18 @@ public class CAH_Netplay extends JPanel
 		lblYourIpAddress.setForeground(Color.WHITE);
 		panel_1.add(lblYourIpAddress);
 		
-		JLabel label = new JLabel("");
-		label.setFont(new Font("Arial Black", Font.PLAIN, 16));
-		label.setForeground(Color.GREEN);
-		panel_1.add(label);
+		JLabel label;
+		try
+		{
+			label = new JLabel("\t" + InetAddress.getLocalHost().getHostAddress());
+			label.setFont(new Font("Arial Black", Font.PLAIN, 16));
+			label.setForeground(Color.GREEN);
+			panel_1.add(label);
+		}
+		catch (UnknownHostException e)
+		{
+			e.printStackTrace();
+		}
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setOpaque(false);
@@ -90,18 +104,24 @@ public class CAH_Netplay extends JPanel
 		lblHostIpAddress.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		panel_2.add(lblHostIpAddress);
 		
-		JLabel label_1 = new JLabel("");
-		label_1.setForeground(Color.GREEN);
-		label_1.setFont(new Font("Arial Black", Font.PLAIN, 16));
-		label_1.setBounds(156, 18, 0, 0);
-		panel_2.add(label_1);
+		textField = new JTextField();
+		textField.setFont(new Font("Arial Black", Font.PLAIN, 16));
+		textField.setForeground(Color.GREEN);
+		textField.setCaretColor(Color.GREEN);
+		textField.setSelectedTextColor(Color.GREEN);
+		textField.setSelectionColor(new Color(51, 51, 51));
+		textField.setBorder(new LineBorder(new Color(255, 255, 255)));
+		textField.setBackground(new Color(51, 51, 51));
+		textField.setBounds(151, 10, 153, 28);
+		panel_2.add(textField);
+		textField.setColumns(10);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setOpaque(false);
 		panel_3.setBounds(10, 114, 349, 32);
 		panel.add(panel_3);
 		
-		JRadioButton rdbtnHost = new JRadioButton("Host");
+		final JRadioButton rdbtnHost = new JRadioButton("Host");
 		rdbtnHost.setFocusPainted(false);
 		rdbtnHost.setRequestFocusEnabled(false);
 		rdbtnHost.setRolloverEnabled(false);
@@ -122,7 +142,7 @@ public class CAH_Netplay extends JPanel
 		clienthost.add(rdbtnHost);
 		clienthost.add(rdbtnClient);
 		
-		JButton btnStart = new JButton("Start");
+		final JButton btnStart = new JButton("Connect");
 		btnStart.setRolloverEnabled(false);
 		btnStart.setRequestFocusEnabled(false);
 		btnStart.addActionListener(new ActionListener() {
@@ -131,8 +151,26 @@ public class CAH_Netplay extends JPanel
 			}
 		});
 		btnStart.setOpaque(false);
-		btnStart.setBounds(90, 157, 100, 23);
+		btnStart.setBounds(90, 157, 100, 17);
 		panel.add(btnStart);
+		
+		rdbtnHost.addChangeListener(new ChangeListener(){
+
+			@Override
+			public void stateChanged(ChangeEvent e)
+			{
+				if(rdbtnHost.isSelected())
+				{
+					btnStart.setText("Start");
+				}
+				else
+				{
+					btnStart.setText("Connect");
+				}
+				
+			}
+			
+		});
 		
 		JLabel lblCardsAgainstHumanity = new JLabel("Cards Against Humanity");
 		lblCardsAgainstHumanity.setBounds(84, 43, 1024, 139);
@@ -150,7 +188,7 @@ public class CAH_Netplay extends JPanel
 	 */
 	protected void addMainMenuButton(JComponent mainMenu)
 	{
-		mainMenu.setBounds(200, 157, 100, 23);
+		mainMenu.setBounds(200, 157, 100, 17);
 		panel.add(mainMenu);
 		final JLabel StartBackground = new JLabel("");
 		StartBackground.setRequestFocusEnabled(false);
